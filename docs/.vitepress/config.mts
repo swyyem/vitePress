@@ -3,7 +3,7 @@ import utils from "./utils";
 const { getSideBar } = utils;
 
 export default defineConfig({
-  base: "/charlie-blog/", // 项目根路由，github部署后的基础路由如:xx.github.io/charlie-blog/
+  base: "/vitepress/", // 项目根路由，github部署后的基础路由如:xx.github.io/vitepress/
   title: "Charlie Blog", // 浏览器标签标题
   // 浏览器标签的favicon
   head: [
@@ -12,7 +12,7 @@ export default defineConfig({
       {
         rel: "icon",
         type: "image/svg+xml",
-        href: "/charlie-blog/websiteLogo.svg",
+        href: "/vitepress/websiteLogo.svg",
       },
     ],
   ],
@@ -41,7 +41,7 @@ export default defineConfig({
     },
     // 可以添加外部社交网站地址，如github,掘金，微博等等
     socialLinks: [
-      { icon: "github", link: "https://github.com/doggyegg/charlie-blog" },
+      { icon: "github", link: "https://github.com/doggyegg/vitepress" },
     ],
     // 底部区域，一般为版权相关
     footer: {
