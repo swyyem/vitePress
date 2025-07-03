@@ -1,0 +1,6 @@
+src/
+.husky/
+.storybook/
+.vscode/
+node_modules/
+storybook-static/
