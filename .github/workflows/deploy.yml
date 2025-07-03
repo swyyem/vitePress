@@ -1,22 +1,45 @@
-name: Deploy VitePress to GitHub Pages
+name: vitePress deploy workflow
 
+# 设置触发时机，当推送main分支或者tag到远程时触发
 on:
   push:
-    branches: [main]
-
+    tags:
+      - "*"
+    branches:
+      - main
+  workflow_dispatch:
+# 各个脚本节点命令
 jobs:
-  deploy:
+  deploy-and-sync:
+    # 执行环境为linux的ubuntu系统
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # 关键！赋予写入权限
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      # 从main分支拉取代码
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
         with:
-          node-version: 20
-      - run: npm install
-      - run: npm run docs:build
-      - uses: peaceiris/actions-gh-pages@v3
+          ref: "main"
+      # 安装pnpm
+      - name: Install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+      # 安装node环境
+      - uses: actions/setup-node@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用默认 token
-          publish_dir: docs/.vitepress/dist
+          node-version: "18"
+          cache: "pnpm"
+      # 使用pnpm安装依赖
+      - name: Install dependencies
+        run: pnpm install
+      # 打包vitepress项目
+      - name: Build Site
+        run: pnpm run docs:build
+      # 将打包后dist里的产物提交到prod分支
+      - name: Deploy for Github 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: prod
+          folder: docs/.vitepress/dist
+          single-commit: true
+          clean: true
