@@ -2,19 +2,21 @@ name: Deploy VitePress to GitHub Pages
 
 on:
   push:
-    branches: [main]  # main 分支推送时触发
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 关键！赋予写入权限
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - run: npm install
-      - run: npm run docs:build  # 构建静态文件
+      - run: npm run docs:build
       - uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/.vitepress/dist  # 构建输出目录
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # 使用默认 token
+          publish_dir: docs/.vitepress/dist
