@@ -16,19 +16,19 @@ hero: # banner 部分
 features: # 功能区
   - title: Front End # 标题
     icon:
-      src: /home/front-end-icon.svg # 图标地址
+      src: /home/tupian.svg # 图标地址
     link: /front/engi/rule # 跳转链接
     details: Front-end frameworks such as Vue and React, technical design such as micro-front-end and low code, and common front-end performance optimization schemes # 文案描述
 
   - title: Back End
     icon:
-      src: /home/back-end-icon.svg
-    link: /back/index
+      src: /home/unfold.svg
+    link: /front/engi/back
     details: Back-end framework applications such as express and nest.js, as well as the operation of common data such as mysql and mongodb
 
   - title: Others
     icon:
-      src: /home/network-icon.svg
-    link: /others/operation/md
+      src: /home/Vector.svg
+    link: /front/engi/operation
     details: Git operation, network engineering, and some other commonly used programming tools, skills and so on
 ---

@@ -3,7 +3,7 @@ import utils from "./utils";
 const { getSideBar } = utils;
 
 export default defineConfig({
-  base: "/vitepress/", // 项目根路由，github部署后的基础路由如:xx.github.io/vitepress/
+  base: "./", // 项目根路由，github部署后的基础路由如:xx.github.io/vitepress/
   title: "Charlie Blog", // 浏览器标签标题
   // 浏览器标签的favicon
   head: [
