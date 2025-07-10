@@ -4,7 +4,7 @@
   },
   "scripts": {
     "docs:dev": "vitepress dev docs",
-    "docs:build": "pnpm run register:components && vitepress build docs --base /vitepress-demo/",
+    "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
     "register:components": "vitepress-rc"
   },
