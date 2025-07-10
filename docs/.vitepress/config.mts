@@ -3,12 +3,15 @@ import {
   demoblockPlugin,
   demoblockVitePlugin,
 } from "vitepress-theme-demoblock";
-import { resolve } from 'path'
+import { resolve } from "path";
 import { codePreviewPlugin } from "vitepress-script-preview";
 
+import utils from "./utils";
+const { getSideBar } = utils;
+
 const alias = {
-  '@': resolve(__dirname, '../../example')
-}
+  "@": resolve(__dirname, "../../example"),
+};
 
 import {
   containerPreview,
@@ -26,13 +29,13 @@ export default defineConfig({
         customClass: "demoblock-custom",
       });
       md.use(codePreviewPlugin);
-       /**
+      /**
        * SSR Compatibility
        * @link https://vitepress.dev/guide/ssr-compat
        * If the components are not SSR-friendly, you can specify the clientOnly to disable SSR.
        */
-      md.use(containerPreview, { clientOnly: true })
-      md.use(componentPreview, { clientOnly: true })
+      md.use(containerPreview, { clientOnly: true });
+      md.use(componentPreview, { clientOnly: true });
     },
   },
 
@@ -49,17 +52,24 @@ export default defineConfig({
     nav: [
       { text: "Home", link: "/" },
       { text: "Examples", link: "/markdown-examples" },
-    ],
-
-    sidebar: [
+      { text: "Front-end", link: "/front/engi/rule", activeMatch: "/front/" },
       {
-        text: "Examples",
-        items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
-        ],
+        text: "Back-end",
+        link: "/back/framework/chooseFrameWork",
+        activeMatch: "/back/",
+      },
+      {
+        text: "Others",
+        link: "/others/operation/git",
+        activeMatch: "/others/",
       },
     ],
+
+    sidebar: {
+      "/front/":getSideBar("front"),
+      "/back/": getSideBar("back"),
+      "/others": getSideBar("others"),
+    },
 
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
