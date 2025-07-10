@@ -3,15 +3,11 @@ import {
   demoblockPlugin,
   demoblockVitePlugin,
 } from "vitepress-theme-demoblock";
-import { resolve } from "path";
 import { codePreviewPlugin } from "vitepress-script-preview";
 
 import utils from "./utils";
 const { getSideBar } = utils;
 
-const alias = {
-  "@": resolve(__dirname, "../../example"),
-};
 
 import {
   containerPreview,
@@ -42,16 +38,16 @@ export default defineConfig({
   vite: {
     plugins: [demoblockVitePlugin()],
     resolve: {
-      alias,
+      
     },
   },
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "星辰小站",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "Home", link: "/" },
       { text: "Examples", link: "/markdown-examples" },
+      { text: "Api", link: "/api-examples" },
       { text: "Front-end", link: "/front/engi/rule", activeMatch: "/front/" },
       {
         text: "Back-end",
@@ -71,8 +67,15 @@ export default defineConfig({
       "/others": getSideBar("others"),
     },
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+    carbonAds: {//广告
+      code: 'CEBDT27Y',
+      placement: 'vuejsorg'
+    },
+
+    socialLinks: [//右上角社交平台
+      { icon: 'github', link: 'https://github.com/vuejs/' },
+      { icon: 'twitter', link: 'https://twitter.com/vuejs' },
+      { icon: 'discord', link: 'https://discord.com/invite/vue' }
     ],
   },
 });

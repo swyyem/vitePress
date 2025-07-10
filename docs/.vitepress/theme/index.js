@@ -12,7 +12,11 @@ import './registerContext'
 
 
 import { AntDesignContainer, ElementPlusContainer, NaiveUIContainer } from '@vitepress-demo-preview/component'
-import '@vitepress-demo-preview/component/dist/style.css'
+//  import { ElementPlusContainer } from '@vitepress-demo-preview/component'
+
+    import '@vitepress-demo-preview/component/dist/style.css'
+
+
 
 export default {
   ...DefaultTheme,
@@ -28,6 +32,7 @@ export default {
     useComponents(ctx.app)
     ctx.app.component(Button.name, Button)
     ctx.app.component('CodePreview', CodePreview);
-    ctx.app.component('Compreview', AntDesignContainer)
+    // ctx.app.component('DemoPreview', AntDesignContainer)
+    ctx.app.component('demo-preview', ElementPlusContainer)
   }
 }
