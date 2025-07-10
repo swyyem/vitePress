@@ -52,7 +52,7 @@ jobs:
 
       # 打包vitepress项目
       - name: 打包vitepress项目
-        run: pnpm run build
+        run: pnpm run docs:build
 
       # 将打包后dist里的产物提交到prod分支
       - name: 部署到 GitHub 🚀
