@@ -8,17 +8,17 @@ import { codePreviewPlugin } from "vitepress-script-preview";
 import utils from "./utils";
 const { getSideBar } = utils;
 
-
 import {
   containerPreview,
   componentPreview,
-} from "@vitepress-demo-preview/plugin";
+} from "./plugins/demo-preview/plugin/index";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   base: "/vitePress/",
   markdown: {
-    theme: { light: "github-light", dark: "github-dark" },
+    theme: { light: "vitesse-light", dark: "vitesse-dark" },
+    lineNumbers: true,
 
     config: (md) => {
       md.use(demoblockPlugin, {
@@ -33,49 +33,57 @@ export default defineConfig({
       md.use(containerPreview, { clientOnly: true });
       md.use(componentPreview, { clientOnly: true });
     },
+    container: {
+      tipLabel: "提示",
+      warningLabel: "警告",
+      dangerLabel: "危险",
+      infoLabel: "信息",
+      detailsLabel: "详细信息",
+    },
   },
 
   vite: {
     plugins: [demoblockVitePlugin()],
-    resolve: {
-      
-    },
+    resolve: {},
   },
   title: "星辰小站",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
-      { text: "Api", link: "/api-examples" },
-      { text: "Front-end", link: "/front/engi/rule", activeMatch: "/front/" },
+      { text: "首页", link: "/" },
+      { text: "Markdown", link: "/Markdown" },
+      { text: "Api", link: "/api" },
+      { text: "前端", link: "/front/engi/rule", activeMatch: "/front/" },
       {
-        text: "Back-end",
+        text: "后端",
         link: "/back/framework/chooseFrameWork",
         activeMatch: "/back/",
       },
       {
-        text: "Others",
+        text: "其他",
         link: "/others/operation/git",
         activeMatch: "/others/",
       },
     ],
 
     sidebar: {
-      "/front/":getSideBar("front"),
+      "/front/": getSideBar("front"),
       "/back/": getSideBar("back"),
       "/others": getSideBar("others"),
+      "/Markdown": getSideBar("Markdown"),
     },
 
-    carbonAds: {//广告
-      code: 'CEBDT27Y',
-      placement: 'vuejsorg'
+    carbonAds: {
+      //广告
+      code: "CEBDT27Y",
+      placement: "vuejsorg",
     },
 
-    socialLinks: [//右上角社交平台
-      { icon: 'github', link: 'https://github.com/vuejs/' },
-      { icon: 'twitter', link: 'https://twitter.com/vuejs' },
-      { icon: 'discord', link: 'https://discord.com/invite/vue' }
+    socialLinks: [
+      //右上角社交平台
+      { icon: "github", link: "https://github.com/vuejs/" },
+      { icon: "twitter", link: "https://twitter.com/vuejs" },
+      { icon: "discord", link: "https://discord.com/invite/vue" },
     ],
   },
 });

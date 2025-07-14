@@ -2,8 +2,6 @@
 outline: deep
 ---
 
-
-
 ## 基础用法
 
 基础的按钮用法。
@@ -36,6 +34,8 @@ outline: deep
 
 :::
 
+<preview path='./ElButton.vue'  title="title" description="content" />
+
 ::: script-preview expand=true
 console.log('1 + 2 =', add(1, 2));
 console.log('Hello VitePress!');
@@ -43,32 +43,34 @@ console.error('This is an error message.');
 
 :::
 
-# Runtime API Examples
+::: code-group
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
-
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
-
-```md
-<script setup>
-import { useData } from 'vitepress'
-
-const { theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+```sh [npm]
+$ npm create vue@latest
 ```
 
-<script setup>
+```sh [pnpm]
+$ pnpm create vue@latest
+```
+
+```sh [yarn]
+# For Yarn (v1+)
+$ yarn create vue
+
+# For Yarn Modern (v2+)
+$ yarn create vue@latest
+
+# For Yarn ^v4.11
+$ yarn dlx create-vue@latest
+```
+
+```sh [bun]
+$ bun create vue@latest
+```
+
+:::
+
+<!-- <script setup>
 import { useData } from 'vitepress'
 import { registerContext } from 'vitepress-script-preview/components';
 
@@ -82,19 +84,4 @@ registerContext({
 });
 
 const { site, theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+</script> -->

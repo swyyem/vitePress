@@ -11,10 +11,14 @@ import { CodePreview } from 'vitepress-script-preview/components';
 import './registerContext'
 
 
-import { AntDesignContainer, ElementPlusContainer, NaiveUIContainer } from '@vitepress-demo-preview/component'
+import {
+  AntDesignContainer,
+  ElementPlusContainer,
+  NaiveUIContainer,
+} from "../plugins/demo-preview/component/index";
 //  import { ElementPlusContainer } from '@vitepress-demo-preview/component'
 
-    import '@vitepress-demo-preview/component/dist/style.css'
+// import '@vitepress-demo-preview/component/dist/style.css'
 
 
 

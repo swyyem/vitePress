@@ -11,26 +11,26 @@ hero:
     alt: 加载失败
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Markdown
+      link: /Markdown
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: API
+      link: /api
 
 features:
-  - title: Front End
+  - title: 前端
     icon:
       src: /home/front-end-icon.svg
     link: /front/engi/rule
-    details: Front-end frameworks such as Vue and React, technical design such as micro-front-end and low code, and common front-end performance optimization schemes
-  - title: Back End
+    details: 前端框架，如Vue和React，技术设计，如微前端和低代码，以及常见的前端性能优化方案
+  - title: 后端
     icon:
       src: /home/back-end-icon.svg
     link: /back/framework/chooseFrameWork
-    details: Back-end framework applications such as express and nest.js, as well as the operation of common data such as mysql and mongodb
-  - title: Others
+    details: 后端框架应用程序，如express和nest.js，以及常见数据库如mysql和mongodb的操作
+  - title: 其他
     icon:
       src: /home/network-icon.svg
     link: /others/operation/git
-    details: Git operation, network engineering, and some other commonly used programming tools, skills and so on
+    details: Git操作、网络工程，以及其他一些常用的编程工具、技能等
 ---

@@ -45,10 +45,8 @@ $ bun create vue@latest
 :::
 
 **Input**
-<ElButton >12312</ElButton>
 
 
-<preview path='./ElButton.vue'  title="title" description="content" />
 
 
 

@@ -185,12 +185,53 @@ export default {
           },
         ],
       },
+      {
+        text: "Markdown",
+        items: [
+          {
+            // collapsed: true,
+            text: "Markdown 语法",
+            items: [
+              {
+                text: "表格",
+                link: "/Markdown/components/table",
+              },
+              {
+                text: "目录",
+                link: "/Markdown/components/mulu",
+              },
+              {
+                text: "容器",
+                link: "/Markdown/components/rongqi",
+              },
+              {
+                text:"字体样式",
+                link:"/Markdown/components/ziti"
+              },
+              {
+                text: "支持的表情",
+                link: "/Markdown/components/emoji",
+              },
+             {
+                text: "代码块",
+                link: "/Markdown/components/daima",
+              },
+              {
+                text: "组件",
+                link: "/Markdown/components/zujian",
+              },
+            ],
+          },
+          
+        ],
+      },
     ];
 
     const map = {
       front: wholeList[0].items,
       back: wholeList[1].items,
       others: wholeList[2].items,
+      Markdown: wholeList[3].items,
     };
     return map[path] || [];
   },
