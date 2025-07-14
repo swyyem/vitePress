@@ -1,0 +1,11 @@
+@import "transition.css";
+
+:root {
+  --demoblock-border: #e2e2e3;
+  --demoblock-control: #909399;
+  --demoblock-control-bg: var(--vp-c-bg);
+}
+
+html.dark {
+  --demoblock-control: #A3A6AD;
+}

@@ -1,14 +1,15 @@
 import DefaultTheme from 'vitepress/theme'
-import 'vitepress-theme-demoblock/dist/theme/styles/index.css'
-import { useComponents } from './useComponents'
 import './style.css'
 import Button from '../../../src/components/Button.vue'
 import '../../../src/styles/index.css'
 import 'element-plus/dist/index.css'
 import * as ElementPlus from 'element-plus'
-import 'vitepress-script-preview/components/style.css'; // import commonents styles
-import { CodePreview } from 'vitepress-script-preview/components';
+// import 'vitepress-script-preview/components/style.css'; // import commonents styles
+import { CodePreview, registerContext } from '../plugins/script-preview/component/';
 import './registerContext'
+import Demo from '../plugins/demo-block/component/container/Demo.vue'
+import DemoBlock from '../plugins/demo-block/component/container/DemoBlock.vue'
+
 
 
 import {
@@ -16,9 +17,6 @@ import {
   ElementPlusContainer,
   NaiveUIContainer,
 } from "../plugins/demo-preview/component/index";
-//  import { ElementPlusContainer } from '@vitepress-demo-preview/component'
-
-// import '@vitepress-demo-preview/component/dist/style.css'
 
 
 
@@ -33,7 +31,10 @@ export default {
       console.warn(`注册组件 ${key} 失败`, e)
     }
 
-    useComponents(ctx.app)
+    ctx.app.component('Demo', Demo)
+    ctx.app.component('DemoBlock', DemoBlock)
+
+
     ctx.app.component(Button.name, Button)
     ctx.app.component('CodePreview', CodePreview);
     // ctx.app.component('DemoPreview', AntDesignContainer)

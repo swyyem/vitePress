@@ -132,7 +132,7 @@ export const transformHighlightCode = (
   mdInstance: MarkdownIt,
   sourceCode: string,
   suffix: string,
-) => mdInstance.options.highlight!(sourceCode, suffix, '');
+) => mdInstance.options?.highlight!(sourceCode, suffix, '');
 
 /**
  * 根据组件路径组合组件引用名称

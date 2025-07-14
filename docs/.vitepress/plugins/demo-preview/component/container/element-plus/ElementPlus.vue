@@ -14,6 +14,9 @@ interface DemoBlockProps {
   showCode: string;
   title: string;
   description: string;
+  suffixName?: string;
+  absolutePath?: string;
+  relativePath?: string;
 }
 
 const props = withDefaults(defineProps<DemoBlockProps>(), {

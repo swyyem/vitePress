@@ -1,4 +1,4 @@
-@import '../styles/various.scss';
+@use '../../styles/various.scss' as *;
 
 .#{$defaultPrefix}-message-notice__container {
   display: flex;

@@ -1,4 +1,4 @@
-import MarkdownIt, { Options as aaa } from "markdown-it";
+import MarkdownIt from "markdown-it";
 import {
   isCheckPreviewCom1,
   isCheckPreviewCom2,
@@ -20,7 +20,7 @@ export const componentPreview = (
   md.renderer.rules.html_inline = (
     tokens: any[],
     idx: number,
-    mdOptions: aaa,
+    mdOptions: any,
     env: any,
     self: any
   ) => {

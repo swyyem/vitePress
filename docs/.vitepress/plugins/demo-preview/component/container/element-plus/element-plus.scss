@@ -1,4 +1,4 @@
-@import '../../styles/various.scss';
+@use '../../styles/various.scss' as *;
 
 $componentPrefix: 'element-plus';
 $containerPrefix: #{$defaultPrefix}__#{$componentPrefix};

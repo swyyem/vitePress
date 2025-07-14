@@ -1,9 +1,7 @@
 import { defineConfig } from "vitepress";
-import {
-  demoblockPlugin,
-  demoblockVitePlugin,
-} from "vitepress-theme-demoblock";
-import { codePreviewPlugin } from "vitepress-script-preview";
+import { demoblock as demoblockPlugin } from "./plugins/demo-block/plugin/demoblock";
+import { VitePluginDemoblock as demoblockVitePlugin } from "./plugins/demo-block/plugin/vite-plugin-demoblock";
+import codePreviewPlugin from "./plugins/script-preview/plugin/codePreview";
 
 import utils from "./utils";
 const { getSideBar } = utils;
@@ -24,7 +22,7 @@ export default defineConfig({
       md.use(demoblockPlugin, {
         customClass: "demoblock-custom",
       });
-      md.use(codePreviewPlugin);
+      md.use(codePreviewPlugin, { clientOnly: true });
       /**
        * SSR Compatibility
        * @link https://vitepress.dev/guide/ssr-compat

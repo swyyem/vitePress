@@ -1,5 +1,4 @@
 import MarkdownIt from "markdown-it";
-import { Options as aaa } from "markdown-it";
 import { resolve, dirname } from "path";
 import { readFileSync } from "fs";
 import markdownItContainer from "markdown-it-container";
@@ -43,7 +42,7 @@ export const parseContainerTag = (md: MarkdownIt, options: Options) => {
   md.renderer.rules.container_preview_open = (
     tokens: any[],
     idx: number,
-    options: aaa,
+    options: any,
     env: any,
     self: any
   ) => {
@@ -99,7 +98,7 @@ export const parseContainerTag = (md: MarkdownIt, options: Options) => {
   md.renderer.rules.container_preview_close = (
     tokens: any[],
     idx: number,
-    options: aaa,
+    options: any,
     env: any,
     self: any
   ) => {
@@ -119,7 +118,7 @@ export const parseContainer = (md: MarkdownIt, options: Options) => {
   md.renderer.rules.text = (
     tokens: any[],
     idx: number,
-    mdOptions: aaa,
+    mdOptions: any,
     env: any,
     self: any
   ) => {
