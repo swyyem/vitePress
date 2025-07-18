@@ -1,14 +1,4 @@
 import {
-  arrow,
-  autoUpdate,
-  computePosition,
-  detectOverflow,
-  flip,
-  isVue2,
-  offset,
-  shift
-} from "./chunk-IQLH6HAU.js";
-import {
   arrow_down_default,
   arrow_left_default,
   arrow_right_default,
@@ -75,6 +65,16 @@ import {
   throttle_default,
   union_default
 } from "./chunk-F5ICSFHV.js";
+import {
+  arrow,
+  autoUpdate,
+  computePosition,
+  detectOverflow,
+  flip,
+  isVue2,
+  offset,
+  shift
+} from "./chunk-QEIBKHMH.js";
 import {
   Comment,
   Fragment,

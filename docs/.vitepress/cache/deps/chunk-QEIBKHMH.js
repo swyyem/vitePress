@@ -1,3 +1,6 @@
+// node_modules/.pnpm/vue-demi@0.14.10_vue@3.5.17_typescript@5.8.3_/node_modules/vue-demi/lib/index.mjs
+var isVue2 = false;
+
 // node_modules/.pnpm/@floating-ui+utils@0.2.10/node_modules/@floating-ui/utils/dist/floating-ui.utils.dom.mjs
 function hasWindow() {
   return typeof window !== "undefined";
@@ -1815,10 +1818,8 @@ var computePosition2 = (reference, floating, options) => {
   });
 };
 
-// node_modules/.pnpm/vue-demi@0.14.10_vue@3.5.17_typescript@5.8.3_/node_modules/vue-demi/lib/index.mjs
-var isVue2 = false;
-
 export {
+  isVue2,
   getNodeName,
   isNode,
   getOverflowAncestors,
@@ -1834,7 +1835,6 @@ export {
   arrow2 as arrow,
   inline2 as inline,
   limitShift2 as limitShift,
-  computePosition2 as computePosition,
-  isVue2
+  computePosition2 as computePosition
 };
-//# sourceMappingURL=chunk-IQLH6HAU.js.map
+//# sourceMappingURL=chunk-QEIBKHMH.js.map

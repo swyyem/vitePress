@@ -1,6 +1,6 @@
 import { defineConfig } from "vitepress";
 import { demoblock as demoblockPlugin } from "./plugins/demo-block/plugin/demoblock";
-import { blockPlugin, codePlugin } from "./plugins/demo-block/plugin/demoblock";
+import { VitePluginDemoblock as demoblockVitePlugin } from "./plugins/demo-block/plugin/vite-plugin-demoblock";
 import codePreviewPlugin from "./plugins/script-preview/plugin/codePreview";
 import path from "path";
 
@@ -19,9 +19,6 @@ export default defineConfig({
     lineNumbers: true,
 
     config: (md) => {
-      md.use(blockPlugin, {});
-      md.use(codePlugin, {});
-
       md.use(demoblockPlugin, {
         customClass: "demoblock-custom",
       });
@@ -48,6 +45,9 @@ export default defineConfig({
     },
   },
   vite: {
+    plugins: [
+      (demoblockVitePlugin() as unknown as Plugin)
+    ],
     resolve: {
       alias: {
         "@component": path.resolve(__dirname, "../../src/components/"),
