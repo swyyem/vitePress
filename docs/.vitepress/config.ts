@@ -1,16 +1,16 @@
 import { defineConfig } from "vitepress";
-// import { demoblock as demoblockPlugin } from "./plugins/demo-block/plugin/demoblock";
-// import { VitePluginDemoblock as demoblockVitePlugin } from "./plugins/demo-block/plugin/vite-plugin-demoblock";
-// import codePreviewPlugin from "./plugins/script-preview/plugin/codePreview";
-// import path from "path";
+import { demoblock as demoblockPlugin } from "./plugins/demo-block/plugin/demoblock";
+import { blockPlugin, codePlugin } from "./plugins/demo-block/plugin/demoblock";
+import codePreviewPlugin from "./plugins/script-preview/plugin/codePreview";
+import path from "path";
 
 import utils from "./utils";
 const { getSideBar } = utils;
 
-// import {
-//   containerPreview,
-//   componentPreview,
-// } from "./plugins/demo-preview/plugin/index";
+import {
+  containerPreview,
+  componentPreview,
+} from "./plugins/demo-preview/plugin/index";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -19,22 +19,25 @@ export default defineConfig({
     lineNumbers: true,
 
     config: (md) => {
-      // md.use(demoblockPlugin, {
-      //   customClass: "demoblock-custom",
-      // });
-      // md.use(codePreviewPlugin, { clientOnly: true });
+      md.use(blockPlugin, {});
+      md.use(codePlugin, {});
+
+      md.use(demoblockPlugin, {
+        customClass: "demoblock-custom",
+      });
+      md.use(codePreviewPlugin, { clientOnly: true });
       /**
        * SSR Compatibility
        * @link https://vitepress.dev/guide/ssr-compat
        * If the components are not SSR-friendly, you can specify the clientOnly to disable SSR.
        */
-      // md.use(containerPreview, { clientOnly: true });
-      // md.use(componentPreview, {
-      //   clientOnly: true,
-      //   alias: {
-      //     "@component": path.resolve(__dirname, "../../src/components/"),
-      //   },
-      // });
+      md.use(containerPreview, { clientOnly: true });
+      md.use(componentPreview, {
+        clientOnly: true,
+        alias: {
+          "@component": path.resolve(__dirname, "../../src/components/"),
+        },
+      });
     },
     container: {
       tipLabel: "提示",
@@ -45,23 +48,22 @@ export default defineConfig({
     },
   },
   vite: {
-    // plugins: [demoblockVitePlugin()],
     resolve: {
       alias: {
-        // "@component": path.resolve(__dirname, "../../src/components/"),
-        // "@demo-preview": path.resolve(
-        //   __dirname,
-        //   "./plugins/demo-preview/component/index"
-        // ),
-        // "@script-preview": path.resolve(
-        //   __dirname,
-        //   "./plugins/script-preview/component/"
-        // ),
-        // "@demo-block": path.resolve(
-        //   __dirname,
-        //   "./plugins/demo-block/component/container/"
-        // ),
-        // "@styles": path.resolve(__dirname, "../../src/styles/index.css"),
+        "@component": path.resolve(__dirname, "../../src/components/"),
+        "@demo-preview": path.resolve(
+          __dirname,
+          "./plugins/demo-preview/component/index"
+        ),
+        "@script-preview": path.resolve(
+          __dirname,
+          "./plugins/script-preview/component/"
+        ),
+        "@demo-block": path.resolve(
+          __dirname,
+          "./plugins/demo-block/component/container/"
+        ),
+        "@styles": path.resolve(__dirname, "../../src/styles/index.css"),
       },
       extensions: [".js", ".ts", ".vue", ".json"], // 确保支持自动解析扩展名
     },

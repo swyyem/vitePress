@@ -1,4 +1,4 @@
-<!-- ---
+---
 outline: deep
 ---
 
@@ -33,4 +33,4 @@ outline: deep
 </template>
 ```
 
- -->
+
