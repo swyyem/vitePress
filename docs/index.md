@@ -18,6 +18,21 @@ hero:
       link: /api
 
 features:
+  - title: Markdown
+    icon:
+      src: /home/Markdown.svg
+    link: /Markdown
+    details: Markdown的基本使用
+  - title: 演示
+    icon:
+      src: /home/demonstrate.svg
+    link: /api
+    details: vitePress自定义插件的使用方法
+  - title: 组件
+    icon:
+      src: /home/component.svg
+    link: /component
+    details: 业务组件的使用方法
   - title: 前端
     icon:
       src: /home/front-end-icon.svg

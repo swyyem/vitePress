@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 import { demoblock as demoblockPlugin } from "./plugins/demo-block/plugin/demoblock";
 import { VitePluginDemoblock as demoblockVitePlugin } from "./plugins/demo-block/plugin/vite-plugin-demoblock";
 import codePreviewPlugin from "./plugins/script-preview/plugin/codePreview";
+import path from "path";
 
 import utils from "./utils";
 const { getSideBar } = utils;
@@ -29,7 +30,12 @@ export default defineConfig({
        * If the components are not SSR-friendly, you can specify the clientOnly to disable SSR.
        */
       md.use(containerPreview, { clientOnly: true });
-      md.use(componentPreview, { clientOnly: true });
+      md.use(componentPreview, {
+        clientOnly: true,
+        alias: {
+          "@component": path.resolve(__dirname, "../../src/components/"),
+        },
+      });
     },
     container: {
       tipLabel: "提示",
@@ -39,10 +45,35 @@ export default defineConfig({
       detailsLabel: "详细信息",
     },
   },
-
   vite: {
     plugins: [demoblockVitePlugin()],
-    resolve: {},
+    resolve: {
+      alias: {
+        "@component": path.resolve(__dirname, "../../src/components/"),
+        "@demo-preview": path.resolve(
+          __dirname,
+          "./plugins/demo-preview/component/index"
+        ),
+        "@script-preview": path.resolve(
+          __dirname,
+          "./plugins/script-preview/component/"
+        ),
+        "@demo-block": path.resolve(
+          __dirname,
+          "./plugins/demo-block/component/container/"
+        ),
+        "@styles": path.resolve(__dirname, "../../src/styles/index.css"),
+      },
+      extensions: [".js", ".ts", ".vue", ".json"], // 确保支持自动解析扩展名
+    },
+    server: {
+      host: "0.0.0.0",
+      port: 8081, // 使用独立端口避免冲突
+      open: true,
+    },
+    build: {
+      outDir: ".vitepress/dist", // 使用独立输出目录
+    },
   },
   title: "星辰小站",
   themeConfig: {
@@ -50,7 +81,8 @@ export default defineConfig({
     nav: [
       { text: "首页", link: "/" },
       { text: "Markdown", link: "/Markdown" },
-      { text: "Api", link: "/api" },
+      { text: "演示", link: "/api" },
+      { text: "组件", link: "/component" },
       { text: "前端", link: "/front/engi/rule", activeMatch: "/front/" },
       {
         text: "后端",
@@ -69,6 +101,8 @@ export default defineConfig({
       "/back/": getSideBar("back"),
       "/others": getSideBar("others"),
       "/Markdown": getSideBar("Markdown"),
+      "/api": getSideBar("api"),
+      "/component": getSideBar("component"),
     },
 
     carbonAds: {

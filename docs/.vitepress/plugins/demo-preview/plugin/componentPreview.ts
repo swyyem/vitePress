@@ -21,6 +21,25 @@ export interface DefaultProps {
 }
 
 /**
+ * 安全读取文件内容
+ * @param filePath 文件路径
+ * @param encoding 文件编码，默认utf-8
+ * @returns 文件内容字符串
+ * @throws 当文件不存在或读取失败时抛出错误
+ */
+export function safeReadFileSync(
+  filePath: string,
+  encoding: BufferEncoding = "utf-8"
+): string {
+  try {
+    return readFileSync(filePath, { encoding });
+  } catch (error) {
+    console.error(`无法读取文件: ${filePath}`, error);
+    throw new Error(`文件读取失败: ${filePath}`);
+  }
+}
+
+/**
  * 编译预览组件
  * @param md
  * @param token
@@ -80,11 +99,11 @@ export const transformPreview = (
 
   // 注入组件导入语句
   injectComponentImportScript(env, componentProps.path, componentName, options);
+  console.log(11111);
 
   // 组件源码
-  const componentSourceCode = readFileSync(componentPath, {
-    encoding: "utf-8",
-  });
+  const componentSourceCode = safeReadFileSync(componentPath);
+
   // 源码代码块（经过处理）
   const compileHighlightCode = transformHighlightCode(
     md,
@@ -93,6 +112,7 @@ export const transformPreview = (
   );
 
   const code = encodeURI(componentSourceCode);
+
   const showCode = encodeURIComponent(compileHighlightCode);
 
   const sourceCode = `<demo-preview title="${componentProps.title}" description="${componentProps.description}" code="${code}" showCode="${showCode}" suffixName="${suffixName}" absolutePath="${componentPath}" relativePath="${componentProps.path}">

@@ -57,6 +57,7 @@ export const parseContainerTag = (md: MarkdownIt, options: Options) => {
     if (isRelativePath(componentRelativePath)) {
       componentPath = resolve(dirname(env.path), componentRelativePath || ".");
     } else if (alias) {
+      
       // 配置了别名配置
       componentPath = findAliasPathToAbsolutePath(alias, componentRelativePath);
     } else {
@@ -69,6 +70,7 @@ export const parseContainerTag = (md: MarkdownIt, options: Options) => {
     const suffixName = componentPath.substring(
       componentPath.lastIndexOf(".") + 1
     );
+    
     // 组件源码
     const componentSourceCode = readFileSync(componentPath, {
       encoding: "utf-8",

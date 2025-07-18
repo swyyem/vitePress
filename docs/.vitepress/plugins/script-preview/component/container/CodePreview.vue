@@ -44,6 +44,9 @@ const props = defineProps<{
   expand?: boolean;
 }>();
 
+console.log(props);
+
+
 
 const { t } = useLocale();
 

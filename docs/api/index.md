@@ -6,6 +6,17 @@ outline: deep
 
 基础的按钮用法。
 
+<!-- <script setup>
+// import { registerContext } from '@script-preview';
+// function add(a, b) {
+//   return a + b;
+// }
+// 脚本内需要调用的函数或变量可以在这里注册
+// registerContext({
+//   add
+// });
+</script> -->
+
 :::demo
 
 ```vue
@@ -33,11 +44,11 @@ outline: deep
 ```
 
 :::
-
-<preview path='./ElButton.vue'  title="title" description="content" />
+<!-- ../src/components -->
+<preview path='@component/ElButton.vue'  title="title" description="content" />
 
 ::: script-preview expand=true
-console.log('1 + 2 =', add(1, 2));
+<!-- console.log('1 + 2 =', add(1, 2)); -->
 console.log('Hello VitePress!');
 console.error('This is an error message.');
 
@@ -70,18 +81,4 @@ $ bun create vue@latest
 
 :::
 
-<!-- <script setup>
-import { useData } from 'vitepress'
-import { registerContext } from 'vitepress-script-preview/components';
 
-function add(a, b) {
-  return a + b;
-}
-
-// 脚本内需要调用的函数或变量可以在这里注册
-registerContext({
-  add
-});
-
-const { site, theme, page, frontmatter } = useData()
-</script> -->

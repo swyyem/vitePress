@@ -1,23 +1,17 @@
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import Button from '../../../src/components/Button.vue'
-import '../../../src/styles/index.css'
+import Button from '@component/Button.vue'
+import '@styles'
 import 'element-plus/dist/index.css'
 import * as ElementPlus from 'element-plus'
-// import 'vitepress-script-preview/components/style.css'; // import commonents styles
-import { CodePreview, registerContext } from '../plugins/script-preview/component/';
-import './registerContext'
-import Demo from '../plugins/demo-block/component/container/Demo.vue'
-import DemoBlock from '../plugins/demo-block/component/container/DemoBlock.vue'
+import { CodePreview } from '@script-preview';
+import { Demo, DemoBlock } from '@demo-block'
+import { ElementPlusContainer } from "@demo-preview";
+import { ProField } from "@component/index"
+// import { safeReadFileSync } from '../utils'
 
-
-
-import {
-  AntDesignContainer,
-  ElementPlusContainer,
-  NaiveUIContainer,
-} from "../plugins/demo-preview/component/index";
-
+// const componentSourceCode = safeReadFileSync('../ElButton.vue');
+// console.log(componentSourceCode,'componentSourceCode');
 
 
 export default {
@@ -37,7 +31,10 @@ export default {
 
     ctx.app.component(Button.name, Button)
     ctx.app.component('CodePreview', CodePreview);
-    // ctx.app.component('DemoPreview', AntDesignContainer)
     ctx.app.component('demo-preview', ElementPlusContainer)
+    ctx.app.component('ProField', ProField)
+
+
+    // registerComponents(ctx)
   }
 }
