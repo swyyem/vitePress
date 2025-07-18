@@ -1,12 +1,12 @@
 import { warn } from 'vue'
-import { isClient, isIOS } from '@vueuse/core'
+import { isClient } from '@vueuse/core'
 import { CircleCheck, CircleClose, Loading } from '@element-plus/icons-vue'
 import { fromPairs } from 'lodash-unified'
 
 type UtilValue = any
 type AnyFunction = (...args: UtilValue[]) => UtilValue
 
-export { isClient, isIOS }
+export { isClient }
 export const isArray = Array.isArray
 const objectToString: typeof Object.prototype.toString = Object.prototype.toString
 export const toTypeString = (value: unknown): string => objectToString.call(value)

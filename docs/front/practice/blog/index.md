@@ -62,11 +62,11 @@ features: // 功能区
   details: Git operation, network engineering, and some other commonly used programming tools, skills and so on
 ```
 
-### Layout 搭建（docs/.vitepress/config.mts）
+### Layout 搭建
 
 ![alt text](layout.png)
 
-```mts
+```ts
 import { defineConfig } from "vitepress";
 import utils from "./utils";
 const { getSideBar } = utils;
@@ -123,7 +123,7 @@ export default defineConfig({
 
 ### 根据路由动态设置侧边栏
 
-1. 在 config.mts 同级新建文件 utils.ts,并且暴露出 getSideBar 函数，在 getSidebar 函数中配置 Sidebar 数据
+1. 在 config 同级新建文件 utils.ts,并且暴露出 getSideBar 函数，在 getSidebar 函数中配置 Sidebar 数据
 
 ```ts
 export default {
@@ -184,7 +184,7 @@ export default {
 };
 ```
 
-2. 在 config.mts 文件中使用，具体参考 Layout 搭建中的代码
+2. 在 confi 文件中使用，具体参考 Layout 搭建中的代码
 
 ### 文章路径说明及编写规则
 

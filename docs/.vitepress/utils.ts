@@ -1,6 +1,3 @@
-import path from "path";
-import { readdir } from "fs/promises";
-import { readFileSync } from "fs";
 
 interface MenuItem {
   text: string;
@@ -384,21 +381,3 @@ export default {
   },
 };
 
-/**
- * 安全读取文件内容
- * @param filePath 文件路径
- * @param encoding 文件编码，默认utf-8
- * @returns 文件内容字符串
- * @throws 当文件不存在或读取失败时抛出错误
- */
-export function safeReadFileSync(
-  filePath: string,
-  encoding: BufferEncoding = "utf-8"
-): string {
-  try {
-    return readFileSync(filePath, { encoding });
-  } catch (error) {
-    console.error(`无法读取文件: ${filePath}`, error);
-    throw new Error(`文件读取失败: ${filePath}`);
-  }
-}

@@ -134,14 +134,16 @@ export default {
       try {
         copy(props.sourceCode)
         if (options.onCopySuccess) {
-          const onCopySuccess = eval(options.onCopySuccess)
+          // new Function('return ' + options.onCopySuccess)
+          const onCopySuccess = new Function('return ' + options.onCopySuccess)
           onCopySuccess(instance, locale.value['copy-success'])
         } else {
           message.success(locale.value['copy-success'])
         }
       } catch (err) {
         if (options.onCopyError) {
-          const onCopyError = eval(options.onCopyError)
+          
+          const onCopyError = new Function('return ' + options.onCopyError)
           onCopyError(instance, locale.value['copy-error'])
         } else {
           message.error(locale.value['copy-error'])

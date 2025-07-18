@@ -5,7 +5,7 @@
 ```vue
 <template>
   <ProField
-    valueType="autocomplete"
+    valueType="selectV2"
     v-model="state1"
     :fieldProps="{
       fetchSuggestions: querySearch,

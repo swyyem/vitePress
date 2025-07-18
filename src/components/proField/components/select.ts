@@ -3,16 +3,16 @@ import { defineComponent, ref, onMounted, onBeforeUnmount, h, watch, computed } 
 import { ElSelect, ElOption, ElCheckbox, type CheckboxValueType } from 'element-plus'
 import { omit } from 'lodash-unified'
 import type { PropType } from 'vue'
-import { handleRequest, isEqual, renderRead, filterDisabledOptions } from '../utils'
-import { getDefaultValueByMultiple } from '../../../utils/value.ts'
+import { handleRequest, isEqual, renderRead, filterDisabledOptions } from '../utils.ts'
+import { getDefaultValueByMultiple } from '../../../utils/value'
 import type {
   ProSchemaValueEnumType,
   ProFieldRequestData,
   ProSelectProps,
   ProSchemaValueEnumValue,
-} from '../index.type'
+} from '../index.type.ts'
 import ProText from './text/pro-text.vue'
-import type { TextSpecifiledProps } from './text/type'
+import type { TextSpecifiledProps } from './text/type.ts'
 
 export default defineComponent({
   props: {

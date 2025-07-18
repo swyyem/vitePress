@@ -14,7 +14,6 @@ const { getSideBar } = utils;
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/vitePress/",
   markdown: {
     theme: { light: "vitesse-light", dark: "vitesse-dark" },
     lineNumbers: true,
@@ -71,23 +70,8 @@ export default defineConfig({
       port: 8081, // 使用独立端口避免冲突
       open: true,
     },
-    build: {
-      outDir: ".vitepress/dist", // 使用独立输出目录
-      rollupOptions: {
-        output: {
-          manualChunks: (id) => {
-            // 移除对 vue 和 vue-router 的显式分块
-            if (id.includes("node_modules")) {
-              if (id.includes("@vueuse")) {
-                return "vueuse";
-              }
-              return "vendor";
-            }
-          },
-        },
-      },
-    },
   },
+  base: "/vitePress/",
   title: "星辰小站",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
