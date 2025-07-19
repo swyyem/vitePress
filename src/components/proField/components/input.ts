@@ -37,6 +37,8 @@ export default defineComponent({
     },
   },
   setup(props, { slots, emit }) {
+    console.log('setup',props);
+    
     const flag = ref(true)
     const { isComposing, handleCompositionStart, handleCompositionUpdate, handleCompositionEnd } =
       useComposition({

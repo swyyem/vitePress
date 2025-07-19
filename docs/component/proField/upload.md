@@ -5,58 +5,59 @@
 ```vue
 <template>
   <ProField
-    valueType="autocomplete"
+    valueType="upload"
     v-model="state1"
     :fieldProps="{
-      fetchSuggestions: querySearch,
-      clearable: true,
-      placeholder: 'Please Input',
-      onSelect: handleSelect,
+      action: 'https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15',
+      multiple: true,
+      onPreview: handlePreview,
+      onRemove: handleRemove,
+      beforeRemove: beforeRemove,
+      limit: 3,
+      onExceed: handleExceed,
     }"
   />
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
+import { ElMessage, ElMessageBox } from "element-plus";
 
-interface RestaurantItem {
-  value: string;
-  link: string;
-}
+import type { UploadProps, UploadUserFile } from "element-plus";
 
-const state1 = ref("");
+const fileList = ref<UploadUserFile[]>([
+  {
+    name: "element-plus-logo.svg",
+    url: "https://element-plus.org/images/element-plus-logo.svg",
+  },
+  {
+    name: "element-plus-logo2.svg",
+    url: "https://element-plus.org/images/element-plus-logo.svg",
+  },
+]);
 
-const restaurants = ref<RestaurantItem[]>([]);
-const querySearch = (queryString: string, cb: any) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter(queryString))
-    : restaurants.value;
-  cb(results);
-};
-const createFilter = (queryString: string) => {
-  return (restaurant: RestaurantItem) => {
-    return (
-      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
-    );
-  };
-};
-const loadAll = () => {
-  return [
-    { value: "vue", link: "https://github.com/vuejs/vue" },
-    { value: "element", link: "https://github.com/ElemeFE/element" },
-    { value: "cooking", link: "https://github.com/ElemeFE/cooking" },
-    { value: "mint-ui", link: "https://github.com/ElemeFE/mint-ui" },
-    { value: "vuex", link: "https://github.com/vuejs/vuex" },
-    { value: "vue-router", link: "https://github.com/vuejs/vue-router" },
-    { value: "babel", link: "https://github.com/babel/babel" },
-  ];
+const handleRemove: UploadProps["onRemove"] = (file, uploadFiles) => {
+  console.log(file, uploadFiles);
 };
 
-const handleSelect = (item: Record<string, any>) => {
-  console.log(item);
+const handlePreview: UploadProps["onPreview"] = (uploadFile) => {
+  console.log(uploadFile);
 };
 
-onMounted(() => {
-  restaurants.value = loadAll();
-});
+const handleExceed: UploadProps["onExceed"] = (files, uploadFiles) => {
+  ElMessage.warning(
+    `The limit is 3, you selected ${files.length} files this time, add up to ${
+      files.length + uploadFiles.length
+    } totally`
+  );
+};
+
+const beforeRemove: UploadProps["beforeRemove"] = (uploadFile, uploadFiles) => {
+  return ElMessageBox.confirm(
+    `Cancel the transfer of ${uploadFile.name} ?`
+  ).then(
+    () => true,
+    () => false
+  );
+};
 </script>
 ```

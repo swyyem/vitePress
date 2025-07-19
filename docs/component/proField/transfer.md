@@ -5,58 +5,35 @@
 ```vue
 <template>
   <ProField
-    valueType="autocomplete"
-    v-model="state1"
+    valueType="transfer"
+    v-model="value"
     :fieldProps="{
-      fetchSuggestions: querySearch,
-      clearable: true,
-      placeholder: 'Please Input',
-      onSelect: handleSelect,
+      data: data,
     }"
   />
 </template>
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 
-interface RestaurantItem {
-  value: string;
-  link: string;
+interface Option {
+  key: number;
+  label: string;
+  disabled: boolean;
 }
 
-const state1 = ref("");
-
-const restaurants = ref<RestaurantItem[]>([]);
-const querySearch = (queryString: string, cb: any) => {
-  const results = queryString
-    ? restaurants.value.filter(createFilter(queryString))
-    : restaurants.value;
-  cb(results);
-};
-const createFilter = (queryString: string) => {
-  return (restaurant: RestaurantItem) => {
-    return (
-      restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
-    );
-  };
-};
-const loadAll = () => {
-  return [
-    { value: "vue", link: "https://github.com/vuejs/vue" },
-    { value: "element", link: "https://github.com/ElemeFE/element" },
-    { value: "cooking", link: "https://github.com/ElemeFE/cooking" },
-    { value: "mint-ui", link: "https://github.com/ElemeFE/mint-ui" },
-    { value: "vuex", link: "https://github.com/vuejs/vuex" },
-    { value: "vue-router", link: "https://github.com/vuejs/vue-router" },
-    { value: "babel", link: "https://github.com/babel/babel" },
-  ];
+const generateData = () => {
+  const data: Option[] = [];
+  for (let i = 1; i <= 15; i++) {
+    data.push({
+      key: i,
+      label: `Option ${i}`,
+      disabled: i % 4 === 0,
+    });
+  }
+  return data;
 };
 
-const handleSelect = (item: Record<string, any>) => {
-  console.log(item);
-};
-
-onMounted(() => {
-  restaurants.value = loadAll();
-});
+const data = ref<Option[]>(generateData());
+const value = ref([]);
 </script>
 ```

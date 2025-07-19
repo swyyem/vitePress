@@ -257,7 +257,7 @@ export default {
         text: "component",
         items: [
           {
-            text: "原子组件",
+            text: "ProField 原子组件",
             collapsible: true, // 允许折叠
             collapsed: true,    // 默认折叠
             items: [
