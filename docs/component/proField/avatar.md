@@ -1,4 +1,4 @@
-# 原子组件
+# 头像组件
 
 :::demo
 
@@ -25,4 +25,5 @@ const state = reactive({
 
 const { circleUrl, squareUrl, sizeList } = toRefs(state);
 </script>
+
 ```
