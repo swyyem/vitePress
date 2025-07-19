@@ -1,0 +1,1 @@
+import{E as e}from"./theme.C2m-QFJM.js";import{b as o,o as a,w as r,a as s,k as n}from"./framework.gaLehYSm.js";const f={__name:"ElButton",setup(u){return(_,t)=>(a(),o(n(e),null,{default:r(()=>t[0]||(t[0]=[s("22223333")])),_:1,__:[0]}))}};export{f as default};
