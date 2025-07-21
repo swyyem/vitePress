@@ -3,6 +3,7 @@ import { demoblock as demoblockPlugin } from "./plugins/demo-block/plugin/demobl
 import { VitePluginDemoblock as demoblockVitePlugin } from "./plugins/demo-block/plugin/vite-plugin-demoblock";
 import codePreviewPlugin from "./plugins/script-preview/plugin/codePreview";
 import path from "path";
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 import utils from "./utils";
 const { getSideBar } = utils;

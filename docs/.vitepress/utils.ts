@@ -367,6 +367,113 @@ export default {
               },
             ],
           },
+          {
+            text: "ProFormField 表单原子组件",
+            collapsible: true, // 允许折叠
+            collapsed: true,    // 默认折叠
+            items: [
+              {
+                text: "text",
+                link: "/component/ProFormField/text",
+              },
+              {
+                text: "autocomplete",
+                link: "/component/ProFormField/autocomplete",
+              },
+              {
+                text: "inputNumber",
+                link: "/component/ProFormField/inputNumber",
+              },
+              {
+                text: "select",
+                link: "/component/ProFormField/select",
+              },
+              {
+                text: "checkbox",
+                link: "/component/ProFormField/checkbox",
+              },
+              {
+                text: "radio",
+                link: "/component/ProFormField/radio",
+              },
+              {
+                text: "rate",
+                link: "/component/ProFormField/rate",
+              },
+              {
+                text: "slider",
+                link: "/component/ProFormField/slider",
+              },
+              {
+                text: "switch",
+                link: "/component/ProFormField/switch",
+              },
+              {
+                text: "avatar",
+                link: "/component/ProFormField/avatar",
+              },
+              {
+                text: "image",
+                link: "/component/ProFormField/image",
+              },
+              {
+                text: "cascader",
+                link: "/component/ProFormField/cascader",
+              },
+              {
+                text: "colorPicker",
+                link: "/component/ProFormField/colorPicker",
+              },
+              {
+                text: "segmented",
+                link: "/component/ProFormField/segmented",
+              },
+              {
+                text: "divider",
+                link: "/component/ProFormField/divider",
+              },
+              {
+                text: "inputTag",
+                link: "/component/ProFormField/inputTag",
+              },
+              {
+                text: "mention",
+                link: "/component/ProFormField/mention",
+              },
+              {
+                text: "selectV2",
+                link: "/component/ProFormField/selectV2",
+              },
+              {
+                text: "timePicker",
+                link: "/component/ProFormField/timePicker",
+              },
+              {
+                text: "timeSelect",
+                link: "/component/ProFormField/timeSelect",
+              },
+              {
+                text: "transfer",
+                link: "/component/ProFormField/transfer",
+              },
+              {
+                text: "treeSelect",
+                link: "/component/ProFormField/treeSelect",
+              },
+              // {
+              //   text: "upload",
+              //   link: "/component/ProFormField/upload",
+              // },
+              {
+                text: "button",
+                link: "/component/ProFormField/button",
+              },
+              {
+                text: "datePicker",
+                link: "/component/ProFormField/datePicker",
+              },
+            ],
+          },
         ],
       },
     ];

@@ -39,6 +39,7 @@ import { ProForm } from "../index";
 import { ProPage, ProTableToolbar, ProTableContent } from "./index";
 import useRequest from "./useRequest";
 import { InternalAddPrefix, InternalKey } from "./variable";
+// 引入表格列配置相关的 hooks
 import { useColumns } from "./useColumn.tsx";
 import { useEditable } from "./useEditable.tsx";
 import { useNavigate } from "./useNavigate";

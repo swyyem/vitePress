@@ -1,4 +1,5 @@
 import type { FunctionalComponent } from 'vue'
+import { h } from 'vue'
 import type { SubmitterProps } from './index'
 import type { RowProps } from 'element-plus'
 import { ElButton, ElRow } from 'element-plus'
@@ -37,7 +38,7 @@ const FormFooter: FunctionalComponent<SubmitterProps> = (props) => {
     center: 'center',
   }
 
-// 提交按钮点击处理
+  // 提交按钮点击处理
   const submit = () => {
     onSubmit?.() // 安全调用，避免未定义时报错
   }
@@ -51,37 +52,31 @@ const FormFooter: FunctionalComponent<SubmitterProps> = (props) => {
   // 从配置中获取按钮文本，设置默认值
   const { submitText = '保存', resetText = '重置' } = searchConfig
 
- // 按钮DOM数组
-  const dom = []
+  // 按钮DOM数组
+  const dom: any = []
 
   // 渲染提交按钮（当submitButtonProps不为false时）
   if (submitButtonProps !== false) {
     dom.push(
-      <ElButton
-        type="primary"  // 主按钮样式
-        {...submitButtonProps} // 透传按钮属性
-        key="submit"    // 唯一key
-        onClick={() => {
-          submit()      // 绑定点击事件
-        }}
-      >
-        {submitText}    {/* 按钮文本 */}
-      </ElButton>
+      h(ElButton, {
+        type: "primary",
+        ...submitButtonProps,
+        onClick: () => {
+          submit()
+        }
+      }, () => submitText)
     )
   }
 
   // 渲染重置按钮（当resetButtonProps不为false时）
   if (resetButtonProps !== false) {
     dom.push(
-      <ElButton
-        {...resetButtonProps} // 透传按钮属性
-        key="rest"      // 唯一key
-        onClick={(e) => {
+      h(ElButton, {
+        ...resetButtonProps,
+        onClick: (e) => {
           reset(e)      // 传递事件对象
-        }}
-      >
-        {resetText}     {/* 按钮文本 */}
-      </ElButton>
+        }
+      }, () => resetText)
     )
   }
 
@@ -89,16 +84,13 @@ const FormFooter: FunctionalComponent<SubmitterProps> = (props) => {
   // 最终渲染的DOM
   const renderDom = render ? (
     // 自定义渲染模式：将props和基础DOM传递给render函数
-    render({ ...props, submit, reset }, dom)
+    render({ ...props, submit, reset }, dom.filter((item: any) => typeof item !== 'number'))
   ) : dom.length > 0 ? (
     // 默认渲染模式：使用ElRow布局
-    <ElRow 
-      justify={justifyMap[align] as RowProps['justify']} // 对齐方式
-      style={{ marginTop: '16px' }} // 顶部间距
-    >
-      <div>{dom}</div> {/* 渲染按钮组 */}
-    </ElRow>
+    h(ElRow, { justify: justifyMap[align] as RowProps['justify'], style: { marginTop: '16px' } }, () => dom)
+
   ) : null // 没有按钮时不渲染
+  console.log(dom);
 
   return renderDom
 }
