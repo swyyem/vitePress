@@ -17,7 +17,7 @@ jobs:
 
     # 添加环境变量
     env:
-      NODE_ENV: production # 修正为生产环境
+      NODE_ENV: development # 修正为生产环境
       ESBUILD_BINARY_PATH: "node_modules/esbuild/bin/esbuild"
 
     # 添加权限配置（新增部分）
