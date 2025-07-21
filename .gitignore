@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+docs/.vitepress/cache/
+# 添加斜杠明确指定为目录
+
 
 # Editor directories and files
 .vscode/*
