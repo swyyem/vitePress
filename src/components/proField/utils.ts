@@ -158,10 +158,10 @@ const debounce = <T extends RequestFunction>(
   func: T,
   wait: number
 ): DebouncedFunction<T> => {
-  let timeout: NodeJS.Timeout | null = null;
+  let timeout: number | null = null;
 
   return async function (this: ThisParameterType<T>, ...args: Parameters<T>) {
-    if (timeout) clearTimeout(timeout);
+    if (timeout !== null) clearTimeout(timeout);
 
     return new Promise<ReturnType<T>>((resolve) => {
       timeout = setTimeout(async () => {
@@ -172,9 +172,17 @@ const debounce = <T extends RequestFunction>(
           console.error("Debounced function error:", error);
           throw error;
         }
-      }, wait);
+      }, wait) as unknown as number; // 类型断言
     });
   };
+};
+
+export type PropsType = {
+  request?: RequestFunction;
+  valueEnum?: ValueEnumItem[];
+  params?: any;
+  fieldProps?: { options?: OptionItem[] };
+  debounceTime?: number;
 };
 
 /**
@@ -182,13 +190,7 @@ const debounce = <T extends RequestFunction>(
  * @param props 包含请求配置的属性对象
  * @returns 处理后的数据数组
  */
-export const handleRequest = async (props: {
-  request?: RequestFunction;
-  valueEnum?: ValueEnumItem[];
-  params?: any;
-  fieldProps?: { options?: OptionItem[] };
-  debounceTime?: number;
-}): Promise<any[]> => {
+export const handleRequest = async (props: PropsType): Promise<any[]> => {
   const {
     request,
     valueEnum = [],

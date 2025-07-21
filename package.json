@@ -13,7 +13,6 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "vue": "^3.5.17",
     "@element-plus/icons-vue": "^2.3.1",
     "@floating-ui/vue": "^1.1.7",
     "@vueuse/core": "^13.5.0",
@@ -22,20 +21,22 @@
     "element-plus": "^2.10.4",
     "lodash-unified": "^1.0.3",
     "markdown-it-container": "4.0.0",
+    "process": "^0.11.10",
     "sass-migrator": "^2.3.3",
-    "vue-sonner": "^2.0.2"
+    "vue": "^3.5.17",
+    "vue-draggable-plus": "^0.6.0",
+    "vue-sonner": "^2.0.2",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^6.0.0",
-    "@vue/tsconfig": "^0.7.0",
-    "typescript": "~5.8.3",
-    "vite": "^7.0.4",
-    "vitepress": "^1.6.3",
-    "vue-tsc": "^2.2.12",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.0.14",
     "@types/unist": "^3.0.3",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitejs/plugin-vue-jsx": "^5.0.1",
+    "@vue/babel-plugin-jsx": "^1.4.0",
     "@vue/compiler-sfc": "^3.5.17",
+    "@vue/tsconfig": "^0.7.0",
     "hash-sum": "^2.0.0",
     "less": "^4.4.0",
     "markdown-it": "^14.1.0",
@@ -44,8 +45,12 @@
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "sass": "^1.89.2",
+    "typescript": "~5.8.3",
     "unified": "^11.0.5",
     "unist-util-visit": "^5.0.0",
-    "vue": "^3.5.17"
+    "vite": "^7.0.4",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.17",
+    "vue-tsc": "^2.2.12"
   }
 }

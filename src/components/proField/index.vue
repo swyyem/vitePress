@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useSlots, h, ref, computed } from 'vue'
-import type { ProFieldPropsType, ProFieldControlInstance, Slots, VNode } from './index.type'
+import type { ProFieldPropsType, ProFieldControlInstance, Slots, VNode } from './index'
 import { getComponentMap } from './utils'
 
 // 组件配置

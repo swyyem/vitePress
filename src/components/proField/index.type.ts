@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type {Slots, VNodeChild, VNode, ExtractPropTypes, Component } from 'vue'
+import type {
+  Slots,
+  VNodeChild,
+  VNode,
+  ExtractPropTypes,
+  Component,
+} from "vue";
 import type {
   AutocompleteProps,
   InputProps,
@@ -27,8 +33,8 @@ import type {
   DatePickerProps,
   OptionV2Props,
   cascaderProps,
-} from 'element-plus'
-import type { TextSpecifiledProps } from './components/text/type'
+} from "element-plus";
+import type { TextSpecifiledProps } from "./components/text/type";
 
 /**
  * ======================
@@ -36,15 +42,14 @@ import type { TextSpecifiledProps } from './components/text/type'
  * ======================
  */
 
-export {
-  Slots, VNode
-}
+export type { Slots };
 
+export type { VNode };
 /**
  * 上传组件扩展属性
  */
 interface ExtendedUploadProps extends UploadProps {
-  'file-list'?: unknown[]
+  "file-list"?: unknown[];
 }
 
 /**
@@ -52,19 +57,18 @@ interface ExtendedUploadProps extends UploadProps {
  */
 interface NumberFormatOptions {
   /** 本地化，如 zh-CN、en-US */
-  locale?: string
+  locale?: string;
   /** 格式类型："decimal", "currency", "percent" */
-  typeStyle?: string
+  typeStyle?: string;
   /** 货币类型，如 "USD", "CNY"（需配合 style: "currency"） */
-  currency?: string
+  currency?: string;
   /** 小数位数，默认 2 */
-  decimalPlaces?: number
+  decimalPlaces?: number;
   /** 是否启用千分位分隔，默认 true */
-  useGrouping?: boolean
+  useGrouping?: boolean;
   /** 输入事件处理 */
-  onInput?: (val: string) => void
+  onInput?: (val: string) => void;
 }
-
 
 /**
  * ======================
@@ -72,31 +76,34 @@ interface NumberFormatOptions {
  * ======================
  */
 
-
 /** 价格输入框属性 */
-export type ProInputPriceProps = InputProps & NumberFormatOptions
+export type ProInputPriceProps = InputProps & NumberFormatOptions;
 
 /** 数字输入框属性 */
-export type ProInputNumberProps = InputNumberProps & NumberFormatOptions
+export type ProInputNumberProps = InputNumberProps & NumberFormatOptions;
 
 /** 复选框组属性 */
 export type ProCheckboxProps = (CheckboxGroupProps | CheckboxProps) & {
-  multiple?: boolean
-  readContinue?: boolean
-  checkAll?: boolean
-  checkAllText?: string
-  gap?: number
-  style?: Partial<CSSStyleDeclaration>
-  'onUpdate:modelValue'?: (val: ProSchemaValueEnumValue[] | ProSchemaValueEnumValue) => void
-}
+  multiple?: boolean;
+  readContinue?: boolean;
+  checkAll?: boolean;
+  checkAllText?: string;
+  gap?: number;
+  style?: Partial<CSSStyleDeclaration>;
+  "onUpdate:modelValue"?: (
+    val: ProSchemaValueEnumValue[] | ProSchemaValueEnumValue
+  ) => void;
+};
 
 /** 选择器属性 */
 export type ProSelectProps = SelectProps & {
-  checkAll?: boolean
-  checkAllText?: string
-  style?: Partial<CSSStyleDeclaration>
-  'onUpdate:modelValue'?: (val: ProSchemaValueEnumValue[] | ProSchemaValueEnumValue) => void
-}
+  checkAll?: boolean;
+  checkAllText?: string;
+  style?: Partial<CSSStyleDeclaration>;
+  "onUpdate:modelValue"?: (
+    val: ProSchemaValueEnumValue[] | ProSchemaValueEnumValue
+  ) => void;
+};
 
 /**
  * ======================
@@ -104,14 +111,12 @@ export type ProSelectProps = SelectProps & {
  * ======================
  */
 
-
 /** ProField 组件实例方法 */
 export interface ProFieldControlInstance {
-  getText: (val: unknown) => unknown
-  getChild: () => unknown
-  childRef: unknown
+  getText: (val: unknown) => unknown;
+  getChild: () => unknown;
+  childRef: unknown;
 }
-
 
 /**
  * ======================
@@ -121,42 +126,42 @@ export interface ProFieldControlInstance {
 
 /** 字段值类型与对应组件属性的映射 */
 export type ProFieldValueTypeWithFieldProps = {
-  text: InputProps
-  autocomplete: AutocompleteProps
-  inputNumber: InputNumberProps
-  select: ProSelectProps
-  checkbox: ProCheckboxProps
-  price: ProInputPriceProps
-  radio: RadioGroupProps
-  rate: RateProps
-  slider: SliderProps
-  switch: SwitchProps
-  avatar: AvatarProps
-  image: ImageProps
-  cascader: ExtractPropTypes<typeof cascaderProps>
-  colorPicker: ColorPickerProps
-  segmented: SegmentedProps
-  divider: DividerProps
-  inputTag: InputTagProps
-  mention: MentionProps
-  selectV2: SelectV2Props
-  timePicker: TimePickerDefaultProps
-  timeSelect: TimeSelectProps
-  transfer: TransferProps
-  treeSelect: any
-  upload: ExtendedUploadProps
-  button: ButtonProps
-  datePicker: DatePickerProps
-  option: OptionV2Props
-}
+  text: InputProps;
+  autocomplete: AutocompleteProps;
+  inputNumber: InputNumberProps;
+  select: ProSelectProps;
+  checkbox: ProCheckboxProps;
+  price: ProInputPriceProps;
+  radio: RadioGroupProps;
+  rate: RateProps;
+  slider: SliderProps;
+  switch: SwitchProps;
+  avatar: AvatarProps;
+  image: ImageProps;
+  cascader: ExtractPropTypes<typeof cascaderProps>;
+  colorPicker: ColorPickerProps;
+  segmented: SegmentedProps;
+  divider: DividerProps;
+  inputTag: InputTagProps;
+  mention: MentionProps;
+  selectV2: SelectV2Props;
+  timePicker: TimePickerDefaultProps;
+  timeSelect: TimeSelectProps;
+  transfer: TransferProps;
+  treeSelect: any;
+  upload: ExtendedUploadProps;
+  button: ButtonProps;
+  datePicker: DatePickerProps;
+  option: OptionV2Props;
+};
 
 /** ProField 支持的值类型 */
-export type ProFieldValueType = keyof ProFieldValueTypeWithFieldProps | (string & {})
+export type ProFieldValueType =
+  | keyof ProFieldValueTypeWithFieldProps
+  | (string & {});
 
 /** ProField 的显示模式 */
-export type ProFieldFCMode = 'read' | 'edit'
-
-
+export type ProFieldFCMode = "read" | "edit";
 
 /**
  * ======================
@@ -164,32 +169,29 @@ export type ProFieldFCMode = 'read' | 'edit'
  * ======================
  */
 
-
-
 /** 远程请求数据类型 */
-export type ProFieldRequestData<T = unknown> = (data?: unknown) => Promise<Array<ProSchemaValueEnumType | T>>
-
+export type ProFieldRequestData<T = unknown> = (
+  data?: unknown
+) => Promise<Array<ProSchemaValueEnumType | T>>;
 
 /** 枚举值类型 */
-export type ProSchemaValueEnumValue = unknown
-
+export type ProSchemaValueEnumValue = unknown;
 
 /** 枚举项配置 */
 export interface ProSchemaValueEnumType {
   /** 显示文案 */
-  label: VNodeChild
+  label: VNodeChild;
   /** 实际值 */
-  value: ProSchemaValueEnumValue
+  value: ProSchemaValueEnumValue;
   /** 状态颜色 */
-  status?: string
+  status?: string;
   /** 自定义颜色 */
-  color?: string
+  color?: string;
   /** 是否禁用 */
-  disabled?: boolean
+  disabled?: boolean;
   /** 其他自定义属性 */
-  [key: string]: unknown
+  [key: string]: unknown;
 }
-
 
 /**
  * ======================
@@ -197,53 +199,54 @@ export interface ProSchemaValueEnumType {
  * ======================
  */
 
-
 /** ProField 组件属性 */
-export interface ProFieldPropsType<T extends ProFieldValueType = ProFieldValueType> {
+export interface ProFieldPropsType<
+  T extends ProFieldValueType = ProFieldValueType
+> {
   /** 组件模式：只读或编辑 */
-  mode?: ProFieldFCMode
-  
+  mode?: ProFieldFCMode;
+
   /** 空值显示文本 */
-  emptyText?: string
-  
+  emptyText?: string;
+
   /** 渲染的组件类型 */
-  valueType?: T
-  
+  valueType?: T;
+
   /** 传递给 valueType 组件的属性 */
   fieldProps?: T extends keyof ProFieldValueTypeWithFieldProps
     ? ProFieldValueTypeWithFieldProps[T]
-    : unknown
-    
+    : unknown;
+
   /** 文本显示属性 */
-  textProps?: Omit<TextSpecifiledProps, 'copyText'>
-  
+  textProps?: Omit<TextSpecifiledProps, "copyText">;
+
   /** 双向绑定的值 */
-  modelValue?: unknown
-  
+  modelValue?: unknown;
+
   /** 编辑模式自定义渲染 */
-  renderFormItem?: (text: unknown, props: unknown, dom: VNode) => VNode
-  
+  renderFormItem?: (text: unknown, props: unknown, dom: VNode) => VNode;
+
   /** 只读模式自定义渲染 */
-  render?: (text: unknown, props: unknown) => VNode
-  
+  render?: (text: unknown, props: unknown) => VNode;
+
   /** 枚举数据 */
-  valueEnum?: Array<ProSchemaValueEnumType | string>
-  
+  valueEnum?: Array<ProSchemaValueEnumType | string>;
+
   /** 远程获取枚举数据 */
-  request?: ProFieldRequestData
-  
+  request?: ProFieldRequestData;
+
   /** 请求参数 */
-  params?: unknown
-  
+  params?: unknown;
+
   /** 防抖时间 */
-  debounceTime?: number
-  
+  debounceTime?: number;
+
   /** 按钮文本/Dragger 文本 */
-  title?: string
-  
+  title?: string;
+
   /** 按钮图标/Dragger 图标 */
-  icon?: Component
-  
+  icon?: Component;
+
   /** Dragger 描述 */
-  description?: string
+  description?: string;
 }

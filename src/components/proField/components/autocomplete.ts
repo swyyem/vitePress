@@ -2,8 +2,8 @@ import { ElAutocomplete } from "element-plus";
 import { defineComponent, h, ref } from "vue";
 import type { AutocompleteProps } from "element-plus";
 import type { PropType, Ref } from "vue";
-import ProText from "./text/pro-text.vue";
-import type { TextSpecifiledProps } from "./text/type";
+import { ProText } from "./text/index";
+import type { TextSpecifiledProps } from "./text/index";
 
 // 组件实例类型
 export interface AutocompleteComponentInstance {

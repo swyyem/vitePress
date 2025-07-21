@@ -1,9 +1,9 @@
-import { ElTransfer } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
-import type { TransferProps } from 'element-plus'
-import type { PropType } from 'vue'
-import ProText from './text/pro-text.vue'
-import type { TextSpecifiledProps } from './text/type'
+import { ElTransfer } from "element-plus";
+import type { TransferProps } from "element-plus";
+import { defineComponent, h, ref } from "vue";
+import type { PropType } from "vue";
+import { ProText } from "./text/index";
+import type { TextSpecifiledProps } from "./text/index";
 
 export default defineComponent({
   props: {
@@ -12,7 +12,7 @@ export default defineComponent({
       required: true,
     },
     textProps: {
-      type: Object as PropType<Omit<TextSpecifiledProps, 'copyText'>>,
+      type: Object as PropType<Omit<TextSpecifiledProps, "copyText">>,
     },
     mode: {
       type: String as PropType<string>,
@@ -21,7 +21,7 @@ export default defineComponent({
     modelValue: {
       type: [String, Number] as PropType<string | number>,
       default: () => {
-        return ''
+        return "";
       },
     },
     emptyText: {
@@ -30,22 +30,33 @@ export default defineComponent({
     childRef: {
       type: Object as PropType<typeof ref>,
       default: () => {
-        return ref(null)
+        return ref(null);
       },
     },
   },
   setup(props, { slots }) {
     return () => {
-      const { childRef, mode, modelValue, fieldProps: a, textProps, emptyText } = props
-      const fieldProps = { ...a, ref: childRef }
+      const {
+        childRef,
+        mode,
+        modelValue,
+        fieldProps: a,
+        textProps,
+        emptyText,
+      } = props;
+      const fieldProps = { ...a, ref: childRef };
 
-      if (mode === 'read') {
+      if (mode === "read") {
         // 处理自定义只读渲染
-        const text = modelValue ? modelValue.toString() : emptyText
-        return h(ProText, { ...textProps, ref: childRef, copyText: text }, () => text)
+        const text = modelValue ? modelValue.toString() : emptyText;
+        return h(
+          ProText,
+          { ...textProps, ref: childRef, copyText: text },
+          () => text
+        );
       }
 
-      return h(ElTransfer, fieldProps, slots)
-    }
+      return h(ElTransfer, fieldProps, slots);
+    };
   },
-})
+});

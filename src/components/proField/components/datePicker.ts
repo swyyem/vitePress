@@ -1,6 +1,8 @@
-import { ElDatePicker, type DatePickerProps } from 'element-plus'
-import { ref, defineComponent, h, type PropType } from 'vue'
-import { formatModelValue } from '../utils'
+import { ElDatePicker } from "element-plus";
+import type { DatePickerProps } from "element-plus";
+import { ref, defineComponent, h } from "vue";
+import type { PropType } from "vue";
+import { formatModelValue } from "../utils";
 
 export default defineComponent({
   props: {
@@ -20,33 +22,33 @@ export default defineComponent({
         string | number | Date | Array<Date | string | number>
       >,
       default: () => {
-        return ''
+        return "";
       },
     },
   },
   setup(props, { slots, expose }) {
-    const childRef = ref(null)
+    const childRef = ref(null);
 
     expose({
       childRef,
       getChild: () => childRef.value,
       getText: (v: any) => {
-        return formatModelValue(v, props.emptyText, props.fieldProps.format)
+        return formatModelValue(v, props.emptyText, props.fieldProps.format);
       },
-    })
+    });
 
     return () => {
-      const { mode, modelValue, emptyText, fieldProps: a } = props
-      const fieldProps = { ...a, ref: childRef }
+      const { mode, modelValue, emptyText, fieldProps: a } = props;
+      const fieldProps = { ...a, ref: childRef };
 
-      const date = formatModelValue(modelValue, emptyText, a.format)
+      const date = formatModelValue(modelValue, emptyText, a.format);
 
-      if (mode === 'read') {
+      if (mode === "read") {
         // 处理自定义只读渲染
-        return h('div', { ref: childRef }, date)
+        return h("div", { ref: childRef }, date);
       }
 
-      return h(ElDatePicker, fieldProps, slots)
-    }
+      return h(ElDatePicker, fieldProps, slots);
+    };
   },
-})
+});

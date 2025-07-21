@@ -1,10 +1,11 @@
 import { ElUpload, ElButton } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
 import type { UploadProps } from 'element-plus'
+import { defineComponent, h, ref } from 'vue'
 import type { PropType, Component } from 'vue'
 interface unloadProp extends UploadProps {
   'file-list'?: unknown[]
 }
+
 export default defineComponent({
   props: {
     fieldProps: {

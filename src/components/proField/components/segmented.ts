@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ElSegmented } from 'element-plus'
-import { defineComponent, ref, onMounted, h, watch } from 'vue'
-import type { SegmentedProps } from 'element-plus'
-import type { PropType } from 'vue'
-import { handleRequest, isEqual } from '../utils'
-import type { ProSchemaValueEnumType, ProFieldRequestData } from '../index.type'
+import { ElSegmented } from "element-plus";
+import type { SegmentedProps } from "element-plus";
+import { defineComponent, ref, onMounted, h, watch } from "vue";
+import type { PropType } from "vue";
+import { handleRequest, isEqual } from "../utils";
+import type { PropsType } from "../utils";
+import type { ProSchemaValueEnumType, ProFieldRequestData } from "../index";
 
 export default defineComponent({
   props: {
@@ -22,7 +23,7 @@ export default defineComponent({
     valueEnum: {
       type: Array as PropType<ProSchemaValueEnumType[]>,
       default: () => {
-        return []
+        return [];
       },
     },
     params: {
@@ -31,49 +32,53 @@ export default defineComponent({
     debounceTime: {
       type: Number,
       default: () => {
-        return 100
+        return 100;
       },
     },
     childRef: {
       type: Object as PropType<typeof ref>,
       default: () => {
-        return ref(null)
+        return ref(null);
       },
     },
   },
   setup(props, { slots }) {
-    const options = ref<any[]>([])
+    const options = ref<any[]>([]);
 
     onMounted(async () => {
-      options.value = await handleRequest(props)
-    })
+      options.value = await handleRequest(props as unknown as PropsType);
+    });
 
     // 监听 props 的变化
     watch(
       () => [props.params, props.valueEnum],
       async ([newParams, newValueEnum], [oldParams, oldValueEnum]) => {
-        const { request, valueEnum } = props
+        const { request, valueEnum } = props;
 
         if (request && !isEqual(newParams, oldParams)) {
-          options.value = await handleRequest(props)
+          options.value = await handleRequest(props as unknown as PropsType);
         }
         if (!request && !isEqual(newValueEnum, oldValueEnum)) {
-          options.value = valueEnum
+          options.value = valueEnum;
         }
       },
-      { deep: true }, // 启用深度监听
-    )
+      { deep: true } // 启用深度监听
+    );
 
     return () => {
-      const { childRef, mode, fieldProps: a } = props
-      const fieldProps = { ...a, ref: childRef }
+      const { childRef, mode, fieldProps: a } = props;
+      const fieldProps = { ...a, ref: childRef };
 
-      if (mode === 'read') {
+      if (mode === "read") {
         // 处理自定义只读渲染
-        return h(ElSegmented, { ...fieldProps, options: options.value, disabled: true }, slots)
+        return h(
+          ElSegmented,
+          { ...fieldProps, options: options.value, disabled: true },
+          slots
+        );
       }
 
-      return h(ElSegmented, { ...fieldProps, options: options.value }, slots)
-    }
+      return h(ElSegmented, { ...fieldProps, options: options.value }, slots);
+    };
   },
-})
+});

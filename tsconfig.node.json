@@ -5,6 +5,9 @@
     "lib": ["ES2023"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "jsx": "preserve", // 保留 JSX 结构，由 Vue 转换
+    "jsxFactory": "h", // Vue 3 的 JSX 工厂函数
+    "jsxFragmentFactory": "Fragment" ,// Vue 3 的 Fragment 支持
 
     /* Bundler mode */
     "moduleResolution": "bundler",

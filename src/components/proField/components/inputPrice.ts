@@ -1,12 +1,12 @@
-import { ElInput } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
-import type { PropType } from 'vue'
-import { omit } from 'lodash-unified'
-import ProText from './text/pro-text.vue'
-import type { TextSpecifiledProps } from './text/type'
-import type { ProInputPriceProps } from '../index.type'
-import { isNumber, isString } from '../../../utils'
-import { useComposition } from '../../../utils/hooks'
+import { ElInput } from "element-plus";
+import { defineComponent, h, ref } from "vue";
+import type { PropType } from "vue";
+import { omit } from "lodash-unified";
+import { ProText } from "./text/index";
+import type { TextSpecifiledProps } from "./text/index";
+import type { ProInputPriceProps } from "../index";
+import { isNumber, isString } from "../../../utils";
+import { useComposition } from "../../../utils/hooks";
 
 /*
  * 原生方法就支持 数字格式化
@@ -20,40 +20,40 @@ import { useComposition } from '../../../utils/hooks'
  *  -> ￥1,234,567.89
  */
 type NumberFormatOptionsType = {
-  style: string
-  minimumFractionDigits: number
-  maximumFractionDigits: number
-  useGrouping: boolean
-  currency?: string
-}
-type PriceValueType = string | number
+  style: string;
+  minimumFractionDigits: number;
+  maximumFractionDigits: number;
+  useGrouping: boolean;
+  currency?: string;
+};
+type PriceValueType = string | number;
 const convertTool = (props: Partial<ProInputPriceProps>) => {
   const {
-    locale = 'zh-CN',
-    typeStyle = 'decimal',
+    locale = "zh-CN",
+    typeStyle = "decimal",
     currency,
     decimalPlaces = 4,
     useGrouping = true,
-  } = props
+  } = props;
   const options: NumberFormatOptionsType = {
     style: typeStyle,
     minimumFractionDigits: decimalPlaces,
     maximumFractionDigits: decimalPlaces,
     useGrouping: useGrouping,
+  };
+  if (typeStyle === "currency") {
+    options.currency = currency;
   }
-  if (typeStyle === 'currency') {
-    options.currency = currency
-  }
-  return new Intl.NumberFormat(locale, options as any)
-}
+  return new Intl.NumberFormat(locale, options as any);
+};
 const limitNumber = (val?: PriceValueType) => {
   // 只允许数字和一个小数点，且小数点不能开头
-  const filtered = String(val || '')
-    .replace(/[^\d.-]/g, '') // 保留数字、小数点、负号
-    .replace(/(?!^)-/g, '') // 仅保留第一个负号
-    .replace(/^(-?\d*)\.(\d*)\./, '$1.$2') // 限制一个小数点
-  return filtered
-}
+  const filtered = String(val || "")
+    .replace(/[^\d.-]/g, "") // 保留数字、小数点、负号
+    .replace(/(?!^)-/g, "") // 仅保留第一个负号
+    .replace(/^(-?\d*)\.(\d*)\./, "$1.$2"); // 限制一个小数点
+  return filtered;
+};
 // const numberReg = /^-?\\d+(\\.\\d+)?$/g
 export default defineComponent({
   props: {
@@ -62,7 +62,7 @@ export default defineComponent({
       required: true,
     },
     textProps: {
-      type: Object as PropType<Omit<TextSpecifiledProps, 'copyText'>>,
+      type: Object as PropType<Omit<TextSpecifiledProps, "copyText">>,
     },
     mode: {
       type: String as PropType<string>,
@@ -77,73 +77,93 @@ export default defineComponent({
     childRef: {
       type: Object as PropType<typeof ref>,
       default: () => {
-        return ref(null)
+        return ref(null);
       },
     },
   },
   setup(props, { slots, emit }) {
-    const convertNumber = convertTool(props.fieldProps)
+    const convertNumber = convertTool(props.fieldProps);
     const parseInput = (val: PriceValueType) => {
-      const res = limitNumber(val)
-      return res
-    }
-    const { isComposing, handleCompositionStart, handleCompositionUpdate, handleCompositionEnd } =
-      useComposition({
-        afterComposition: () => {},
-      })
+      const res = limitNumber(val);
+      return res;
+    };
+    const {
+      isComposing,
+      handleCompositionStart,
+      handleCompositionUpdate,
+      handleCompositionEnd,
+    } = useComposition({
+      afterComposition: () => {},
+    });
     const keydownEnter = (e: KeyboardEvent) => {
-      if (e.key === 'Enter') {
-        e.stopPropagation()
-        e.preventDefault()
+      if (e.key === "Enter") {
+        e.stopPropagation();
+        e.preventDefault();
         // 中文输入法
         if (isComposing.value) {
-          return
+          return;
         }
-        emit('keydown:enter')
+        emit("keydown:enter");
       }
-    }
+    };
     return () => {
-      const { childRef, mode, modelValue, fieldProps: a, textProps, emptyText } = props
+      const {
+        childRef,
+        mode,
+        modelValue,
+        fieldProps: a,
+        textProps,
+        emptyText,
+      } = props;
       // const fieldProps = { ...a, inputStyle: 'text-align: right;', ref: childRef }
       const fieldProps = {
         ...a,
-        inputStyle: 'text-align: right;',
+        inputStyle: "text-align: right;",
         ref: childRef,
         onCompositionstart: handleCompositionStart,
         onCompositionupdate: handleCompositionUpdate,
         onCompositionend: handleCompositionEnd,
         onKeydown: keydownEnter,
-      }
+      };
       const otherFieldProps = omit(fieldProps, [
-        'locale',
-        'decimalPlaces',
-        'useGrouping',
-        'typeStyle',
-        'currency',
-      ])
-      if (mode === 'read') {
+        "locale",
+        "decimalPlaces",
+        "useGrouping",
+        "typeStyle",
+        "currency",
+      ]);
+      if (mode === "read") {
         const style = {
-          justifyContent: 'flex-end',
-        }
+          justifyContent: "flex-end",
+        };
         // 处理自定义只读渲染
-        const realValue = modelValue && isString(modelValue) ? parseFloat(modelValue) : modelValue
-        const text = isNumber(realValue) ? convertNumber.format(realValue) : emptyText
-        return h(ProText, { ...textProps, style, ref: childRef, copyText: text }, () => text)
+        const realValue =
+          modelValue && isString(modelValue)
+            ? parseFloat(modelValue)
+            : modelValue;
+        const text = isNumber(realValue)
+          ? convertNumber.format(realValue)
+          : emptyText;
+        return h(
+          ProText,
+          { ...textProps, style, ref: childRef, copyText: text },
+          () => text
+        );
       }
       // 防止 input 警告
       if (!otherFieldProps.onInput) {
-        otherFieldProps.onInput = () => {}
+        otherFieldProps.onInput = () => {};
       }
       return h(
         ElInput,
         {
           ...otherFieldProps,
-          inputmode: 'decimal',
+          inputmode: "decimal",
           parser: parseInput,
           formatter: (val: PriceValueType) => val,
         } as any,
-        slots,
-      )
-    }
+        slots
+      );
+    };
   },
-})
+});

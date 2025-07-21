@@ -1,6 +1,6 @@
 import { ElSwitch } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
 import type { SwitchProps } from 'element-plus'
+import { defineComponent, h, ref } from 'vue'
 import type { PropType } from 'vue'
 
 export default defineComponent({

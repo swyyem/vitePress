@@ -1,6 +1,6 @@
 import { ElSlider } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
 import type { SliderProps } from 'element-plus'
+import { defineComponent, h, ref } from 'vue'
 import type { PropType } from 'vue'
 
 export default defineComponent({

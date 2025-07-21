@@ -9,8 +9,8 @@ import {
   type HTMLAttributes,
 } from "vue";
 import { ElTooltip, ElText } from "element-plus";
-import Copyable from "./copy-able.vue";
-import type { ElTextProps, TextSpecifiledProps } from "./type";
+import { CopyAble } from "./index";
+import type { ElTextProps, TextSpecifiledProps } from "./index";
 
 defineOptions({ inheritAttrs: false });
 const props = defineProps<TextSpecifiledProps>();
@@ -91,7 +91,7 @@ const textProps = computed(() => {
     <el-text v-else v-bind="textProps">
       <slot></slot>
     </el-text>
-    <copyable
+    <CopyAble
       v-if="props.copyable"
       class="pro-text-copyable"
       :text="props.copyText"

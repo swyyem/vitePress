@@ -1,9 +1,11 @@
 import { ElInput, ElIcon } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
 import type { InputProps } from 'element-plus'
+import { defineComponent, h, ref } from 'vue'
 import type { PropType } from 'vue'
-import ProText from './text/pro-text.vue'
-import type { TextSpecifiledProps } from './text/type'
+
+import {ProText} from './text/index'
+import type { TextSpecifiledProps } from './text/index'
+
 import { View, Hide } from '@element-plus/icons-vue'
 import { isEmpty } from '../utils'
 import { useComposition } from '../../../utils/hooks'
