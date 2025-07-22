@@ -39,9 +39,10 @@
               v-for="item in valueEnum"
               :class="[nsSelect.be('dropdown', 'item'), 'pro-inputtag-item']"
               :key="String(item.value)"
+              @click.stop="handleCell(item.value)"
             >
               {{ item.label }}
-              <el-icon @click="handleClick(item.value)">
+              <el-icon @click.stop="handleClick(item.value)">
                 <Close />
               </el-icon>
             </li>
@@ -68,8 +69,8 @@
 }
 </style>
 <script setup lang="ts">
-import { computed, ref, type Directive } from 'vue'
-import { uniq } from 'lodash-unified'
+import { computed, ref, type Directive } from 'vue';
+import { uniq } from 'lodash-unified';
 import {
   ElTooltip,
   ElScrollbar,
@@ -78,73 +79,79 @@ import {
   ClickOutside,
   type InputInstance,
   type TooltipInstance,
-} from 'element-plus'
-import { Close } from '@element-plus/icons-vue'
-import { useNamespace, useId } from '../utils/hooks'
-import {ProInputTagDropdown} from './index'
-import type { ProInputTagProps, ProInputTagEmits, ProInputTagInstance } from './tag.types'
+} from 'element-plus';
+import { Close } from '@element-plus/icons-vue';
+import { useNamespace, useId } from '../utils/hooks';
+import { ProInputTagDropdown } from './index';
+import type { ProInputTagProps, ProInputTagEmits, ProInputTagInstance } from './tag.types';
 
 defineOptions({
   name: 'ProInputTag',
-})
-const vClickOutside: Directive = ClickOutside
-const contentId = useId()
-const nsSelect = useNamespace('select')
+});
+const vClickOutside: Directive = ClickOutside;
+const contentId = useId();
+const nsSelect = useNamespace('select');
 const props = withDefaults(defineProps<ProInputTagProps>(), {
   effect: 'light',
   popperClass: '',
   fitInputWidth: true,
-})
+});
 const inputProps = computed(() => {
-  const { placeholder, clearable, disabled, ..._rest } = props
-  return { placeholder, clearable, disabled }
-})
-const emit = defineEmits<ProInputTagEmits>()
-const tagRef = ref<HTMLElement>()
-const tooltipRef = ref<TooltipInstance>()
+  const { placeholder, clearable, disabled, ..._rest } = props;
+  return { placeholder, clearable, disabled };
+});
+const emit = defineEmits<ProInputTagEmits>();
+const tagRef = ref<HTMLElement>();
+const tooltipRef = ref<TooltipInstance>();
 const popperRef = computed(() => {
-  return tooltipRef.value?.popperRef?.contentRef
-})
-const poperSideRef = popperRef as any
-const inputRef = ref<InputInstance>()
-const expanded = ref(false)
-const inputValue = ref('')
+  return tooltipRef.value?.popperRef?.contentRef;
+});
+const poperSideRef = popperRef as any;
+const inputRef = ref<InputInstance>();
+const expanded = ref(false);
+const inputValue = ref('');
 // value
-const modelValue = computed(() => props.modelValue || [])
+const modelValue = computed(() => props.modelValue || []);
 // options
 const valueEnum = computed(() => {
-  const values = modelValue.value
-  return values.map((item) => ({
+  const values = modelValue.value;
+  return values.map(item => ({
     label: item,
     value: item,
-  }))
-})
+  }));
+});
 const handleEnter = () => {
   if (inputValue.value !== '') {
-    const values = modelValue.value.slice()
-    values.unshift(inputValue.value)
-    emit('update:modelValue', uniq(values))
-    inputValue.value = ''
+    const values = modelValue.value.slice();
+    values.unshift(inputValue.value);
+    emit('update:modelValue', uniq(values));
+    inputValue.value = '';
   }
-}
+};
+
+const handleCell = (val: any) => {
+  emit('update:modelValue', [val]);
+  // emit('select-tag', [val])
+};
+
 const handleClick = (value: any) => {
-  const values = modelValue.value.slice()
-  const idx = values.indexOf(value)
+  const values = modelValue.value.slice();
+  const idx = values.indexOf(value);
   if (idx > -1) {
-    values.splice(idx, 1)
-    emit('update:modelValue', values)
-    emit('remove-tag', value)
+    values.splice(idx, 1);
+    emit('update:modelValue', values);
+    emit('remove-tag', value);
   }
-}
+};
 const handleClickOutside = () => {
-  expanded.value = false
-}
+  expanded.value = false;
+};
 const handleFocus = () => {
-  expanded.value = true
-}
+  expanded.value = true;
+};
 
 defineExpose<ProInputTagInstance>({
   focus: () => inputRef.value?.focus(),
   blur: () => inputRef.value?.blur(),
-})
+});
 </script>

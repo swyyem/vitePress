@@ -1,7 +1,8 @@
-import { defineComponent, computed, inject, ref, useAttrs, watch } from 'vue'
-import type { Responsive, GridConifgType } from './index'
-import { ElCol } from 'element-plus'
-import type { searchFormConfigType } from '../queryFilter/index'
+import { defineComponent, computed, inject, shallowRef, useAttrs, watch, h } from 'vue';
+import type { Responsive, GridConifgType } from './index';
+import { ElCol } from 'element-plus';
+// import type { ColProps } from 'element-plus/es/components/col/index'
+import type { searchFormConfigType } from '../queryFilter/index';
 
 // type Props = {
 //   offset?: number
@@ -13,7 +14,6 @@ import type { searchFormConfigType } from '../queryFilter/index'
 //   lg?: Responsive
 //   xl?: Responsive
 // }
-
 export default defineComponent({
   name: 'GridItem',
   props: {
@@ -29,56 +29,49 @@ export default defineComponent({
     xl: { type: Object as () => Responsive, default: undefined },
   },
   setup(props, { slots }) {
-    const attrs = useAttrs() as { index: string }
-    const isShow = ref(true)
+    const attrs = useAttrs() as { index: string };
+    const isShow = shallowRef(true);
 
-    const searchFormConfig = inject<searchFormConfigType>('searchFormConfig', {})
-    const gridConifg = inject<GridConifgType>('gridConifg', {
-      breakPoint: ref('xl'),
-      shouldHiddenIndex: ref(-1),
-      cols: ref(4),
-    })
+    // 依赖注入
+    const searchFormConfig = inject<searchFormConfigType>('searchFormConfig', {});
+    const gridConfig = inject<GridConifgType>('gridConifg', {
+      breakPoint: shallowRef('xl'),
+      shouldHiddenIndex: shallowRef(-1),
+      cols: shallowRef(4),
+    });
+
+    // 响应式逻辑
+    const shouldWatch = computed(
+      () => searchFormConfig?.searchBtn && searchFormConfig?.showCollapse
+    );
 
     watch(
-      () => [gridConifg.shouldHiddenIndex.value, gridConifg.breakPoint.value],
-      (n) => {
-        if (!searchFormConfig?.searchBtn || !searchFormConfig?.showCollapse) {
-          isShow.value = true
-        } else {
-          if (attrs.index) {
-            isShow.value = !(n[0] !== -1 && parseInt(attrs.index) >= Number(n[0]))
-          }
+      [() => gridConfig.shouldHiddenIndex.value, () => gridConfig.breakPoint.value],
+      ([hiddenIndex]) => {
+        if (!shouldWatch.value) {
+          isShow.value = true;
+          return;
+        }
+
+        if (attrs.index) {
+          isShow.value = !(hiddenIndex !== -1 && parseInt(attrs.index) >= Number(hiddenIndex));
         }
       },
-      { immediate: true },
-    )
+      { immediate: true }
+    );
 
+    // 样式计算
     const style = computed(() => {
-      if (searchFormConfig?.searchForm) {
-        if (props.suffix) {
-          return {
-            textAlign: 'end',
-            marginLeft: 'auto',
-          } as any
-        } else {
-          return {}
-        }
-      } else {
-        return {}
-      }
-    })
+      if (!props.suffix || !searchFormConfig?.searchForm) return {};
+      return {
+        textAlign: 'end',
+        marginLeft: 'auto',
+      };
+    });
 
-    const setProps = computed(() => {
-      if (searchFormConfig?.searchForm) {
-        const span =
-          props[gridConifg.breakPoint.value]?.['span'] ?? props.span ?? 24 / gridConifg.cols.value
-        const offset = props[gridConifg.breakPoint.value]?.['offset'] ?? props.offset
-
-        return {
-          span,
-          offset,
-        }
-      } else {
+    // 属性计算
+    const colProps = computed(() => {
+      if (!searchFormConfig?.searchForm) {
         return {
           span: props.span,
           offset: props.offset,
@@ -87,17 +80,27 @@ export default defineComponent({
           md: props.md,
           lg: props.lg,
           xl: props.xl,
-        }
+        };
       }
-    })
-    return () =>
-      isShow.value &&
-      (props.isCol ? (
-        <ElCol {...setProps.value} style={[style.value, props.colStyle]}>
-          {slots.default ? slots.default() : null}
-        </ElCol>
-      ) : (
-        <div style={props.colStyle}>{slots.default ? slots.default() : null}</div>
-      ))
+
+      const breakPoint = gridConfig.breakPoint.value;
+      return {
+        span: Number(props[breakPoint]?.['span'] ?? props.span ?? 24 / gridConfig.cols.value),
+        offset: Number(props[breakPoint]?.['offset'] ?? props.offset ?? 0),
+      };
+    });
+
+    // 渲染函数
+    return () => {
+      if (!isShow.value) return null;
+
+      const baseProps = {
+        style: { ...style.value, ...props.colStyle },
+      };
+
+      return props.isCol
+        ? h(ElCol, { ...colProps.value, ...baseProps }, () => slots.default?.())
+        : h('div', baseProps, () => slots.default?.());
+    };
   },
-})
+});

@@ -9,19 +9,15 @@
       <slot></slot>
     </ProForm>
     <template #footer>
-      <FormFooter
-        v-bind="dialogSubmitter"
-        :onSubmit="onSubmit"
-        :onReset="onCancel"
-      />
+      <FormFooter v-bind="dialogSubmitter" :onSubmit="onSubmit" :onReset="onCancel" />
     </template>
   </el-drawer>
 </template>
 <script lang="ts" setup>
-import { computed, reactive, ref, toRefs } from "vue";
-import { ElDrawer } from "element-plus";
-import ProForm, { FormFooter } from "./index";
-import type { DrawerFormProps, SubmitterProps } from "./index";
+import { computed, reactive, ref, toRefs } from 'vue';
+import { ElDrawer } from 'element-plus';
+import ProForm, { FormFooter } from './index';
+import type { DrawerFormProps, SubmitterProps } from './index';
 
 const formSubmitter: SubmitterProps = {
   submitButtonProps: false,
@@ -32,7 +28,7 @@ const props = withDefaults(defineProps<DrawerFormProps>(), {
   open: undefined,
 });
 const emit = defineEmits<{
-  "update:open": [value: boolean];
+  'update:open': [value: boolean];
 }>();
 
 const formRef = ref();
@@ -48,7 +44,7 @@ const { formProps, drawerProps, title, width, submitter } = toRefs(props);
 const mergeDrawerProps = computed(() => {
   return {
     ...drawerProps.value,
-    size: width.value || "40%",
+    size: width.value || '40%',
   };
 });
 const triggerDom = computed(() => {
@@ -59,8 +55,8 @@ const triggerDom = computed(() => {
 const dialogSubmitter = computed(() => {
   return {
     searchConfig: {
-      resetText: "取消",
-      submitText: "确认",
+      resetText: '取消',
+      submitText: '确认',
     },
     submitButtonProps,
     ...submitter.value,
@@ -68,7 +64,7 @@ const dialogSubmitter = computed(() => {
 });
 
 // props 存在 open
-const hasOpen = typeof props.open === "boolean";
+const hasOpen = typeof props.open === 'boolean';
 
 const dialogVisible = computed({
   get() {
@@ -76,7 +72,7 @@ const dialogVisible = computed({
   },
   set(val) {
     if (hasOpen) {
-      emit("update:open", val);
+      emit('update:open', val);
       // 兼容 antpro
       if (props.onOpenChange) {
         props.onOpenChange(val);
@@ -94,7 +90,7 @@ const onSubmit = () => {
         const res = props.onFinish(formRef.value.getFormValues());
         if (res) {
           submitButtonProps.loading = true;
-          Promise.resolve(res).then((val) => {
+          Promise.resolve(res).then(val => {
             submitButtonProps.loading = false;
             if (val) {
               onCancel();
@@ -112,7 +108,13 @@ const onCancel = () => {
   dialogVisible.value = false;
 };
 
+defineExpose({
+  getFormRef() {
+    return formRef.value;
+  },
+});
+
 defineOptions({
-  name: "DrawerForm",
+  name: 'DrawerForm',
 });
 </script>

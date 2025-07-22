@@ -1,0 +1,59 @@
+:root {
+  /* 品牌色 */
+  --brand-color: #3276e8;
+  --barnd-color-dark40: #1e478b;
+  --barnd-color-dark20: #285eba;
+  --brand-color-80: rgba(50, 118, 232, 0.8);
+  --brand-color-60: rgba(50, 118, 232, 0.6); /* 透明度 60% */
+  --brand-color-40: rgba(50, 118, 232, 0.4); /* 透明度 40% */
+  --brand-color-20: rgba(50, 118, 232, 0.2); /* 透明度 20% */
+  --brand-color-15: rgba(50, 118, 232, 0.15); /* 透明度 15% */
+  --brand-color-10: rgba(50, 118, 232, 0.1); /* 透明度 10% */
+
+  /* 边框颜色 */
+  --bg-color-default: #ffffff; /* 背景色 */
+  --bg-color-sidebar: #f5f6f7; /* 侧边栏背景色 */
+  --bg-color-sidebar-itembg: #59606c; /* 侧边栏 item 背景色 */
+  --bg-color-sidebar-itembg-active: var(--barnd-color-dark40); /* 侧边栏 item 激活背景色 */
+  --bg-color-table-thead: #f0f0f0; /* 表格表头背景色 */
+  --bg-color-table-tr-hover: #d6e4fa; /* 表格行 hover 背景色 */
+  --bg-color-outline: #d4d4d4; /* 描边 */
+  --bg-color-outline-light: #d4d4d4; /* 浅描边 */
+  --bg-color-disabled: #f2f2f2; /* 禁用 */
+  --bg-color-card-small: #eceef5; /* 小卡片背景 */
+  --border-color-brand-light: #1677ff; /* 外观选中边框 */
+  --border-color: #d4d4d4; /* 统一边框 */
+  /* 字体大小 */
+  --font-size-small: 12px;
+  --font-size-mideum: 14px;
+  --font-size-large: 16px;
+  /* 圆角 */
+  --border-radius-medium: 4px;
+  /* 字体颜色 */
+  --font-color-title: #252728; /* 标题 */
+  --font-color-main: #515253; /* 正文 */
+  --font-color-text: #7c7d7e; /* 文字3 */
+  --font-color-tip: #a8a9a9; /* 提示文字 */
+  --font-color-lighttext: #d3d4d4; /* 浅色文字 */
+  --title-color: #1d1e1f; /* 标题颜色 */
+
+  /* 生息绿 */
+  --green-color: #1da88d;
+  /* 康护红 */
+  --red-color: #de0069;
+  /* 本草棕 */
+  --brown-color: #983a27;
+  /* 提示色 */
+  --prompt-color: #1677ff;
+  /* 危险色 */
+  --danger-color: #e8322e;
+  /* 警告色 */
+  --warning-color: #ff8800;
+  /* 成功色 */
+  --success-color: #26bf26;
+
+  /* hover 色 */
+  --bg-color-hover: #ebebeb;
+  /* mask 色 */
+  --mask-bg-color: rgba(255, 255, 255, 0.9);
+}

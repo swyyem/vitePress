@@ -1,14 +1,14 @@
-import { ElInput, ElIcon } from 'element-plus'
-import type { InputProps } from 'element-plus'
-import { defineComponent, h, ref } from 'vue'
-import type { PropType } from 'vue'
+import { ElInput, ElIcon } from 'element-plus';
+import type { InputProps } from 'element-plus';
+import { defineComponent, h, ref } from 'vue';
+import type { PropType } from 'vue';
 
-import {ProText} from './text/index'
-import type { TextSpecifiledProps } from './text/index'
+import { ProText } from './text/index';
+import type { TextSpecifiledProps } from './text/index';
 
-import { View, Hide } from '@element-plus/icons-vue'
-import { isEmpty } from '../utils'
-import { useComposition } from '../../../utils/hooks'
+import { View, Hide } from '@element-plus/icons-vue';
+import { isEmpty } from '../utils';
+import { useComposition } from '../../../utils/hooks';
 export default defineComponent({
   props: {
     fieldProps: {
@@ -28,37 +28,35 @@ export default defineComponent({
     modelValue: {
       type: [String, Number] as PropType<string | number>,
       default: () => {
-        return ''
+        return '';
       },
     },
     childRef: {
       type: Object as PropType<typeof ref>,
       default: () => {
-        return ref(null)
+        return ref(null);
       },
     },
   },
   setup(props, { slots, emit }) {
-    console.log('setup',props);
-    
-    const flag = ref(true)
+    const flag = ref(true);
     const { isComposing, handleCompositionStart, handleCompositionUpdate, handleCompositionEnd } =
       useComposition({
         afterComposition: () => {},
-      })
+      });
     const keydownEnter = (e: KeyboardEvent) => {
       if (e.key === 'Enter') {
-        e.stopPropagation()
-        e.preventDefault()
+        e.stopPropagation();
+        e.preventDefault();
         // 中文输入法
         if (isComposing.value) {
-          return
+          return;
         }
-        emit('keydown:enter')
+        emit('keydown:enter');
       }
-    }
+    };
     return () => {
-      const { childRef, mode, modelValue, fieldProps: a, textProps, emptyText } = props
+      const { childRef, mode, modelValue, fieldProps: a, textProps, emptyText } = props;
       const fieldProps = {
         ...a,
         clearable: a.clearable ?? true,
@@ -67,9 +65,9 @@ export default defineComponent({
         onCompositionupdate: handleCompositionUpdate,
         onCompositionend: handleCompositionEnd,
         onKeydown: keydownEnter,
-      }
+      };
       if (mode === 'read') {
-        const { type } = fieldProps
+        const { type } = fieldProps;
         if (type === 'password') {
           const Password = h(
             ElIcon,
@@ -78,11 +76,11 @@ export default defineComponent({
                 marginLeft: '10px',
               },
               onClick: () => {
-                flag.value = !flag.value
+                flag.value = !flag.value;
               },
             },
-            () => h(flag.value ? Hide : View, { style: { color: '#1677ff', cursor: 'pointer' } }),
-          )
+            () => h(flag.value ? Hide : View, { style: { color: '#1677ff', cursor: 'pointer' } })
+          );
           return h(
             'div',
             { ref: childRef },
@@ -91,15 +89,15 @@ export default defineComponent({
                   flag.value ? '******' : modelValue,
                   h(ElIcon, { style: { marginLeft: '10px' } }, () => Password),
                 ]
-              : emptyText,
-          )
+              : emptyText
+          );
         }
         // 处理自定义只读渲染
-        const text = !isEmpty(modelValue) ? modelValue.toString() : emptyText
-        return h(ProText, { ...textProps, ref: childRef, copyText: text }, () => text)
+        const text = !isEmpty(modelValue) ? modelValue.toString() : emptyText;
+        return h(ProText, { ...textProps, ref: childRef, copyText: text }, () => text);
       }
 
-      return h(ElInput, fieldProps as any, slots)
-    }
+      return h(ElInput, fieldProps as any, slots);
+    };
   },
-})
+});

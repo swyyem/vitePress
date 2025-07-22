@@ -9,19 +9,15 @@
       <slot></slot>
     </ProForm>
     <template #footer>
-      <FormFooter
-        v-bind="dialogSubmitter"
-        :onSubmit="onSubmit"
-        :onReset="onCancel"
-      />
+      <FormFooter v-bind="dialogSubmitter" :onSubmit="onSubmit" :onReset="onCancel" />
     </template>
   </el-dialog>
 </template>
 <script lang="ts" setup>
-import { computed, reactive, ref, toRefs } from "vue";
-import { ElDialog } from "element-plus";
-import ProForm, { FormFooter } from "./index";
-import type { ModalFormProps, SubmitterProps } from "./index";
+import { computed, reactive, ref, toRefs } from 'vue';
+import { ElDialog } from 'element-plus';
+import ProForm, { FormFooter } from './index';
+import type { ModalFormProps, SubmitterProps } from './index';
 
 const formSubmitter: SubmitterProps = {
   submitButtonProps: false,
@@ -30,12 +26,13 @@ const formSubmitter: SubmitterProps = {
 // 记录：如果不设置 undefined，则默认为 false
 const props = withDefaults(defineProps<ModalFormProps>(), {
   open: undefined,
+  title: '弹窗',
 });
 const { formProps, modalProps, title, width, submitter } = toRefs(props);
 const mergeModalProps = computed(() => {
   return {
     ...modalProps.value,
-    width: width.value || "50%",
+    width: width.value || '50%',
   };
 });
 const triggerDom = computed(() => {
@@ -50,8 +47,8 @@ const submitButtonProps = reactive({
 const dialogSubmitter = computed(() => {
   return {
     searchConfig: {
-      resetText: "取消",
-      submitText: "确认",
+      resetText: '取消',
+      submitText: '确认',
     },
     submitButtonProps,
     ...submitter.value,
@@ -59,9 +56,9 @@ const dialogSubmitter = computed(() => {
 });
 
 // props 存在 open
-const hasOpen = typeof props.open === "boolean";
+const hasOpen = typeof props.open === 'boolean';
 const emit = defineEmits<{
-  "update:open": [value: boolean];
+  'update:open': [value: boolean];
 }>();
 // 内部状态控制
 const internalVisible = ref(false);
@@ -71,7 +68,7 @@ const dialogVisible = computed({
   },
   set(val) {
     if (hasOpen) {
-      emit("update:open", val);
+      emit('update:open', val);
       // 兼容 antpro
       if (props.onOpenChange) {
         props.onOpenChange(val);
@@ -89,7 +86,7 @@ const onSubmit = () => {
         const res = props.onFinish(formRef.value.getFormValues());
         if (res) {
           submitButtonProps.loading = true;
-          Promise.resolve(res).then((val) => {
+          Promise.resolve(res).then(val => {
             submitButtonProps.loading = false;
             if (val) {
               onCancel();
@@ -107,7 +104,13 @@ const onCancel = () => {
   dialogVisible.value = false;
 };
 
+defineExpose({
+  getFormRef() {
+    return formRef.value;
+  },
+});
+
 defineOptions({
-  name: "ModalForm",
+  name: 'ModalForm',
 });
 </script>

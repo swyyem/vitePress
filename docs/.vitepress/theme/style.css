@@ -16,15 +16,15 @@ html.dark {
   margin: 0 10px 10px 0;
 }
 
-
 /* vp-doc style */
 .vp-doc table {
   display: table !important;
   width: 100%;
+  margin: 0 auto;
 }
 
 .vp-doc tr:nth-child(2n) {
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
 }
 
 .vp-doc th {

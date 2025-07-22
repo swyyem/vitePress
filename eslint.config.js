@@ -1,19 +1,43 @@
-import js from '@eslint/js';
-import globals from 'globals';
+import pluginVue from 'eslint-plugin-vue';
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript';
+import pluginVitest from '@vitest/eslint-plugin';
+import skipFormatting from '@vue/eslint-config-prettier/skip-formatting';
 
-export default [
-  js.configs.recommended, // 使用ESLint推荐规则
+// To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
+// import { configureVueProject } from '@vue/eslint-config-typescript'
+// configureVueProject({ scriptLangs: ['ts', 'tsx'] })
+// More info at https://github.com/vuejs/eslint-config-typescript/#advanced-setup
+
+export default defineConfigWithVueTs(
   {
-    files: ['**/*.{js,ts,vue,jsx,tsx}'], // 针对这些文件
-    languageOptions: {
-      globals: {
-        ...globals.browser, // 浏览器全局变量
-        ...globals.node, // Node.js全局变量
-      },
-    },
+    name: 'app/files-to-lint',
+    files: ['**/*.{ts,mts,tsx,vue}'],
+  },
+
+  {
+    name: 'app/files-to-ignore',
+    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+  },
+
+  pluginVue.configs['flat/essential'],
+  vueTsConfigs.recommended,
+
+  {
     rules: {
-      'no-console': 'warn', // 自定义规则示例
-      semi: ['error', 'always'],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
-];
+
+  {
+    ...pluginVitest.configs.recommended,
+    files: ['src/**/__tests__/*'],
+  },
+  skipFormatting
+);
