@@ -554,6 +554,26 @@ export default {
                 text: 'import',
                 link: '/component/ProTable/import',
               },
+              {
+                text: 'editable-only',
+                link: '/component/ProTable/editable-only',
+              },
+              {
+                text: 'editable-cell',
+                link: '/component/ProTable/editable-cell',
+              },
+              {
+                text: 'editable-single',
+                link: '/component/ProTable/editable-single',
+              },
+              {
+                text: 'editable-multiple',
+                link: '/component/ProTable/editable-multiple',
+              },
+              {
+                text: 'table-ref',
+                link: '/component/ProTable/table-ref',
+              },
             ],
           },
         ],
