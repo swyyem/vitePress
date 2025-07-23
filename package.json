@@ -15,7 +15,9 @@
     "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx",
     "lint:fix": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
     "format": "prettier --write ./**/*.{vue,js,ts,jsx,tsx,css,scss,md}",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "python:run": "python src/python/onr.py",
+    "node:run": "node ./src/python/index.js"
   },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx}": [
