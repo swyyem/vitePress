@@ -18,7 +18,7 @@
     "lint-staged": "lint-staged",
     "python:run": "python src/python/onr.py",
     "node:run": "node ./src/python/index.js",
-    "test:fun":"node './index.js"
+    "test:fun":"node ./index.js"
   },
   "lint-staged": {
     "*.{vue,js,ts,jsx,tsx}": [

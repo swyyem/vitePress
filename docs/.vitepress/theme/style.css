@@ -30,3 +30,12 @@ html.dark {
 .vp-doc th {
   color: unset !important;
 }
+
+/* 二级菜单缩进和加粗 */
+.VPSidebarItem .VPSidebarItem {
+  margin-left: 1rem;
+}
+
+.VPSidebarItem .VPSidebarItem .VPLink span {
+  font-weight: bold;
+}

@@ -17,9 +17,82 @@ export default {
     const wholeList = [
       {
         text: 'front',
+
         items: [
           {
+            text: '前端面试题',
+            collapsible: true,
+            collapsed: false, // 默认展开
+            items: [
+              {
+                text: 'HTML5与CSS3',
+                collapsible: true,
+                collapsed: false, // 默认展开
+                items: [
+                  {
+                    text: 'HTML5 新特性',
+                    link: '/front/interview/html5/newFeatures',
+                  },
+                  {
+                    text: 'CSS3 新特性',
+                    link: '/front/interview/css3/newFeatures',
+                  },
+                ],
+              },
+              {
+                text: 'CSS布局方式',
+                link: '/front/interview/layout-method',
+              },
+              {
+                text: 'DIV居中',
+                link: '/front/interview/div-center',
+              },
+              {
+                text: '伪类与伪元素的区别',
+                link: '/front/interview/pseudo-class',
+              },
+              {
+                text: 'css 选择器的优先级排序',
+                link: '/front/interview/css-priority',
+              },
+              {
+                text: '深拷贝与浅拷贝',
+                link: '/front/interview/copy',
+              },
+              {
+                text: '封装过的组件',
+                link: '/front/interview/encapsulated',
+              },
+              {
+                text: 'JSONP原理',
+                link: '/front/interview/jsonp',
+              },
+              {
+                text: '本地离线存储',
+                link: '/front/interview/Local-offline-storage',
+              },
+              {
+                text: 'LINK与A标签',
+                link: '/front/interview/link',
+              },
+              {
+                text: '盒子模型',
+                link: '/front/interview/box-model',
+              },
+              {
+                text: '闭包',
+                link: '/front/interview/closure',
+              },
+              {
+                text: '作用域',
+                link: '/front/interview/scope',
+              },
+            ],
+          },
+          {
             text: '前端工程化',
+            collapsible: true,
+            collapsed: false, // 默认展开
             items: [
               {
                 text: '前端规范搭建',
@@ -50,6 +123,8 @@ export default {
           },
           {
             text: '前端基础',
+            collapsible: true,
+            collapsed: false, // 默认展开
             items: [
               {
                 text: '前端最全Debugger技巧',
@@ -87,6 +162,8 @@ export default {
           },
           {
             text: 'Uniapp跨端开发',
+            collapsible: true,
+            collapsed: false, // 默认展开
             items: [
               {
                 text: '包体积优化',
@@ -586,6 +663,7 @@ export default {
       }
       return acc;
     }, {});
+
     return map[path] || [];
   },
 };
