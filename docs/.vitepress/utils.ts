@@ -87,6 +87,10 @@ export default {
                 text: '作用域',
                 link: '/front/interview/scope',
               },
+              {
+                text: '网站性能优化',
+                link: '/front/interview/website-performance',
+              },
             ],
           },
           {
