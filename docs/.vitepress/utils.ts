@@ -91,6 +91,18 @@ export default {
                 text: '网站性能优化',
                 link: '/front/interview/website-performance',
               },
+              {
+                text: 'ES5 与 ES6新特性',
+                link: '/front/interview/es6',
+              },
+              {
+                text: '对于MVVM的理解',
+                link: '/front/interview/mvvm',
+              },
+              {
+                text: 'Vue生命周期',
+                link: '/front/interview/life-cycle',
+              },
             ],
           },
           {
