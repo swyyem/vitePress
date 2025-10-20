@@ -103,6 +103,54 @@ export default {
                 text: 'Vue生命周期',
                 link: '/front/interview/life-cycle',
               },
+              {
+                text: 'Vue数据双向绑定',
+                link: '/front/interview/two-way-binding',
+              },
+              {
+                text: '组件间传值',
+                link: '/front/interview/component-value-transfer',
+              },
+              {
+                text: 'Vue路由',
+                link: '/front/interview/route',
+              },
+              {
+                text: 'Vue路由钩子函数',
+                link: '/front/interview/route-hook-function',
+              },
+              {
+                text: 'Vue数据管理中心',
+                link: '/front/interview/vuex',
+              },
+              {
+                text: 'keep-alive',
+                link: '/front/interview/keep-alive',
+              },
+              {
+                text: 'css样式隔离',
+                link: '/front/interview/style-isolation',
+              },
+              {
+                text: 'v-if 和 v-show',
+                link: '/front/interview/v-ifANDv-show',
+              },
+              {
+                text: 'vue-route 和 vue-router',
+                link: '/front/interview/vue-route-vs-router',
+              },
+              {
+                text: 'vue核心概念',
+                link: '/front/interview/vue-core-concepts',
+              },
+              {
+                text: 'v-for 和 v-if',
+                link: '/front/interview/v-for-v-if',
+              },
+              {
+                text: 'Vue修饰符',
+                link: '/front/interview/vue-modifiers',
+              },
             ],
           },
           {
