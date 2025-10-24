@@ -151,6 +151,26 @@ export default {
                 text: 'Vue修饰符',
                 link: '/front/interview/vue-modifiers',
               },
+              {
+                text: 'vue中的跨域问题',
+                link: '/front/interview/cross-domain',
+              },
+              {
+                text: '浏览器与服务器的交互原理',
+                link: '/front/interview/browser-server-interaction',
+              },
+              {
+                text: 'v-on 可以绑定多个方法吗',
+                link: '/front/interview/v-on',
+              },
+              {
+                text: 'vue中key 值的作用',
+                link: '/front/interview/key',
+              },
+              {
+                text: '$nextTick的使用',
+                link: '/front/interview/nextTick',
+              },
             ],
           },
           {
