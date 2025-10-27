@@ -171,6 +171,30 @@ export default {
                 text: '$nextTick的使用',
                 link: '/front/interview/nextTick',
               },
+              {
+                text: '父组件调用子组件方法',
+                link: '/front/interview/method',
+              },
+              {
+                text: '项目初始化页面闪动问题',
+                link: '/front/interview/page-flashing',
+              },
+              {
+                text: 'vue2 与vue3 的区别',
+                link: '/front/interview/vue2-vue3',
+              },
+              {
+                text: 'vue和react的区别',
+                link: '/front/interview/vue-react',
+              },
+              {
+                text: 'js数组的方法',
+                link: '/front/interview/arrary',
+              },
+              {
+                text: '监听 DOM 树',
+                link: '/front/interview/DOM-tree',
+              },
             ],
           },
           {
