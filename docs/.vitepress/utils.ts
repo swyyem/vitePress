@@ -195,6 +195,18 @@ export default {
                 text: '监听 DOM 树',
                 link: '/front/interview/DOM-tree',
               },
+              {
+                text: 'JavaScript 的事件循环机制',
+                link: '/front/interview/event-cycle-mechanism',
+              },
+              {
+                text: 'Javascript的数据类型',
+                link: '/front/interview/data-type',
+              },
+              {
+                text: '怎样判断变量的类型',
+                link: '/front/interview/typeof',
+              },
             ],
           },
           {
