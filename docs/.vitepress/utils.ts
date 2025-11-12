@@ -207,6 +207,14 @@ export default {
                 text: '怎样判断变量的类型',
                 link: '/front/interview/typeof',
               },
+              {
+                text: '数据类型转换',
+                link: '/front/interview/transfer-type',
+              },
+              {
+                text: '原型和原型链',
+                link: '/front/interview/prototypeand-prototype-chain',
+              },
             ],
           },
           {
