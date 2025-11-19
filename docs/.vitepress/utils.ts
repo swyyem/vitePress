@@ -215,6 +215,22 @@ export default {
                 text: '原型和原型链',
                 link: '/front/interview/prototypeand-prototype-chain',
               },
+              {
+                text: 'call /apply /bind',
+                link: '/front/interview/call-apply-bind',
+              },
+              {
+                text: 'DOM 事件流和事件委托详解',
+                link: '/front/interview/event-stream',
+              },
+              {
+                text: 'new 操作符内部原理详解',
+                link: '/front/interview/new-operator',
+              },
+              {
+                text: '防抖、节流的应用场景',
+                link: '/front/interview/Anti-vibration-throttling',
+              },
             ],
           },
           {
