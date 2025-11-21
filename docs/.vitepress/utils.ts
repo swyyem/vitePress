@@ -799,6 +799,23 @@ export default {
           },
         ],
       },
+      {
+        text: 'AILargeModel',
+        items: [
+          {
+            text: 'RAG 大模型',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/AILargeModel/RAG',
+          },
+          {
+            text: 'Embedding 模型',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/AILargeModel/Embedding',
+          },
+        ],
+      },
     ];
 
     const map = wholeList.reduce((acc, curr) => {

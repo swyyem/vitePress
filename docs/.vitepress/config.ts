@@ -94,6 +94,7 @@ export default defineConfig({
       '/Markdown': getSideBar('Markdown'),
       '/api': getSideBar('api'),
       '/component': getSideBar('component'),
+      '/AILargeModel': getSideBar('AILargeModel'),
     },
 
     carbonAds: {
