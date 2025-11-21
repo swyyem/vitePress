@@ -231,6 +231,18 @@ export default {
                 text: '防抖、节流的应用场景',
                 link: '/front/interview/Anti-vibration-throttling',
               },
+              {
+                text: 'this指向',
+                link: '/front/interview/this',
+              },
+              {
+                text: 'let const var 的区别',
+                link: '/front/interview/let-const',
+              },
+              {
+                text: 'Promise 的理解',
+                link: '/front/interview/promiss',
+              },
             ],
           },
           {
