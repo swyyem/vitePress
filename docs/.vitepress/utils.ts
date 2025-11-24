@@ -243,6 +243,14 @@ export default {
                 text: 'Promise 的理解',
                 link: '/front/interview/promiss',
               },
+              {
+                text: 'Promise 为什么支持链式调用',
+                link: '/front/interview/promiss-lian',
+              },
+              {
+                text: 'Javascript的运行机制',
+                link: '/front/interview/javascript-yunxingjizhi',
+              },
             ],
           },
           {
