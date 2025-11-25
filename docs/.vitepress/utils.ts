@@ -259,6 +259,10 @@ export default {
                 text: '浏览器垃圾回收',
                 link: '/front/interview/lese',
               },
+              {
+                text: '多人开发 避免版本冲突',
+                link: '/front/interview/kaifa-chongtu',
+              },
             ],
           },
           {
