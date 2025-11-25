@@ -251,6 +251,14 @@ export default {
                 text: 'Javascript的运行机制',
                 link: '/front/interview/javascript-yunxingjizhi',
               },
+              {
+                text: '实现继承的几种方式',
+                link: '/front/interview/extends',
+              },
+              {
+                text: '浏览器垃圾回收',
+                link: '/front/interview/lese',
+              },
             ],
           },
           {
