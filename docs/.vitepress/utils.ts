@@ -263,6 +263,10 @@ export default {
                 text: '多人开发 避免版本冲突',
                 link: '/front/interview/kaifa-chongtu',
               },
+              {
+                text: 'Git 常用命令',
+                link: '/front/interview/git-changyong',
+              },
             ],
           },
           {
