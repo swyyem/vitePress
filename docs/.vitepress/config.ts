@@ -81,6 +81,11 @@ export default defineConfig({
         activeMatch: '/others/',
       },
       {
+        text: 'Git 规范',
+        link: '/conventionalCommits/git',
+        activeMatch: '/conventionalCommits/',
+      },
+      {
         text: '大模型',
         link: '/AILargeModel/TechnicalTerm',
         activeMatch: '/AILargeModel/',
