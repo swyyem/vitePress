@@ -32,6 +32,15 @@ export default defineConfig({
           '@component': path.resolve(__dirname, '../../src/components/'),
         },
       });
+
+      // 重写表格渲染函数
+      md.renderer.rules.table_open = function () {
+        return '<div class="markdown-table-wrapper"><table>';
+      };
+
+      md.renderer.rules.table_close = function () {
+        return '</table></div>';
+      };
     },
     container: {
       tipLabel: '提示',
@@ -65,6 +74,11 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
+      {
+        text: '宝宝',
+        link: '/meinv/hufu',
+        activeMatch: '/hufu/',
+      },
       { text: 'Markdown', link: '/Markdown' },
       { text: '演示', link: '/api' },
       { text: '组件', link: '/component' },
@@ -93,6 +107,7 @@ export default defineConfig({
     ],
 
     sidebar: {
+      '/meinv/': getSideBar('meinv'),
       '/front/': getSideBar('front'),
       '/back/': getSideBar('back'),
       '/others': getSideBar('others'),

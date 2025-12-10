@@ -16,6 +16,30 @@ export default {
   getSideBar(path) {
     const wholeList = [
       {
+        text: 'meinv',
+        items: [
+          {
+            text: '宝宝',
+            collapsible: true,
+            collapsed: false, // 默认展开
+            items: [
+              {
+                text: '护肤',
+                collapsible: true,
+                collapsed: false, // 默认展开
+                link: '/meinv/hufu/',
+              },
+              {
+                text: '护肤1',
+                collapsible: true,
+                collapsed: false, // 默认展开
+                link: '/meinv/hufu1/',
+              },
+            ],
+          },
+        ],
+      },
+      {
         text: 'front',
 
         items: [

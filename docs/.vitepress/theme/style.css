@@ -39,3 +39,13 @@ html.dark {
 .VPSidebarItem .VPSidebarItem .VPLink span {
   font-weight: bold;
 }
+
+.markdown-table-wrapper {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.markdown-table-wrapper table {
+  min-width: 800px;
+  white-space: nowrap;
+}
