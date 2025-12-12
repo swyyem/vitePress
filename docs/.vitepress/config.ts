@@ -29,7 +29,7 @@ export default defineConfig({
       md.use(componentPreview, {
         clientOnly: true,
         alias: {
-          '@component': path.resolve(__dirname, '../../src/components/'),
+          '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
         },
       });
 
@@ -54,7 +54,7 @@ export default defineConfig({
     plugins: [demoblockVitePlugin() as unknown as Plugin],
     resolve: {
       alias: {
-        '@component': path.resolve(__dirname, '../../src/components/'),
+        '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
         '@demo-preview': path.resolve(__dirname, './plugins/demo-preview/component/index'),
         '@script-preview': path.resolve(__dirname, './plugins/script-preview/component/'),
         '@demo-block': path.resolve(__dirname, './plugins/demo-block/component/container/'),

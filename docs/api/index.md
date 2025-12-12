@@ -17,6 +17,9 @@ outline: deep
 // });
 </script> -->
 
+<script setup>
+</script>
+
 :::demo
 
 ```vue
@@ -32,23 +35,13 @@ outline: deep
 
 :::
 
-:::demo
-
-```vue
-<template>
-  <el-button>默认按钮</el-button>
-  <el-button type="primary">主要按钮</el-button>
-  <el-button type="success">成功按钮</el-button>
-  <el-button type="info">信息按钮</el-button>
-</template>
-```
-
-:::
-<!-- ../src/components -->
-<preview path='@component/ElButton.vue'  title="title" description="content" />
+<!-- ../src/toco-ui -->
+<preview path='@toco-ui/ElButton.vue'  title="title" description="content" />
 
 ::: script-preview expand=true
+
 <!-- console.log('1 + 2 =', add(1, 2)); -->
+
 console.log('Hello VitePress!');
 console.error('This is an error message.');
 
@@ -80,5 +73,3 @@ $ bun create vue@latest
 ```
 
 :::
-
-
