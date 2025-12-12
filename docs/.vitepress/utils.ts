@@ -876,6 +876,59 @@ export default {
           },
         ],
       },
+      {
+        text: 'python',
+        items: [
+          {
+            text: '基础语法结构',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/basic',
+          },
+          {
+            text: '面向对象编程',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/class',
+          },
+          {
+            text: '异常处理',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/error',
+          },
+          {
+            text: '函数定义与使用',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/function',
+          },
+          {
+            text: '上下文管理（with语句）',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/with',
+          },
+          {
+            text: 'Python 核心工具箱',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/toolbox',
+          },
+          {
+            text: 'Python 实用工具库',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/toollibrary',
+          },
+          {
+            text: '学习路径建议',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/python/student',
+          },
+        ],
+      },
     ];
 
     const map = wholeList.reduce((acc, curr) => {

@@ -100,6 +100,11 @@ export default defineConfig({
         activeMatch: '/conventionalCommits/',
       },
       {
+        text: 'python',
+        link: '/python/basic',
+        activeMatch: '/python/',
+      },
+      {
         text: '大模型',
         link: '/AILargeModel/TechnicalTerm',
         activeMatch: '/AILargeModel/',
@@ -115,6 +120,7 @@ export default defineConfig({
       '/api': getSideBar('api'),
       '/component': getSideBar('component'),
       '/AILargeModel': getSideBar('AILargeModel'),
+      '/python': getSideBar('python'),
     },
 
     carbonAds: {
