@@ -1,13 +1,13 @@
-import { defineConfig } from 'vitepress';
-import { demoblock as demoblockPlugin } from './plugins/demo-block/plugin/demoblock';
-import { VitePluginDemoblock as demoblockVitePlugin } from './plugins/demo-block/plugin/vite-plugin-demoblock';
-import codePreviewPlugin from './plugins/script-preview/plugin/codePreview';
-import path from 'path';
+import { defineConfig } from 'vitepress'
+import { demoblock as demoblockPlugin } from './plugins/demo-block/plugin/demoblock'
+import { VitePluginDemoblock as demoblockVitePlugin } from './plugins/demo-block/plugin/vite-plugin-demoblock'
+import codePreviewPlugin from './plugins/script-preview/plugin/codePreview'
+import path from 'path'
 
-import utils from './utils';
-const { getSideBar } = utils;
+import utils from './utils'
+const { getSideBar } = utils
 
-import { containerPreview, componentPreview } from './plugins/demo-preview/plugin/index';
+import { containerPreview, componentPreview } from './plugins/demo-preview/plugin/index'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -18,29 +18,30 @@ export default defineConfig({
     config: md => {
       md.use(demoblockPlugin, {
         customClass: 'demoblock-custom',
-      });
-      md.use(codePreviewPlugin, { clientOnly: true });
+      })
+      md.use(codePreviewPlugin, { clientOnly: true })
       /**
        * SSR Compatibility
        * @link https://vitepress.dev/guide/ssr-compat
        * If the components are not SSR-friendly, you can specify the clientOnly to disable SSR.
        */
-      md.use(containerPreview, { clientOnly: true });
+      md.use(containerPreview, { clientOnly: true })
       md.use(componentPreview, {
         clientOnly: true,
         alias: {
           '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
+          '@swy-ui': path.resolve(__dirname, '../../src/swy-ui/'),
         },
-      });
+      })
 
       // 重写表格渲染函数
       md.renderer.rules.table_open = function () {
-        return '<div class="markdown-table-wrapper"><table>';
-      };
+        return '<div class="markdown-table-wrapper"><table>'
+      }
 
       md.renderer.rules.table_close = function () {
-        return '</table></div>';
-      };
+        return '</table></div>'
+      }
     },
     container: {
       tipLabel: '提示',
@@ -55,6 +56,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
+        '@swy-ui': path.resolve(__dirname, '../../src/swy-ui/'),
         '@demo-preview': path.resolve(__dirname, './plugins/demo-preview/component/index'),
         '@script-preview': path.resolve(__dirname, './plugins/script-preview/component/'),
         '@demo-block': path.resolve(__dirname, './plugins/demo-block/component/container/'),
@@ -136,4 +138,4 @@ export default defineConfig({
       { icon: 'discord', link: 'https://discord.com/invite/vue' },
     ],
   },
-});
+})

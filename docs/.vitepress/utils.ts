@@ -863,6 +863,12 @@ export default {
         text: 'AILargeModel',
         items: [
           {
+            text: 'AI大模型基本原理及API使用',
+            collapsible: true, // 允许折叠
+            collapsed: true, // 默认折叠
+            link: '/AILargeModel/jibenyuanli',
+          },
+          {
             text: 'RAG 大模型',
             collapsible: true, // 允许折叠
             collapsed: true, // 默认折叠
@@ -929,15 +935,15 @@ export default {
           },
         ],
       },
-    ];
+    ]
 
     const map = wholeList.reduce((acc, curr) => {
       if (curr.text && curr.items) {
-        acc[curr.text] = curr.items;
+        acc[curr.text] = curr.items
       }
-      return acc;
-    }, {});
+      return acc
+    }, {})
 
-    return map[path] || [];
+    return map[path] || []
   },
-};
+}

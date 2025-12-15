@@ -33,4 +33,13 @@ outline: deep
 </template>
 ```
 
+:::
+:::demo
 
+```vue
+<template>
+  <SwyButton>默认按钮</SwyButton>
+</template>
+```
+
+:::
