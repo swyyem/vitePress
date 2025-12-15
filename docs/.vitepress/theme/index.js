@@ -1,10 +1,9 @@
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import Button from '@toco-ui/Button.vue'
 import '@styles'
 import 'element-plus/dist/index.css'
 import * as ElementPlus from 'element-plus'
-import SwyUi from '@swy-ui/components/index'
+import SwyUi from '@swy-ui/index'
 import { CodePreview } from '@script-preview'
 import { Demo, DemoBlock } from '@demo-block'
 import { ElementPlusContainer } from '@demo-preview'
@@ -45,11 +44,10 @@ export default {
     ctx.app.component('Demo', Demo)
     ctx.app.component('DemoBlock', DemoBlock)
 
-    ctx.app.component(Button.name, Button)
     ctx.app.component('CodePreview', CodePreview)
     ctx.app.component('demo-preview', ElementPlusContainer)
-    ctx.app.component('ProField', ProField)
 
+    ctx.app.component('ProField', ProField)
     ctx.app.component('ProFormField', ProFieldsComponent)
     ctx.app.component('ProForm', ProForm)
     ctx.app.component('ProFormList', ProFormList)

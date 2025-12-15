@@ -38,6 +38,8 @@ const props = withDefaults(defineProps<Props>(), {
   loading: false,
 })
 
+console.log('props', props)
+
 const emit = defineEmits<{
   (e: 'click', event: MouseEvent): void
 }>()
