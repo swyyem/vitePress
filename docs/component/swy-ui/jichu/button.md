@@ -6,7 +6,7 @@
 
 ```vue
 <template>
-  <SwyButton type="primary">默认按钮</SwyButton>
+  <ElButton type="primary">默认按钮</ElButton>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'

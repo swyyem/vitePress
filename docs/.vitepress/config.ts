@@ -30,7 +30,7 @@ export default defineConfig({
         clientOnly: true,
         alias: {
           '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
-          '@swy-ui': path.resolve(__dirname, '../../src/swy-ui/'),
+          '@swy-uis': path.resolve(__dirname, '../../src/swy-ui/'),
         },
       })
 
@@ -55,8 +55,9 @@ export default defineConfig({
     plugins: [demoblockVitePlugin() as unknown as Plugin],
     resolve: {
       alias: {
+        '@swy-ui': path.resolve(__dirname, '../../src/swy-ui'), // 添加 element-plus 相关的路径别名
         '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
-        '@swy-ui': path.resolve(__dirname, '../../src/swy-ui/'),
+        '@swy-uis': path.resolve(__dirname, '../../src/swy-ui/'),
         '@demo-preview': path.resolve(__dirname, './plugins/demo-preview/component/index'),
         '@script-preview': path.resolve(__dirname, './plugins/script-preview/component/'),
         '@demo-block': path.resolve(__dirname, './plugins/demo-block/component/container/'),

@@ -9,7 +9,8 @@
     "vite.config.ts",
     "vitest.config.ts",
     "components/**/*.vue", // 如果组件在单独目录
-    "components/**/*.ts"
+    "components/**/*.ts",
+    "components/src/**/**/*.vue", // 如果组件在单独目录
   ],
   "exclude": [
     "src/**/__tests__/*",
@@ -19,7 +20,6 @@
     "**/*.spec.ts"
   ],
   "compilerOptions": {
-    "baseUrl": ".",
     "moduleResolution": "bundler",
     "module": "esnext",
     "target": "esnext",
@@ -40,13 +40,15 @@
       "vite/client",
       "vue"
     ],
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ],
       "@components/*": [
         "./components/*"
-      ]
+      ],
+      "@swy-ui/*": ["src/swy-ui/*"]
     },
     "lib": [
       "esnext",

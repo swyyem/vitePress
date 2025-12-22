@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx' // 引入插件
 import dts from 'vite-plugin-dts'
+import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -29,4 +30,11 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+      // "@swy-ui/*": ["src/swy-ui/*"]
+      '@swy-ui': resolve(__dirname, 'src/swy-ui'), // 添加 element-plus 相关的路径别名
+    },
+  },
 })

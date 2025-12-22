@@ -2,8 +2,8 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import '@styles'
 import 'element-plus/dist/index.css'
-import * as ElementPlus from 'element-plus'
-import SwyUi from '@swy-ui/index'
+// import * as ElementPlus from 'element-plus'
+import SwyUi from '@swy-uis/index'
 import { CodePreview } from '@script-preview'
 import { Demo, DemoBlock } from '@demo-block'
 import { ElementPlusContainer } from '@demo-preview'
@@ -29,11 +29,11 @@ export default {
   enhanceApp(ctx) {
     DefaultTheme.enhanceApp(ctx)
 
-    try {
-      ctx.app.use(ElementPlus)
-    } catch (e) {
-      console.warn(`注册组件 ${key} 失败`, e)
-    }
+    // try {
+    //   ctx.app.use(ElementPlus)
+    // } catch (e) {
+    //   console.warn(`注册组件 ${key} 失败`, e)
+    // }
 
     try {
       ctx.app.use(SwyUi)

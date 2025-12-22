@@ -1,35 +1,88 @@
-// index.ts
-import type { App, Plugin } from 'vue'
-import type { ComponentWithInstall } from './types'
-import _Button from './button'
+// export * from './affix'
+// export * from './alert'
+// export * from './autocomplete'
+// export * from './avatar'
+// export * from './backtop'
+// export * from './badge'
+// export * from './breadcrumb'
+export * from './button'
+// export * from './calendar'
+// export * from './card'
+// export * from './carousel'
+// export * from './cascader'
+// export * from './cascader-panel'
+// export * from './check-tag'
+// export * from './checkbox'
+// export * from './col'
+// export * from './collapse'
+// export * from './collapse-transition'
+// export * from './color-picker-panel'
+// export * from './color-picker'
+// export * from './config-provider'
+// export * from './container'
+// export * from './countdown'
+// export * from './date-picker'
+// export * from './date-picker-panel'
+// export * from './descriptions'
+// export * from './dialog'
+// export * from './divider'
+// export * from './drawer'
+// export * from './dropdown'
+// export * from './empty'
+// export * from './form'
+// export * from './icon'
+// export * from './image'
+// export * from './image-viewer'
+// export * from './input'
+// export * from './input-number'
+// export * from './input-tag'
+// export * from './link'
+// export * from './menu'
+// export * from './overlay'
+// export * from './page-header'
+// export * from './pagination'
+// export * from './popconfirm'
+// export * from './popper'
+// export * from './progress'
+// export * from './radio'
+// export * from './rate'
+// export * from './result'
+// export * from './row'
+// export * from './scrollbar'
+// export * from './select'
+// export * from './select-v2'
+// export * from './skeleton'
+// export * from './slider'
+// export * from './space'
+// export * from './statistic'
+// export * from './steps'
+// export * from './switch'
+// export * from './table'
+// export * from './table-v2'
+// export * from './tabs'
+// export * from './tag'
+// export * from './text'
+// export * from './time-picker'
+// export * from './time-select'
+// export * from './timeline'
+// export * from './tooltip'
+// export * from './transfer'
+// export * from './tree'
+// export * from './tree-select'
+// export * from './tree-v2'
+// export * from './upload'
+// export * from './virtual-list'
+// export * from './watermark'
+// export * from './tour'
+// export * from './anchor'
+// export * from './segmented'
+// export * from './mention'
+// export * from './splitter'
 
-// 单个组件类型
-export type ButtonType = ComponentWithInstall<typeof _Button>
-
-// 添加 install 方法
-const Button: ButtonType = Object.assign(_Button, {
-  install(app: App) {
-    app.component(_Button.name, _Button)
-  },
-})
-
-// 导出单个组件
-export { Button }
-
-// 组件列表
-const components: Plugin[] = [Button]
-
-// 完整库安装
-export const MdUI: Plugin = {
-  install(app: App) {
-    components.forEach(component => {
-      app.use(component)
-    })
-
-    // 可以在这里添加全局配置、指令等
-    // app.config.globalProperties.$md = { version: '1.0.0' }
-  },
-}
-
-// 默认导出
-export default MdUI
+// // plugins
+// export * from './infinite-scroll'
+// export * from './loading'
+// export * from './message'
+// export * from './message-box'
+// export * from './notification'
+// export * from './popover'
