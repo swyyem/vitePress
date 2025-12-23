@@ -24,9 +24,11 @@ export const useFormSize = (
 }
 
 export const useFormDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
+  // 获取当前组件的 disabled 属性
   const disabled = useProp<boolean>('disabled')
+  // 注入父级表单上下文
   const form = inject(formContextKey, undefined)
-
+  // 返回计算属性，按优先级判断禁用状态
   return computed(() => {
     return disabled.value ?? unref(fallback) ?? form?.disabled ?? false
   })
