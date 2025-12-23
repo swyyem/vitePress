@@ -29,7 +29,6 @@ export default defineConfig({
       md.use(componentPreview, {
         clientOnly: true,
         alias: {
-          '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
           '@swy-uis': path.resolve(__dirname, '../../src/swy-ui/'),
         },
       })
@@ -56,7 +55,6 @@ export default defineConfig({
     resolve: {
       alias: {
         '@swy-ui': path.resolve(__dirname, '../../src/swy-ui'), // 添加 element-plus 相关的路径别名
-        '@toco-ui': path.resolve(__dirname, '../../src/toco-ui/'),
         '@swy-uis': path.resolve(__dirname, '../../src/swy-ui/'),
         '@demo-preview': path.resolve(__dirname, './plugins/demo-preview/component/index'),
         '@script-preview': path.resolve(__dirname, './plugins/script-preview/component/'),

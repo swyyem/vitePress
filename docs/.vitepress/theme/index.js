@@ -21,7 +21,7 @@ import ProTable, {
   ProInputTag,
   ProColumn,
   ProInternalAddPrefix,
-} from '@toco-ui/index'
+} from '../../../src/toco-ui/index'
 
 export default {
   ...DefaultTheme,
