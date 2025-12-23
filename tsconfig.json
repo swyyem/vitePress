@@ -20,7 +20,8 @@
     "**/*.spec.ts"
   ],
   "compilerOptions": {
-    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
     "module": "esnext",
     "target": "esnext",
     "declaration": true,
