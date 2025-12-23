@@ -1,0 +1,1 @@
+import{_ as r,c as e,o as d,aQ as o}from"./chunks/framework.CtsLwA2Q.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"meinv/hufu1.md","filePath":"meinv/hufu1.md"}'),n={name:"meinv/hufu1.md"};function s(m,t,a,g,i,l){return d(),e("div",null,t[0]||(t[0]=[o("",6)]))}const u=r(n,[["render",s]]);export{_ as __pageData,u as default};

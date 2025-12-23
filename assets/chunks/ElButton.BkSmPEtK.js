@@ -1,0 +1,1 @@
+import{_ as e,B as n,b as r,o as s,w as a,a as _}from"./framework.CtsLwA2Q.js";const c={};function l(u,t){const o=n("ElButton",!0);return s(),r(o,null,{default:a(()=>t[0]||(t[0]=[_("22223333",-1)])),_:1,__:[0]})}const p=e(c,[["render",l]]);export{p as default};
