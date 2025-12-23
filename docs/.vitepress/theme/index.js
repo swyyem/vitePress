@@ -1,6 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
-import '@styles'
 import 'element-plus/dist/index.css'
 // import * as ElementPlus from 'element-plus'
 import SwyUi from '@swy-uis/index'

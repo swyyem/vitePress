@@ -61,7 +61,6 @@ export default defineConfig({
         '@demo-preview': path.resolve(__dirname, './plugins/demo-preview/component/index'),
         '@script-preview': path.resolve(__dirname, './plugins/script-preview/component/'),
         '@demo-block': path.resolve(__dirname, './plugins/demo-block/component/container/'),
-        '@styles': path.resolve(__dirname, '../../src/styles/index.css'),
       },
       extensions: ['.js', '.ts', '.vue', '.json'], // 确保支持自动解析扩展名
     },
