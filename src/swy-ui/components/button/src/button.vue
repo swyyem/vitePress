@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-// import { ElIcon } from '@element-plus/components/icon'
+// import { ElIcon } from '@swy-ui/components/icon'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { useButton } from './use-button'
 import { buttonEmits, buttonProps } from './button'
@@ -65,6 +65,8 @@ const buttonKls = computed(() => [
   ns.is('link', props.link),
   ns.is('has-bg', props.bg),
 ])
+
+console.log('buttonKls', ns.b(), ns.m(_type.value))
 
 defineExpose({
   /** @description button html element */

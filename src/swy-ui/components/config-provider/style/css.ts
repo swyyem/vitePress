@@ -1,2 +1,2 @@
-import '@element-plus/components/base/style/css'
-import '@element-plus/theme-chalk/el-config-provider.css'
+import '@swy-ui/components/base/style/css'
+import '@swy-ui/theme-chalk/el-config-provider.css'

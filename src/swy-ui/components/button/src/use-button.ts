@@ -14,7 +14,7 @@ export const useButton = (props: ButtonProps, emit: SetupContext<ButtonEmits>['e
       replacement: 'link',
       version: '3.0.0',
       scope: 'props',
-      ref: 'https://element-plus.org/en-US/component/button.html#button-attributes',
+      ref: '',
     },
     computed(() => props.type === 'text')
   )

@@ -11,17 +11,17 @@ html.dark {
     @include set-css-color-type($colors, $type);
   }
 
-  // --el-box-shadow-#{$type}
+  // --swy-box-shadow-#{$type}
   @include set-component-css-var('box-shadow', $box-shadow);
 
   // color-scheme
-  // Background --el-bg-color-#{$type}
+  // Background --swy-bg-color-#{$type}
   @include set-component-css-var('bg-color', $bg-color);
-  // --el-text-color-#{$type}
+  // --swy-text-color-#{$type}
   @include set-component-css-var('text-color', $text-color);
-  // --el-border-color-#{$type}
+  // --swy-border-color-#{$type}
   @include set-component-css-var('border-color', $border-color);
-  // Fill --el-fill-color-#{$type}
+  // Fill --swy-fill-color-#{$type}
   @include set-component-css-var('fill-color', $fill-color);
   @include set-component-css-var('mask-color', $mask-color);
 }

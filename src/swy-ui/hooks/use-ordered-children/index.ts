@@ -82,7 +82,7 @@ export const useOrderedChildren = <T extends ChildEssential>(
         sortChildren()
 
         return slots.default
-          ? // 创建一个新的 `ReactiveEffect` 以确保 [ChildrenSorter](file://c:\Users\sunwangyang\Downloads\element-plus-dev\element-plus-dev\packages\hooks\use-ordered-children\index.ts#L94-L108) 不会追踪额外依赖
+          ? // 创建一个新的 `ReactiveEffect` 以确保 [ChildrenSorter](file://c:\Users\sunwangyang\Downloads\-dev\-dev\packages\hooks\use-ordered-children\index.ts#L94-L108) 不会追踪额外依赖
 
             h(IsolatedRenderer, {
               render: slots.default,

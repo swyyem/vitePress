@@ -2,8 +2,6 @@
   <ElButton>22223333</ElButton>
 </template>
 
-<script lang="ts">
-// import { ElButton } from "element-plus";
-</script>
+<script lang="ts"></script>
 
 <style scoped></style>

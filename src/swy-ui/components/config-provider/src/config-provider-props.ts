@@ -33,31 +33,31 @@ export const configProviderProps = buildProps({
    */
   size: useSizeProp,
   /**
-   * @description button related configuration, [see the following table](https://element-plus.org/en-US/component/config-provider.html#button-attribute)
+   * @description button related configuration, [see the following table](https://.org/en-US/component/config-provider.html#button-attribute)
    */
   button: {
     type: definePropType<ButtonConfigContext>(Object),
   },
   /**
-   * @description card related configuration, [see the following table](https://element-plus.org/en-US/component/config-provider.html#card-attribute)
+   * @description card related configuration, [see the following table](https://.org/en-US/component/config-provider.html#card-attribute)
    */
   card: {
     type: definePropType<CardConfigContext>(Object),
   },
   /**
-   * @description dialog related configuration, [see the following table](https://element-plus.org/en-US/component/config-provider.html#dialog-attribute)
+   * @description dialog related configuration, [see the following table](https://.org/en-US/component/config-provider.html#dialog-attribute)
    */
   dialog: {
     type: definePropType<any>(Object),
   },
   /**
-   * @description link related configuration, [see the following table](https://element-plus.org/en-US/component/config-provider.html#link-attribute)
+   * @description link related configuration, [see the following table](https://.org/en-US/component/config-provider.html#link-attribute)
    */
   link: {
     type: definePropType<any>(Object),
   },
   /**
-   * @description features at experimental stage to be added, all features are default to be set to false, [see the following table](https://element-plus.org/en-US/component/config-provider.html#experimental-features)                                                                            | ^[object]
+   * @description features at experimental stage to be added, all features are default to be set to false, [see the following table](https://.org/en-US/component/config-provider.html#experimental-features)                                                                            | ^[object]
    */
   experimentalFeatures: {
     type: definePropType<ExperimentalFeatures>(Object),
@@ -70,7 +70,7 @@ export const configProviderProps = buildProps({
     default: true,
   },
   /**
-   * @description message related configuration, [see the following table](https://element-plus.org/en-US/component/config-provider.html#message-attribute)
+   * @description message related configuration, [see the following table](https://.org/en-US/component/config-provider.html#message-attribute)
    */
   message: {
     type: definePropType<any>(Object),
@@ -80,7 +80,7 @@ export const configProviderProps = buildProps({
    */
   zIndex: Number,
   /**
-   * @description global component className prefix (cooperated with [$namespace](https://github.com/element-plus/element-plus/blob/dev/packages/theme-chalk/src/mixins/config.scss#L1)) | ^[string]
+   * @description global component className prefix (cooperated with [$namespace](https://github.com///blob/dev/packages/theme-chalk/src/mixins/config.scss#L1)) | ^[string]
    */
   namespace: {
     type: String,

@@ -1,2 +1,2 @@
-import '@element-plus/components/base/style'
-import '@element-plus/theme-chalk/src/card.scss'
+import '@swy-ui/components/base/style'
+import '@swy-ui/theme-chalk/src/card.scss'
