@@ -3,10 +3,6 @@
 @use 'common/var' as *;
 
 @include b(breadcrumb) {
-  font-size: 14px;
-  line-height: 1;
-  @include utils-clearfix;
-
   @include e(separator) {
     margin: 0 9px;
     font-weight: bold;

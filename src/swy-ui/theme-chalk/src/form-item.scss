@@ -54,27 +54,6 @@ $form-item-label-top-margin-bottom: map.merge(
   $form-item-label-top-margin-bottom
 );
 
-@include b(form) {
-  @include set-component-css-var('form', $form);
-
-  @include m(inline) {
-    .#{$namespace}-form-item {
-      display: inline-flex;
-      vertical-align: middle;
-      margin-right: 32px;
-    }
-
-    &.#{$namespace}-form--label-top {
-      display: flex;
-      flex-wrap: wrap;
-
-      .#{$namespace}-form-item {
-        display: block;
-      }
-    }
-  }
-}
-
 @include b(form-item) {
   display: flex;
   --font-size: #{map.get($input-font-size, 'default')};

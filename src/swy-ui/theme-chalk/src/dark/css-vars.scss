@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // CSS3 var
 @use './var' as *;
 @use '../mixins/_var.scss' as *;
@@ -11,17 +13,17 @@ html.dark {
     @include set-css-color-type($colors, $type);
   }
 
-  // --swy-box-shadow-#{$type}
+  // --el-box-shadow-#{$type}
   @include set-component-css-var('box-shadow', $box-shadow);
 
   // color-scheme
-  // Background --swy-bg-color-#{$type}
+  // Background --el-bg-color-#{$type}
   @include set-component-css-var('bg-color', $bg-color);
-  // --swy-text-color-#{$type}
+  // --el-text-color-#{$type}
   @include set-component-css-var('text-color', $text-color);
-  // --swy-border-color-#{$type}
+  // --el-border-color-#{$type}
   @include set-component-css-var('border-color', $border-color);
-  // Fill --swy-fill-color-#{$type}
+  // Fill --el-fill-color-#{$type}
   @include set-component-css-var('fill-color', $fill-color);
   @include set-component-css-var('mask-color', $mask-color);
 }
@@ -32,6 +34,7 @@ html.dark {
 
 @include dark(card) {
   @include set-component-css-var('card', $card);
+  @include set-css-var-value(('fill-color', 'blank'), getCssVar('card', 'bg-color'));
 }
 
 @include dark(empty) {

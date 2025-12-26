@@ -1,8 +1,10 @@
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+
 // import 'element-plus/dist/index.css'
 // import * as ElementPlus from 'element-plus'
 import SwyUi from '@swy-uis/index'
+import '@swy-uis/theme-chalk/src/index.scss'
 import { CodePreview } from '@script-preview'
 import { Demo, DemoBlock } from '@demo-block'
 import { ElementPlusContainer } from '@demo-preview'

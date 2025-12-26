@@ -1,14 +1,6 @@
 @use 'mixins/mixins' as *;
 @use 'mixins/var' as *;
 @use 'common/var' as *;
-@use 'common/transition';
-
-@include b(collapse) {
-  @include set-component-css-var('collapse', $collapse);
-
-  border-top: 1px solid getCssVar('collapse-border-color');
-  border-bottom: 1px solid getCssVar('collapse-border-color');
-}
 
 @include b(collapse-item) {
   @include when(disabled) {
@@ -71,24 +63,5 @@
 
   &:last-child {
     margin-bottom: -1px;
-  }
-}
-
-.#{$namespace}-collapse-icon-position {
-  &-left {
-    .#{$namespace}-collapse-item__ {
-      &header {
-        gap: 8px;
-      }
-      &title {
-        order: 1;
-      }
-    }
-  }
-
-  &-right {
-    .#{$namespace}-collapse-item__header {
-      padding-right: 8px;
-    }
   }
 }

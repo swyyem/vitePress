@@ -543,23 +543,18 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'component',
+    text: 'SwyUI',
+    collapsible: true, // 允许折叠
+    collapsed: true, // 默认折叠
     items: [
       {
-        text: 'SwyUI 组件库',
+        text: '基础组件',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
         items: [
           {
-            text: '基础组件',
-            collapsible: true, // 允许折叠
-            collapsed: true, // 默认折叠
-            items: [
-              {
-                text: 'button',
-                link: '/component/swy-ui/jichu/button',
-              },
-            ],
+            text: 'button',
+            link: '/component/swy-ui/jichu/button',
           },
         ],
       },
