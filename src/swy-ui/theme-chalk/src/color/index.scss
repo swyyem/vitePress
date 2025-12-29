@@ -1,14 +1,16 @@
-@use 'sass:color';
-@use 'sass:string';
+@use 'sass:color'; // 导入颜色处理函数
+@use 'sass:string'; // 导入字符串处理函数
 
+// 将 rgb 颜色转换为 hex 颜色
 @function rgb2hex($color) {
   @return string.unquote('#' + #{string.slice(color.ie-hex-str($color), 4)});
 }
 
-// rgba color above solid color
+// 混合叠加颜色   计算两个颜色叠加后的效果，模拟透明颜色覆盖在不透明颜色上的视觉效果
 @function mix-overlay-color($upper, $lower) {
   $opacity: color.alpha($upper);
 
+  // 上层颜色值 × 透明度 + 下层颜色值 × (1 - 透明度)
   $red: color.channel($upper, 'red', $space: rgb) * $opacity +
     color.channel($lower, 'red', $space: rgb) * (1 - $opacity);
   $green: color.channel($upper, 'green', $space: rgb) * $opacity +

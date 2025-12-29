@@ -1,19 +1,20 @@
-/* Element Chalk Variables */
-@use 'sass:math';
-@use 'sass:map';
-@use 'sass:color';
+@use 'sass:math'; // 导入数学函数
+@use 'sass:map'; // 导入映射函数
+@use 'sass:color'; // 导入颜色函数
 
-@use '../mixins/function.scss' as *;
+@use '../mixins/function.scss' as *; // 导入自定义函数
 
-// Special comment for theme configurator
-// type|skipAutoTranslation|Category|Order
+//主题配置器特别说明
+//类型| skipAutoTranslation |类别|顺序
 // skipAutoTranslation 1
 
-// types
+// 定义颜色类型
 $types: primary, success, warning, danger, error, info;
 
-// Color
-$colors: () !default;
+// 基础颜色定义
+$colors: (
+
+) !default; //初始化一个空的 SCSS Map 变量，!default 表示只有当该变量未被定义时才使用这个值
 $colors: map.deep-merge(
   (
     'white': #ffffff,
@@ -21,25 +22,33 @@ $colors: map.deep-merge(
     'primary': (
       'base': #409eff,
     ),
+    // 主色
     'success': (
-      'base': #67c23a,
-    ),
+        'base': #67c23a,
+      ),
+    // 成功色
     'warning': (
-      'base': #e6a23c,
-    ),
+        'base': #e6a23c,
+      ),
+    // 警告色
     'danger': (
-      'base': #f56c6c,
-    ),
+        'base': #f56c6c,
+      ),
+    // 危险色
     'error': (
-      'base': #f56c6c,
-    ),
+        'base': #f56c6c,
+      ),
+    // 错误色
     'info': (
-      'base': #909399,
-    ),
+        'base': #909399,
+      ),
+    // 信息色
   ),
   $colors
-);
+); //用新定义的颜色 Map 与现有的 $colors Map 合并
 
+// 从 $colors Map 中提取各个颜色值，创建单独的变量，方便使用
+// map.get 用于从 Map 中获取值，!default 确保变量未定义时才赋值
 $color-white: map.get($colors, 'white') !default;
 $color-black: map.get($colors, 'black') !default;
 $color-primary: map.get($colors, 'primary', 'base') !default;
@@ -50,8 +59,9 @@ $color-error: map.get($colors, 'error', 'base') !default;
 $color-info: map.get($colors, 'info', 'base') !default;
 
 // https://sass-lang.com/documentation/values/maps#immutability
-// mix colors with white/black to generate light/dark level
+// 通过 mixin 生成主色的明暗变化
 @mixin set-color-mix-level($type, $number, $mode: 'light', $mix-color: $color-white) {
+  // 混合白色生成明亮色调 (light-1 到 light-9)
   $colors: map.deep-merge(
     (
       $type: (
@@ -69,7 +79,7 @@ $color-info: map.get($colors, 'info', 'base') !default;
 }
 
 // $colors.primary.light-i
-// --el-color-primary-light-i
+// --swy-color-primary-light-i
 // 10% 53a8ff
 // 20% 66b1ff
 // 30% 79bbff
@@ -85,7 +95,7 @@ $color-info: map.get($colors, 'info', 'base') !default;
   }
 }
 
-// --el-color-primary-dark-2
+// --swy-color-primary-dark-2
 @each $type in $types {
   @include set-color-mix-level($type, 2, 'dark', $color-black);
 }
@@ -156,6 +166,11 @@ $border-radius: map.merge(
   $border-radius
 );
 
+// CSS 阴影语法：offset-x offset-y blur-radius spread-radius color
+// offset-x/y：阴影偏移量
+// blur-radius：模糊半径
+// spread-radius：扩展半径
+// color：阴影颜色（通常用 rgba 格式控制透明度）
 // Box-shadow
 $box-shadow: () !default;
 $box-shadow: map.merge(
