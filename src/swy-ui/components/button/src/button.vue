@@ -66,8 +66,6 @@ const buttonKls = computed(() => [
   ns.is('has-bg', props.bg),
 ])
 
-console.log('buttonKls', ns.b(), ns.m(_type.value))
-
 defineExpose({
   /** @description button html element */
   ref: _ref,

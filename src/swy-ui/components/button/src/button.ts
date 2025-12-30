@@ -22,18 +22,18 @@ export const buttonNativeTypes = ['button', 'submit', 'reset'] as const
 
 export const buttonProps = buildProps({
   /**
-   * @description button size
+   * @description 按钮尺寸
    */
   size: useSizeProp,
   /**
-   * @description disable the button
+   * @description 禁用按钮
    */
   disabled: {
     type: Boolean,
     default: undefined,
   },
   /**
-   * @description button type
+   * @description 按钮类型
    */
   type: {
     type: String,
@@ -41,13 +41,13 @@ export const buttonProps = buildProps({
     default: '',
   },
   /**
-   * @description icon component
+   * @description 图标组件
    */
   icon: {
     type: iconPropType,
   },
   /**
-   * @description native button type
+   * @description 原生按钮类型
    */
   nativeType: {
     type: String,
@@ -55,70 +55,70 @@ export const buttonProps = buildProps({
     default: 'button',
   },
   /**
-   * @description determine whether it's loading
+   * @description 判断是否正在加载
    */
   loading: Boolean,
   /**
-   * @description customize loading icon component
+   * @description 自定义加载图标组件
    */
   loadingIcon: {
     type: iconPropType,
     default: () => Loading,
   },
   /**
-   * @description determine whether it's a plain button
+   * @description 判断是否是普通按钮
    */
   plain: {
     type: Boolean,
     default: undefined,
   },
   /**
-   * @description determine whether it's a text button
+   * @description 判断是否是文本按钮
    */
   text: {
     type: Boolean,
     default: undefined,
   },
   /**
-   * @description determine whether it's a link button
+   * @description 判断是否是链接按钮
    */
   link: Boolean,
   /**
-   * @description determine whether the text button background color is always on
+   * @description 判断文本按钮背景色是否常亮
    */
   bg: Boolean,
   /**
-   * @description native button autofocus
+   * @description 原生按钮自动对焦
    */
   autofocus: Boolean,
   /**
-   * @description determine whether it's a round button
+   * @description 判断是否是圆角按钮
    */
   round: {
     type: Boolean,
     default: undefined,
   },
   /**
-   * @description determine whether it's a circle button
+   * @description 判断是否是圆形按钮
    */
   circle: Boolean,
   /**
-   * @description custom button color, automatically calculate `hover` and `active` color
+   * @description 自定义按钮颜色，自动计算“hover”和“active”颜色
    */
   color: String,
   /**
-   * @description dark mode, which automatically converts `color` to dark mode colors
+   * @description 深色模式，自动将“颜色”转换为深色模式颜色
    */
   dark: Boolean,
   /**
-   * @description automatically insert a space between two chinese characters
+   * @description 自动在两个汉字之间插入空格
    */
   autoInsertSpace: {
     type: Boolean,
     default: undefined,
   },
   /**
-   * @description custom element tag
+   * @description 自定义元素标签
    */
   tag: {
     type: definePropType<string | Component>([String, Object]),
