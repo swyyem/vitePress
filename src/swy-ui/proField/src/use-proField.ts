@@ -5,9 +5,9 @@ import { useDeprecated } from '@swy-ui/hooks'
 import { buttonGroupContextKey } from './constants'
 
 import type { SetupContext } from 'vue'
-import type { ButtonEmits, ButtonProps } from './button'
+import type { ProFieldEmits, ProFieldProps } from './proField'
 
-export const useButton = (props: ButtonProps, emit: SetupContext<ButtonEmits>['emit']) => {
+export const useProField = (props: ProFieldProps, emit: SetupContext<ProFieldEmits>['emit']) => {
   // 检测到 type 属性为 text 时发出弃用警告
   useDeprecated(
     {
@@ -50,7 +50,7 @@ export const useButton = (props: ButtonProps, emit: SetupContext<ButtonEmits>['e
    * 功能：创建一个 DOM 引用，用于访问按钮的 DOM 元素
    * 用途：后续可以操作按钮的 DOM 属性或方法
    */
-  const _ref = ref<HTMLButtonSwyement>()
+  const _ref = ref<HTMLButtonElement>()
   /**
    * 功能：获取组件的插槽内容
    * 用途：用于处理按钮的默认插槽内容，比如按钮文本

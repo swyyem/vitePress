@@ -53,10 +53,10 @@ export const useFormItemInputId = (
   const inLabel = () => {
     let parent = instance?.parent
     while (parent) {
-      if (parent.type.name === 'ElFormItem') {
+      if (parent.type.name === 'SwyFormItem') {
         return false
       }
-      if (parent.type.name === 'ElLabelWrap') {
+      if (parent.type.name === 'SwyLabelWrap') {
         return true
       }
       parent = parent.parent
@@ -76,7 +76,7 @@ export const useFormItemInputId = (
     )
   })
 
-  // Generate id for ElFormItem label if not provided as prop
+  // Generate id for SwyFormItem label if not provided as prop
   onMounted(() => {
     idUnwatch = watch(
       [toRef(props, 'id'), disableIdGeneration] as any,

@@ -23,9 +23,9 @@ import type {
 } from './types'
 import type { FormItemProp } from './form-item'
 
-const COMPONENT_NAME = 'ElForm'
+const COMPONENT_NAME = 'SwyForm'
 defineOptions({
-  name: 'ElForm' as any,
+  name: 'SwyForm' as any,
 })
 const props = defineProps(formProps)
 const emit = defineEmits(formEmits)

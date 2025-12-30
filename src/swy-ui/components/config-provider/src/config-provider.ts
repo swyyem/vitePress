@@ -9,7 +9,7 @@ export const messageConfig: any = {
 }
 
 const ConfigProvider = defineComponent({
-  name: 'ElConfigProvider',
+  name: 'SwyConfigProvider',
   props: configProviderProps,
 
   setup(props, { slots }) {

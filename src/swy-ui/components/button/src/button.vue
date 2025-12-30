@@ -25,7 +25,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-// import { ElIcon } from '@swy-ui/components/icon'
+// import { SwyIcon } from '@swy-ui/components/icon'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { useButton } from './use-button'
 import { buttonEmits, buttonProps } from './button'

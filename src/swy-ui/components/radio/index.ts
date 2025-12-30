@@ -5,16 +5,16 @@ import RadioGroup from './src/radio-group.vue'
 
 import type { SFCWithInstall } from '@swy-ui/utils'
 
-export const ElRadio: SFCWithInstall<typeof Radio> & {
+export const SwyRadio: SFCWithInstall<typeof Radio> & {
   RadioButton: typeof RadioButton
   RadioGroup: typeof RadioGroup
 } = withInstall(Radio, {
   RadioButton,
   RadioGroup,
 })
-export default ElRadio
-export const ElRadioGroup: SFCWithInstall<typeof RadioGroup> = withNoopInstall(RadioGroup)
-export const ElRadioButton: SFCWithInstall<typeof RadioButton> = withNoopInstall(RadioButton)
+export default SwyRadio
+export const SwyRadioGroup: SFCWithInstall<typeof RadioGroup> = withNoopInstall(RadioGroup)
+export const SwyRadioButton: SFCWithInstall<typeof RadioButton> = withNoopInstall(RadioButton)
 
 export * from './src/radio'
 export * from './src/radio-group'

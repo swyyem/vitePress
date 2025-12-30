@@ -67,7 +67,7 @@ import type { FormItemContext, FormItemRule, FormValidateFailure } from './types
 import type { FormItemValidateState } from './form-item'
 
 defineOptions({
-  name: 'ElFormItem',
+  name: 'SwyFormItem',
 })
 const props = defineProps(formItemProps)
 const slots = useSlots()

@@ -27,13 +27,13 @@ import { debugWarn } from '@swy-ui/utils'
 import { radioDefaultProps, radioGroupEmits, radioGroupProps } from './radio-group'
 import { radioGroupKey } from './constants'
 import { isEqual, omit } from 'lodash-unified'
-import ElRadio from './radio.vue'
-import ElRadioButton from './radio-button.vue'
+import SwyRadio from './radio.vue'
+import SwyRadioButton from './radio-button.vue'
 
 import type { RadioGroupProps } from './radio-group'
 
 defineOptions({
-  name: 'ElRadioGroup',
+  name: 'SwyRadioGroup',
 })
 
 const props = defineProps(radioGroupProps)
@@ -41,7 +41,7 @@ const emit = defineEmits(radioGroupEmits)
 
 const ns = useNamespace('radio')
 const radioId = useId()
-const radioGroupRef = ref<HTMLDivElement>()
+const radioGroupRef = ref<HTMLDivSwyement>()
 const { formItem } = useFormItem()
 const { inputId: groupId, isLabeledByFormItem } = useFormItemInputId(props, {
   formItemContext: formItem,
@@ -53,7 +53,7 @@ const changeEvent = (value: RadioGroupProps['modelValue']) => {
 }
 
 onMounted(() => {
-  const radios = radioGroupRef.value!.querySelectorAll<HTMLInputElement>('[type=radio]')
+  const radios = radioGroupRef.value!.querySelectorAll<HTMLInputSwyement>('[type=radio]')
   const firstLabel = radios[0]
   if (!Array.from(radios).some(radio => radio.checked) && firstLabel) {
     firstLabel.tabIndex = 0
@@ -78,7 +78,7 @@ const getOptionProps = (option: Record<string, any>) => {
   return { ...omit(option, [label, value, disabled]), ...base }
 }
 
-const optionComponent = computed(() => (props.type === 'button' ? ElRadioButton : ElRadio))
+const optionComponent = computed(() => (props.type === 'button' ? SwyRadioButton : SwyRadio))
 
 provide(
   radioGroupKey,

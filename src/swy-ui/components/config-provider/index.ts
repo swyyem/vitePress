@@ -3,8 +3,8 @@ import ConfigProvider from './src/config-provider'
 
 import type { SFCWithInstall } from '@swy-ui/utils'
 
-export const ElConfigProvider: SFCWithInstall<typeof ConfigProvider> = withInstall(ConfigProvider)
-export default ElConfigProvider
+export const SwyConfigProvider: SFCWithInstall<typeof ConfigProvider> = withInstall(ConfigProvider)
+export default SwyConfigProvider
 
 export * from './src/config-provider'
 export * from './src/config-provider-props'

@@ -4,13 +4,13 @@ import FormItem from './src/form-item.vue'
 
 import type { SFCWithInstall } from '@swy-ui/utils'
 
-export const ElForm: SFCWithInstall<typeof Form> & {
+export const SwyForm: SFCWithInstall<typeof Form> & {
   FormItem: typeof FormItem
 } = withInstall(Form, {
   FormItem,
 })
-export default ElForm
-export const ElFormItem: SFCWithInstall<typeof FormItem> = withNoopInstall(FormItem)
+export default SwyForm
+export const SwyFormItem: SFCWithInstall<typeof FormItem> = withNoopInstall(FormItem)
 
 export * from './src/form'
 export * from './src/form-item'

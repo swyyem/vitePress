@@ -17,7 +17,7 @@ import { formContextKey, formItemContextKey } from './constants'
 
 import type { CSSProperties } from 'vue'
 
-const COMPONENT_NAME = 'ElLabelWrap'
+const COMPONENT_NAME = 'SwyLabelWrap'
 export default defineComponent({
   name: COMPONENT_NAME,
   props: {

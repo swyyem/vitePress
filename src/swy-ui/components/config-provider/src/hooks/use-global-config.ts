@@ -18,7 +18,7 @@ import type { MaybeRef } from '@vueuse/core'
 import type { App, Ref } from 'vue'
 import type { ConfigProviderContext } from '../constants'
 
-// this is meant to fix global methods like `ElMessage(opts)`, this way we can inject current locale
+// this is meant to fix global methods like `SwyMessage(opts)`, this way we can inject current locale
 // into the component as default injection value.
 // refer to: https://github.com///issues/2610#issuecomment-887965266
 const globalConfig = ref<ConfigProviderContext>()
@@ -39,7 +39,7 @@ export function useGlobalConfig(key?: keyof ConfigProviderContext, defaultValue 
   }
 }
 
-// for components like `ElMessage` `ElNotification` `ElMessageBox`.
+// for components like `SwyMessage` `SwyNotification` `SwyMessageBox`.
 export function useGlobalComponentSettings(
   block: string,
   sizeFallback?: MaybeRef<ConfigProviderContext['size']>

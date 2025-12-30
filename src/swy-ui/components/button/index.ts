@@ -4,13 +4,13 @@ import ButtonGroup from '../button/src/button-group.vue'
 
 import type { SFCWithInstall } from '@swy-ui/utils'
 
-export const ElButton: SFCWithInstall<typeof Button> & {
+export const SwyButton: SFCWithInstall<typeof Button> & {
   ButtonGroup: typeof ButtonGroup
 } = withInstall(Button, {
   ButtonGroup,
 })
-export const ElButtonGroup: SFCWithInstall<typeof ButtonGroup> = withNoopInstall(ButtonGroup)
-export default ElButton
+export const SwyButtonGroup: SFCWithInstall<typeof ButtonGroup> = withNoopInstall(ButtonGroup)
+export default SwyButton
 
 export * from './src/button'
 export * from './src/constants'
