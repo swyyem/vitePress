@@ -13,7 +13,7 @@ export const useRadio = (
   props: RadioProps | RadioButtonProps,
   emit?: SetupContext<RadioEmits>['emit']
 ) => {
-  const radioRef = ref<HTMLInputSwyement>()
+  const radioRef = ref<HTMLInputElement>()
   const radioGroup = inject(radioGroupKey, undefined)
   const isGroup = computed(() => !!radioGroup)
   const actualValue = computed(() => {
