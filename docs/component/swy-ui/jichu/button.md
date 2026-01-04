@@ -6,33 +6,22 @@
 
 ```vue
 <template>
-  <SwyButton type="primary">默认按钮</SwyButton>
-  <SwyRadio v-model="SwyModel" @change="changeModel"></SwyRadio>
-  <ProField
-    ref="qqqqq"
-    valueType="SwyRadio"
-    v-model="aaa"
-    @click="onChange"
-    :filedProps="{
-      type: 'primary',
-    }"
-  >
-    默认按钮
-  </ProField>
+  <SwyButton type="primary" @click="clickButton">默认按钮</SwyButton>
+  <SwyRadioGroup v-model="SwyModel" @change="changeModel">
+    <SwyRadio value="0" label="默认"></SwyRadio>
+    <SwyRadio value="1" label="哈哈哈"></SwyRadio>
+  </SwyRadioGroup>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
 const SwyModel = ref(false)
-const qqqqq = ref()
-const aaa = ref(false)
 
-const changeModel = () => {
-  console.log('changeModel', SwyModel.value)
+const clickButton = () => {
+  console.log('clickButton')
 }
 
-const onChange = () => {
-  console.log('change')
-  console.log(qqqqq.value)
+const changeModel = () => {
+  // console.log('changeModel', SwyModel.value)
 }
 </script>
 ```
