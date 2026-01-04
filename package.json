@@ -44,7 +44,6 @@
     "@wsfe/vue-tree": "^4.1.1",
     "async-validator": "^4.2.5",
     "copy-to-clipboard": "^3.3.3",
-    "element-plus": "^2.10.4",
     "lodash-unified": "^1.0.3",
     "markdown-it-container": "4.0.0",
     "normalize-wheel-es": "^1.2.0",

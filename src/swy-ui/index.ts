@@ -2,10 +2,14 @@
 // 导出所有组件
 export * from './components'
 export * from './proField'
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
+let installed = false
 // 创建插件对象
 const SwyUiPlugin = {
   install(app) {
+    if (installed) return // 防止重复安装
+
+    installed = true
     // 动态导入所有组件并注册
     const components = import.meta.glob('./components/*/index.ts', { eager: true })
     const proField = import.meta.glob('./proField/index.ts', { eager: true })

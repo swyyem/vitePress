@@ -1,10 +1,9 @@
-const components = import.meta.glob('../../components/*/index.ts', { eager: true })
+import type { ValueType } from './proField'
 
-interface ComponentDefaultProps {
-  [componentName: string]: {
-    [propName: string]: any
-  }
-}
+const components = import.meta.glob('../../components/*/index.ts', { eager: true })
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// 修复后的接口定义 - 使用 Record 工具类型
+type ComponentDom = Record<ValueType, { [propName: string]: any }>
 // 获取组件信息的函数
 const extractComponentInfo = (componentModule: any): [string, any] => {
   if (!componentModule || !componentModule.default) {
@@ -16,8 +15,8 @@ const extractComponentInfo = (componentModule: any): [string, any] => {
 }
 
 // 创建组件映射的方法
-export const createComponentMap = (): ComponentDefaultProps => {
-  const componentMap: ComponentDefaultProps = {}
+export const createComponentMap = (): ComponentDom => {
+  const componentMap: ComponentDom = {} as ComponentDom
 
   Object.entries(components).forEach(([, module]) => {
     const [name, component] = extractComponentInfo(module)

@@ -37,9 +37,12 @@ export default {
     // }
 
     try {
-      ctx.app.use(SwyUi)
+      if (!ctx.app.config.globalProperties.$swyUiRegistered) {
+        ctx.app.config.globalProperties.$swyUiRegistered = true
+        ctx.app.use(SwyUi)
+      }
     } catch (e) {
-      console.warn(`注册组件 ${key} 失败`, e)
+      console.warn(`注册组件 失败`, e)
     }
 
     ctx.app.component('Demo', Demo)
