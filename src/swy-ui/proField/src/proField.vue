@@ -4,9 +4,7 @@
     ref="_ref"
     v-bind="props.filedProps"
     @click="handleClick"
-  >
-    11111
-  </component>
+  ></component>
 </template>
 
 <script lang="ts" setup>
