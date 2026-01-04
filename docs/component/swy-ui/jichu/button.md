@@ -27,7 +27,7 @@ const qqqqq = ref()
 const aaa = ref(false)
 
 const changeModel = () => {
-  console.log('changeModel')
+  console.log('changeModel', SwyModel.value)
 }
 
 const onChange = () => {

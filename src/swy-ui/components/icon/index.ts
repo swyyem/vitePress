@@ -1,8 +1,8 @@
 import Icon from './src/icon.vue'
 
-// import type { SFCWithInstall } from '@swy-ui/utils'
+// import {withInstall} from  'vue'
 
-export const ElIcons = Icon
+export const SwyIcon = Icon
 export default Icon
 
 export * from './src/icon'
