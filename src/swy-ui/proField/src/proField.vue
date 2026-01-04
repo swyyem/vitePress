@@ -20,8 +20,8 @@ const props = defineProps(proFieldProps)
 const emit = defineEmits(proFieldEmits)
 
 const { _ref, _filedProps, handleClick } = useProField(props, emit)
-console.log('props:', props.filedProps)
-console.log(_ref, _filedProps, handleClick)
+// console.log('props:', props.filedProps)
+// console.log(_ref, _filedProps, handleClick)
 
 defineExpose({
   /** @description proField 元素 */

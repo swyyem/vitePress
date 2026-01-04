@@ -4,7 +4,7 @@ import type { SetupContext } from 'vue'
 import type { ProFieldEmits, ProFieldProps, ValueType, GetPropsByValueType } from './proField'
 
 export const useProField = (props: ProFieldProps, emit: SetupContext<ProFieldEmits>['emit']) => {
-  console.log('componentMap', componentMap, componentMap[props.valueType]['props'])
+  // console.log('componentMap', componentMap, componentMap[props.valueType]['props'])
   const _filedProps = ref<GetPropsByValueType<ValueType>>(componentMap[props.valueType]['props'])
   /**
    * 功能：创建一个 DOM 引用，用于访问按钮的 DOM 元素
