@@ -553,8 +553,39 @@ const wholeList: MenuItem[] = [
         collapsed: true, // 默认折叠
         items: [
           {
-            text: 'button',
+            text: 'Button 按钮',
             link: '/component/swy-ui/jichu/button',
+          },
+          {
+            text: 'Tag / Badge / Divider',
+            link: '/component/swy-ui/jichu/new-components',
+          },
+        ],
+      },
+      {
+        text: '表单组件',
+        collapsible: true, // 允许折叠
+        collapsed: false, // 默认展开
+        items: [
+          {
+            text: 'ProField 原子组件',
+            link: '/component/swy-ui/form/profield',
+          },
+          {
+            text: 'Checkbox 复选框',
+            link: '/component/swy-ui/form/checkbox',
+          },
+          {
+            text: 'Select 选择器',
+            link: '/component/swy-ui/form/select',
+          },
+          {
+            text: 'Switch 开关',
+            link: '/component/swy-ui/form/switch',
+          },
+          {
+            text: '表单综合示例',
+            link: '/component/swy-ui/form/example',
           },
         ],
       },
