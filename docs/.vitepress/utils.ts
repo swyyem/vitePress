@@ -561,6 +561,18 @@ const wholeList: MenuItem[] = [
             link: '/component/swy-ui/jichu/link',
           },
           {
+            text: 'Text 文本',
+            link: '/component/swy-ui/jichu/text',
+          },
+          {
+            text: 'Icon 图标',
+            link: '/component/swy-ui/jichu/icon',
+          },
+          {
+            text: 'Card 卡片',
+            link: '/component/swy-ui/jichu/card',
+          },
+          {
             text: 'Avatar 头像',
             link: '/component/swy-ui/jichu/avatar',
           },
@@ -571,6 +583,50 @@ const wholeList: MenuItem[] = [
           {
             text: 'Tag / Badge / Divider',
             link: '/component/swy-ui/jichu/new-components',
+          },
+        ],
+      },
+      {
+        text: '布局类组件',
+        collapsible: true, // 允许折叠
+        collapsed: true, // 默认折叠
+        items: [
+          {
+            text: 'Container 容器布局',
+            link: '/component/swy-ui/layout/',
+          },
+        ],
+      },
+      {
+        text: '表单增强类组件',
+        collapsible: true, // 允许折叠
+        collapsed: true, // 默认折叠
+        items: [
+          {
+            text: 'InputNumber / Rate / Slider',
+            link: '/component/swy-ui/form-enhanced/',
+          },
+        ],
+      },
+      {
+        text: '数据展示类组件',
+        collapsible: true, // 允许折叠
+        collapsed: true, // 默认折叠
+        items: [
+          {
+            text: 'Image / Descriptions',
+            link: '/component/swy-ui/data/',
+          },
+        ],
+      },
+      {
+        text: '反馈类组件',
+        collapsible: true, // 允许折叠
+        collapsed: true, // 默认折叠
+        items: [
+          {
+            text: 'Empty / Progress / Result / Skeleton',
+            link: '/component/swy-ui/feedback/',
           },
         ],
       },
