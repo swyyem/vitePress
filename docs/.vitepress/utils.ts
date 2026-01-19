@@ -557,6 +557,18 @@ const wholeList: MenuItem[] = [
             link: '/component/swy-ui/jichu/button',
           },
           {
+            text: 'Link 链接',
+            link: '/component/swy-ui/jichu/link',
+          },
+          {
+            text: 'Avatar 头像',
+            link: '/component/swy-ui/jichu/avatar',
+          },
+          {
+            text: 'Alert 提示',
+            link: '/component/swy-ui/jichu/alert',
+          },
+          {
             text: 'Tag / Badge / Divider',
             link: '/component/swy-ui/jichu/new-components',
           },

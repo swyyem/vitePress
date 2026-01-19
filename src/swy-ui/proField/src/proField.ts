@@ -37,6 +37,8 @@ export type ProFieldInstance = InstanceType<typeof ProField> & unknown
 type ExtractComponentProps<T> = T extends { props: infer P } ? P : never
 
 export type ValueType =
+  | 'SwyAlert'
+  | 'SwyAvatar'
   | 'SwyBadge'
   | 'SwyButton'
   | 'SwyCard'
@@ -44,6 +46,7 @@ export type ValueType =
   | 'SwyDivider'
   | 'SwyForm'
   | 'SwyInput'
+  | 'SwyLink'
   | 'SwyModal'
   | 'SwySelect'
   | 'SwySwitch'
