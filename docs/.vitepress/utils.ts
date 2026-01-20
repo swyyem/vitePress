@@ -587,6 +587,17 @@ const wholeList: MenuItem[] = [
         ],
       },
       {
+        text: '导航类组件',
+        collapsible: true,
+        collapsed: true,
+        items: [
+          {
+            text: 'Tabs / Breadcrumb / Pagination',
+            link: '/component/swy-ui/navigation/',
+          },
+        ],
+      },
+      {
         text: '布局类组件',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
@@ -617,6 +628,10 @@ const wholeList: MenuItem[] = [
             text: 'Image / Descriptions',
             link: '/component/swy-ui/data/',
           },
+          {
+            text: 'Table / Tree / Collapse / Carousel',
+            link: '/component/swy-ui/data-display/',
+          },
         ],
       },
       {
@@ -627,6 +642,10 @@ const wholeList: MenuItem[] = [
           {
             text: 'Empty / Progress / Result / Skeleton',
             link: '/component/swy-ui/feedback/',
+          },
+          {
+            text: 'Tooltip / Popover / Notification / Loading',
+            link: '/component/swy-ui/feedback-interaction/',
           },
         ],
       },

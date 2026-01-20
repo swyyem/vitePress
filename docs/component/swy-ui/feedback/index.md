@@ -1,6 +1,18 @@
-# 反馈类组件
+# 交互反馈组件
 
-## Empty 空状态
+本章节包含了交互反馈类组件：
+
+- **Tooltip** - 文字提示组件
+- **Popover** - 气泡卡片组件
+- **Popconfirm** - 气泡确认框组件
+- **Notification** - 通知组件
+- **Loading** - 加载组件
+
+---
+
+## Tooltip 文字提示
+
+常用于展示鼠标 hover 时的提示信息。
 
 ### 基础用法
 
@@ -8,48 +20,53 @@
 
 ```vue
 <template>
-  <SwyEmpty description="暂无数据" />
+  <SwyTooltip content="这是一段提示文字">
+    <SwyButton>上方提示</SwyButton>
+  </SwyTooltip>
 </template>
 ```
 
 :::
 
-### 自定义图片
+### 不同位置
 
 :::demo
 
 ```vue
 <template>
-  <SwyEmpty
-    image="https://cdn-icons-png.flaticon.com/512/7486/7486754.png"
-    description="没有找到相关内容"
-  />
+  <div style="display: flex; gap: 10px;">
+    <SwyTooltip content="上方提示" placement="top">
+      <SwyButton>上方</SwyButton>
+    </SwyTooltip>
+    <SwyTooltip content="下方提示" placement="bottom">
+      <SwyButton>下方</SwyButton>
+    </SwyTooltip>
+    <SwyTooltip content="左侧提示" placement="left">
+      <SwyButton>左侧</SwyButton>
+    </SwyTooltip>
+    <SwyTooltip content="右侧提示" placement="right">
+      <SwyButton>右侧</SwyButton>
+    </SwyTooltip>
+  </div>
 </template>
 ```
 
 :::
 
-### 自定义尺寸
+### 主题
 
 :::demo
 
 ```vue
 <template>
-  <SwyEmpty :image-size="200" description="空空如也" />
-</template>
-```
-
-:::
-
-### 底部内容
-
-:::demo
-
-```vue
-<template>
-  <SwyEmpty description="暂无数据">
-    <SwyButton type="primary">创建新数据</SwyButton>
-  </SwyEmpty>
+  <div style="display: flex; gap: 10px;">
+    <SwyTooltip content="暗色主题" effect="dark">
+      <SwyButton>暗色</SwyButton>
+    </SwyTooltip>
+    <SwyTooltip content="亮色主题" effect="light">
+      <SwyButton>亮色</SwyButton>
+    </SwyTooltip>
+  </div>
 </template>
 ```
 
@@ -57,7 +74,9 @@
 
 ---
 
-## Progress 进度条
+## Popover 气泡卡片
+
+点击/鼠标移入元素，弹出气泡式的卡片浮层。
 
 ### 基础用法
 
@@ -65,55 +84,33 @@
 
 ```vue
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <SwyProgress :percentage="0" />
-    <SwyProgress :percentage="50" />
-    <SwyProgress :percentage="100" />
-  </div>
+  <SwyPopover
+    title="标题"
+    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+    trigger="hover"
+    :width="200"
+  >
+    <SwyButton>Hover 激活</SwyButton>
+  </SwyPopover>
 </template>
 ```
 
 :::
 
-### 进度条状态
+### 点击触发
 
 :::demo
 
 ```vue
 <template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <SwyProgress :percentage="100" status="success" />
-    <SwyProgress :percentage="70" status="warning" />
-    <SwyProgress :percentage="50" status="exception" />
-  </div>
-</template>
-```
-
-:::
-
-### 自定义颜色
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <SwyProgress :percentage="70" color="#409eff" />
-    <SwyProgress :percentage="80" color="#67c23a" />
-    <SwyProgress :percentage="90" color="#e6a23c" />
-  </div>
-</template>
-```
-
-:::
-
-### 不显示文字
-
-:::demo
-
-```vue
-<template>
-  <SwyProgress :percentage="60" :show-text="false" />
+  <SwyPopover
+    title="标题"
+    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+    trigger="click"
+    :width="200"
+  >
+    <SwyButton>Click 激活</SwyButton>
+  </SwyPopover>
 </template>
 ```
 
@@ -121,7 +118,9 @@
 
 ---
 
-## Result 结果页
+## Popconfirm 气泡确认框
+
+点击元素，弹出气泡确认框。
 
 ### 基础用法
 
@@ -129,152 +128,74 @@
 
 ```vue
 <template>
-  <div style="display: flex; flex-direction: column; gap: 32px;">
-    <SwyResult type="success" title="操作成功" subTitle="您的请求已经成功处理" />
-    <SwyResult type="warning" title="警告提示" subTitle="请注意相关风险" />
-    <SwyResult type="info" title="信息提示" subTitle="这是一条提示信息" />
-    <SwyResult type="error" title="操作失败" subTitle="请稍后重试" />
-  </div>
-</template>
-```
-
-:::
-
-### 带操作按钮
-
-:::demo
-
-```vue
-<template>
-  <SwyResult type="success" title="支付成功" subTitle="订单已生成，请等待发货">
-    <template #extra>
-      <div style="display: flex; gap: 12px; justify-content: center;">
-        <SwyButton>查看订单</SwyButton>
-        <SwyButton type="primary">返回首页</SwyButton>
-      </div>
-    </template>
-  </SwyResult>
-</template>
-```
-
-:::
-
----
-
-## Skeleton 骨架屏
-
-### 基础用法
-
-:::demo
-
-```vue
-<template>
-  <SwySkeleton />
-</template>
-```
-
-:::
-
-### 动画效果
-
-:::demo
-
-```vue
-<template>
-  <SwySkeleton animated />
-</template>
-```
-
-:::
-
-### 自定义行数
-
-:::demo
-
-```vue
-<template>
-  <SwySkeleton :rows="5" animated />
-</template>
-```
-
-:::
-
-### 加载完成
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; flex-direction: column; gap: 16px;">
-    <SwyButton @click="loading = !loading">切换加载状态</SwyButton>
-    <SwySkeleton :loading="loading" animated>
-      <SwyCard>
-        <template #header>
-          <div>文章标题</div>
-        </template>
-        <div>这是文章的内容，加载完成后显示真实内容。</div>
-      </SwyCard>
-    </SwySkeleton>
-  </div>
+  <SwyPopconfirm title="确定要删除吗？" @confirm="handleConfirm" @cancel="handleCancel">
+    <SwyButton type="danger">删除</SwyButton>
+  </SwyPopconfirm>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
-const loading = ref(true)
-</script>
-```
+const handleConfirm = () => {
+  console.log('确认')
+}
 
-:::
-
----
-
-## Message 消息提示
-
-### 基础用法
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-    <SwyButton @click="showMessage('info')">信息消息</SwyButton>
-    <SwyButton @click="showMessage('success')">成功消息</SwyButton>
-    <SwyButton @click="showMessage('warning')">警告消息</SwyButton>
-    <SwyButton @click="showMessage('error')">错误消息</SwyButton>
-  </div>
-  <SwyMessage v-if="visible" :type="type" :message="message" @close="visible = false" />
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const visible = ref(false)
-const type = ref('info')
-const message = ref('')
-
-const showMessage = (msgType: string) => {
-  type.value = msgType
-  message.value = `这是一条${msgType}消息`
-  visible.value = true
+const handleCancel = () => {
+  console.log('取消')
 }
 </script>
 ```
 
 :::
 
-### 可关闭的消息
+### 自定义按钮文字
 
 :::demo
 
 ```vue
 <template>
-  <SwyButton @click="visible = true">显示可关闭消息</SwyButton>
-  <SwyMessage
+  <SwyPopconfirm
+    title="确定要提交吗？"
+    confirm-button-text="提交"
+    cancel-button-text="放弃"
+    confirm-button-type="success"
+    @confirm="handleConfirm"
+  >
+    <SwyButton>提交</SwyButton>
+  </SwyPopconfirm>
+</template>
+
+<script lang="ts" setup>
+const handleConfirm = () => {
+  console.log('已提交')
+}
+</script>
+```
+
+:::
+
+---
+
+## Notification 通知
+
+悬浮出现在页面角落，显示全局的通知提醒消息。
+
+### 基础用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px;">
+    <SwyButton @click="showNotification('success')">成功</SwyButton>
+    <SwyButton @click="showNotification('warning')">警告</SwyButton>
+    <SwyButton @click="showNotification('info')">消息</SwyButton>
+    <SwyButton @click="showNotification('error')">错误</SwyButton>
+  </div>
+
+  <SwyNotification
     v-if="visible"
-    type="success"
-    message="这条消息可以手动关闭"
-    :duration="0"
-    show-close
+    :title="notificationConfig.title"
+    :message="notificationConfig.message"
+    :type="notificationConfig.type"
     @close="visible = false"
   />
 </template>
@@ -283,134 +204,130 @@ const showMessage = (msgType: string) => {
 import { ref } from 'vue'
 
 const visible = ref(false)
-</script>
-```
+const notificationConfig = ref({
+  title: '',
+  message: '',
+  type: 'info',
+})
 
-:::
-
----
-
-## Dialog 对话框
-
-### 基础用法
-
-:::demo
-
-```vue
-<template>
-  <SwyButton @click="dialogVisible = true">打开 Dialog</SwyButton>
-  <SwyDialog v-model="dialogVisible" title="提示" width="30%">
-    <p>这是一段内容</p>
-    <p>这是一段内容</p>
-    <template #footer>
-      <SwyButton @click="dialogVisible = false">取消</SwyButton>
-      <SwyButton type="primary" @click="dialogVisible = false">确定</SwyButton>
-    </template>
-  </SwyDialog>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const dialogVisible = ref(false)
-</script>
-```
-
-:::
-
-### 自定义头部
-
-:::demo
-
-```vue
-<template>
-  <SwyButton @click="dialogVisible = true">打开 Dialog</SwyButton>
-  <SwyDialog v-model="dialogVisible" width="30%">
-    <template #header>
-      <div style="font-size: 18px; font-weight: bold; color: #409eff;">✨ 自定义标题</div>
-    </template>
-    <p>对话框内容</p>
-    <template #footer>
-      <SwyButton type="primary" @click="dialogVisible = false">知道了</SwyButton>
-    </template>
-  </SwyDialog>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const dialogVisible = ref(false)
-</script>
-```
-
-:::
-
----
-
-## Drawer 抽屉
-
-### 基础用法
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; gap: 12px;">
-    <SwyButton @click="() => openDrawer('rtl')">从右往左开</SwyButton>
-    <SwyButton @click="() => openDrawer('ltr')">从左往右开</SwyButton>
-    <SwyButton @click="() => openDrawer('ttb')">从上往下开</SwyButton>
-    <SwyButton @click="() => openDrawer('btt')">从下往上开</SwyButton>
-  </div>
-  <SwyDrawer v-model="drawerVisible" :title="drawerTitle" :direction="direction">
-    <p>这是抽屉内容</p>
-  </SwyDrawer>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const drawerVisible = ref(false)
-const direction = ref('rtl')
-const drawerTitle = ref('')
-
-const openDrawer = (dir: string) => {
-  direction.value = dir
-  const dirMap: Record<string, string> = {
-    rtl: '从右往左',
-    ltr: '从左往右',
-    ttb: '从上往下',
-    btt: '从下往上',
+const showNotification = (type: string) => {
+  const config: Record<string, any> = {
+    success: { title: '成功', message: '这是一条成功的提示消息' },
+    warning: { title: '警告', message: '这是一条警告的提示消息' },
+    info: { title: '消息', message: '这是一条消息的提示消息' },
+    error: { title: '错误', message: '这是一条错误的提示消息' },
   }
-  drawerTitle.value = dirMap[dir]
-  drawerVisible.value = true
+
+  notificationConfig.value = { ...config[type], type }
+  visible.value = true
 }
 </script>
 ```
 
 :::
 
-### 自定义尺寸
+### 不同位置
 
 :::demo
 
 ```vue
 <template>
-  <SwyButton @click="drawerVisible = true">打开大抽屉</SwyButton>
-  <SwyDrawer v-model="drawerVisible" title="大号抽屉" size="50%">
-    <p>这是一个宽度为 50% 的抽屉</p>
-    <template #footer>
-      <div style="text-align: right;">
-        <SwyButton @click="drawerVisible = false">关闭</SwyButton>
-      </div>
-    </template>
-  </SwyDrawer>
+  <div style="display: flex; gap: 10px;">
+    <SwyButton @click="showNotification('top-right')">右上角</SwyButton>
+    <SwyButton @click="showNotification('top-left')">左上角</SwyButton>
+    <SwyButton @click="showNotification('bottom-right')">右下角</SwyButton>
+    <SwyButton @click="showNotification('bottom-left')">左下角</SwyButton>
+  </div>
+
+  <SwyNotification
+    v-if="visible"
+    title="提示"
+    message="这是一条提示消息"
+    :position="position"
+    @close="visible = false"
+  />
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const drawerVisible = ref(false)
+const visible = ref(false)
+const position = ref('top-right')
+
+const showNotification = (pos: string) => {
+  position.value = pos
+  visible.value = true
+}
 </script>
+```
+
+:::
+
+---
+
+## Loading 加载
+
+加载数据时显示动效。
+
+### 基础用法
+
+:::demo
+
+```vue
+<template>
+  <SwyButton @click="loading = !loading">{{ loading ? '隐藏' : '显示' }} Loading</SwyButton>
+
+  <div style="position: relative; height: 200px; margin-top: 20px; border: 1px solid #dcdfe6;">
+    <SwyLoading :loading="loading" text="加载中..." />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const loading = ref(false)
+</script>
+```
+
+:::
+
+### 全屏加载
+
+:::demo
+
+```vue
+<template>
+  <SwyButton @click="showFullscreenLoading">显示全屏 Loading</SwyButton>
+
+  <SwyLoading :loading="fullscreenLoading" fullscreen text="正在加载..." />
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const fullscreenLoading = ref(false)
+
+const showFullscreenLoading = () => {
+  fullscreenLoading.value = true
+  setTimeout(() => {
+    fullscreenLoading.value = false
+  }, 2000)
+}
+</script>
+```
+
+:::
+
+### 自定义背景色
+
+:::demo
+
+```vue
+<template>
+  <div style="position: relative; height: 200px; border: 1px solid #dcdfe6;">
+    <SwyLoading :loading="true" text="加载中..." background="rgba(0, 0, 0, 0.8)" />
+  </div>
+</template>
 ```
 
 :::
