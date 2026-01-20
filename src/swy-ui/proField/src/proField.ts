@@ -72,6 +72,7 @@ export type ValueType =
   | 'SwyPopconfirm'
   | 'SwyPopover'
   | 'SwyProgress'
+  | 'SwyRadio'
   | 'SwyRate'
   | 'SwyResult'
   | 'SwySelect'
@@ -94,10 +95,23 @@ export const proFieldProps = buildProps({
     type: definePropType<ValueType>(String),
     required: true,
   },
-  filedProps: { type: definePropType<PublicObject>(Object) },
+  /**
+   * @description 组件属性（修复拼写错误）
+   */
+  fieldProps: { type: definePropType<PublicObject>(Object) },
+  /**
+   * @description v-model 绑定值
+   */
+  modelValue: { type: definePropType<any>([String, Number, Boolean, Array, Object]) },
 } as const)
+
 export const proFieldEmits = {
   click: (evt: MouseEvent) => evt instanceof MouseEvent,
+  'update:modelValue': (_value: any) => true,
+  change: (_value: any) => true,
+  input: (_value: any) => true,
+  blur: (evt: FocusEvent) => evt instanceof FocusEvent,
+  focus: (evt: FocusEvent) => evt instanceof FocusEvent,
 }
 
 export type ProFieldProps = ExtractPropTypes<typeof proFieldProps>

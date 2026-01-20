@@ -5,28 +5,55 @@ import type { ProFieldEmits, ProFieldProps, ValueType, GetPropsByValueType } fro
 
 export const useProField = (props: ProFieldProps, emit: SetupContext<ProFieldEmits>['emit']) => {
   // console.log('componentMap', componentMap, componentMap[props.valueType]['props'])
-  const _filedProps = ref<GetPropsByValueType<ValueType>>(componentMap[props.valueType]['props'])
+  const _fieldProps = ref<GetPropsByValueType<ValueType>>(componentMap[props.valueType]['props'])
   /**
-   * 功能：创建一个 DOM 引用，用于访问按钮的 DOM 元素
-   * 用途：后续可以操作按钮的 DOM 属性或方法
+   * 功能：创建一个 DOM 引用，用于访问组件的 DOM 元素
+   * 用途：后续可以操作组件的 DOM 属性或方法
    */
   const _ref = ref<HTMLButtonElement>()
 
   /**
-   * 功能：处理按钮的点击事件
-   * 逻辑：
-   *   1. 检查按钮是否禁用或加载中
-   *   2. 如果是，则停止事件传播
-   *   3. 如果是 reset 类型按钮，则调用表单的 resetFields() 方法
-   *   4. 触发 click 事件，并传递事件对象
+   * 功能：处理点击事件
    */
   const handleClick = (evt: MouseEvent) => {
     emit('click', evt)
   }
 
+  /**
+   * 功能：处理 change 事件
+   */
+  const handleChange = (value: any) => {
+    emit('change', value)
+  }
+
+  /**
+   * 功能：处理 input 事件
+   */
+  const handleInput = (value: any) => {
+    emit('input', value)
+  }
+
+  /**
+   * 功能：处理 blur 事件
+   */
+  const handleBlur = (evt: FocusEvent) => {
+    emit('blur', evt)
+  }
+
+  /**
+   * 功能：处理 focus 事件
+   */
+  const handleFocus = (evt: FocusEvent) => {
+    emit('focus', evt)
+  }
+
   return {
     _ref,
-    _filedProps,
+    _fieldProps,
     handleClick,
+    handleChange,
+    handleInput,
+    handleBlur,
+    handleFocus,
   }
 }

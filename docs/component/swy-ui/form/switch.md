@@ -29,6 +29,31 @@ const handleChange = val => {
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField valueType="SwySwitch" v-model="value1" @change="handleChange" />
+    <p>开关状态: {{ value1 ? '开启' : '关闭' }}</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value1 = ref(true)
+
+const handleChange = val => {
+  console.log('switch changed:', val)
+}
+</script>
+```
+
+:::
+
 ## 文字描述
 
 使用 `active-text` 和 `inactive-text` 属性来设置开关的文字描述。
@@ -39,6 +64,31 @@ const handleChange = val => {
 <template>
   <div>
     <SwySwitch v-model="value2" active-text="开启" inactive-text="关闭" />
+    <p style="margin-top: 10px;">当前状态: {{ value2 ? '已开启' : '已关闭' }}</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value2 = ref(false)
+</script>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField
+      valueType="SwySwitch"
+      v-model="value2"
+      :filedProps="{ activeText: '开启', inactiveText: '关闭' }"
+    />
     <p style="margin-top: 10px;">当前状态: {{ value2 ? '已开启' : '已关闭' }}</p>
   </div>
 </template>
@@ -76,6 +126,28 @@ const value4 = ref(false)
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 20px;">
+    <ProField valueType="SwySwitch" v-model="value3" :filedProps="{ disabled: true }" />
+    <ProField valueType="SwySwitch" v-model="value4" :filedProps="{ disabled: true }" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value3 = ref(true)
+const value4 = ref(false)
+</script>
+```
+
+:::
+
 ## 扩展的 value 类型
 
 可以设置 `active-value` 和 `inactive-value` 属性，它们接受 `Boolean`、`String` 或 `Number` 类型的值。
@@ -91,6 +163,31 @@ const value4 = ref(false)
       :inactive-value="0"
       active-text="是"
       inactive-text="否"
+    />
+    <p style="margin-top: 10px;">当前值: {{ value5 }} (类型: {{ typeof value5 }})</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value5 = ref(1)
+</script>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField
+      valueType="SwySwitch"
+      v-model="value5"
+      :filedProps="{ activeValue: 1, inactiveValue: 0, activeText: '是', inactiveText: '否' }"
     />
     <p style="margin-top: 10px;">当前值: {{ value5 }} (类型: {{ typeof value5 }})</p>
   </div>
@@ -134,6 +231,36 @@ const value6 = ref('off')
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField
+      valueType="SwySwitch"
+      v-model="value6"
+      :filedProps="{
+        activeValue: 'on',
+        inactiveValue: 'off',
+        activeText: 'ON',
+        inactiveText: 'OFF',
+      }"
+    />
+    <p style="margin-top: 10px;">当前值: {{ value6 }}</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value6 = ref('off')
+</script>
+```
+
+:::
+
 ## 不同尺寸
 
 :::demo
@@ -144,6 +271,40 @@ const value6 = ref('off')
     <SwySwitch v-model="value7" size="large" active-text="大尺寸" />
     <SwySwitch v-model="value7" size="default" active-text="默认" />
     <SwySwitch v-model="value7" size="small" active-text="小" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value7 = ref(true)
+</script>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
+    <ProField
+      valueType="SwySwitch"
+      v-model="value7"
+      :filedProps="{ size: 'large', activeText: '大尺寸' }"
+    />
+    <ProField
+      valueType="SwySwitch"
+      v-model="value7"
+      :filedProps="{ size: 'default', activeText: '默认' }"
+    />
+    <ProField
+      valueType="SwySwitch"
+      v-model="value7"
+      :filedProps="{ size: 'small', activeText: '小' }"
+    />
   </div>
 </template>
 

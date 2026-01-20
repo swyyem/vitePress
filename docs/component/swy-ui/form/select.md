@@ -36,6 +36,43 @@ const handleChange = val => {
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField
+      valueType="SwySelect"
+      v-model="value1"
+      :filedProps="{ options: options1, placeholder: '请选择' }"
+      @change="handleChange"
+    />
+    <p>选中的值: {{ value1 }}</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value1 = ref('')
+const options1 = ref([
+  { label: '选项1', value: '1' },
+  { label: '选项2', value: '2' },
+  { label: '选项3', value: '3' },
+  { label: '选项4', value: '4' },
+  { label: '选项5', value: '5' },
+])
+
+const handleChange = val => {
+  console.log('select changed:', val)
+}
+</script>
+```
+
+:::
+
 ## 有禁用选项
 
 :::demo
@@ -44,6 +81,38 @@ const handleChange = val => {
 <template>
   <div>
     <SwySelect v-model="value2" :options="options2" placeholder="请选择" />
+    <p>选中的值: {{ value2 }}</p>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value2 = ref('')
+const options2 = ref([
+  { label: '北京', value: 'beijing' },
+  { label: '上海', value: 'shanghai', disabled: true },
+  { label: '广州', value: 'guangzhou' },
+  { label: '深圳', value: 'shenzhen', disabled: true },
+  { label: '杭州', value: 'hangzhou' },
+])
+</script>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField
+      valueType="SwySelect"
+      v-model="value2"
+      :filedProps="{ options: options2, placeholder: '请选择' }"
+    />
     <p>选中的值: {{ value2 }}</p>
   </div>
 </template>
@@ -91,6 +160,35 @@ const options3 = ref([
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div>
+    <ProField
+      valueType="SwySelect"
+      v-model="value3"
+      :filedProps="{ options: options3, placeholder: '请选择', disabled: true }"
+    />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value3 = ref('option1')
+const options3 = ref([
+  { label: '选项1', value: 'option1' },
+  { label: '选项2', value: 'option2' },
+  { label: '选项3', value: 'option3' },
+])
+</script>
+```
+
+:::
+
 ## 不同尺寸
 
 :::demo
@@ -101,6 +199,45 @@ const options3 = ref([
     <SwySelect v-model="value4" :options="sizeOptions" placeholder="大尺寸" size="large" />
     <SwySelect v-model="value4" :options="sizeOptions" placeholder="默认尺寸" size="default" />
     <SwySelect v-model="value4" :options="sizeOptions" placeholder="小尺寸" size="small" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const value4 = ref('')
+const sizeOptions = ref([
+  { label: '选项1', value: '1' },
+  { label: '选项2', value: '2' },
+  { label: '选项3', value: '3' },
+])
+</script>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <ProField
+      valueType="SwySelect"
+      v-model="value4"
+      :filedProps="{ options: sizeOptions, placeholder: '大尺寸', size: 'large' }"
+    />
+    <ProField
+      valueType="SwySelect"
+      v-model="value4"
+      :filedProps="{ options: sizeOptions, placeholder: '默认尺寸', size: 'default' }"
+    />
+    <ProField
+      valueType="SwySelect"
+      v-model="value4"
+      :filedProps="{ options: sizeOptions, placeholder: '小尺寸', size: 'small' }"
+    />
   </div>
 </template>
 

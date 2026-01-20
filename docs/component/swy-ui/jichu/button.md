@@ -4,7 +4,7 @@
 
 ## 基础用法
 
-使用 `type`、`plain` 和 `round` 来定义按钮的样式。
+使用 `type` 属性来定义按钮的类型。
 
 :::demo
 
@@ -23,9 +23,30 @@
 
 :::
 
+### ProField 用法
+
+通过 `valueType="SwyButton"` 和 `fieldProps` 配置按钮属性。
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <ProField valueType="SwyButton">默认按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary' }">主要按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success' }">成功按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'info' }">信息按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning' }">警告按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger' }">危险按钮</ProField>
+  </div>
+</template>
+```
+
+:::
+
 ## 朴素按钮
 
-使用 `plain` 属性，它接受一个 `Boolean`。
+使用 `plain` 属性来定义朴素按钮样式，它接受一个 `Boolean`。
 
 :::demo
 
@@ -44,9 +65,36 @@
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <ProField valueType="SwyButton" :fieldProps="{ plain: true }">朴素按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', plain: true }">
+      主要按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', plain: true }">
+      成功按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'info', plain: true }">信息按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', plain: true }">
+      警告按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', plain: true }">
+      危险按钮
+    </ProField>
+  </div>
+</template>
+```
+
+:::
+
 ## 圆角按钮
 
-使用 `round` 属性，它接受一个 `Boolean`。
+使用 `round` 属性来定义圆角按钮样式，它接受一个 `Boolean`。
 
 :::demo
 
@@ -65,9 +113,36 @@
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <ProField valueType="SwyButton" :fieldProps="{ round: true }">圆角按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', round: true }">
+      主要按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', round: true }">
+      成功按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'info', round: true }">信息按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', round: true }">
+      警告按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', round: true }">
+      危险按钮
+    </ProField>
+  </div>
+</template>
+```
+
+:::
+
 ## 禁用状态
 
-使用 `disabled` 属性来定义按钮是否被禁用。
+使用 `disabled` 属性来定义按钮是否被禁用，它接受一个 `Boolean`。
 
 :::demo
 
@@ -80,6 +155,35 @@
     <SwyButton type="info" disabled>信息按钮</SwyButton>
     <SwyButton type="warning" disabled>警告按钮</SwyButton>
     <SwyButton type="danger" disabled>危险按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <ProField valueType="SwyButton" :fieldProps="{ disabled: true }">默认按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', disabled: true }">
+      主要按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', disabled: true }">
+      成功按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'info', disabled: true }">
+      信息按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', disabled: true }">
+      警告按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', disabled: true }">
+      危险按钮
+    </ProField>
   </div>
 </template>
 ```
@@ -125,9 +229,36 @@
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'search' }">
+      搜索
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'edit' }">编辑</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'check' }">确认</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'message' }">
+      消息
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', icon: 'delete' }">删除</ProField>
+    <ProField
+      valueType="SwyButton"
+      :fieldProps="{ type: 'primary', icon: 'search', circle: true }"
+    />
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', icon: 'edit', circle: true }" />
+  </div>
+</template>
+```
+
+:::
+
 ## 加载状态
 
-点击按钮来加载数据，并向用户反馈加载状态。
+使用 `loading` 属性来设置按钮的加载状态，向用户反馈操作进度。
 
 :::demo
 
@@ -154,9 +285,40 @@ const handleClick = () => {
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <ProField
+    valueType="SwyButton"
+    :fieldProps="{ type: 'primary', loading: loading }"
+    @click="handleClick"
+  >
+    {{ loading ? '加载中...' : '点击加载' }}
+  </ProField>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const loading = ref(false)
+
+const handleClick = () => {
+  loading.value = true
+  setTimeout(() => {
+    loading.value = false
+  }, 2000)
+}
+</script>
+```
+
+:::
+
 ## 不同尺寸
 
-提供三种不同尺寸的按钮。
+使用 `size` 属性来定义按钮的尺寸，支持 `large`、`default`、`small` 三种尺寸。
 
 :::demo
 
@@ -166,6 +328,26 @@ const handleClick = () => {
     <SwyButton type="primary" size="large">大型按钮</SwyButton>
     <SwyButton type="primary">默认按钮</SwyButton>
     <SwyButton type="primary" size="small">小型按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', size: 'large' }">
+      大型按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary' }">默认按钮</ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', size: 'small' }">
+      小型按钮
+    </ProField>
   </div>
 </template>
 ```
@@ -191,6 +373,31 @@ const handleClick = () => {
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', shadow: true }">
+      阴影按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', shadow: true }">
+      成功按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', shadow: true }">
+      警告按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', shadow: true }">
+      危险按钮
+    </ProField>
+  </div>
+</template>
+```
+
+:::
+
 ## 块级按钮
 
 使用 `block` 属性使按钮宽度占满父容器。
@@ -203,6 +410,28 @@ const handleClick = () => {
     <SwyButton type="primary" block>块级按钮</SwyButton>
     <SwyButton type="success" block>成功按钮</SwyButton>
     <SwyButton type="danger" block>危险按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', block: true }">
+      块级按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', block: true }">
+      成功按钮
+    </ProField>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', block: true }">
+      危险按钮
+    </ProField>
   </div>
 </template>
 ```
@@ -241,6 +470,40 @@ const handleThrottleClick = () => {
 
 :::
 
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div
+    style="display: flex; gap: 10px; flex-wrap: wrap; flex-direction: column; align-items: flex-start;"
+  >
+    <ProField
+      valueType="SwyButton"
+      :fieldProps="{ type: 'primary', throttle: 2000 }"
+      @click="handleThrottleClick"
+    >
+      节流按钮（2秒内只能点击一次）
+    </ProField>
+    <div>点击次数: {{ clickCount }}</div>
+    <div style="color: #999; font-size: 14px;">提示：快速点击按钮，观察计数变化</div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const clickCount = ref(0)
+
+const handleThrottleClick = () => {
+  clickCount.value++
+}
+</script>
+```
+
+:::
+
 ## 组合使用
 
 将不同属性组合使用，创造更多样式。
@@ -258,6 +521,33 @@ const handleThrottleClick = () => {
       </SwyButton>
     </div>
     <SwyButton type="primary" block shadow>块级阴影按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', round: true, shadow: true }">
+        圆角阴影
+      </ProField>
+      <ProField valueType="SwyButton" :fieldProps="{ type: 'success', plain: true, shadow: true }">
+        朴素阴影
+      </ProField>
+      <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', circle: true, shadow: true }">
+        <template #icon>🔥</template>
+      </ProField>
+    </div>
+    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', block: true, shadow: true }">
+      块级阴影按钮
+    </ProField>
   </div>
 </template>
 ```
