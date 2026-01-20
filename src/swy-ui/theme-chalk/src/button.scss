@@ -27,22 +27,30 @@ $button-icon-span-gap: map.merge(
   line-height: 1;
   // min-height will expand when in flex
   height: map.get($input-height, 'default');
+  min-width: 64px; // 防止按钮过窄
   white-space: nowrap;
   cursor: pointer;
   color: getCssVar('button', 'text-color');
   text-align: center;
   box-sizing: border-box;
   outline: none;
-  transition: 0.1s;
+  transition:
+    color 0.1s,
+    background-color 0.1s,
+    border-color 0.1s,
+    box-shadow 0.1s; // 明确过渡属性
   font-weight: getCssVar('button', 'font-weight');
   user-select: none;
   vertical-align: middle;
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent; // 移动端触摸优化
   background-color: getCssVar('button', 'bg-color');
   border: getCssVar('border');
   border-color: getCssVar('button', 'border-color');
+  text-decoration: none; // 防止 a 标签样式影响
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: getCssVar('button', 'hover', 'text-color');
     border-color: getCssVar('button', 'hover', 'border-color');
     background-color: getCssVar('button', 'hover', 'bg-color');
@@ -142,8 +150,38 @@ $button-icon-span-gap: map.merge(
   }
   @include when(circle) {
     width: map.get($input-height, 'default');
+    min-width: auto; // circle 按钮不需要最小宽度限制
     border-radius: 50%;
     padding: map.get($button-padding-vertical, 'default') - $button-border-width;
+  }
+
+  @include when(shadow) {
+    box-shadow:
+      0 2px 4px 0 rgba(0, 0, 0, 0.12),
+      0 0 6px 0 rgba(0, 0, 0, 0.04);
+
+    &:hover,
+    &:focus {
+      box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.16),
+        0 0 8px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    &:active {
+      box-shadow:
+        0 1px 2px 0 rgba(0, 0, 0, 0.12),
+        0 0 4px 0 rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  @include when(block) {
+    display: flex;
+    width: 100%;
+
+    & + & {
+      margin-left: 0;
+      margin-top: 12px;
+    }
   }
 
   @include when(text) {
@@ -200,9 +238,16 @@ $button-icon-span-gap: map.merge(
     background: transparent;
     padding: 2px;
     height: auto;
+    min-width: auto; // link 按钮不需要最小宽度限制
+    text-decoration: underline; // link 按钮默认下划线
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: getCssVar('button', 'hover', 'link-text-color');
+    }
+
+    &:visited {
+      color: getCssVar('button', 'text-color');
     }
 
     @include when(disabled) {

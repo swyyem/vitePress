@@ -36,6 +36,16 @@ export default defineConfigWithVueTs(
     },
   },
 
+  // 图标组件特殊规则：禁用单词命名限制
+  {
+    name: 'app/icon-components',
+    files: ['**/icon/src/icons/**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
+      'vue/no-reserved-component-names': 'off',
+    },
+  },
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],

@@ -1,41 +1,31 @@
+@use 'sass:map';
+
 @use 'mixins/mixins' as *;
 @use 'common/var' as *;
 
-.#{$namespace}-icon--right {
-  margin-left: 5px;
-}
-.#{$namespace}-icon--left {
-  margin-right: 5px;
-}
-
-@keyframes rotating {
-  0% {
-    transform: rotateZ(0deg);
-  }
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
 @include b(icon) {
-  --color: inherit;
-  height: 1em;
-  width: 1em;
-  line-height: 1em;
   display: inline-flex;
-  justify-content: center;
   align-items: center;
-  position: relative;
-  fill: currentColor;
-  color: var(--color);
-  font-size: inherit;
-
-  @include when(loading) {
-    animation: rotating 2s linear infinite;
-  }
+  justify-content: center;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
 
   svg {
-    height: 1em;
-    width: 1em;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include m(small) {
+    font-size: 14px;
+  }
+
+  @include m(default) {
+    font-size: 16px;
+  }
+
+  @include m(large) {
+    font-size: 20px;
   }
 }

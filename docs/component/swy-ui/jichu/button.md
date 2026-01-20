@@ -105,33 +105,20 @@
 
 ## 图标按钮
 
-使用图标插槽为按钮添加图标。
+使用 `icon` 属性为按钮添加图标，支持字符串图标名称或直接传入图标组件。
 
 :::demo
 
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <SwyButton type="primary">
-      <template #icon>🔍</template>
-      搜索
-    </SwyButton>
-    <SwyButton type="primary">
-      <template #icon>✏️</template>
-      编辑
-    </SwyButton>
-    <SwyButton type="primary">
-      <template #icon>✓</template>
-      确认
-    </SwyButton>
-    <SwyButton type="primary">
-      <template #icon>💬</template>
-      消息
-    </SwyButton>
-    <SwyButton type="danger">
-      <template #icon>🗑️</template>
-      删除
-    </SwyButton>
+    <SwyButton type="primary" icon="search">搜索</SwyButton>
+    <SwyButton type="primary" icon="edit">编辑</SwyButton>
+    <SwyButton type="primary" icon="check">确认</SwyButton>
+    <SwyButton type="primary" icon="message">消息</SwyButton>
+    <SwyButton type="danger" icon="delete">删除</SwyButton>
+    <SwyButton type="primary" icon="search" circle />
+    <SwyButton type="success" icon="edit" circle />
   </div>
 </template>
 ```
@@ -184,3 +171,135 @@ const handleClick = () => {
 ```
 
 :::
+
+## 阴影按钮
+
+使用 `shadow` 属性为按钮添加阴影效果，增强视觉层次感。
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <SwyButton type="primary" shadow>阴影按钮</SwyButton>
+    <SwyButton type="success" shadow>成功按钮</SwyButton>
+    <SwyButton type="warning" shadow>警告按钮</SwyButton>
+    <SwyButton type="danger" shadow>危险按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+## 块级按钮
+
+使用 `block` 属性使按钮宽度占满父容器。
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <SwyButton type="primary" block>块级按钮</SwyButton>
+    <SwyButton type="success" block>成功按钮</SwyButton>
+    <SwyButton type="danger" block>危险按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+## 节流按钮
+
+使用 `throttle` 属性设置节流时间（毫秒），防止按钮被重复点击。
+
+:::demo
+
+```vue
+<template>
+  <div
+    style="display: flex; gap: 10px; flex-wrap: wrap; flex-direction: column; align-items: flex-start;"
+  >
+    <SwyButton type="primary" :throttle="2000" @click="handleThrottleClick">
+      节流按钮（2秒内只能点击一次）
+    </SwyButton>
+    <div>点击次数: {{ clickCount }}</div>
+    <div style="color: #999; font-size: 14px;">提示：快速点击按钮，观察计数变化</div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const clickCount = ref(0)
+
+const handleThrottleClick = () => {
+  clickCount.value++
+}
+</script>
+```
+
+:::
+
+## 组合使用
+
+将不同属性组合使用，创造更多样式。
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <SwyButton type="primary" round shadow>圆角阴影</SwyButton>
+      <SwyButton type="success" plain shadow>朴素阴影</SwyButton>
+      <SwyButton type="danger" circle shadow>
+        <template #icon>🔥</template>
+      </SwyButton>
+    </div>
+    <SwyButton type="primary" block shadow>块级阴影按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+## Button 属性
+
+| 属性名            | 说明                         | 类型               | 可选值                                             | 默认值  |
+| ----------------- | ---------------------------- | ------------------ | -------------------------------------------------- | ------- |
+| size              | 按钮尺寸                     | string             | large / default / small                            | default |
+| type              | 按钮类型                     | string             | primary / success / warning / danger / info / text | —       |
+| plain             | 是否为朴素按钮               | boolean            | —                                                  | false   |
+| text              | 是否为文本按钮               | boolean            | —                                                  | false   |
+| link              | 是否为链接按钮               | boolean            | —                                                  | false   |
+| bg                | 文本按钮背景色是否常亮       | boolean            | —                                                  | false   |
+| round             | 是否为圆角按钮               | boolean            | —                                                  | false   |
+| circle            | 是否为圆形按钮               | boolean            | —                                                  | false   |
+| loading           | 是否为加载状态               | boolean            | —                                                  | false   |
+| loading-icon      | 自定义加载图标               | Component          | —                                                  | Loading |
+| disabled          | 是否禁用                     | boolean            | —                                                  | false   |
+| icon              | 图标组件                     | Component          | —                                                  | —       |
+| autofocus         | 是否自动聚焦                 | boolean            | —                                                  | false   |
+| native-type       | 原生 type 属性               | string             | button / submit / reset                            | button  |
+| auto-insert-space | 自动在两个汉字之间插入空格   | boolean            | —                                                  | false   |
+| color             | 自定义按钮颜色               | string             | —                                                  | —       |
+| dark              | 深色模式                     | boolean            | —                                                  | false   |
+| tag               | 自定义元素标签               | string / Component | —                                                  | button  |
+| shadow            | 阴影效果                     | boolean            | —                                                  | false   |
+| block             | 块级按钮                     | boolean            | —                                                  | false   |
+| throttle          | 节流时间（毫秒）防止重复点击 | number             | —                                                  | 0       |
+
+## Button 事件
+
+| 事件名 | 说明           | 回调参数            |
+| ------ | -------------- | ------------------- |
+| click  | 点击按钮时触发 | (event: MouseEvent) |
+
+## Button 插槽
+
+| 插槽名  | 说明             |
+| ------- | ---------------- |
+| default | 按钮内容         |
+| icon    | 自定义图标       |
+| loading | 自定义加载中图标 |

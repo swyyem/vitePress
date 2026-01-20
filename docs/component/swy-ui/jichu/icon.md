@@ -1,71 +1,175 @@
 # Icon 图标
 
+提供了一套常用的图标集合。
+
 ## 基础用法
 
+使用 `name` 属性指定图标名称。
+
 :::demo
 
 ```vue
 <template>
-  <div style="display: flex; gap: 16px; align-items: center; font-size: 20px;">
-    <SwyIcon>
-      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="currentColor"
-          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-        />
-        <path
-          fill="currentColor"
-          d="M512 336c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"
-        />
-      </svg>
-    </SwyIcon>
-    <SwyIcon style="color: #409eff;">
-      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="currentColor"
-          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm193.5 301.7l-210.6 292a31.8 31.8 0 0 1-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.2 0 19.9 4.9 25.9 13.3l71.2 98.8 157.2-218c6-8.3 15.6-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.5 12.7z"
-        />
-      </svg>
-    </SwyIcon>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <SwyIcon name="search" />
+    <SwyIcon name="edit" />
+    <SwyIcon name="check" />
+    <SwyIcon name="close" />
+    <SwyIcon name="delete" />
+    <SwyIcon name="arrow-left" />
+    <SwyIcon name="arrow-right" />
+    <SwyIcon name="star-filled" />
   </div>
 </template>
 ```
 
 :::
 
-## 不同尺寸
+## 图标尺寸
+
+使用 `size` 属性设置图标大小，支持预设值或自定义尺寸。
 
 :::demo
 
 ```vue
 <template>
-  <div style="display: flex; gap: 16px; align-items: center;">
-    <SwyIcon style="font-size: 16px;">
-      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="currentColor"
-          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-        />
-      </svg>
-    </SwyIcon>
-    <SwyIcon style="font-size: 24px;">
-      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="currentColor"
-          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-        />
-      </svg>
-    </SwyIcon>
-    <SwyIcon style="font-size: 32px;">
-      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-        <path
-          fill="currentColor"
-          d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-        />
-      </svg>
-    </SwyIcon>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <SwyIcon name="search" size="small" />
+    <SwyIcon name="search" size="default" />
+    <SwyIcon name="search" size="large" />
+    <SwyIcon name="search" size="32px" />
+    <SwyIcon name="search" size="48px" />
   </div>
 </template>
 ```
 
 :::
+
+## 图标颜色
+
+使用 `color` 属性设置图标颜色。
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <SwyIcon name="star-filled" color="#409EFF" size="large" />
+    <SwyIcon name="star-filled" color="#67C23A" size="large" />
+    <SwyIcon name="star-filled" color="#E6A23C" size="large" />
+    <SwyIcon name="star-filled" color="#F56C6C" size="large" />
+    <SwyIcon name="star-filled" color="#909399" size="large" />
+  </div>
+</template>
+```
+
+:::
+
+## 常用图标
+
+以下是一些常用图标示例：
+
+:::demo
+
+```vue
+<template>
+  <div
+    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 20px;"
+  >
+    <div
+      v-for="icon in icons"
+      :key="icon"
+      style="display: flex; flex-direction: column; align-items: center; gap: 8px;"
+    >
+      <SwyIcon :name="icon" size="24px" />
+      <span style="font-size: 12px; color: #999;">{{ icon }}</span>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+const icons = [
+  'search',
+  'edit',
+  'check',
+  'close',
+  'delete',
+  'plus',
+  'minus',
+  'arrow-up',
+  'arrow-down',
+  'arrow-left',
+  'arrow-right',
+  'circle-check',
+  'circle-close',
+  'warning',
+  'info-filled',
+  'star-filled',
+  'star',
+  'share',
+  'download',
+  'upload',
+  'setting',
+  'user',
+  'lock',
+  'unlock',
+  'bell',
+  'calendar',
+  'folder',
+  'document',
+  'picture',
+  'video-camera',
+  'location',
+  'phone',
+  'message',
+  'chat-dot-round',
+  'shopping-cart',
+]
+</script>
+```
+
+:::
+
+## 所有图标
+
+查看[完整图标列表](https://element-plus.org/zh-CN/component/icon.html)
+
+## 在按钮中使用
+
+图标可以直接在按钮组件中通过 `icon` 属性使用：
+
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <SwyButton type="primary" icon="search">搜索</SwyButton>
+    <SwyButton type="success" icon="check">确认</SwyButton>
+    <SwyButton type="warning" icon="warning">警告</SwyButton>
+    <SwyButton type="danger" icon="delete">删除</SwyButton>
+    <SwyButton type="info" icon="info-filled">信息</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+## Icon 属性
+
+| 属性名 | 说明               | 类型               | 可选值                                      | 默认值  |
+| ------ | ------------------ | ------------------ | ------------------------------------------- | ------- |
+| name   | 图标名称或图标组件 | string / Component | —                                           | —       |
+| size   | 图标大小           | string             | small / default / large 或具体尺寸如 '20px' | default |
+| color  | 图标颜色           | string             | —                                           | —       |
+
+## 图标名称对照
+
+图标名称采用 kebab-case 命名（小写字母+连字符），例如：
+
+- `search` - 搜索
+- `edit` - 编辑
+- `arrow-left` - 左箭头
+- `circle-check` - 圆形勾选
+- `star-filled` - 实心星星
+
+查看完整图标列表请参考 [Element Plus Icons](https://element-plus.org/zh-CN/component/icon.html)

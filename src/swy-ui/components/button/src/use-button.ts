@@ -122,18 +122,31 @@ export const useButton = (props: ButtonProps, emit: SetupContext<ButtonEmits>['e
   })
 
   /**
-   * 功能：处理按钮的点击事件
+   * 功能：处理按钮的点击事件（带节流）
    * 逻辑：
    *   1. 检查按钮是否禁用或加载中
    *   2. 如果是，则停止事件传播
-   *   3. 如果是 reset 类型按钮，则调用表单的 resetFields() 方法
-   *   4. 触发 click 事件，并传递事件对象
+   *   3. 如果设置了节流时间，检查是否在冷却期
+   *   4. 如果是 reset 类型按钮，则调用表单的 resetFields() 方法
+   *   5. 触发 click 事件，并传递事件对象
    */
+  let lastClickTime = 0
   const handleClick = (evt: MouseEvent) => {
     if (_disabled.value || props.loading) {
       evt.stopPropagation()
       return
     }
+
+    // 节流处理
+    if (props.throttle > 0) {
+      const now = Date.now()
+      if (now - lastClickTime < props.throttle) {
+        evt.stopPropagation()
+        return
+      }
+      lastClickTime = now
+    }
+
     if (props.nativeType === 'reset') {
       form?.resetFields()
     }

@@ -9,14 +9,10 @@
   >
     <template v-if="loading">
       <slot v-if="$slots.loading" name="loading" />
-      <el-icon v-else :class="ns.is('loading')">
-        <component :is="loadingIcon" />
-      </el-icon>
+      <swy-icon v-else :name="loadingIcon" :class="ns.is('loading')" />
     </template>
-    <el-icon v-else-if="icon || $slots.icon">
-      <component :is="icon" v-if="icon" />
-      <slot v-else name="icon" />
-    </el-icon>
+    <swy-icon v-else-if="icon" :name="icon" />
+    <slot v-else-if="$slots.icon" name="icon" />
     <span v-if="$slots.default" :class="{ [ns.em('text', 'expand')]: shouldAddSpace }">
       <slot />
     </span>
@@ -25,7 +21,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-// import { SwyIcon } from '@swy-ui/components/icon'
+import { SwyIcon } from '@swy-ui/components/icon'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { useButton } from './use-button'
 import { buttonEmits, buttonProps } from './button'
@@ -40,6 +36,7 @@ const emit = defineEmits(buttonEmits)
 
 const buttonStyle = useButtonCustomStyle(props)
 const ns = useNamespace('button')
+
 const {
   _ref,
   _size,
@@ -64,6 +61,8 @@ const buttonKls = computed(() => [
   ns.is('text', _text.value),
   ns.is('link', props.link),
   ns.is('has-bg', props.bg),
+  ns.is('shadow', props.shadow),
+  ns.is('block', props.block),
 ])
 
 defineExpose({

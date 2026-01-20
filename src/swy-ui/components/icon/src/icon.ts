@@ -1,22 +1,31 @@
 import { buildProps, definePropType } from '@swy-ui/utils'
+import type { Component, ExtractPropTypes } from 'vue'
 
-import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
-import type Icon from './icon.vue'
+export const iconSizes = ['small', 'default', 'large'] as const
 
 export const iconProps = buildProps({
   /**
-   * @description SVG icon size, size x size
+   * @description 图标名称（字符串）或图标组件
    */
-  size: {
-    type: definePropType<number | string>([Number, String]),
+  name: {
+    type: definePropType<string | Component>([String, Object]),
+    required: true,
   },
   /**
-   * @description SVG tag's fill attribute
+   * @description 图标颜色
    */
   color: {
     type: String,
+    default: '',
+  },
+  /**
+   * @description 图标大小，可以是预设值或具体尺寸（如 '20px'）
+   */
+  size: {
+    type: String,
+    default: 'default',
   },
 } as const)
+
 export type IconProps = ExtractPropTypes<typeof iconProps>
-export type IconPropsPublic = ExtractPublicPropTypes<typeof iconProps>
-export type IconInstance = InstanceType<typeof Icon> & unknown
+export type IconSize = (typeof iconSizes)[number]

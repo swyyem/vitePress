@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icon Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    h2 {
+      border-bottom: 2px solid #409EFF;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 20px;
+    }
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .icon-item:hover {
+      border-color: #409EFF;
+      box-shadow: 0 2px 8px rgba(64, 158, 255, 0.2);
+    }
+    .icon-name {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      word-break: break-all;
+    }
+    .button-demo {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>🎨 SwyIcon 组件测试</h1>
+    
+    <div class="section">
+      <h2>按钮中使用图标（字符串方式）</h2>
+      <div class="button-demo">
+        <swy-button type="primary" icon="search">搜索</swy-button>
+        <swy-button type="success" icon="edit">编辑</swy-button>
+        <swy-button type="warning" icon="warning">警告</swy-button>
+        <swy-button type="danger" icon="delete">删除</swy-button>
+        <swy-button type="info" icon="info-filled">信息</swy-button>
+        <swy-button type="primary" icon="plus" circle />
+        <swy-button type="success" icon="check" circle />
+        <swy-button type="danger" icon="close" circle />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>图标尺寸</h2>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <swy-icon name="search" size="small" />
+        <swy-icon name="search" size="default" />
+        <swy-icon name="search" size="large" />
+        <swy-icon name="search" size="32px" />
+        <swy-icon name="search" size="48px" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>图标颜色</h2>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <swy-icon name="star-filled" color="#409EFF" size="large" />
+        <swy-icon name="star-filled" color="#67C23A" size="large" />
+        <swy-icon name="star-filled" color="#E6A23C" size="large" />
+        <swy-icon name="star-filled" color="#F56C6C" size="large" />
+        <swy-icon name="star-filled" color="#909399" size="large" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>常用图标展示</h2>
+      <div class="icon-grid">
+        <div v-for="icon in commonIcons" :key="icon" class="icon-item" @click="copyIconName(icon)">
+          <swy-icon :name="icon" size="24px" />
+          <span class="icon-name">{{ icon }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { createApp } from 'vue'
+    import { SwyButton, SwyIcon } from './src/swy-ui/components/index.ts'
+    import './src/swy-ui/theme-chalk/src/index.scss'
+
+    const app = createApp({
+      components: {
+        SwyButton,
+        SwyIcon,
+      },
+      data() {
+        return {
+          commonIcons: [
+            'search', 'edit', 'check', 'close', 'delete', 'plus', 'minus',
+            'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+            'circle-check', 'circle-close', 'warning', 'info-filled',
+            'star-filled', 'star', 'share', 'download', 'upload',
+            'setting', 'user', 'lock', 'unlock', 'bell',
+            'calendar', 'folder', 'document', 'picture', 'video-camera',
+            'location', 'phone', 'message', 'chat-dot-round', 'shopping-cart',
+          ]
+        }
+      },
+      methods: {
+        copyIconName(name) {
+          navigator.clipboard.writeText(name).then(() => {
+            alert(`已复制图标名称: ${name}`)
+          })
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+</html>

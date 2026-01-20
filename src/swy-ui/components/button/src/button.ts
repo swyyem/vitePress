@@ -41,10 +41,10 @@ export const buttonProps = buildProps({
     default: '',
   },
   /**
-   * @description 图标组件
+   * @description 图标组件或图标名称
    */
   icon: {
-    type: iconPropType,
+    type: definePropType<string | Component>([String, Object]),
   },
   /**
    * @description 原生按钮类型
@@ -123,6 +123,27 @@ export const buttonProps = buildProps({
   tag: {
     type: definePropType<string | Component>([String, Object]),
     default: 'button',
+  },
+  /**
+   * @description 按钮阴影效果
+   */
+  shadow: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @description 按钮块级显示（宽度 100%）
+   */
+  block: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @description 按钮节流时间（ms）防止重复点击
+   */
+  throttle: {
+    type: Number,
+    default: 0,
   },
 } as const)
 export const buttonEmits = {
