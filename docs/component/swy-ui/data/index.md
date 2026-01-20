@@ -55,7 +55,7 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
     <SwyImage src="invalid-url" style="width: 200px; height: 200px;" />
     <SwyImage src="invalid-url" style="width: 200px; height: 200px;">
       <template #error>
-        <div style="text-align: center;">自定义错误提示</div>
+        <div style="text-align: center;">自定义错误提�?/div>
       </template>
     </SwyImage>
   </div>
@@ -77,24 +77,24 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
   <SwyDescriptions title="用户信息">
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
       <div>
-        <div style="color: #909399; margin-bottom: 8px;">用户名</div>
+        <div style="color: #909399; margin-bottom: 8px;">用户�?/div>
         <div>张三</div>
       </div>
       <div>
-        <div style="color: #909399; margin-bottom: 8px;">手机号</div>
+        <div style="color: #909399; margin-bottom: 8px;">手机�?/div>
         <div>18100000000</div>
       </div>
       <div>
-        <div style="color: #909399; margin-bottom: 8px;">居住地</div>
+        <div style="color: #909399; margin-bottom: 8px;">居住�?/div>
         <div>北京市朝阳区</div>
       </div>
       <div>
         <div style="color: #909399; margin-bottom: 8px;">备注</div>
-        <div>这是一段备注信息</div>
+        <div>这是一段备注信�?/div>
       </div>
       <div>
         <div style="color: #909399; margin-bottom: 8px;">联系地址</div>
-        <div>北京市朝阳区芍药居</div>
+        <div>北京市朝阳区芍药�?/div>
       </div>
     </div>
   </SwyDescriptions>
@@ -113,11 +113,11 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
     <SwyDescriptions title="大号尺寸" size="large">
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
         <div>
-          <div style="color: #909399; margin-bottom: 8px;">用户名</div>
+          <div style="color: #909399; margin-bottom: 8px;">用户�?/div>
           <div>张三</div>
         </div>
         <div>
-          <div style="color: #909399; margin-bottom: 8px;">手机号</div>
+          <div style="color: #909399; margin-bottom: 8px;">手机�?/div>
           <div>18100000000</div>
         </div>
       </div>
@@ -126,11 +126,11 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
     <SwyDescriptions title="默认尺寸">
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
         <div>
-          <div style="color: #909399; margin-bottom: 8px;">用户名</div>
+          <div style="color: #909399; margin-bottom: 8px;">用户�?/div>
           <div>张三</div>
         </div>
         <div>
-          <div style="color: #909399; margin-bottom: 8px;">手机号</div>
+          <div style="color: #909399; margin-bottom: 8px;">手机�?/div>
           <div>18100000000</div>
         </div>
       </div>
@@ -139,11 +139,11 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
     <SwyDescriptions title="小号尺寸" size="small">
       <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
         <div>
-          <div style="color: #909399; margin-bottom: 8px;">用户名</div>
+          <div style="color: #909399; margin-bottom: 8px;">用户�?/div>
           <div>张三</div>
         </div>
         <div>
-          <div style="color: #909399; margin-bottom: 8px;">手机号</div>
+          <div style="color: #909399; margin-bottom: 8px;">手机�?/div>
           <div>18100000000</div>
         </div>
       </div>
@@ -154,7 +154,7 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
 
 :::
 
-### 带操作按钮
+### 带操作按�?
 
 :::demo
 
@@ -166,15 +166,15 @@ const url = 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.
     </template>
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
       <div>
-        <div style="color: #909399; margin-bottom: 8px;">用户名</div>
+        <div style="color: #909399; margin-bottom: 8px;">用户�?/div>
         <div>张三</div>
       </div>
       <div>
-        <div style="color: #909399; margin-bottom: 8px;">手机号</div>
+        <div style="color: #909399; margin-bottom: 8px;">手机�?/div>
         <div>18100000000</div>
       </div>
       <div>
-        <div style="color: #909399; margin-bottom: 8px;">居住地</div>
+        <div style="color: #909399; margin-bottom: 8px;">居住�?/div>
         <div>北京市朝阳区</div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 # TimeSelect 时间选择
 
-用于选择或输入日期。
+用于选择或输入日期�?
 
 ## 基础用法
 
@@ -10,7 +10,7 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择时间：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择时间�?/div>
       <SwyTimeSelect v-model="value" placeholder="请选择时间" />
     </div>
 
@@ -37,7 +37,7 @@ const value = ref('')
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择时间（09:00-18:00）：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择时间�?9:00-18:00）：</div>
       <SwyTimeSelect
         v-model="value1"
         start="09:00"
@@ -48,7 +48,7 @@ const value = ref('')
     </div>
 
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择时间（00:00-12:00，15分钟间隔）：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择时间�?0:00-12:00�?5分钟间隔）：</div>
       <SwyTimeSelect
         v-model="value2"
         start="00:00"
@@ -77,9 +77,9 @@ const value2 = ref('')
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
-    <SwyTimeSelect v-model="value3" size="large" placeholder="大尺寸" />
+    <SwyTimeSelect v-model="value3" size="large" placeholder="大尺�? />
     <SwyTimeSelect v-model="value4" placeholder="默认尺寸" />
-    <SwyTimeSelect v-model="value5" size="small" placeholder="小尺寸" />
+    <SwyTimeSelect v-model="value5" size="small" placeholder="小尺�? />
   </div>
 </template>
 
@@ -98,11 +98,11 @@ const value5 = ref('')
 
 ### TimeSelect Props
 
-| 参数                 | 说明     | 类型                      | 默认值  |
+| 参数                 | 说明     | 类型                      | 默认�?  |
 | -------------------- | -------- | ------------------------- | ------- |
-| modelValue / v-model | 绑定值   | `string`                  | —       |
-| placeholder          | 占位文本 | `string`                  | —       |
-| start                | 开始时间 | `string`                  | 09:00   |
+| modelValue / v-model | 绑定�?   | `string`                  | �?      |
+| placeholder          | 占位文本 | `string`                  | �?      |
+| start                | 开始时�? | `string`                  | 09:00   |
 | end                  | 结束时间 | `string`                  | 18:00   |
 | step                 | 时间步长 | `string`                  | 00:30   |
 | disabled             | 是否禁用 | `boolean`                 | false   |
@@ -110,8 +110,8 @@ const value5 = ref('')
 
 ### TimeSelect Events
 
-| 事件名 | 说明           | 参数                  |
+| 事件�? | 说明           | 参数                  |
 | ------ | -------------- | --------------------- |
 | change | 值改变时触发   | `(value: string)`     |
-| blur   | 失去焦点时触发 | `(event: FocusEvent)` |
-| focus  | 获得焦点时触发 | `(event: FocusEvent)` |
+| blur   | 失去焦点时触�? | `(event: FocusEvent)` |
+| focus  | 获得焦点时触�? | `(event: FocusEvent)` |

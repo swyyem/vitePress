@@ -1,6 +1,6 @@
 # Row / Col 栅格布局
 
-通过基础的 24 分栏，迅速简便地创建布局。
+通过基础�?24 分栏，迅速简便地创建布局�?
 
 ## 基础布局
 
@@ -202,7 +202,7 @@
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
-    <div style="color: #606266; margin-bottom: 5px;">左对齐（默认）</div>
+    <div style="color: #606266; margin-bottom: 5px;">左对齐（默认�?/div>
     <SwyRow justify="start" style="background: #f5f7fa; padding: 10px; border-radius: 4px;">
       <SwyCol :span="4">
         <div
@@ -252,7 +252,7 @@
       </SwyCol>
     </SwyRow>
 
-    <div style="color: #606266; margin-bottom: 5px;">右对齐</div>
+    <div style="color: #606266; margin-bottom: 5px;">右对�?/div>
     <SwyRow justify="end" style="background: #f5f7fa; padding: 10px; border-radius: 4px;">
       <SwyCol :span="4">
         <div
@@ -336,19 +336,19 @@
 
 ### Row Props
 
-| 参数    | 说明           | 类型                                                  | 默认值 |
+| 参数    | 说明           | 类型                                                  | 默认�? |
 | ------- | -------------- | ----------------------------------------------------- | ------ |
 | gutter  | 栅格间隔       | `number`                                              | 0      |
 | justify | 水平排列方式   | `start / end / center / space-around / space-between` | start  |
 | align   | 垂直排列方式   | `top / middle / bottom`                               | top    |
-| tag     | 自定义元素标签 | `string`                                              | div    |
+| tag     | 自定义元素标�? | `string`                                              | div    |
 
 ### Col Props
 
-| 参数   | 说明               | 类型     | 默认值 |
+| 参数   | 说明               | 类型     | 默认�? |
 | ------ | ------------------ | -------- | ------ |
-| span   | 栅格占据的列数     | `number` | 24     |
-| offset | 栅格左侧的间隔格数 | `number` | 0      |
+| span   | 栅格占据的列�?     | `number` | 24     |
+| offset | 栅格左侧的间隔格�? | `number` | 0      |
 | push   | 栅格向右移动格数   | `number` | 0      |
 | pull   | 栅格向左移动格数   | `number` | 0      |
-| tag    | 自定义元素标签     | `string` | div    |
+| tag    | 自定义元素标�?     | `string` | div    |

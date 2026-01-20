@@ -1,6 +1,6 @@
-# Transfer 穿梭框
+# Transfer 穿梭�?
 
-在两栏中移动元素实现选择。
+在两栏中移动元素实现选择�?
 
 ## 基础用法
 
@@ -9,10 +9,10 @@
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
-    <SwyTransfer v-model="value" :data="data" :titles="['源列表', '目标列表']" />
+    <SwyTransfer v-model="value" :data="data" :titles="['源列�?, '目标列表']" />
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px;">
-      <h4 style="margin-top: 0;">已选择：</h4>
+      <h4 style="margin-top: 0;">已选择�?/h4>
       <pre style="margin: 0;">{{ value }}</pre>
     </div>
   </div>
@@ -33,7 +33,7 @@ const data = Array.from({ length: 15 }).map((_, index) => ({
 
 :::
 
-## 可搜索
+## 可搜�?
 
 :::demo
 
@@ -71,7 +71,7 @@ const searchData = [
 
 :::
 
-## 自定义按钮文字
+## 自定义按钮文�?
 
 :::demo
 
@@ -82,7 +82,7 @@ const searchData = [
       v-model="value3"
       :data="data3"
       :button-texts="['移除', '添加']"
-      :titles="['待选', '已选']"
+      :titles="['待�?, '已�?]"
     />
   </div>
 </template>
@@ -133,7 +133,7 @@ const customValue = ref([1])
 
 const customData = [
   { key: 1, label: '文档', icon: '📄', desc: '查看文档' },
-  { key: 2, label: '图片', icon: '🖼️', desc: '查看图片' },
+  { key: 2, label: '图片', icon: '🖼�?, desc: '查看图片' },
   { key: 3, label: '视频', icon: '🎬', desc: '观看视频' },
   { key: 4, label: '音乐', icon: '🎵', desc: '播放音乐' },
   { key: 5, label: '代码', icon: '💻', desc: '编辑代码' },
@@ -147,21 +147,21 @@ const customData = [
 
 ### Transfer Props
 
-| 参数                 | 说明                      | 类型      | 默认值             |
+| 参数                 | 说明                      | 类型      | 默认�?             |
 | -------------------- | ------------------------- | --------- | ------------------ |
-| modelValue / v-model | 绑定值（已选中的key数组） | `array`   | []                 |
-| data                 | 数据源                    | `array`   | []                 |
+| modelValue / v-model | 绑定值（已选中的key数组�? | `array`   | []                 |
+| data                 | 数据�?                    | `array`   | []                 |
 | titles               | 列表标题                  | `array`   | ['列表1', '列表2'] |
 | buttonTexts          | 按钮文字                  | `array`   | []                 |
-| filterable           | 是否可搜索                | `boolean` | false              |
-| filterPlaceholder    | 搜索框占位符              | `string`  | 请输入搜索内容     |
+| filterable           | 是否可搜�?                | `boolean` | false              |
+| filterPlaceholder    | 搜索框占位符              | `string`  | 请输入搜索内�?     |
 | disabled             | 是否禁用                  | `boolean` | false              |
 
 ### Transfer Events
 
-| 事件名             | 说明                     | 参数                            |
+| 事件�?             | 说明                     | 参数                            |
 | ------------------ | ------------------------ | ------------------------------- |
-| change             | 右侧列表元素变化时触发   | `(value, direction, movedKeys)` |
+| change             | 右侧列表元素变化时触�?   | `(value, direction, movedKeys)` |
 | left-check-change  | 左侧列表选中项变化时触发 | `(value, movedKeys)`            |
 | right-check-change | 右侧列表选中项变化时触发 | `(value, movedKeys)`            |
 
@@ -169,6 +169,6 @@ const customData = [
 
 | 名称         | 说明               |
 | ------------ | ------------------ |
-| default      | 自定义数据项的内容 |
-| left-footer  | 左侧列表底部的内容 |
-| right-footer | 右侧列表底部的内容 |
+| default      | 自定义数据项的内�? |
+| left-footer  | 左侧列表底部的内�? |
+| right-footer | 右侧列表底部的内�? |

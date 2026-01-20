@@ -1,6 +1,6 @@
-# TimePicker 时间选择器
+# TimePicker 时间选择�?
 
-用于选择或输入时间。
+用于选择或输入时间�?
 
 ## 基础用法
 
@@ -10,7 +10,7 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择时间：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择时间�?/div>
       <SwyTimePicker v-model="time1" placeholder="请选择时间" />
     </div>
 
@@ -38,12 +38,12 @@ const time1 = ref('')
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择时间范围：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择时间范围�?/div>
       <SwyTimePicker
         v-model="timeRange"
         is-range
-        range-separator="至"
-        start-placeholder="开始时间"
+        range-separator="�?
+        start-placeholder="开始时�?
         end-placeholder="结束时间"
       />
     </div>
@@ -71,9 +71,9 @@ const timeRange = ref([])
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
-    <SwyTimePicker v-model="time1" size="large" placeholder="大尺寸" />
+    <SwyTimePicker v-model="time1" size="large" placeholder="大尺�? />
     <SwyTimePicker v-model="time2" placeholder="默认尺寸" />
-    <SwyTimePicker v-model="time3" size="small" placeholder="小尺寸" />
+    <SwyTimePicker v-model="time3" size="small" placeholder="小尺�? />
   </div>
 </template>
 
@@ -101,7 +101,7 @@ const time3 = ref('')
     </div>
 
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">限制结束时间：</div>
+      <div style="margin-bottom: 8px; color: #606266;">限制结束时间�?/div>
       <SwyTimePicker v-model="time2" :end="end" placeholder="00:00 - 12:00" />
     </div>
   </div>
@@ -123,22 +123,22 @@ const end = '12:00'
 
 ### TimePicker Props
 
-| 参数                 | 说明           | 类型                      | 默认值   |
+| 参数                 | 说明           | 类型                      | 默认�?   |
 | -------------------- | -------------- | ------------------------- | -------- |
-| modelValue / v-model | 绑定值         | `string / Date`           | —        |
-| placeholder          | 占位内容       | `string`                  | —        |
+| modelValue / v-model | 绑定�?         | `string / Date`           | �?       |
+| placeholder          | 占位内容       | `string`                  | �?       |
 | size                 | 尺寸           | `large / default / small` | default  |
 | disabled             | 是否禁用       | `boolean`                 | false    |
-| clearable            | 是否可清空     | `boolean`                 | true     |
+| clearable            | 是否可清�?     | `boolean`                 | true     |
 | format               | 显示格式       | `string`                  | HH:mm:ss |
-| isRange              | 是否为时间范围 | `boolean`                 | false    |
-| start                | 开始时间       | `string`                  | 00:00    |
+| isRange              | 是否为时间范�? | `boolean`                 | false    |
+| start                | 开始时�?       | `string`                  | 00:00    |
 | end                  | 结束时间       | `string`                  | 23:59    |
 
 ### TimePicker Events
 
-| 事件名 | 说明                   | 参数                  |
+| 事件�? | 说明                   | 参数                  |
 | ------ | ---------------------- | --------------------- |
 | change | 用户确认选定的值时触发 | `(value: string)`     |
-| blur   | 失去焦点时触发         | `(event: FocusEvent)` |
-| focus  | 获得焦点时触发         | `(event: FocusEvent)` |
+| blur   | 失去焦点时触�?         | `(event: FocusEvent)` |
+| focus  | 获得焦点时触�?         | `(event: FocusEvent)` |

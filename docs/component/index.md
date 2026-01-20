@@ -4,7 +4,7 @@
 
 > 基于 [element-plus](https://element-plus.gitee.io/#/zh-CN/component/input)二次封装.
 
-> 旨在用统一的标签 ProField 不同的 valueType,渲染出不同的组件.
+> 旨在用统一的标�?ProField 不同�?valueType,渲染出不同的组件.
 
 > 让页面结构更加清晰和统一.
 
@@ -12,15 +12,15 @@
 
 **注意**:
 
-- 默认属性 `valueType`用于表示组件的类型,目前支持组件:
+- 默认属�?`valueType`用于表示组件的类�?目前支持组件:
 
 `SwyButton` `SwyCard` `SwyCheckbox` `SwyForm` `SwyInput` `SwySelect` `SwySwitch` `SwyTable` `SwyTabs` `SwyTag` `SwyTree` `SwyUpload`
 
-- 属性 `fieldProps`是一个公共属性,但是属性值根据组件不同而不同` valueType对应的组件自己特有支持的属性,placeholder支持的`属性决定,具体请查看组件文档
+- 属�?`fieldProps`是一个公共属�?但是属性值根据组件不同而不同` valueType对应的组件自己特有支持的属�?placeholder支持的`属性决�?具体请查看组件文�?
 
 ## 使用示例
 
-### 标签的写法
+### 标签的写�?
 
 :::demo
 
@@ -36,7 +36,7 @@ const state1 = ref('')
 
 :::
 
-### json 的写法
+### json 的写�?
 
 :::demo
 
@@ -96,7 +96,7 @@ const state1 = ref('11111')
 
 :::
 
-## renderFormItem 属性
+## renderFormItem 属�?
 
 :::demo
 
@@ -117,7 +117,7 @@ const renderFormItem = (text, props) => {
 
 :::
 
-## render 属性
+## render 属�?
 
 :::demo
 
@@ -138,9 +138,9 @@ const render = (text, props) => {
 
 :::
 
-## valueEnum 属性
+## valueEnum 属�?
 
-** 优先级 ** `request>valueEnum>fieldProps.options>fieldProps.valueEnum`
+** 优先�?** `request>valueEnum>fieldProps.options>fieldProps.valueEnum`
 
 :::demo
 
@@ -172,9 +172,9 @@ const valueEnum = generateData(10)
 
 :::
 
-## request 属性
+## request 属�?
 
-** 优先级 ** `request>valueEnum>fieldProps.options>fieldProps.valueEnum`
+** 优先�?** `request>valueEnum>fieldProps.options>fieldProps.valueEnum`
 
 :::demo
 
@@ -225,24 +225,19 @@ const getData = (params: any) => {
 
 ## TypeScript 类型提示
 
-### 获取 valueType 的类型提示
+### 获取 valueType 的类型提�?
 
-当使用 TypeScript 时，ProField 组件会自动提供 `valueType` 属性的类型提示。
-
+当使�?TypeScript 时，ProField 组件会自动提�?`valueType` 属性的类型提示�?
 :::demo
 
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
     <!-- 当你输入 valueType=" 时，IDE 会自动提示所有可用的组件类型 -->
-    <ProField
-      valueType="SwyInput"
-      v-model="username"
-      :filedProps="{ placeholder: '请输入用户名' }"
-    />
+    <ProField valueType="Input" v-model="username" :filedProps="{ placeholder: '请输入用户名' }" />
 
     <ProField
-      valueType="SwySelect"
+      valueType="Select"
       v-model="city"
       :filedProps="{
         options: [
@@ -252,7 +247,7 @@ const getData = (params: any) => {
       }"
     />
 
-    <ProField valueType="SwyCheckbox" v-model="checked" :filedProps="{ label: '同意协议' }" />
+    <ProField valueType="Checkbox" v-model="checked" :filedProps="{ label: '同意协议' }" />
   </div>
 </template>
 
@@ -264,36 +259,29 @@ const username = ref('')
 const city = ref('')
 const checked = ref(false)
 
-// 也可以使用 ValueType 类型来约束变量
-const dynamicType: ValueType = 'SwyButton'
+// 也可以使�?ValueType 类型来约束变�?const dynamicType: ValueType = 'SwyButton'
 </script>
 ```
 
 :::
 
-**可用的 valueType 类型：**
+\*_可用�?valueType 类型�?_
 
 - `'SwyButton'` - 按钮组件
 - `'SwyCard'` - 卡片组件
 - `'SwyCheckbox'` - 复选框组件
 - `'SwyForm'` - 表单组件
-- `'SwyInput'` - 输入框组件
-- `'SwyModal'` - 模态框组件
-- `'SwySelect'` - 选择器组件
-- `'SwySwitch'` - 开关组件
-- `'SwyTable'` - 表格组件
-- `'SwyTabs'` - 标签页组件
-- `'SwyTag'` - 标签组件
+- `'SwyInput'` - 输入框组�?- `'SwyModal'` - 模态框组件
+- `'SwySelect'` - 选择器组�?- `'SwySwitch'` - 开关组�?- `'SwyTable'` - 表格组件
+- `'SwyTabs'` - 标签页组�?- `'SwyTag'` - 标签组件
 - `'SwyTree'` - 树形组件
 - `'SwyUpload'` - 上传组件
 
-**在 VSCode 中使用：**
+**�?VSCode 中使用：**
 
 1. 当你输入 `valueType="` 时，会自动弹出所有可用的组件类型
-2. 可以通过 `Ctrl + Space` (Windows) 或 `Cmd + Space` (Mac) 手动触发智能提示
-3. 如果输入了不存在的类型，TypeScript 会给出错误提示
-
-**导入类型定义：**
+2. 可以通过 `Ctrl + Space` (Windows) �?`Cmd + Space` (Mac) 手动触发智能提示
+3. 如果输入了不存在的类型，TypeScript 会给出错误提�? \*_导入类型定义�?_
 
 ```typescript
 import type { ValueType, ProFieldProps } from '@swy-ui/proField'
@@ -301,24 +289,24 @@ import type { ValueType, ProFieldProps } from '@swy-ui/proField'
 // 使用类型
 const config: { type: ValueType; props: any } = {
   type: 'SwyInput',
-  props: { placeholder: '请输入' },
+  props: { placeholder: '请输�? },
 }
 ```
 
-## 属性列表
+## 属性列�?
 
-| 属性名                 |                    说明                     |                                          类型                                           |                     默认值                     |
-| ---------------------- | :-----------------------------------------: | :-------------------------------------------------------------------------------------: | :--------------------------------------------: |
-| mode                   |            组件模式：只读或编辑             |                                     `read \| edit`                                      |                      edit                      |
-| emptyText              |  当 mode 等于`read`,并且值为空时显示的文本  |                                        `string`                                         |                       -                        |
-| **valueType**          |             **渲染的组件类型**              |              [ProFieldValueType](https://swyyem.github.io/vitePress/api/)               |                      text                      |
-| fieldProps             |     传递给 valueType 对应组件特有的属性     |         [ProFieldValueTypeWithFieldProps](https://swyyem.github.io/vitePress/)          |                    unknown                     |
-| `modelValue \|v-model` |                双向绑定的值                 |                                         unknown                                         |                       -                        |
-| renderFormItem         |      当 mode 等于`edit`,渲染自定义组件      |                       `(text: unknown, props: unknown) => VNode`                        | `示例：(text,props)=>h('div',{...props},text)` |
-| render                 |      当 mode 等于`read`,渲染自定义组件      |                                         `同上`                                          |                    `不示例`                    |
-| valueEnum              |     枚举数据,用于有子项时.比如说 select     |   `Array<`[ProSchemaValueEnumType](https://swyyem.github.io/vitePress/) `\| string>`    |                       -                        |
-| request                | 远程获取枚举数据,用于有子项时.比如说 select | ` Promise<Array<`[ProSchemaValueEnumType](https://swyyem.github.io/vitePress/) `\| T>>` |                       -                        |
-| params                 |   与 request 搭配只用,用于 request 的参数   |                                       `unknown `                                        |                   undefined                    |
+| 属性名                 |                    说明                    |                                          类型                                           |                    默认�?                     |
+| ---------------------- | :----------------------------------------: | :-------------------------------------------------------------------------------------: | :-------------------------------------------: |
+| mode                   |            组件模式：只读或编辑            |                                     `read \| edit`                                      |                     edit                      |
+| emptyText              |  �?mode 等于`read`,并且值为空时显示的文�?  |                                        `string`                                         |                       -                       |
+| **valueType**          |             \*_渲染的组件类�?_             |              [ProFieldValueType](https://swyyem.github.io/vitePress/api/)               |                     text                      |
+| fieldProps             |    传递给 valueType 对应组件特有的属�?     |         [ProFieldValueTypeWithFieldProps](https://swyyem.github.io/vitePress/)          |                    unknown                    |
+| `modelValue \|v-model` |                双向绑定的�?                |                                         unknown                                         |                       -                       |
+| renderFormItem         |      �?mode 等于`edit`,渲染自定义组�?      |                       `(text: unknown, props: unknown) => VNode`                        | `示例�?text,props)=>h('div',{...props},text)` |
+| render                 |      �?mode 等于`read`,渲染自定义组�?      |                                         `同上`                                          |                   `不示例`                    |
+| valueEnum              |     枚举数据,用于有子项时.比如�?select     |   `Array<`[ProSchemaValueEnumType](https://swyyem.github.io/vitePress/) `\| string>`    |                       -                       |
+| request                | 远程获取枚举数据,用于有子项时.比如�?select | ` Promise<Array<`[ProSchemaValueEnumType](https://swyyem.github.io/vitePress/) `\| T>>` |                       -                       |
+| params                 |   �?request 搭配只用,用于 request 的参�?   |                                       `unknown `                                        |                   undefined                   |
 
 ## 表单组件示例
 
@@ -328,8 +316,8 @@ const config: { type: ValueType; props: any } = {
 
 ```vue
 <template>
-  <ProField valueType="SwyCheckbox" v-model="checked" :filedProps="{ label: '同意协议' }" />
-  <p>选中状态: {{ checked }}</p>
+  <ProField valueType="Checkbox" v-model="checked" :filedProps="{ label: '同意协议' }" />
+  <p>选中状�? {{ checked }}</p>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -339,14 +327,14 @@ const checked = ref(false)
 
 :::
 
-### Select 选择器
+### Select 选择�?
 
 :::示例
 
 ```vue
 <template>
   <ProField
-    valueType="SwySelect"
+    valueType="Select"
     v-model="selectedValue"
     :filedProps="{
       options: [
@@ -357,7 +345,7 @@ const checked = ref(false)
       placeholder: '请选择',
     }"
   />
-  <p>选中的值: {{ selectedValue }}</p>
+  <p>选中的�? {{ selectedValue }}</p>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -367,21 +355,21 @@ const selectedValue = ref('')
 
 :::
 
-### Switch 开关
+### Switch 开�?
 
 :::示例
 
 ```vue
 <template>
   <ProField
-    valueType="SwySwitch"
+    valueType="Switch"
     v-model="switchValue"
     :filedProps="{
-      activeText: '开启',
+      activeText: '开�?,
       inactiveText: '关闭',
     }"
   />
-  <p>开关状态: {{ switchValue ? '开启' : '关闭' }}</p>
+  <p>开关状�? {{ switchValue ? '开�? : '关闭' }}</p>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
@@ -401,16 +389,16 @@ const switchValue = ref(false)
     <div style="margin-bottom: 15px;">
       <label>用户名：</label>
       <ProField
-        valueType="SwyInput"
+        valueType="Input"
         v-model="formData.username"
         :filedProps="{ placeholder: '请输入用户名' }"
       />
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label>城市：</label>
+      <label>城市�?/label>
       <ProField
-        valueType="SwySelect"
+        valueType="Select"
         v-model="formData.city"
         :filedProps="{
           options: cityOptions,
@@ -421,26 +409,26 @@ const switchValue = ref(false)
 
     <div style="margin-bottom: 15px;">
       <ProField
-        valueType="SwyCheckbox"
+        valueType="Checkbox"
         v-model="formData.agree"
         :filedProps="{ label: '同意用户协议' }"
       />
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label>接收通知：</label>
+      <label>接收通知�?/label>
       <ProField
-        valueType="SwySwitch"
+        valueType="Switch"
         v-model="formData.notification"
         :filedProps="{
           activeText: '开',
-          inactiveText: '关',
+          inactiveText: '�?,
         }"
       />
     </div>
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px;">
-      <h4 style="margin-top: 0;">表单数据：</h4>
+      <h4 style="margin-top: 0;">表单数据�?/h4>
       <pre style="margin: 0;">{{ JSON.stringify(formData, null, 2) }}</pre>
     </div>
   </div>

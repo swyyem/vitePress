@@ -2,7 +2,7 @@
 
 ## 描述
 
-用于标记和分类。
+用于标记和分类�?
 
 ## 基础用法
 
@@ -46,10 +46,10 @@ import { ref } from 'vue'
 
 const tags = ref([
   { name: '标签一', type: 'primary' },
-  { name: '标签二', type: 'success' },
-  { name: '标签三', type: 'info' },
-  { name: '标签四', type: 'warning' },
-  { name: '标签五', type: 'danger' },
+  { name: '标签�?, type: 'success' },
+  { name: '标签�?, type: 'info' },
+  { name: '标签�?, type: 'warning' },
+  { name: '标签�?, type: 'danger' },
 ])
 
 const handleClose = (index: number) => {

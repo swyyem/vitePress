@@ -1,36 +1,29 @@
 # ProField 原子组件
 
-ProField 是一个强大的原子组件，通过统一的标签和不同的 `valueType` 属性，可以渲染出不同的表单组件，让页面结构更加清晰和统一。
+ProField 是一个强大的原子组件，通过统一的标签和不同�?`valueType` 属性，可以渲染出不同的表单组件，让页面结构更加清晰和统一�?
 
 ## 特点
 
-- 🎯 统一的组件标签，通过 `valueType` 属性渲染不同组件
-- 📦 支持通过 JSON 配置渲染组件
-- 🔄 支持只读和编辑两种模式
-- 🎨 支持自定义渲染函数
-- 🌐 支持远程数据加载
+- 🎯 统一的组件标签，通过 `valueType` 属性渲染不同组�?- 📦 支持通过 JSON 配置渲染组件
+- 🔄 支持只读和编辑两种模�?- 🎨 支持自定义渲染函�?- 🌐 支持远程数据加载
 
-## 支持的组件类型
+## 支持的组件类�?
 
-ProField 支持以下 `valueType` 类型：
+ProField 支持以下 `valueType` 类型�?
 
 - `SwyButton` - 按钮组件
 - `SwyCard` - 卡片组件
 - `SwyCheckbox` - 复选框组件
 - `SwyForm` - 表单组件
-- `SwyInput` - 输入框组件
-- `SwyModal` - 模态框组件
-- `SwySelect` - 选择器组件
-- `SwySwitch` - 开关组件
-- `SwyTable` - 表格组件
-- `SwyTabs` - 标签页组件
-- `SwyTag` - 标签组件
+- `SwyInput` - 输入框组�?- `SwyModal` - 模态框组件
+- `SwySelect` - 选择器组�?- `SwySwitch` - 开关组�?- `SwyTable` - 表格组件
+- `SwyTabs` - 标签页组�?- `SwyTag` - 标签组件
 - `SwyTree` - 树形组件
 - `SwyUpload` - 上传组件
 
 ## 基础用法
 
-### 最简单示例
+### 最简单示�?
 
 先从最简单的按钮开始测试：
 
@@ -39,7 +32,7 @@ ProField 支持以下 `valueType` 类型：
 ```vue
 <template>
   <div>
-    <ProField valueType="SwyButton">点击我</ProField>
+    <ProField valueType="Button">点击�?/ProField>
   </div>
 </template>
 
@@ -48,19 +41,15 @@ ProField 支持以下 `valueType` 类型：
 
 :::
 
-### 输入框示例
+### 输入框示�?
 
 :::demo
 
 ```vue
 <template>
   <div>
-    <ProField
-      valueType="SwyInput"
-      v-model="username"
-      :filedProps="{ placeholder: '请输入用户名' }"
-    />
-    <p style="margin-top: 10px;">输入的内容: {{ username }}</p>
+    <ProField valueType="Input" v-model="username" :filedProps="{ placeholder: '请输入用户名' }" />
+    <p style="margin-top: 10px;">输入的内�? {{ username }}</p>
   </div>
 </template>
 
@@ -80,8 +69,8 @@ const username = ref('')
 ```vue
 <template>
   <div>
-    <ProField valueType="SwyCheckbox" v-model="checked" :filedProps="{ label: '同意用户协议' }" />
-    <p style="margin-top: 10px;">选中状态: {{ checked }}</p>
+    <ProField valueType="Checkbox" v-model="checked" :filedProps="{ label: '同意用户协议' }" />
+    <p style="margin-top: 10px;">选中状�? {{ checked }}</p>
   </div>
 </template>
 
@@ -94,7 +83,7 @@ const checked = ref(false)
 
 :::
 
-### 选择器示例
+### 选择器示�?
 
 :::demo
 
@@ -102,7 +91,7 @@ const checked = ref(false)
 <template>
   <div>
     <ProField
-      valueType="SwySelect"
+      valueType="Select"
       v-model="selectedCity"
       :filedProps="{
         options: [
@@ -114,7 +103,7 @@ const checked = ref(false)
         placeholder: '请选择城市',
       }"
     />
-    <p style="margin-top: 10px;">选中的城市: {{ selectedCity }}</p>
+    <p style="margin-top: 10px;">选中的城�? {{ selectedCity }}</p>
   </div>
 </template>
 
@@ -127,7 +116,7 @@ const selectedCity = ref('')
 
 :::
 
-### 开关示例
+### 开关示�?
 
 :::demo
 
@@ -135,14 +124,14 @@ const selectedCity = ref('')
 <template>
   <div>
     <ProField
-      valueType="SwySwitch"
+      valueType="Switch"
       v-model="switchValue"
       :filedProps="{
-        activeText: '开启',
+        activeText: '开�?,
         inactiveText: '关闭',
       }"
     />
-    <p style="margin-top: 10px;">开关状态: {{ switchValue ? '开启' : '关闭' }}</p>
+    <p style="margin-top: 10px;">开关状�? {{ switchValue ? '开�? : '关闭' }}</p>
   </div>
 </template>
 
@@ -163,7 +152,7 @@ const switchValue = ref(false)
 <template>
   <div style="display: flex; gap: 10px;">
     <ProField
-      valueType="SwyButton"
+      valueType="Button"
       :filedProps="{
         type: 'primary',
       }"
@@ -173,7 +162,7 @@ const switchValue = ref(false)
     </ProField>
 
     <ProField
-      valueType="SwyButton"
+      valueType="Button"
       :filedProps="{
         type: 'success',
       }"
@@ -183,7 +172,7 @@ const switchValue = ref(false)
     </ProField>
 
     <ProField
-      valueType="SwyButton"
+      valueType="Button"
       :filedProps="{
         type: 'warning',
       }"
@@ -193,7 +182,7 @@ const switchValue = ref(false)
     </ProField>
 
     <ProField
-      valueType="SwyButton"
+      valueType="Button"
       :filedProps="{
         type: 'danger',
       }"
@@ -206,7 +195,7 @@ const switchValue = ref(false)
 
 <script lang="ts" setup>
 const handleClick = () => {
-  console.log('按钮被点击')
+  console.log('按钮被点�?)
 }
 </script>
 ```
@@ -215,8 +204,7 @@ const handleClick = () => {
 
 ## JSON 配置方式
 
-通过 JSON 配置渲染多个表单项，让代码更加简洁和可维护。
-
+通过 JSON 配置渲染多个表单项，让代码更加简洁和可维护�?
 :::demo
 
 ```vue
@@ -232,7 +220,7 @@ const handleClick = () => {
     </div>
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px; margin-top: 20px;">
-      <h4 style="margin-top: 0;">表单数据：</h4>
+      <h4 style="margin-top: 0;">表单数据�?/h4>
       <pre style="margin: 0;">{{ JSON.stringify(formData, null, 2) }}</pre>
     </div>
   </div>
@@ -251,7 +239,7 @@ const formData = ref({
 
 const fieldColumns = [
   {
-    label: '用户名',
+    label: '用户�?,
     valueType: 'SwyInput',
     prop: 'username',
     filedProps: {
@@ -264,7 +252,7 @@ const fieldColumns = [
     valueType: 'SwyInput',
     prop: 'email',
     filedProps: {
-      placeholder: '请输入邮箱',
+      placeholder: '请输入邮�?,
       clearable: true,
     },
   },
@@ -288,7 +276,7 @@ const fieldColumns = [
     prop: 'notification',
     filedProps: {
       activeText: '开',
-      inactiveText: '关',
+      inactiveText: '�?,
     },
   },
   {
@@ -307,8 +295,7 @@ const fieldColumns = [
 
 ## 综合示例
 
-结合多种组件类型的完整表单示例。
-
+结合多种组件类型的完整表单示例�?
 :::demo
 
 ```vue
@@ -319,7 +306,7 @@ const fieldColumns = [
     <div style="margin-bottom: 15px;">
       <label style="display: block; margin-bottom: 5px;">用户名：</label>
       <ProField
-        valueType="SwyInput"
+        valueType="Input"
         v-model="registerForm.username"
         :filedProps="{
           placeholder: '请输入用户名',
@@ -329,27 +316,27 @@ const fieldColumns = [
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px;">密码：</label>
+      <label style="display: block; margin-bottom: 5px;">密码�?/label>
       <ProField
-        valueType="SwyInput"
+        valueType="Input"
         v-model="registerForm.password"
         :filedProps="{
           type: 'password',
-          placeholder: '请输入密码',
+          placeholder: '请输入密�?,
           showPassword: true,
         }"
       />
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px;">性别：</label>
+      <label style="display: block; margin-bottom: 5px;">性别�?/label>
       <ProField
-        valueType="SwySelect"
+        valueType="Select"
         v-model="registerForm.gender"
         :filedProps="{
           options: [
-            { label: '男', value: 'male' },
-            { label: '女', value: 'female' },
+            { label: '�?, value: 'male' },
+            { label: '�?, value: 'female' },
             { label: '保密', value: 'secret' },
           ],
           placeholder: '请选择性别',
@@ -358,9 +345,9 @@ const fieldColumns = [
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px;">城市：</label>
+      <label style="display: block; margin-bottom: 5px;">城市�?/label>
       <ProField
-        valueType="SwySelect"
+        valueType="Select"
         v-model="registerForm.city"
         :filedProps="{
           options: [
@@ -377,40 +364,40 @@ const fieldColumns = [
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px;">接收邮件通知：</label>
+      <label style="display: block; margin-bottom: 5px;">接收邮件通知�?/label>
       <ProField
-        valueType="SwySwitch"
+        valueType="Switch"
         v-model="registerForm.emailNotification"
         :filedProps="{
-          activeText: '开启',
+          activeText: '开�?,
           inactiveText: '关闭',
         }"
       />
     </div>
 
     <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px;">接收短信通知：</label>
+      <label style="display: block; margin-bottom: 5px;">接收短信通知�?/label>
       <ProField
-        valueType="SwySwitch"
+        valueType="Switch"
         v-model="registerForm.smsNotification"
         :filedProps="{
-          activeText: '是',
-          inactiveText: '否',
+          activeText: '�?,
+          inactiveText: '�?,
         }"
       />
     </div>
 
     <div style="margin-bottom: 20px;">
       <ProField
-        valueType="SwyCheckbox"
+        valueType="Checkbox"
         v-model="registerForm.agree"
-        :filedProps="{ label: '我已阅读并同意《用户协议》和《隐私政策》' }"
+        :filedProps="{ label: '我已阅读并同意《用户协议》和《隐私政策�? }"
       />
     </div>
 
     <div style="display: flex; gap: 10px;">
       <ProField
-        valueType="SwyButton"
+        valueType="Button"
         :filedProps="{
           type: 'primary',
           disabled: !registerForm.agree,
@@ -420,11 +407,11 @@ const fieldColumns = [
         提交注册
       </ProField>
 
-      <ProField valueType="SwyButton" @click="handleReset">重置</ProField>
+      <ProField valueType="Button" @click="handleReset">重置</ProField>
     </div>
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px; margin-top: 20px;">
-      <h4 style="margin-top: 0;">表单数据：</h4>
+      <h4 style="margin-top: 0;">表单数据�?/h4>
       <pre style="margin: 0; font-size: 12px;">{{ JSON.stringify(registerForm, null, 2) }}</pre>
     </div>
   </div>
@@ -449,11 +436,11 @@ const handleSubmit = () => {
     return
   }
   if (!registerForm.password) {
-    alert('请输入密码')
+    alert('请输入密�?)
     return
   }
-  alert('注册成功！')
-  console.log('提交的表单数据:', registerForm)
+  alert('注册成功�?)
+  console.log('提交的表单数�?', registerForm)
 }
 
 const handleReset = () => {
@@ -466,7 +453,7 @@ const handleReset = () => {
     smsNotification: false,
     agree: false,
   })
-  alert('表单已重置')
+  alert('表单已重�?)
 }
 </script>
 ```
@@ -475,7 +462,7 @@ const handleReset = () => {
 
 ## TypeScript 类型提示
 
-ProField 组件提供完整的 TypeScript 类型支持，在使用时会自动提示可用的 `valueType` 类型。
+ProField 组件提供完整�?TypeScript 类型支持，在使用时会自动提示可用�?`valueType` 类型�?
 
 ```typescript
 import type { ValueType } from '@swy-ui/proField'
@@ -483,8 +470,7 @@ import type { ValueType } from '@swy-ui/proField'
 // 使用 ValueType 类型
 const fieldType: ValueType = 'SwyInput'
 
-// 动态配置
-const config: { type: ValueType; props: any } = {
+// 动态配�?const config: { type: ValueType; props: any } = {
   type: 'SwySelect',
   props: { placeholder: '请选择' },
 }
@@ -494,21 +480,21 @@ const config: { type: ValueType; props: any } = {
 
 ### Props
 
-| 属性名     | 说明                 | 类型        | 默认值 |
+| 属性名     | 说明                 | 类型        | 默认�? |
 | ---------- | -------------------- | ----------- | ------ |
-| valueType  | 组件类型             | `ValueType` | —      |
-| filedProps | 传递给对应组件的属性 | `object`    | `{}`   |
-| v-model    | 双向绑定的值         | `any`       | —      |
+| valueType  | 组件类型             | `ValueType` | �?     |
+| filedProps | 传递给对应组件的属�? | `object`    | `{}`   |
+| v-model    | 双向绑定的�?         | `any`       | �?     |
 
 ### Events
 
-| 事件名 | 说明                           | 类型                        |
+| 事件�? | 说明                           | 类型                        |
 | ------ | ------------------------------ | --------------------------- |
-| click  | 点击事件（仅 Button 类型有效） | `(evt: MouseEvent) => void` |
+| click  | 点击事件（仅 Button 类型有效�? | `(evt: MouseEvent) => void` |
 
 ### Exposes
 
 | 名称       | 说明         | 类型  |
 | ---------- | ------------ | ----- |
 | ref        | 组件元素引用 | `Ref` |
-| filedProps | 字段属性     | `Ref` |
+| filedProps | 字段属�?     | `Ref` |

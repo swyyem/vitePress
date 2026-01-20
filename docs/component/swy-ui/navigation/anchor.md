@@ -1,6 +1,6 @@
 # Anchor 锚点
 
-用于跳转到页面指定位置。
+用于跳转到页面指定位置�?
 
 ## 基础用法
 
@@ -23,17 +23,17 @@
     >
       <div id="section1" style="margin-bottom: 40px;">
         <h3>第一部分</h3>
-        <p v-for="i in 10" :key="i">第一部分的内容...</p>
+        <p v-for="i in 10" :key="i">第一部分的内�?..</p>
       </div>
 
       <div id="section2" style="margin-bottom: 40px;">
         <h3>第二部分</h3>
-        <p v-for="i in 10" :key="i">第二部分的内容...</p>
+        <p v-for="i in 10" :key="i">第二部分的内�?..</p>
       </div>
 
       <div id="section3" style="margin-bottom: 40px;">
         <h3>第三部分</h3>
-        <p v-for="i in 10" :key="i">第三部分的内容...</p>
+        <p v-for="i in 10" :key="i">第三部分的内�?..</p>
       </div>
     </div>
   </div>
@@ -105,7 +105,7 @@
 
 :::
 
-## 自定义样式
+## 自定义样�?
 
 :::demo
 
@@ -116,8 +116,8 @@
       :offset-top="60"
       style="width: 200px; padding: 20px; background: #f5f7fa; border-radius: 8px;"
     >
-      <SwyAnchorLink href="#intro" title="📖 简介" />
-      <SwyAnchorLink href="#features" title="✨ 特性" />
+      <SwyAnchorLink href="#intro" title="📖 简�? />
+      <SwyAnchorLink href="#features" title="�?特�? />
       <SwyAnchorLink href="#install" title="📦 安装" />
       <SwyAnchorLink href="#usage" title="🚀 使用" />
     </SwyAnchor>
@@ -126,13 +126,13 @@
       style="flex: 1; height: 400px; overflow: auto; border: 1px solid #dcdfe6; border-radius: 4px; padding: 20px;"
     >
       <div id="intro" style="margin-bottom: 30px;">
-        <h3>📖 简介</h3>
-        <p v-for="i in 8" :key="i">组件简介内容...</p>
+        <h3>📖 简�?/h3>
+        <p v-for="i in 8" :key="i">组件简介内�?..</p>
       </div>
 
       <div id="features" style="margin-bottom: 30px;">
-        <h3>✨ 特性</h3>
-        <p v-for="i in 8" :key="i">组件特性介绍...</p>
+        <h3>�?特�?/h3>
+        <p v-for="i in 8" :key="i">组件特性介�?..</p>
       </div>
 
       <div id="install" style="margin-bottom: 30px;">
@@ -155,7 +155,7 @@
 
 ### Anchor Props
 
-| 参数      | 说明                             | 类型                   | 默认值 |
+| 参数      | 说明                             | 类型                   | 默认�? |
 | --------- | -------------------------------- | ---------------------- | ------ |
 | container | 滚动容器                         | `string / HTMLElement` | window |
 | offsetTop | 距离窗口顶部达到指定偏移量后触发 | `number`               | 0      |
@@ -163,14 +163,14 @@
 
 ### Anchor Events
 
-| 事件名 | 说明               | 参数                        |
+| 事件�? | 说明               | 参数                        |
 | ------ | ------------------ | --------------------------- |
-| change | 锚点链接改变时触发 | `(href: string)`            |
-| click  | 点击锚点链接时触发 | `(event: MouseEvent, link)` |
+| change | 锚点链接改变时触�? | `(href: string)`            |
+| click  | 点击锚点链接时触�? | `(event: MouseEvent, link)` |
 
 ### AnchorLink Props
 
-| 参数  | 说明     | 类型     | 默认值 |
+| 参数  | 说明     | 类型     | 默认�? |
 | ----- | -------- | -------- | ------ |
-| href  | 锚点链接 | `string` | —      |
-| title | 文字内容 | `string` | —      |
+| href  | 锚点链接 | `string` | �?     |
+| title | 文字内容 | `string` | �?     |

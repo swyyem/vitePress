@@ -25,11 +25,11 @@
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
-    <ProField valueType="SwyAlert" :filedProps="{ title: '成功提示', type: 'success' }" />
-    <ProField valueType="SwyAlert" :filedProps="{ title: '信息提示', type: 'info' }" />
-    <ProField valueType="SwyAlert" :filedProps="{ title: '警告提示', type: 'warning' }" />
-    <ProField valueType="SwyAlert" :filedProps="{ title: '错误提示', type: 'error' }" />
-    <ProField valueType="SwyAlert" :filedProps="{ title: '主要提示', type: 'primary' }" />
+    <ProField valueType="Alert" :filedProps="{ title: '成功提示', type: 'success' }" />
+    <ProField valueType="Alert" :filedProps="{ title: '信息提示', type: 'info' }" />
+    <ProField valueType="Alert" :filedProps="{ title: '警告提示', type: 'warning' }" />
+    <ProField valueType="Alert" :filedProps="{ title: '错误提示', type: 'error' }" />
+    <ProField valueType="Alert" :filedProps="{ title: '主要提示', type: 'primary' }" />
   </div>
 </template>
 ```
@@ -59,11 +59,11 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{ title: '浅色主题', type: 'success', effect: 'light' }"
     />
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{ title: '深色主题', type: 'success', effect: 'dark' }"
     />
   </div>
@@ -72,7 +72,7 @@
 
 :::
 
-## 带描述
+## 带描�?
 
 :::demo
 
@@ -80,11 +80,11 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <SwyAlert
-      title="成功提示的标题"
+      title="成功提示的标�?
       type="success"
-      description="这是一条成功提示的辅助性文字介绍"
+      description="这是一条成功提示的辅助性文字介�?
     />
-    <SwyAlert title="信息提示的标题" type="info" description="这是一条信息提示的辅助性文字介绍" />
+    <SwyAlert title="信息提示的标�? type="info" description="这是一条信息提示的辅助性文字介�? />
   </div>
 </template>
 ```
@@ -99,19 +99,19 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{
-        title: '成功提示的标题',
+        title: '成功提示的标�?,
         type: 'success',
-        description: '这是一条成功提示的辅助性文字介绍',
+        description: '这是一条成功提示的辅助性文字介�?,
       }"
     />
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{
-        title: '信息提示的标题',
+        title: '信息提示的标�?,
         type: 'info',
-        description: '这是一条信息提示的辅助性文字介绍',
+        description: '这是一条信息提示的辅助性文字介�?,
       }"
     />
   </div>
@@ -120,7 +120,7 @@
 
 :::
 
-## 带图标
+## 带图�?
 
 :::demo
 
@@ -145,19 +145,16 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{ title: '成功提示', type: 'success', showIcon: true }"
     />
+    <ProField valueType="Alert" :filedProps="{ title: '信息提示', type: 'info', showIcon: true }" />
     <ProField
-      valueType="SwyAlert"
-      :filedProps="{ title: '信息提示', type: 'info', showIcon: true }"
-    />
-    <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{ title: '警告提示', type: 'warning', showIcon: true }"
     />
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{ title: '错误提示', type: 'error', showIcon: true }"
     />
   </div>
@@ -172,7 +169,7 @@
 
 ```vue
 <template>
-  <SwyAlert title="居中的文字" type="success" center />
+  <SwyAlert title="居中的文�? type="success" center />
 </template>
 ```
 
@@ -184,16 +181,13 @@
 
 ```vue
 <template>
-  <ProField
-    valueType="SwyAlert"
-    :filedProps="{ title: '居中的文字', type: 'success', center: true }"
-  />
+  <ProField valueType="Alert" :filedProps="{ title: '居中的文�?, type: 'success', center: true }" />
 </template>
 ```
 
 :::
 
-## 自定义关闭按钮
+## 自定义关闭按�?
 
 :::demo
 
@@ -201,7 +195,7 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <SwyAlert title="不可关闭" type="success" :closable="false" />
-    <SwyAlert title="自定义关闭文字" type="info" close-text="知道了" />
+    <SwyAlert title="自定义关闭文�? type="info" close-text="知道�? />
   </div>
 </template>
 ```
@@ -216,12 +210,12 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 16px;">
     <ProField
-      valueType="SwyAlert"
+      valueType="Alert"
       :filedProps="{ title: '不可关闭', type: 'success', closable: false }"
     />
     <ProField
-      valueType="SwyAlert"
-      :filedProps="{ title: '自定义关闭文字', type: 'info', closeText: '知道了' }"
+      valueType="Alert"
+      :filedProps="{ title: '自定义关闭文�?, type: 'info', closeText: '知道�? }"
     />
   </div>
 </template>

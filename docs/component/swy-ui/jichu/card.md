@@ -23,7 +23,7 @@
 
 ```vue
 <template>
-  <ProField valueType="SwyCard">
+  <ProField valueType="Card">
     <template #header>
       <div>卡片标题</div>
     </template>
@@ -34,7 +34,7 @@
 
 :::
 
-## 简单卡片
+## 简单卡�?
 
 :::demo
 
@@ -54,7 +54,7 @@
 
 ```vue
 <template>
-  <ProField valueType="SwyCard">
+  <ProField valueType="Card">
     <div>这是一个简单的卡片内容</div>
   </ProField>
 </template>
@@ -62,7 +62,7 @@
 
 :::
 
-## 带阴影
+## 带阴�?
 
 :::demo
 
@@ -73,7 +73,7 @@
       <div>总是显示阴影</div>
     </SwyCard>
     <SwyCard shadow="hover" style="width: 200px;">
-      <div>悬停时显示阴影</div>
+      <div>悬停时显示阴�?/div>
     </SwyCard>
     <SwyCard shadow="never" style="width: 200px;">
       <div>从不显示阴影</div>
@@ -91,13 +91,13 @@
 ```vue
 <template>
   <div style="display: flex; gap: 16px;">
-    <ProField valueType="SwyCard" :filedProps="{ shadow: 'always' }" :style="{ width: '200px' }">
+    <ProField valueType="Card" :filedProps="{ shadow: 'always' }" :style="{ width: '200px' }">
       <div>总是显示阴影</div>
     </ProField>
-    <ProField valueType="SwyCard" :filedProps="{ shadow: 'hover' }" :style="{ width: '200px' }">
-      <div>悖停时显示阴影</div>
+    <ProField valueType="Card" :filedProps="{ shadow: 'hover' }" :style="{ width: '200px' }">
+      <div>悖停时显示阴�?/div>
     </ProField>
-    <ProField valueType="SwyCard" :filedProps="{ shadow: 'never' }" :style="{ width: '200px' }">
+    <ProField valueType="Card" :filedProps="{ shadow: 'never' }" :style="{ width: '200px' }">
       <div>从不显示阴影</div>
     </ProField>
   </div>
@@ -106,7 +106,7 @@
 
 :::
 
-## 带页脚
+## 带页�?
 
 :::demo
 
@@ -116,7 +116,7 @@
     <template #header>
       <div>卡片标题</div>
     </template>
-    <div>卡片内容区域，可以包含各种元素</div>
+    <div>卡片内容区域，可以包含各种元�?/div>
     <template #footer>
       <div style="display: flex; justify-content: flex-end; gap: 8px;">
         <SwyButton size="small">取消</SwyButton>
@@ -135,11 +135,11 @@
 
 ```vue
 <template>
-  <ProField valueType="SwyCard">
+  <ProField valueType="Card">
     <template #header>
       <div>卡片标题</div>
     </template>
-    <div>卡片内容区域，可以包含各种元素</div>
+    <div>卡片内容区域，可以包含各种元�?/div>
     <template #footer>
       <div style="display: flex; justify-content: flex-end; gap: 8px;">
         <SwyButton size="small">取消</SwyButton>

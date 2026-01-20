@@ -4,15 +4,14 @@
 
 - **Tooltip** - 文字提示组件
 - **Popover** - 气泡卡片组件
-- **Popconfirm** - 气泡确认框组件
-- **Notification** - 通知组件
+- **Popconfirm** - 气泡确认框组�?- **Notification** - 通知组件
 - **Loading** - 加载组件
 
 ---
 
 ## Tooltip 文字提示
 
-常用于展示鼠标 hover 时的提示信息。
+常用于展示鼠�?hover 时的提示信息�?
 
 ### 基础用法
 
@@ -20,7 +19,7 @@
 
 ```vue
 <template>
-  <SwyTooltip content="这是一段提示文字">
+  <SwyTooltip content="这是一段提示文�?>
     <SwyButton>上方提示</SwyButton>
   </SwyTooltip>
 </template>
@@ -76,7 +75,7 @@
 
 ## Popover 气泡卡片
 
-点击/鼠标移入元素，弹出气泡式的卡片浮层。
+点击/鼠标移入元素，弹出气泡式的卡片浮层�?
 
 ### 基础用法
 
@@ -86,11 +85,11 @@
 <template>
   <SwyPopover
     title="标题"
-    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+    content="这是一段内�?这是一段内�?这是一段内�?这是一段内容�?
     trigger="hover"
     :width="200"
   >
-    <SwyButton>Hover 激活</SwyButton>
+    <SwyButton>Hover 激�?/SwyButton>
   </SwyPopover>
 </template>
 ```
@@ -105,11 +104,11 @@
 <template>
   <SwyPopover
     title="标题"
-    content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
+    content="这是一段内�?这是一段内�?这是一段内�?这是一段内容�?
     trigger="click"
     :width="200"
   >
-    <SwyButton>Click 激活</SwyButton>
+    <SwyButton>Click 激�?/SwyButton>
   </SwyPopover>
 </template>
 ```
@@ -118,9 +117,9 @@
 
 ---
 
-## Popconfirm 气泡确认框
+## Popconfirm 气泡确认�?
 
-点击元素，弹出气泡确认框。
+点击元素，弹出气泡确认框�?
 
 ### 基础用法
 
@@ -128,7 +127,7 @@
 
 ```vue
 <template>
-  <SwyPopconfirm title="确定要删除吗？" @confirm="handleConfirm" @cancel="handleCancel">
+  <SwyPopconfirm title="确定要删除吗�? @confirm="handleConfirm" @cancel="handleCancel">
     <SwyButton type="danger">删除</SwyButton>
   </SwyPopconfirm>
 </template>
@@ -146,14 +145,14 @@ const handleCancel = () => {
 
 :::
 
-### 自定义按钮文字
+### 自定义按钮文�?
 
 :::demo
 
 ```vue
 <template>
   <SwyPopconfirm
-    title="确定要提交吗？"
+    title="确定要提交吗�?
     confirm-button-text="提交"
     cancel-button-text="放弃"
     confirm-button-type="success"
@@ -165,7 +164,7 @@ const handleCancel = () => {
 
 <script lang="ts" setup>
 const handleConfirm = () => {
-  console.log('已提交')
+  console.log('已提�?)
 }
 </script>
 ```
@@ -176,7 +175,7 @@ const handleConfirm = () => {
 
 ## Notification 通知
 
-悬浮出现在页面角落，显示全局的通知提醒消息。
+悬浮出现在页面角落，显示全局的通知提醒消息�?
 
 ### 基础用法
 
@@ -233,16 +232,16 @@ const showNotification = (type: string) => {
 ```vue
 <template>
   <div style="display: flex; gap: 10px;">
-    <SwyButton @click="showNotification('top-right')">右上角</SwyButton>
-    <SwyButton @click="showNotification('top-left')">左上角</SwyButton>
-    <SwyButton @click="showNotification('bottom-right')">右下角</SwyButton>
-    <SwyButton @click="showNotification('bottom-left')">左下角</SwyButton>
+    <SwyButton @click="showNotification('top-right')">右上�?/SwyButton>
+    <SwyButton @click="showNotification('top-left')">左上�?/SwyButton>
+    <SwyButton @click="showNotification('bottom-right')">右下�?/SwyButton>
+    <SwyButton @click="showNotification('bottom-left')">左下�?/SwyButton>
   </div>
 
   <SwyNotification
     v-if="visible"
     title="提示"
-    message="这是一条提示消息"
+    message="这是一条提示消�?
     :position="position"
     @close="visible = false"
   />
@@ -267,7 +266,7 @@ const showNotification = (pos: string) => {
 
 ## Loading 加载
 
-加载数据时显示动效。
+加载数据时显示动效�?
 
 ### 基础用法
 
@@ -278,7 +277,7 @@ const showNotification = (pos: string) => {
   <SwyButton @click="loading = !loading">{{ loading ? '隐藏' : '显示' }} Loading</SwyButton>
 
   <div style="position: relative; height: 200px; margin-top: 20px; border: 1px solid #dcdfe6;">
-    <SwyLoading :loading="loading" text="加载中..." />
+    <SwyLoading :loading="loading" text="加载�?.." />
   </div>
 </template>
 
@@ -325,7 +324,7 @@ const showFullscreenLoading = () => {
 ```vue
 <template>
   <div style="position: relative; height: 200px; border: 1px solid #dcdfe6;">
-    <SwyLoading :loading="true" text="加载中..." background="rgba(0, 0, 0, 0.8)" />
+    <SwyLoading :loading="true" text="加载�?.." background="rgba(0, 0, 0, 0.8)" />
   </div>
 </template>
 ```

@@ -11,7 +11,9 @@ const extractComponentInfo = (componentModule: any): [string, any] => {
   }
 
   const component = componentModule.default
-  return [component.name, component]
+  // 移除组件名称中的 'Swy' 前缀
+  const name = component.name.replace(/^Swy/, '')
+  return [name, component]
 }
 
 // 创建组件映射的方法

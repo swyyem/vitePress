@@ -24,11 +24,11 @@
 <template>
   <div style="display: flex; gap: 16px; align-items: center;">
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{ src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png' }"
     />
-    <ProField valueType="SwyAvatar">User</ProField>
-    <ProField valueType="SwyAvatar">张三</ProField>
+    <ProField valueType="Avatar">User</ProField>
+    <ProField valueType="Avatar">张三</ProField>
   </div>
 </template>
 ```
@@ -69,25 +69,25 @@
 <template>
   <div style="display: flex; gap: 16px; align-items: center;">
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{
         size: 'small',
         src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       }"
     />
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{ src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png' }"
     />
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{
         size: 'large',
         src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       }"
     />
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{
         size: 60,
         src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
@@ -128,14 +128,14 @@
 <template>
   <div style="display: flex; gap: 16px; align-items: center;">
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{
         shape: 'circle',
         src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       }"
     />
     <ProField
-      valueType="SwyAvatar"
+      valueType="Avatar"
       :filedProps="{
         shape: 'square',
         src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
@@ -170,9 +170,9 @@
 ```vue
 <template>
   <div style="display: flex; gap: 16px; align-items: center;">
-    <ProField valueType="SwyAvatar">A</ProField>
-    <ProField valueType="SwyAvatar">User</ProField>
-    <ProField valueType="SwyAvatar">李四</ProField>
+    <ProField valueType="Avatar">A</ProField>
+    <ProField valueType="Avatar">User</ProField>
+    <ProField valueType="Avatar">李四</ProField>
   </div>
 </template>
 ```

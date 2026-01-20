@@ -1,6 +1,6 @@
 # 表单综合示例
 
-展示如何组合使用各种表单组件。
+展示如何组合使用各种表单组件�?
 
 ## 完整表单示例
 
@@ -10,14 +10,14 @@
 <template>
   <div style="max-width: 600px;">
     <SwyForm :model="formData" label-width="120px">
-      <SwyFormItem label="用户名">
+      <SwyFormItem label="用户�?>
         <SwyInput v-model="formData.username" placeholder="请输入用户名" />
       </SwyFormItem>
 
       <SwyFormItem label="性别">
         <SwyRadioGroup v-model="formData.gender">
-          <SwyRadio label="male">男</SwyRadio>
-          <SwyRadio label="female">女</SwyRadio>
+          <SwyRadio label="male">�?/SwyRadio>
+          <SwyRadio label="female">�?/SwyRadio>
         </SwyRadioGroup>
       </SwyFormItem>
 
@@ -35,7 +35,7 @@
       </SwyFormItem>
 
       <SwyFormItem label="接收通知">
-        <SwySwitch v-model="formData.notification" active-text="开启" inactive-text="关闭" />
+        <SwySwitch v-model="formData.notification" active-text="开�? inactive-text="关闭" />
       </SwyFormItem>
 
       <SwyFormItem label="VIP会员">
@@ -49,7 +49,7 @@
     </SwyForm>
 
     <div style="margin-top: 20px; padding: 15px; background: #f5f7fa; border-radius: 4px;">
-      <h4 style="margin-top: 0;">表单数据：</h4>
+      <h4 style="margin-top: 0;">表单数据�?/h4>
       <pre style="margin: 0;">{{ JSON.stringify(formData, null, 2) }}</pre>
     </div>
   </div>
@@ -113,11 +113,11 @@ const handleReset = () => {
     <h3>用户注册</h3>
     <SwyForm :model="registerForm" label-width="100px">
       <SwyFormItem label="邮箱">
-        <SwyInput v-model="registerForm.email" placeholder="请输入邮箱" />
+        <SwyInput v-model="registerForm.email" placeholder="请输入邮�? />
       </SwyFormItem>
 
       <SwyFormItem label="密码">
-        <SwyInput v-model="registerForm.password" type="password" placeholder="请输入密码" />
+        <SwyInput v-model="registerForm.password" type="password" placeholder="请输入密�? />
       </SwyFormItem>
 
       <SwyFormItem label="地区">
@@ -130,8 +130,7 @@ const handleReset = () => {
 
       <SwyFormItem label="同意协议">
         <SwyCheckbox v-model="registerForm.agree">
-          我已阅读并同意《用户协议》和《隐私政策》
-        </SwyCheckbox>
+          我已阅读并同意《用户协议》和《隐私政策�?        </SwyCheckbox>
       </SwyFormItem>
 
       <SwyFormItem>
@@ -164,7 +163,7 @@ const register = () => {
     return
   }
   console.log('注册信息:', registerForm)
-  alert('注册成功！')
+  alert('注册成功�?)
 }
 </script>
 ```
@@ -212,7 +211,7 @@ const register = () => {
       <SwyFormItem label="功能选项">
         <div style="display: flex; flex-direction: column; gap: 5px;">
           <SwyCheckbox v-model="settings.features.autoSave">自动保存</SwyCheckbox>
-          <SwyCheckbox v-model="settings.features.spellCheck">拼写检查</SwyCheckbox>
+          <SwyCheckbox v-model="settings.features.spellCheck">拼写检�?/SwyCheckbox>
           <SwyCheckbox v-model="settings.features.preview">实时预览</SwyCheckbox>
         </div>
       </SwyFormItem>
@@ -244,14 +243,14 @@ const settings = reactive({
 })
 
 const languageOptions = [
-  { label: '简体中文', value: 'zh-CN' },
+  { label: '简体中�?, value: 'zh-CN' },
   { label: 'English', value: 'en-US' },
-  { label: '日本語', value: 'ja-JP' },
+  { label: '日本�?, value: 'ja-JP' },
 ]
 
 const saveSettings = () => {
   console.log('保存设置:', settings)
-  alert('设置已保存')
+  alert('设置已保�?)
 }
 
 const resetSettings = () => {

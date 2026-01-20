@@ -1,11 +1,10 @@
 # Button 按钮
 
-常用的操作按钮。
+常用的操作按钮�?
 
 ## 基础用法
 
-使用 `type` 属性来定义按钮的类型。
-
+使用 `type` 属性来定义按钮的类型�?
 :::demo
 
 ```vue
@@ -25,19 +24,18 @@
 
 ### ProField 用法
 
-通过 `valueType="SwyButton"` 和 `fieldProps` 配置按钮属性。
-
+通过 `valueType="Button"` �?`fieldProps` 配置按钮属性�?
 :::demo
 
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <ProField valueType="SwyButton">默认按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary' }">主要按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success' }">成功按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'info' }">信息按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning' }">警告按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger' }">危险按钮</ProField>
+    <ProField valueType="Button">默认按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary' }">主要按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'success' }">成功按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'info' }">信息按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'warning' }">警告按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'danger' }">危险按钮</ProField>
   </div>
 </template>
 ```
@@ -46,8 +44,7 @@
 
 ## 朴素按钮
 
-使用 `plain` 属性来定义朴素按钮样式，它接受一个 `Boolean`。
-
+使用 `plain` 属性来定义朴素按钮样式，它接受一�?`Boolean`�?
 :::demo
 
 ```vue
@@ -72,20 +69,12 @@
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <ProField valueType="SwyButton" :fieldProps="{ plain: true }">朴素按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', plain: true }">
-      主要按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', plain: true }">
-      成功按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'info', plain: true }">信息按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', plain: true }">
-      警告按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', plain: true }">
-      危险按钮
-    </ProField>
+    <ProField valueType="Button" :fieldProps="{ plain: true }">朴素按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', plain: true }">主要按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'success', plain: true }">成功按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'info', plain: true }">信息按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'warning', plain: true }">警告按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'danger', plain: true }">危险按钮</ProField>
   </div>
 </template>
 ```
@@ -94,8 +83,7 @@
 
 ## 圆角按钮
 
-使用 `round` 属性来定义圆角按钮样式，它接受一个 `Boolean`。
-
+使用 `round` 属性来定义圆角按钮样式，它接受一�?`Boolean`�?
 :::demo
 
 ```vue
@@ -120,30 +108,21 @@
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <ProField valueType="SwyButton" :fieldProps="{ round: true }">圆角按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', round: true }">
-      主要按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', round: true }">
-      成功按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'info', round: true }">信息按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', round: true }">
-      警告按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', round: true }">
-      危险按钮
-    </ProField>
+    <ProField valueType="Button" :fieldProps="{ round: true }">圆角按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', round: true }">主要按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'success', round: true }">成功按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'info', round: true }">信息按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'warning', round: true }">警告按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'danger', round: true }">危险按钮</ProField>
   </div>
 </template>
 ```
 
 :::
 
-## 禁用状态
+## 禁用状�?
 
-使用 `disabled` 属性来定义按钮是否被禁用，它接受一个 `Boolean`。
-
+使用 `disabled` 属性来定义按钮是否被禁用，它接受一�?`Boolean`�?
 :::demo
 
 ```vue
@@ -168,20 +147,18 @@
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <ProField valueType="SwyButton" :fieldProps="{ disabled: true }">默认按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', disabled: true }">
+    <ProField valueType="Button" :fieldProps="{ disabled: true }">默认按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', disabled: true }">
       主要按钮
     </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', disabled: true }">
+    <ProField valueType="Button" :fieldProps="{ type: 'success', disabled: true }">
       成功按钮
     </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'info', disabled: true }">
-      信息按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', disabled: true }">
+    <ProField valueType="Button" :fieldProps="{ type: 'info', disabled: true }">信息按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'warning', disabled: true }">
       警告按钮
     </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', disabled: true }">
+    <ProField valueType="Button" :fieldProps="{ type: 'danger', disabled: true }">
       危险按钮
     </ProField>
   </div>
@@ -192,8 +169,7 @@
 
 ## 文字按钮
 
-没有边框和背景色的按钮。
-
+没有边框和背景色的按钮�?
 :::demo
 
 ```vue
@@ -209,8 +185,7 @@
 
 ## 图标按钮
 
-使用 `icon` 属性为按钮添加图标，支持字符串图标名称或直接传入图标组件。
-
+使用 `icon` 属性为按钮添加图标，支持字符串图标名称或直接传入图标组件�?
 :::demo
 
 ```vue
@@ -236,36 +211,28 @@
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'search' }">
-      搜索
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'edit' }">编辑</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'check' }">确认</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', icon: 'message' }">
-      消息
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', icon: 'delete' }">删除</ProField>
-    <ProField
-      valueType="SwyButton"
-      :fieldProps="{ type: 'primary', icon: 'search', circle: true }"
-    />
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', icon: 'edit', circle: true }" />
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', icon: 'search' }">搜索</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', icon: 'edit' }">编辑</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', icon: 'check' }">确认</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', icon: 'message' }">消息</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'danger', icon: 'delete' }">删除</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', icon: 'search', circle: true }" />
+    <ProField valueType="Button" :fieldProps="{ type: 'success', icon: 'edit', circle: true }" />
   </div>
 </template>
 ```
 
 :::
 
-## 加载状态
+## 加载状�?
 
-使用 `loading` 属性来设置按钮的加载状态，向用户反馈操作进度。
-
+使用 `loading` 属性来设置按钮的加载状态，向用户反馈操作进度�?
 :::demo
 
 ```vue
 <template>
   <SwyButton type="primary" :loading="loading" @click="handleClick">
-    {{ loading ? '加载中...' : '点击加载' }}
+    {{ loading ? '加载�?..' : '点击加载' }}
   </SwyButton>
 </template>
 
@@ -292,11 +259,11 @@ const handleClick = () => {
 ```vue
 <template>
   <ProField
-    valueType="SwyButton"
+    valueType="Button"
     :fieldProps="{ type: 'primary', loading: loading }"
     @click="handleClick"
   >
-    {{ loading ? '加载中...' : '点击加载' }}
+    {{ loading ? '加载�?..' : '点击加载' }}
   </ProField>
 </template>
 
@@ -318,8 +285,7 @@ const handleClick = () => {
 
 ## 不同尺寸
 
-使用 `size` 属性来定义按钮的尺寸，支持 `large`、`default`、`small` 三种尺寸。
-
+使用 `size` 属性来定义按钮的尺寸，支持 `large`、`default`、`small` 三种尺寸�?
 :::demo
 
 ```vue
@@ -341,11 +307,11 @@ const handleClick = () => {
 ```vue
 <template>
   <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', size: 'large' }">
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', size: 'large' }">
       大型按钮
     </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary' }">默认按钮</ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', size: 'small' }">
+    <ProField valueType="Button" :fieldProps="{ type: 'primary' }">默认按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', size: 'small' }">
       小型按钮
     </ProField>
   </div>
@@ -356,8 +322,7 @@ const handleClick = () => {
 
 ## 阴影按钮
 
-使用 `shadow` 属性为按钮添加阴影效果，增强视觉层次感。
-
+使用 `shadow` 属性为按钮添加阴影效果，增强视觉层次感�?
 :::demo
 
 ```vue
@@ -380,18 +345,10 @@ const handleClick = () => {
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', shadow: true }">
-      阴影按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', shadow: true }">
-      成功按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'warning', shadow: true }">
-      警告按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', shadow: true }">
-      危险按钮
-    </ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', shadow: true }">阴影按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'success', shadow: true }">成功按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'warning', shadow: true }">警告按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'danger', shadow: true }">危险按钮</ProField>
   </div>
 </template>
 ```
@@ -400,8 +357,7 @@ const handleClick = () => {
 
 ## 块级按钮
 
-使用 `block` 属性使按钮宽度占满父容器。
-
+使用 `block` 属性使按钮宽度占满父容器�?
 :::demo
 
 ```vue
@@ -423,15 +379,9 @@ const handleClick = () => {
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 10px;">
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', block: true }">
-      块级按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'success', block: true }">
-      成功按钮
-    </ProField>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', block: true }">
-      危险按钮
-    </ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', block: true }">块级按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'success', block: true }">成功按钮</ProField>
+    <ProField valueType="Button" :fieldProps="{ type: 'danger', block: true }">危险按钮</ProField>
   </div>
 </template>
 ```
@@ -440,8 +390,7 @@ const handleClick = () => {
 
 ## 节流按钮
 
-使用 `throttle` 属性设置节流时间（毫秒），防止按钮被重复点击。
-
+使用 `throttle` 属性设置节流时间（毫秒），防止按钮被重复点击�?
 :::demo
 
 ```vue
@@ -450,7 +399,7 @@ const handleClick = () => {
     style="display: flex; gap: 10px; flex-wrap: wrap; flex-direction: column; align-items: flex-start;"
   >
     <SwyButton type="primary" :throttle="2000" @click="handleThrottleClick">
-      节流按钮（2秒内只能点击一次）
+      节流按钮�?秒内只能点击一次）
     </SwyButton>
     <div>点击次数: {{ clickCount }}</div>
     <div style="color: #999; font-size: 14px;">提示：快速点击按钮，观察计数变化</div>
@@ -480,11 +429,11 @@ const handleThrottleClick = () => {
     style="display: flex; gap: 10px; flex-wrap: wrap; flex-direction: column; align-items: flex-start;"
   >
     <ProField
-      valueType="SwyButton"
+      valueType="Button"
       :fieldProps="{ type: 'primary', throttle: 2000 }"
       @click="handleThrottleClick"
     >
-      节流按钮（2秒内只能点击一次）
+      节流按钮�?秒内只能点击一次）
     </ProField>
     <div>点击次数: {{ clickCount }}</div>
     <div style="color: #999; font-size: 14px;">提示：快速点击按钮，观察计数变化</div>
@@ -506,8 +455,7 @@ const handleThrottleClick = () => {
 
 ## 组合使用
 
-将不同属性组合使用，创造更多样式。
-
+将不同属性组合使用，创造更多样式�?
 :::demo
 
 ```vue
@@ -535,17 +483,17 @@ const handleThrottleClick = () => {
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', round: true, shadow: true }">
+      <ProField valueType="Button" :fieldProps="{ type: 'primary', round: true, shadow: true }">
         圆角阴影
       </ProField>
-      <ProField valueType="SwyButton" :fieldProps="{ type: 'success', plain: true, shadow: true }">
+      <ProField valueType="Button" :fieldProps="{ type: 'success', plain: true, shadow: true }">
         朴素阴影
       </ProField>
-      <ProField valueType="SwyButton" :fieldProps="{ type: 'danger', circle: true, shadow: true }">
+      <ProField valueType="Button" :fieldProps="{ type: 'danger', circle: true, shadow: true }">
         <template #icon>🔥</template>
       </ProField>
     </div>
-    <ProField valueType="SwyButton" :fieldProps="{ type: 'primary', block: true, shadow: true }">
+    <ProField valueType="Button" :fieldProps="{ type: 'primary', block: true, shadow: true }">
       块级阴影按钮
     </ProField>
   </div>
@@ -554,42 +502,42 @@ const handleThrottleClick = () => {
 
 :::
 
-## Button 属性
+## Button 属�?
 
-| 属性名            | 说明                         | 类型               | 可选值                                             | 默认值  |
+| 属性名            | 说明                         | 类型               | 可选�?                                             | 默认�?  |
 | ----------------- | ---------------------------- | ------------------ | -------------------------------------------------- | ------- |
 | size              | 按钮尺寸                     | string             | large / default / small                            | default |
-| type              | 按钮类型                     | string             | primary / success / warning / danger / info / text | —       |
-| plain             | 是否为朴素按钮               | boolean            | —                                                  | false   |
-| text              | 是否为文本按钮               | boolean            | —                                                  | false   |
-| link              | 是否为链接按钮               | boolean            | —                                                  | false   |
-| bg                | 文本按钮背景色是否常亮       | boolean            | —                                                  | false   |
-| round             | 是否为圆角按钮               | boolean            | —                                                  | false   |
-| circle            | 是否为圆形按钮               | boolean            | —                                                  | false   |
-| loading           | 是否为加载状态               | boolean            | —                                                  | false   |
-| loading-icon      | 自定义加载图标               | Component          | —                                                  | Loading |
-| disabled          | 是否禁用                     | boolean            | —                                                  | false   |
-| icon              | 图标组件                     | Component          | —                                                  | —       |
-| autofocus         | 是否自动聚焦                 | boolean            | —                                                  | false   |
-| native-type       | 原生 type 属性               | string             | button / submit / reset                            | button  |
-| auto-insert-space | 自动在两个汉字之间插入空格   | boolean            | —                                                  | false   |
-| color             | 自定义按钮颜色               | string             | —                                                  | —       |
-| dark              | 深色模式                     | boolean            | —                                                  | false   |
-| tag               | 自定义元素标签               | string / Component | —                                                  | button  |
-| shadow            | 阴影效果                     | boolean            | —                                                  | false   |
-| block             | 块级按钮                     | boolean            | —                                                  | false   |
-| throttle          | 节流时间（毫秒）防止重复点击 | number             | —                                                  | 0       |
+| type              | 按钮类型                     | string             | primary / success / warning / danger / info / text | �?      |
+| plain             | 是否为朴素按�?               | boolean            | �?                                                 | false   |
+| text              | 是否为文本按�?               | boolean            | �?                                                 | false   |
+| link              | 是否为链接按�?               | boolean            | �?                                                 | false   |
+| bg                | 文本按钮背景色是否常�?       | boolean            | �?                                                 | false   |
+| round             | 是否为圆角按�?               | boolean            | �?                                                 | false   |
+| circle            | 是否为圆形按�?               | boolean            | �?                                                 | false   |
+| loading           | 是否为加载状�?               | boolean            | �?                                                 | false   |
+| loading-icon      | 自定义加载图�?               | Component          | �?                                                 | Loading |
+| disabled          | 是否禁用                     | boolean            | �?                                                 | false   |
+| icon              | 图标组件                     | Component          | �?                                                 | �?      |
+| autofocus         | 是否自动聚焦                 | boolean            | �?                                                 | false   |
+| native-type       | 原生 type 属�?               | string             | button / submit / reset                            | button  |
+| auto-insert-space | 自动在两个汉字之间插入空�?   | boolean            | �?                                                 | false   |
+| color             | 自定义按钮颜�?               | string             | �?                                                 | �?      |
+| dark              | 深色模式                     | boolean            | �?                                                 | false   |
+| tag               | 自定义元素标�?               | string / Component | �?                                                 | button  |
+| shadow            | 阴影效果                     | boolean            | �?                                                 | false   |
+| block             | 块级按钮                     | boolean            | �?                                                 | false   |
+| throttle          | 节流时间（毫秒）防止重复点击 | number             | �?                                                 | 0       |
 
 ## Button 事件
 
-| 事件名 | 说明           | 回调参数            |
+| 事件�? | 说明           | 回调参数            |
 | ------ | -------------- | ------------------- |
-| click  | 点击按钮时触发 | (event: MouseEvent) |
+| click  | 点击按钮时触�? | (event: MouseEvent) |
 
 ## Button 插槽
 
-| 插槽名  | 说明             |
+| 插槽�?  | 说明             |
 | ------- | ---------------- |
 | default | 按钮内容         |
-| icon    | 自定义图标       |
+| icon    | 自定义图�?       |
 | loading | 自定义加载中图标 |

@@ -1,6 +1,6 @@
-# DatePicker 日期选择器
+# DatePicker 日期选择�?
 
-用于选择或输入日期。
+用于选择或输入日期�?
 
 ## 基础用法
 
@@ -10,12 +10,12 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择日期：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择日期�?/div>
       <SwyDatePicker v-model="date1" placeholder="请选择日期" />
     </div>
 
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择日期时间：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择日期时间�?/div>
       <SwyDatePicker v-model="date2" type="datetime" placeholder="请选择日期时间" />
     </div>
 
@@ -44,12 +44,12 @@ const date2 = ref('')
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择日期范围：</div>
+      <div style="margin-bottom: 8px; color: #606266;">选择日期范围�?/div>
       <SwyDatePicker
         v-model="dateRange"
         type="daterange"
-        range-separator="至"
-        start-placeholder="开始日期"
+        range-separator="�?
+        start-placeholder="开始日�?
         end-placeholder="结束日期"
       />
     </div>
@@ -77,9 +77,9 @@ const dateRange = ref([])
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
-    <SwyDatePicker v-model="date1" size="large" placeholder="大尺寸" />
+    <SwyDatePicker v-model="date1" size="large" placeholder="大尺�? />
     <SwyDatePicker v-model="date2" placeholder="默认尺寸" />
-    <SwyDatePicker v-model="date3" size="small" placeholder="小尺寸" />
+    <SwyDatePicker v-model="date3" size="small" placeholder="小尺�? />
   </div>
 </template>
 
@@ -94,14 +94,14 @@ const date3 = ref('')
 
 :::
 
-## 禁用状态
+## 禁用状�?
 
 :::demo
 
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
-    <SwyDatePicker v-model="date" disabled placeholder="禁用状态" />
+    <SwyDatePicker v-model="date" disabled placeholder="禁用状�? />
     <SwyDatePicker v-model="date2" :disabled-date="disabledDate" placeholder="禁用特定日期" />
   </div>
 </template>
@@ -124,21 +124,21 @@ const disabledDate = (time: Date) => {
 
 ### DatePicker Props
 
-| 参数                 | 说明           | 类型                                          | 默认值     |
+| 参数                 | 说明           | 类型                                          | 默认�?     |
 | -------------------- | -------------- | --------------------------------------------- | ---------- |
-| modelValue / v-model | 绑定值         | `string / Date / number`                      | —          |
+| modelValue / v-model | 绑定�?         | `string / Date / number`                      | �?         |
 | type                 | 显示类型       | `date / datetime / daterange / datetimerange` | date       |
-| placeholder          | 占位内容       | `string`                                      | —          |
+| placeholder          | 占位内容       | `string`                                      | �?         |
 | size                 | 尺寸           | `large / default / small`                     | default    |
 | disabled             | 是否禁用       | `boolean`                                     | false      |
-| clearable            | 是否可清空     | `boolean`                                     | true       |
+| clearable            | 是否可清�?     | `boolean`                                     | true       |
 | format               | 显示格式       | `string`                                      | YYYY-MM-DD |
-| disabledDate         | 禁用日期的函数 | `(date: Date) => boolean`                     | —          |
+| disabledDate         | 禁用日期的函�? | `(date: Date) => boolean`                     | �?         |
 
 ### DatePicker Events
 
-| 事件名 | 说明                   | 参数                      |
+| 事件�? | 说明                   | 参数                      |
 | ------ | ---------------------- | ------------------------- |
 | change | 用户确认选定的值时触发 | `(value: string \| Date)` |
-| blur   | 失去焦点时触发         | `(event: FocusEvent)`     |
-| focus  | 获得焦点时触发         | `(event: FocusEvent)`     |
+| blur   | 失去焦点时触�?         | `(event: FocusEvent)`     |
+| focus  | 获得焦点时触�?         | `(event: FocusEvent)`     |

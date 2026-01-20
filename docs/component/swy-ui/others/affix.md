@@ -1,6 +1,6 @@
 # Affix 固钉
 
-将元素固定在特定可见区域。
+将元素固定在特定可见区域�?
 
 ## 基础用法
 
@@ -18,12 +18,12 @@
 
     <SwyAffix :target="'#affix-container'" :offset="10">
       <div style="padding: 10px 20px; background: #409eff; color: white; border-radius: 4px;">
-        📌 我被固定了
+        📌 我被固定�?
       </div>
     </SwyAffix>
 
     <div style="padding: 20px;">
-      <p v-for="i in 30" :key="i" style="line-height: 2;">第 {{ i }} 行内容</p>
+      <p v-for="i in 30" :key="i" style="line-height: 2;">�?{{ i }} 行内�?/p></p>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@
 
 :::
 
-## 固定在底部
+## 固定在底�?
 
 :::demo
 
@@ -42,14 +42,14 @@
     id="affix-bottom"
   >
     <div style="padding: 20px;">
-      <p v-for="i in 30" :key="i" style="line-height: 2;">第 {{ i }} 行内容 - 向上滚动查看效果</p>
+      <p v-for="i in 30" :key="i" style="line-height: 2;">�?{{ i }} 行内�?- 向上滚动查看效果</p>
     </div>
 
     <SwyAffix :target="'#affix-bottom'" position="bottom" :offset="10">
       <div
         style="padding: 10px 20px; background: #67c23a; color: white; border-radius: 4px; text-align: center;"
       >
-        📍 固定在底部
+        📍 固定在底�?
       </div>
     </SwyAffix>
 
@@ -60,7 +60,7 @@
 
 :::
 
-## 固定状态改变
+## 固定状态改�?
 
 :::demo
 
@@ -75,17 +75,17 @@
 
       <SwyAffix :target="'#affix-change'" :offset="0" @change="handleChange">
         <div style="padding: 15px; background: #e6a23c; color: white; text-align: center;">
-          {{ affixed ? '已固定 📌' : '未固定 📍' }}
+          {{ affixed ? '已固�?📌' : '未固�?📍' }}
         </div>
       </SwyAffix>
 
       <div style="padding: 20px;">
-        <p v-for="i in 20" :key="i">第 {{ i }} 行</p>
+        <p v-for="i in 20" :key="i">�?{{ i }} �?/p></p>
       </div>
     </div>
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px;">
-      当前状态：{{ affixed ? '固定' : '未固定' }}
+      当前状态：{{ affixed ? '固定' : '未固�? }}
     </div>
   </div>
 </template>
@@ -108,16 +108,16 @@ const handleChange = (fixed: boolean) => {
 
 ### Affix Props
 
-| 参数     | 说明     | 类型           | 默认值 |
+| 参数     | 说明     | 类型           | 默认�? |
 | -------- | -------- | -------------- | ------ |
 | offset   | 偏移距离 | `number`       | 0      |
 | position | 固定位置 | `top / bottom` | top    |
-| target   | 目标容器 | `string`       | —      |
+| target   | 目标容器 | `string`       | �?     |
 | zIndex   | 层级     | `number`       | 100    |
 
 ### Affix Events
 
-| 事件名 | 说明               | 参数                     |
+| 事件�? | 说明               | 参数                     |
 | ------ | ------------------ | ------------------------ |
 | change | 固定状态改变时触发 | `(fixed: boolean)`       |
-| scroll | 滚动时触发         | `({ scrollTop, fixed })` |
+| scroll | 滚动时触�?         | `({ scrollTop, fixed })` |

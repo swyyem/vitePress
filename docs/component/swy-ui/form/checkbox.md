@@ -1,18 +1,17 @@
 # Checkbox 复选框
 
-在一组可选项中进行多选。
+在一组可选项中进行多选�?
 
 ## 基础用法
 
-单独使用可以表示两种状态之间的切换。
-
+单独使用可以表示两种状态之间的切换�?
 :::demo
 
 ```vue
 <template>
   <div>
     <SwyCheckbox v-model="checked1" @change="handleChange">同意用户协议</SwyCheckbox>
-    <p>选中状态: {{ checked1 }}</p>
+    <p>选中状�? {{ checked1 }}</p>
   </div>
 </template>
 
@@ -37,12 +36,12 @@ const handleChange = val => {
 <template>
   <div>
     <ProField
-      valueType="SwyCheckbox"
+      valueType="Checkbox"
       v-model="checked1"
       :filedProps="{ label: '同意用户协议' }"
       @change="handleChange"
     />
-    <p>选中状态: {{ checked1 }}</p>
+    <p>选中状�? {{ checked1 }}</p>
   </div>
 </template>
 
@@ -59,7 +58,7 @@ const handleChange = val => {
 
 :::
 
-## 禁用状态
+## 禁用状�?
 
 :::demo
 
@@ -89,12 +88,12 @@ const checked3 = ref(true)
 <template>
   <div>
     <ProField
-      valueType="SwyCheckbox"
+      valueType="Checkbox"
       v-model="checked2"
       :filedProps="{ disabled: true, label: '已禁用的复选框' }"
     />
     <ProField
-      valueType="SwyCheckbox"
+      valueType="Checkbox"
       v-model="checked3"
       :filedProps="{ disabled: true, label: '已禁用且选中' }"
     />
@@ -157,16 +156,16 @@ const selectedHobbies = computed(() => {
 <template>
   <div>
     <div style="margin-bottom: 10px;">
-      <ProField valueType="SwyCheckbox" v-model="hobby.reading" :filedProps="{ label: 'reading' }">
+      <ProField valueType="Checkbox" v-model="hobby.reading" :filedProps="{ label: 'reading' }">
         阅读
       </ProField>
-      <ProField valueType="SwyCheckbox" v-model="hobby.sports" :filedProps="{ label: 'sports' }">
+      <ProField valueType="Checkbox" v-model="hobby.sports" :filedProps="{ label: 'sports' }">
         运动
       </ProField>
-      <ProField valueType="SwyCheckbox" v-model="hobby.music" :filedProps="{ label: 'music' }">
+      <ProField valueType="Checkbox" v-model="hobby.music" :filedProps="{ label: 'music' }">
         音乐
       </ProField>
-      <ProField valueType="SwyCheckbox" v-model="hobby.travel" :filedProps="{ label: 'travel' }">
+      <ProField valueType="Checkbox" v-model="hobby.travel" :filedProps="{ label: 'travel' }">
         旅行
       </ProField>
     </div>
@@ -202,9 +201,9 @@ const selectedHobbies = computed(() => {
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 10px;">
-    <SwyCheckbox v-model="checked4" size="large">大尺寸</SwyCheckbox>
+    <SwyCheckbox v-model="checked4" size="large">大尺�?/SwyCheckbox>
     <SwyCheckbox v-model="checked5" size="default">默认尺寸</SwyCheckbox>
-    <SwyCheckbox v-model="checked6" size="small">小尺寸</SwyCheckbox>
+    <SwyCheckbox v-model="checked6" size="small">小尺�?/SwyCheckbox>
   </div>
 </template>
 
@@ -227,19 +226,19 @@ const checked6 = ref(true)
 <template>
   <div style="display: flex; flex-direction: column; gap: 10px;">
     <ProField
-      valueType="SwyCheckbox"
+      valueType="Checkbox"
       v-model="checked4"
-      :filedProps="{ size: 'large', label: '大尺寸' }"
+      :filedProps="{ size: 'large', label: '大尺�? }"
     />
     <ProField
-      valueType="SwyCheckbox"
+      valueType="Checkbox"
       v-model="checked5"
       :filedProps="{ size: 'default', label: '默认尺寸' }"
     />
     <ProField
-      valueType="SwyCheckbox"
+      valueType="Checkbox"
       v-model="checked6"
-      :filedProps="{ size: 'small', label: '小尺寸' }"
+      :filedProps="{ size: 'small', label: '小尺�? }"
     />
   </div>
 </template>
@@ -259,22 +258,22 @@ const checked6 = ref(true)
 
 ### Props
 
-| 属性名               | 说明         | 类型                            | 默认值      |
+| 属性名               | 说明         | 类型                            | 默认�?      |
 | -------------------- | ------------ | ------------------------------- | ----------- |
-| modelValue / v-model | 绑定值       | `boolean / string / number`     | `false`     |
-| label                | 选中状态的值 | `string`                        | —           |
+| modelValue / v-model | 绑定�?       | `boolean / string / number`     | `false`     |
+| label                | 选中状态的�? | `string`                        | �?          |
 | disabled             | 是否禁用     | `boolean`                       | `false`     |
 | size                 | 尺寸         | `'large' / 'default' / 'small'` | `'default'` |
 
 ### Events
 
-| 事件名 | 说明               | 类型                       |
+| 事件�? | 说明               | 类型                       |
 | ------ | ------------------ | -------------------------- |
 | change | 当绑定值变化时触发 | `(value: boolean) => void` |
 
 ### Exposes
 
-| 名称      | 说明                   | 类型                    |
-| --------- | ---------------------- | ----------------------- |
-| inputRef  | checkbox 的 input 元素 | `Ref<HTMLInputElement>` |
-| isChecked | 是否选中               | `ComputedRef<boolean>`  |
+| 名称      | 说明                  | 类型                    |
+| --------- | --------------------- | ----------------------- |
+| inputRef  | checkbox �?input 元素 | `Ref<HTMLInputElement>` |
+| isChecked | 是否选中              | `ComputedRef<boolean>`  |

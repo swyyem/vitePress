@@ -1,6 +1,6 @@
 # Autocomplete 自动完成
 
-输入建议的输入框。
+输入建议的输入框�?
 
 ## 基础用法
 
@@ -10,11 +10,11 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">搜索用户：</div>
+      <div style="margin-bottom: 8px; color: #606266;">搜索用户�?/div>
       <SwyAutocomplete
         v-model="value1"
         :fetch-suggestions="querySearch"
-        placeholder="请输入内容"
+        placeholder="请输入内�?
         @select="handleSelect"
       />
     </div>
@@ -46,14 +46,14 @@ const querySearch = (queryString: string, cb: any) => {
 }
 
 const handleSelect = (item: any) => {
-  console.log('选中：', item)
+  console.log('选中�?, item)
 }
 </script>
 ```
 
 :::
 
-## 自定义模板
+## 自定义模�?
 
 :::demo
 
@@ -86,9 +86,9 @@ const value2 = ref('')
 const techStack = [
   { value: 'javascript', label: 'JavaScript', icon: '🟨', desc: '编程语言' },
   { value: 'typescript', label: 'TypeScript', icon: '🔷', desc: 'JS超集' },
-  { value: 'nodejs', label: 'Node.js', icon: '🟢', desc: '运行时环境' },
+  { value: 'nodejs', label: 'Node.js', icon: '🟢', desc: '运行时环�? },
   { value: 'webpack', label: 'Webpack', icon: '📦', desc: '打包工具' },
-  { value: 'vite', label: 'Vite', icon: '⚡', desc: '构建工具' },
+  { value: 'vite', label: 'Vite', icon: '�?, desc: '构建工具' },
 ]
 
 const querySearchAsync = (queryString: string, cb: any) => {
@@ -116,7 +116,7 @@ const querySearchAsync = (queryString: string, cb: any) => {
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">搜索城市：</div>
+      <div style="margin-bottom: 8px; color: #606266;">搜索城市�?/div>
       <SwyAutocomplete
         v-model="value3"
         :fetch-suggestions="fetchCities"
@@ -169,18 +169,18 @@ const fetchCities = (queryString: string, cb: any) => {
 
 ### Autocomplete Props
 
-| 参数                 | 说明           | 类型                                          | 默认值 |
+| 参数                 | 说明           | 类型                                          | 默认�? |
 | -------------------- | -------------- | --------------------------------------------- | ------ |
-| modelValue / v-model | 绑定值         | `string`                                      | —      |
-| placeholder          | 占位文本       | `string`                                      | —      |
-| fetchSuggestions     | 获取建议的方法 | `(queryString: string, cb: Function) => void` | —      |
-| debounce             | 去抖延迟，毫秒 | `number`                                      | 300    |
+| modelValue / v-model | 绑定�?         | `string`                                      | �?     |
+| placeholder          | 占位文本       | `string`                                      | �?     |
+| fetchSuggestions     | 获取建议的方�? | `(queryString: string, cb: Function) => void` | �?     |
+| debounce             | 去抖延迟，毫�? | `number`                                      | 300    |
 | disabled             | 是否禁用       | `boolean`                                     | false  |
-| clearable            | 是否可清空     | `boolean`                                     | false  |
+| clearable            | 是否可清�?     | `boolean`                                     | false  |
 
 ### Autocomplete Events
 
-| 事件名 | 说明                 | 参数              |
+| 事件�? | 说明                 | 参数              |
 | ------ | -------------------- | ----------------- |
 | select | 点击选中建议项时触发 | `(item)`          |
 | change | 值改变时触发         | `(value: string)` |
@@ -190,5 +190,5 @@ const fetchCities = (queryString: string, cb: any) => {
 | 名称    | 说明             |
 | ------- | ---------------- |
 | default | 自定义建议项内容 |
-| prefix  | 输入框头部内容   |
-| suffix  | 输入框尾部内容   |
+| prefix  | 输入框头部内�?   |
+| suffix  | 输入框尾部内�?   |

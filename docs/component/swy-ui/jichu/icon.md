@@ -1,11 +1,10 @@
 # Icon 图标
 
-提供了一套常用的图标集合。
+提供了一套常用的图标集合�?
 
 ## 基础用法
 
-使用 `name` 属性指定图标名称。
-
+使用 `name` 属性指定图标名称�?
 :::demo
 
 ```vue
@@ -27,8 +26,7 @@
 
 ## 图标尺寸
 
-使用 `size` 属性设置图标大小，支持预设值或自定义尺寸。
-
+使用 `size` 属性设置图标大小，支持预设值或自定义尺寸�?
 :::demo
 
 ```vue
@@ -47,8 +45,7 @@
 
 ## 图标颜色
 
-使用 `color` 属性设置图标颜色。
-
+使用 `color` 属性设置图标颜色�?
 :::demo
 
 ```vue
@@ -130,7 +127,7 @@ const icons = [
 
 :::
 
-## 所有图标
+## 所有图�?
 
 查看[完整图标列表](https://element-plus.org/zh-CN/component/icon.html)
 
@@ -154,22 +151,20 @@ const icons = [
 
 :::
 
-## Icon 属性
+## Icon 属�?
 
-| 属性名 | 说明               | 类型               | 可选值                                      | 默认值  |
+| 属性名 | 说明               | 类型               | 可选�?                                      | 默认�?  |
 | ------ | ------------------ | ------------------ | ------------------------------------------- | ------- |
-| name   | 图标名称或图标组件 | string / Component | —                                           | —       |
+| name   | 图标名称或图标组�? | string / Component | �?                                          | �?      |
 | size   | 图标大小           | string             | small / default / large 或具体尺寸如 '20px' | default |
-| color  | 图标颜色           | string             | —                                           | —       |
+| color  | 图标颜色           | string             | �?                                          | �?      |
 
 ## 图标名称对照
 
-图标名称采用 kebab-case 命名（小写字母+连字符），例如：
+图标名称采用 kebab-case 命名（小写字�?连字符），例如：
 
 - `search` - 搜索
 - `edit` - 编辑
-- `arrow-left` - 左箭头
-- `circle-check` - 圆形勾选
-- `star-filled` - 实心星星
+- `arrow-left` - 左箭�?- `circle-check` - 圆形勾�?- `star-filled` - 实心星星
 
-查看完整图标列表请参考 [Element Plus Icons](https://element-plus.org/zh-CN/component/icon.html)
+查看完整图标列表请参�?[Element Plus Icons](https://element-plus.org/zh-CN/component/icon.html)
