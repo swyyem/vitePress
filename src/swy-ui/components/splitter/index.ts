@@ -1,0 +1,9 @@
+import { withNoopInstall } from '@swy-ui/utils'
+import Splitter from './src/splitter.vue'
+
+import type { SFCWithInstall } from '@swy-ui/utils'
+
+export const SwySplitter: SFCWithInstall<typeof Splitter> = withNoopInstall(Splitter)
+export default Splitter
+
+export * from './src/splitter'

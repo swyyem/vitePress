@@ -12,7 +12,7 @@
  * @property {MenuItem[]} [key]
  */
 
-type CategoryMap = Record<string, any[]>
+type CategoryMap = Record<string, MenuItem[]>
 interface MenuItem {
   text: string
   items?: MenuItem[]
@@ -595,6 +595,22 @@ const wholeList: MenuItem[] = [
             text: 'Tabs / Breadcrumb / Pagination',
             link: '/component/swy-ui/navigation/',
           },
+          {
+            text: 'Steps 步骤条',
+            link: '/component/swy-ui/navigation/steps',
+          },
+          {
+            text: 'Backtop 回到顶部',
+            link: '/component/swy-ui/navigation/backtop',
+          },
+          {
+            text: 'PageHeader 页头',
+            link: '/component/swy-ui/navigation/page-header',
+          },
+          {
+            text: 'Anchor 锚点',
+            link: '/component/swy-ui/navigation/anchor',
+          },
         ],
       },
       {
@@ -605,6 +621,22 @@ const wholeList: MenuItem[] = [
           {
             text: 'Container 容器布局',
             link: '/component/swy-ui/layout/',
+          },
+          {
+            text: 'Row / Col 栅格布局',
+            link: '/component/swy-ui/layout/row-col',
+          },
+          {
+            text: 'Space 间距',
+            link: '/component/swy-ui/layout/space',
+          },
+          {
+            text: 'Scrollbar 滚动条',
+            link: '/component/swy-ui/layout/scrollbar',
+          },
+          {
+            text: 'Splitter 分割面板',
+            link: '/component/swy-ui/layout/splitter',
           },
         ],
       },
@@ -632,6 +664,26 @@ const wholeList: MenuItem[] = [
             text: 'Table / Tree / Collapse / Carousel',
             link: '/component/swy-ui/data-display/',
           },
+          {
+            text: 'Transfer 穿梭框',
+            link: '/component/swy-ui/data/transfer',
+          },
+          {
+            text: 'Timeline 时间线',
+            link: '/component/swy-ui/data-display/timeline',
+          },
+          {
+            text: 'Calendar 日历',
+            link: '/component/swy-ui/data-display/calendar',
+          },
+          {
+            text: 'Statistic 统计数值',
+            link: '/component/swy-ui/data-display/statistic',
+          },
+          {
+            text: 'Segmented 分段控制器',
+            link: '/component/swy-ui/data/segmented',
+          },
         ],
       },
       {
@@ -646,6 +698,32 @@ const wholeList: MenuItem[] = [
           {
             text: 'Tooltip / Popover / Notification / Loading',
             link: '/component/swy-ui/feedback-interaction/',
+          },
+          {
+            text: 'Tour 漫游式引导',
+            link: '/component/swy-ui/feedback/tour',
+          },
+        ],
+      },
+      {
+        text: '其他组件',
+        collapsible: true,
+        collapsed: true,
+        items: [
+          {
+            text: 'Affix 固钉',
+            link: '/component/swy-ui/others/affix',
+          },
+        ],
+      },
+      {
+        text: '新增组件总览',
+        collapsible: true,
+        collapsed: false,
+        items: [
+          {
+            text: '📦 新增组件展示 (33个)',
+            link: '/component/swy-ui/new-components',
           },
         ],
       },
@@ -669,6 +747,38 @@ const wholeList: MenuItem[] = [
           {
             text: 'Switch 开关',
             link: '/component/swy-ui/form/switch',
+          },
+          {
+            text: 'DatePicker 日期选择器',
+            link: '/component/swy-ui/form/date-picker',
+          },
+          {
+            text: 'TimePicker 时间选择器',
+            link: '/component/swy-ui/form/time-picker',
+          },
+          {
+            text: 'TimeSelect 时间选择',
+            link: '/component/swy-ui/form/time-select',
+          },
+          {
+            text: 'Upload 文件上传',
+            link: '/component/swy-ui/form/upload',
+          },
+          {
+            text: 'Cascader 级联选择器',
+            link: '/component/swy-ui/form/cascader',
+          },
+          {
+            text: 'TreeSelect 树形选择',
+            link: '/component/swy-ui/form/tree-select',
+          },
+          {
+            text: 'Autocomplete 自动完成',
+            link: '/component/swy-ui/form/autocomplete',
+          },
+          {
+            text: 'ColorPicker 颜色选择器',
+            link: '/component/swy-ui/form/color-picker',
           },
           {
             text: '表单综合示例',
