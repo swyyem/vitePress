@@ -112,3 +112,22 @@
 ```
 
 :::
+
+## Alert 属性
+
+| 属性名      | 说明               | 类型    | 可选值                                     | 默认值 |
+| ----------- | ------------------ | ------- | ------------------------------------------ | ------ |
+| type        | 提示类型           | string  | success / warning / info / error / primary | info   |
+| effect      | 主题样式           | string  | light / dark                               | light  |
+| title       | 标题               | string  | —                                          | —      |
+| description | 描述性文本         | string  | —                                          | —      |
+| closable    | 是否可关闭         | boolean | —                                          | true   |
+| center      | 文字是否居中       | boolean | —                                          | false  |
+| close-text  | 关闭按钮自定义文本 | string  | —                                          | —      |
+| show-icon   | 是否显示图标       | boolean | —                                          | false  |
+
+## Alert 事件
+
+| 事件名 | 说明              | 回调参数            |
+| ------ | ----------------- | ------------------- |
+| close  | 关闭 Alert 时触发 | (event: MouseEvent) |

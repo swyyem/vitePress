@@ -98,3 +98,23 @@
 ```
 
 :::
+
+## Card 属性
+
+| 属性名       | 说明                                        | 类型                    | 可选值                 | 默认值 |
+| ------------ | ------------------------------------------- | ----------------------- | ---------------------- | ------ |
+| header       | 卡片标题，也可通过 slot#header 传入 DOM     | string                  | —                      | —      |
+| footer       | 卡片底部内容，也可通过 slot#footer 传入 DOM | string                  | —                      | —      |
+| body-style   | 卡片主体的 CSS 样式                         | string / object / array | —                      | —      |
+| body-class   | 卡片主体的自定义类名                        | string                  | —                      | —      |
+| header-class | 卡片头部的自定义类名                        | string                  | —                      | —      |
+| footer-class | 卡片底部的自定义类名                        | string                  | —                      | —      |
+| shadow       | 阴影显示时机                                | string                  | always / hover / never | —      |
+
+## Card 插槽
+
+| 插槽名  | 说明         |
+| ------- | ------------ |
+| default | 卡片主体内容 |
+| header  | 卡片头部内容 |
+| footer  | 卡片底部内容 |

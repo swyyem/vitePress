@@ -94,3 +94,19 @@
 ```
 
 :::
+
+## Avatar 属性
+
+| 属性名 | 说明     | 类型            | 可选值                  | 默认值  |
+| ------ | -------- | --------------- | ----------------------- | ------- |
+| size   | 头像尺寸 | string / number | small / default / large | default |
+| shape  | 头像形状 | string          | circle / square         | circle  |
+| icon   | 图标类型 | string          | —                       | —       |
+| src    | 图片地址 | string          | —                       | —       |
+| alt    | 图片描述 | string          | —                       | —       |
+
+## Avatar 事件
+
+| 事件名 | 说明               | 回调参数       |
+| ------ | ------------------ | -------------- |
+| error  | 图片加载失败时触发 | (event: Event) |

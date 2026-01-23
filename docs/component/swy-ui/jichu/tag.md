@@ -112,3 +112,23 @@ const handleClose = (index: number) => {
 ```
 
 :::
+
+## Tag 属性
+
+| 属性名              | 说明             | 类型    | 可选值                                      | 默认值  |
+| ------------------- | ---------------- | ------- | ------------------------------------------- | ------- |
+| type                | 类型             | string  | primary / success / info / warning / danger | primary |
+| closable            | 是否可关闭       | boolean | —                                           | false   |
+| disable-transitions | 是否禁用渐变动画 | boolean | —                                           | false   |
+| hit                 | 是否有边框描边   | boolean | —                                           | false   |
+| color               | 背景色           | string  | —                                           | —       |
+| size                | 尺寸             | string  | small / default / large                     | default |
+| effect              | 主题             | string  | light / dark / plain                        | light   |
+| round               | 是否为圆形       | boolean | —                                           | false   |
+
+## Tag 事件
+
+| 事件名 | 说明            | 回调参数            |
+| ------ | --------------- | ------------------- |
+| close  | 关闭 Tag 时触发 | (event: MouseEvent) |
+| click  | 点击 Tag 时触发 | (event: MouseEvent) |

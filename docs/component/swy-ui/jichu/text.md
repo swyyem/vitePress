@@ -80,3 +80,13 @@
 ```
 
 :::
+
+## Text 属性
+
+| 属性名     | 说明           | 类型            | 可选值                                      | 默认值  |
+| ---------- | -------------- | --------------- | ------------------------------------------- | ------- |
+| type       | 文本类型       | string          | primary / success / warning / danger / info | —       |
+| size       | 文本尺寸       | string          | large / default / small                     | default |
+| truncated  | 是否截断       | boolean         | —                                           | false   |
+| line-clamp | 显示的行数     | string / number | —                                           | —       |
+| tag        | 自定义元素标签 | string          | —                                           | span    |

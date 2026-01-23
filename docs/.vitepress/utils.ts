@@ -592,8 +592,16 @@ const wholeList: MenuItem[] = [
         collapsed: true,
         items: [
           {
-            text: 'Tabs / Breadcrumb / Pagination',
-            link: '/component/swy-ui/navigation/',
+            text: 'Tabs 标签页',
+            link: '/component/swy-ui/navigation/tabs',
+          },
+          {
+            text: 'Breadcrumb 面包屑',
+            link: '/component/swy-ui/navigation/breadcrumb',
+          },
+          {
+            text: 'Pagination 分页',
+            link: '/component/swy-ui/navigation/pagination',
           },
           {
             text: 'Steps 步骤条',

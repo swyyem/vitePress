@@ -20,7 +20,7 @@ const ns = useNamespace('tab')
 const tabs = inject<any>('tabs')
 
 const isActive = computed(() => {
-  return tabs?.activeTab === props.name
+  return tabs?.activeTab?.value === props.name
 })
 
 onMounted(() => {

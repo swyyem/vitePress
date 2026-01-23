@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, ref } from 'vue'
+import { provide, ref, toRef } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tabsProps, tabsEmits } from './tabs'
 
@@ -42,7 +42,7 @@ const registerTab = (tab: { name: string | number; label: string }) => {
 
 provide('tabs', {
   registerTab,
-  activeTab: props.modelValue,
+  activeTab: toRef(props, 'modelValue'),
 })
 
 const handleTabClick = (name: string | number) => {
