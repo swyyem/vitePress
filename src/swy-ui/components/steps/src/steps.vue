@@ -21,6 +21,7 @@ const ns = useNamespace('steps')
 const stepsKls = computed(() => [
   ns.b(),
   ns.m(props.direction),
+  ns.is('simple', props.simple),
   ns.m(props.space ? 'space' : 'flex'),
 ])
 
@@ -31,14 +32,16 @@ const steps = reactive({
   finishStatus: props.finishStatus,
   processStatus: props.processStatus,
   alignCenter: props.alignCenter,
+  simple: props.simple,
 })
 
 provide('steps', steps)
 
 watch(
   () => props.active,
-  newVal => {
-    emit('change', newVal)
+  (newVal, oldVal) => {
+    steps.active = newVal
+    emit('change', newVal, oldVal)
   }
 )
 

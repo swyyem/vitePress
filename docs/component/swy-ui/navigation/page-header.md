@@ -1,6 +1,6 @@
-# PageHeader 页头
+﻿# PageHeader 页头
 
-页面头部组件，用于显示页面标题、面包屑、返回按钮等�?
+页面头部组件，用于显示页面标题、面包屑、返回按钮等
 
 ## 基础用法
 
@@ -14,14 +14,14 @@
 <script lang="ts" setup>
 const goBack = () => {
   console.log('返回')
-  alert('返回上一�?)
+  alert('返回上一)
 }
 </script>
 ```
 
 :::
 
-## 带副标题和内�?
+## 带副标题和内
 
 :::demo
 
@@ -43,7 +43,7 @@ const goBack = () => {
 
 :::
 
-## 自定义内�?
+## 自定义内
 
 :::demo
 
@@ -85,7 +85,7 @@ const goBack = () => {
 
 :::
 
-## 面包屑导�?
+## 面包屑导
 
 :::demo
 
@@ -121,18 +121,18 @@ const goBack = () => {
 
 ### PageHeader Props
 
-| 参数       | 说明         | 类型     | 默认�? |
-| ---------- | ------------ | -------- | ------ |
-| title      | 标题         | `string` | �?     |
-| content    | 内容         | `string` | �?     |
-| breadcrumb | 面包屑配�?   | `array`  | �?     |
-| backText   | 返回按钮文字 | `string` | 返回   |
+| 参数       | 说明         | 类型     | 默认 |
+| ---------- | ------------ | -------- | ---- |
+| title      | 标题         | `string` |      |
+| content    | 内容         | `string` |      |
+| breadcrumb | 面包屑配     | `array`  |      |
+| backText   | 返回按钮文字 | `string` | 返回 |
 
 ### PageHeader Events
 
-| 事件�? | 说明               | 参数 |
-| ------ | ------------------ | ---- |
-| back   | 点击返回按钮时触�? | �?   |
+| 事件 | 说明             | 参数 |
+| ---- | ---------------- | ---- |
+| back | 点击返回按钮时触 |      |
 
 ### PageHeader Slots
 
