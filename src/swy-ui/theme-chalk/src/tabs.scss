@@ -4,6 +4,7 @@
 @include b(tabs) {
   @include set-component-css-var('tabs', $tabs);
   display: flex;
+  flex-direction: column;
 
   @include e(header) {
     padding: 0;
@@ -511,6 +512,8 @@
     }
   }
   @include m(right) {
+    flex-direction: row;
+
     .#{$namespace}-tabs__header.is-right {
       margin-bottom: 0;
       margin-left: 10px;

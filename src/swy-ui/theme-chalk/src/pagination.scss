@@ -13,11 +13,12 @@
   color: getCssVar('pagination-button-color');
   background: getCssVar('pagination-bg-color');
   padding: 0 4px;
-  border: none;
+  border: 1px solid getCssVar('border-color-base');
   border-radius: getCssVar('pagination-border-radius');
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
+  transition: all 0.3s;
 
   * {
     pointer-events: none;
@@ -29,15 +30,18 @@
 
   &:hover {
     color: getCssVar('pagination-hover-color');
+    border-color: getCssVar('pagination-hover-color');
   }
 
   &.is-active {
-    color: getCssVar('pagination-hover-color');
+    color: getCssVar('color-white');
+    background-color: getCssVar('color-primary');
+    border-color: getCssVar('color-primary');
     cursor: default;
-    font-weight: bold;
+    font-weight: 600;
 
     &.is-disabled {
-      font-weight: bold;
+      font-weight: 600;
       color: getCssVar('text-color', 'secondary');
     }
   }
@@ -46,7 +50,13 @@
   &.is-disabled {
     color: getCssVar('pagination-button-disabled-color');
     background-color: getCssVar('pagination-button-disabled-bg-color');
+    border-color: getCssVar('border-color-lighter');
     cursor: not-allowed;
+
+    &:hover {
+      color: getCssVar('pagination-button-disabled-color');
+      border-color: getCssVar('border-color-lighter');
+    }
   }
 
   &:focus-visible {
@@ -75,14 +85,24 @@
   }
 
   .btn-prev,
-  .btn-next {
+  .btn-next,
+  .#{$namespace}-pager {
     @include pagination-button;
+    margin-right: 8px;
 
     .#{$namespace}-icon {
       display: block;
       font-size: 12px;
       font-weight: bold;
       width: inherit;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 
@@ -96,7 +116,7 @@
   }
 
   .btn-prev {
-    margin-left: getCssVar('pagination-item-gap');
+    margin-left: 0;
   }
 
   @include e(sizes) {
@@ -160,36 +180,48 @@
   @include when(background) {
     .btn-prev,
     .btn-next,
-    .#{$namespace}-pager li {
-      margin: 0 4px;
+    .#{$namespace}-pager {
+      margin-right: 8px;
       background-color: getCssVar('pagination-button-bg-color');
+      border: none;
 
       &.is-active {
         background-color: getCssVar('color-primary');
         color: getCssVar('color-white');
+        border-color: getCssVar('color-primary');
       }
 
       &:disabled,
       &.is-disabled {
         color: getCssVar('text-color', 'placeholder');
         background-color: getCssVar('disabled-bg-color');
+        border-color: getCssVar('border-color-lighter');
 
         &.is-active {
           color: getCssVar('text-color', 'secondary');
           background-color: getCssVar('fill-color', 'dark');
         }
       }
+
+      &:hover:not(:disabled):not(.is-disabled):not(.is-active) {
+        color: getCssVar('pagination-hover-color');
+        border-color: transparent;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
 
-    .btn-prev {
-      margin-left: getCssVar('pagination-item-gap');
+    .btn-prev:first-child {
+      margin-left: 0;
     }
   }
 
   @include m(small) {
     .btn-prev,
     .btn-next,
-    .#{$namespace}-pager li {
+    .#{$namespace}-pager {
       height: getCssVar('pagination-button-height-small');
       line-height: getCssVar('pagination-button-height-small');
       font-size: getCssVar('pagination-font-size-small');
@@ -208,7 +240,7 @@
   @include m(large) {
     .btn-prev,
     .btn-next,
-    .#{$namespace}-pager li {
+    .#{$namespace}-pager {
       height: getCssVar('pagination-button-height-large');
       line-height: getCssVar('pagination-button-height-large');
       min-width: getCssVar('pagination-button-width-large');
@@ -218,18 +250,31 @@
       width: 160px;
     }
   }
-}
 
-@include b(pager) {
-  user-select: none;
-  list-style: none;
-  font-size: 0;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  align-items: center;
+  // pager 容器
+  @include b(pager) {
+    user-select: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
 
-  li {
-    @include pagination-button;
+    li {
+      @include pagination-button;
+      margin: 0 5px;
+      font-size: getCssVar('pagination-font-size');
+
+      // 移除 li 默认样式
+      list-style-type: none;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
