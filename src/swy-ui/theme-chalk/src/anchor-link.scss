@@ -1,45 +1,36 @@
-@use 'sass:map';
-
 @use 'mixins/mixins' as *;
-@use 'mixins/var' as *;
 @use 'common/var' as *;
 
-@include b(anchor) {
-  @include e(item) {
-    display: flex;
-    flex-direction: column;
-  }
+@include b(anchor-link) {
+  position: relative;
+  padding: 8px 0 8px 16px;
+  line-height: 1.5;
+  cursor: pointer;
 
-  @include e(link) {
-    font-size: getCssVar('anchor-font-size');
-    line-height: getCssVar('anchor-line-height');
-    padding: 4px 0;
-    color: getCssVar('anchor-color');
-    transition: color getCssVar('transition-duration');
-    white-space: nowrap;
+  @include e(title) {
+    display: block;
+    font-size: 14px;
+    color: getCssVar('text-color', 'regular');
     text-decoration: none;
+    transition: color 0.3s;
+    white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
     max-width: 100%;
-    outline: none;
-    cursor: pointer;
 
-    &:hover,
-    &:focus {
-      color: getCssVar('hover-color');
-    }
-
-    &:focus-visible {
-      border-radius: getCssVar('border-radius', 'base');
-      outline: 2px solid getCssVar('color-primary');
-    }
-
-    @include when(active) {
-      color: getCssVar('anchor-active-color');
+    &:hover {
+      color: getCssVar('color-primary');
     }
   }
 
-  & .#{$namespace}-anchor__list .#{$namespace}-anchor__item a {
-    display: inline-block;
+  @include when(active) {
+    @include e(title) {
+      color: getCssVar('color-primary');
+      font-weight: 600;
+    }
+  }
+
+  @include e(list) {
+    padding-left: 16px;
   }
 }
