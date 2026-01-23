@@ -2,14 +2,14 @@ import { buildProps, definePropType } from '@swy-ui/utils'
 import type { ExtractPropTypes } from 'vue'
 
 export const pageHeaderProps = buildProps({
-  icon: {
-    type: definePropType<object>(Object),
-  },
   title: String,
   content: String,
-  back: {
+  backText: {
     type: String,
     default: '返回',
+  },
+  breadcrumb: {
+    type: definePropType<Array<{ title: string; path?: string }>>(Array),
   },
 } as const)
 

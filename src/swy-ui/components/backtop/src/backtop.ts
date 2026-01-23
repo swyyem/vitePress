@@ -15,6 +15,9 @@ export const backtopProps = buildProps({
     type: [Number, String],
     default: 40,
   },
+  left: {
+    type: [Number, String],
+  },
 } as const)
 
 export const backtopEmits = {

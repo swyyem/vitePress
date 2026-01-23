@@ -2,9 +2,7 @@
   <transition name="swy-fade-in">
     <div v-show="visible" :class="backtopKls" :style="backtopStyle" @click="handleClick">
       <slot>
-        <el-icon :class="ns.e('icon')">
-          <component :is="'CaretTop'" />
-        </el-icon>
+        <div :class="ns.e('icon')">▲</div>
       </slot>
     </div>
   </transition>
@@ -27,10 +25,23 @@ const visible = ref(false)
 
 const backtopKls = computed(() => [ns.b()])
 
-const backtopStyle = computed(() => ({
-  right: typeof props.right === 'number' ? `${props.right}px` : props.right,
-  bottom: typeof props.bottom === 'number' ? `${props.bottom}px` : props.bottom,
-}))
+const backtopStyle = computed(() => {
+  const style: Record<string, string> = {}
+
+  if (props.right !== undefined) {
+    style.right = typeof props.right === 'number' ? `${props.right}px` : props.right
+  }
+
+  if (props.left !== undefined) {
+    style.left = typeof props.left === 'number' ? `${props.left}px` : props.left
+  }
+
+  if (props.bottom !== undefined) {
+    style.bottom = typeof props.bottom === 'number' ? `${props.bottom}px` : props.bottom
+  }
+
+  return style
+})
 
 const handleScroll = () => {
   const target = props.target ? document.querySelector(props.target) : window

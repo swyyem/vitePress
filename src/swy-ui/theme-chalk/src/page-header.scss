@@ -2,59 +2,84 @@
 @use 'common/var' as *;
 
 @include b(page-header) {
-  @include when(contentful) {
-    @include e('main') {
-      border-top: 1px solid getCssVar('border-color', 'light');
-      margin-top: 16px;
+  padding: 20px;
+  background-color: getCssVar('bg-color');
+
+  @include e(breadcrumb) {
+    margin-bottom: 16px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  @include e(breadcrumb-item) {
+    color: getCssVar('text-color', 'regular');
+
+    &:last-child {
+      color: getCssVar('text-color', 'primary');
+      font-weight: 500;
     }
+  }
+
+  @include e(breadcrumb-separator) {
+    margin: 0 8px;
+    color: getCssVar('text-color', 'placeholder');
   }
 
   @include e(header) {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    line-height: 24px;
+  }
 
-    @include e(left) {
-      display: flex;
-      align-items: center;
-      margin-right: 40px;
-      position: relative;
+  @include e(left) {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
 
-      @include e('back') {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-      }
+  @include e(back) {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    color: getCssVar('text-color', 'regular');
+    cursor: pointer;
+    transition: color 0.3s;
 
-      .#{$namespace}-divider--vertical {
-        margin: 0 16px;
-      }
-
-      @include e(icon) {
-        font-size: 16px;
-        margin-right: 10px;
-        display: flex;
-        align-items: center;
-
-        .#{$namespace}-icon {
-          font-size: inherit;
-        }
-      }
-
-      @include e(title) {
-        font-size: 14px;
-        font-weight: 500;
-      }
+    &:hover {
+      color: getCssVar('color-primary');
     }
   }
 
-  @include e(content) {
-    font-size: 18px;
-    color: getCssVar('text-color', 'primary');
+  @include e(icon) {
+    margin-right: 6px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
   }
 
-  @include e(breadcrumb) {
-    margin-bottom: 16px;
+  @include e(divider) {
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    background-color: getCssVar('border-color');
+    margin: 0 16px;
+  }
+
+  @include e(title) {
+    font-size: 18px;
+    font-weight: 600;
+    color: getCssVar('text-color', 'primary');
+    line-height: 1;
+  }
+
+  @include e(extra) {
+    margin-left: 16px;
+  }
+
+  @include e(content) {
+    margin-top: 12px;
+    font-size: 14px;
+    color: getCssVar('text-color', 'regular');
+    line-height: 1.5;
   }
 }

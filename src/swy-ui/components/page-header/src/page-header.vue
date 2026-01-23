@@ -1,22 +1,31 @@
 <template>
   <div :class="pageHeaderKls">
-    <div :class="ns.e('left')" @click="handleBack">
-      <el-icon v-if="icon" :class="ns.e('icon')">
-        <component :is="icon" />
-      </el-icon>
-      <div :class="ns.e('back')">
-        <slot name="back">{{ back }}</slot>
+    <div v-if="breadcrumb && breadcrumb.length" :class="ns.e('breadcrumb')">
+      <span v-for="(item, index) in breadcrumb" :key="index">
+        <span v-if="index > 0" :class="ns.e('breadcrumb-separator')">/</span>
+        <span :class="ns.e('breadcrumb-item')">{{ item.title }}</span>
+      </span>
+    </div>
+
+    <div :class="ns.e('header')">
+      <div :class="ns.e('left')" @click="handleBack">
+        <span :class="ns.e('back')">
+          <span :class="ns.e('icon')">←</span>
+          <span>{{ backText }}</span>
+        </span>
+        <span :class="ns.e('divider')"></span>
+        <div :class="ns.e('title')">
+          <slot name="title">{{ title }}</slot>
+        </div>
       </div>
-      <el-divider direction="vertical" />
-      <div :class="ns.e('title')">
-        <slot name="title">{{ title }}</slot>
+
+      <div v-if="$slots.extra" :class="ns.e('extra')">
+        <slot name="extra" />
       </div>
     </div>
+
     <div v-if="$slots.content || content" :class="ns.e('content')">
       <slot name="content">{{ content }}</slot>
-    </div>
-    <div v-if="$slots.extra" :class="ns.e('extra')">
-      <slot name="extra" />
     </div>
   </div>
 </template>
