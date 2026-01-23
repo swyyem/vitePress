@@ -1,8 +1,8 @@
-# Tag 标签组件
+﻿# Tag 标签组件
 
 ## 描述
 
-用于标记和分类�?
+用于标记和分类
 
 ## 基础用法
 
@@ -46,10 +46,10 @@ import { ref } from 'vue'
 
 const tags = ref([
   { name: '标签一', type: 'primary' },
-  { name: '标签�?, type: 'success' },
-  { name: '标签�?, type: 'info' },
-  { name: '标签�?, type: 'warning' },
-  { name: '标签�?, type: 'danger' },
+  { name: '标签', type: 'success' },
+  { name: '标签', type: 'info' },
+  { name: '标签', type: 'warning' },
+  { name: '标签', type: 'danger' },
 ])
 
 const handleClose = (index: number) => {
@@ -93,6 +93,20 @@ const handleClose = (index: number) => {
       <SwyTag type="info" effect="dark">Dark</SwyTag>
       <SwyTag type="info" effect="plain">Plain</SwyTag>
     </div>
+  </div>
+</template>
+```
+
+:::
+
+### ProField 用法
+
+:::demo
+
+```vue
+<template>
+  <div style="width: 300px;">
+    <ProField valueType="Tag" :fieldProps="{ type: 'success', effect: 'Light' }">Light</ProField>
   </div>
 </template>
 ```

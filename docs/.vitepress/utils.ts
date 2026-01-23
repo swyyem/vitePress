@@ -581,8 +581,8 @@ const wholeList: MenuItem[] = [
             link: '/component/swy-ui/jichu/alert',
           },
           {
-            text: 'Tag / Badge / Divider',
-            link: '/component/swy-ui/jichu/new-components',
+            text: 'Tag 标签',
+            link: '/component/swy-ui/jichu/tag',
           },
         ],
       },

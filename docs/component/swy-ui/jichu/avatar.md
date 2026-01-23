@@ -16,25 +16,6 @@
 
 :::
 
-### ProField 用法
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; gap: 16px; align-items: center;">
-    <ProField
-      valueType="Avatar"
-      :filedProps="{ src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png' }"
-    />
-    <ProField valueType="Avatar">User</ProField>
-    <ProField valueType="Avatar">张三</ProField>
-  </div>
-</template>
-```
-
-:::
-
 ## 尺寸
 
 :::demo
@@ -61,44 +42,6 @@
 
 :::
 
-### ProField 用法
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; gap: 16px; align-items: center;">
-    <ProField
-      valueType="Avatar"
-      :filedProps="{
-        size: 'small',
-        src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-      }"
-    />
-    <ProField
-      valueType="Avatar"
-      :filedProps="{ src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png' }"
-    />
-    <ProField
-      valueType="Avatar"
-      :filedProps="{
-        size: 'large',
-        src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-      }"
-    />
-    <ProField
-      valueType="Avatar"
-      :filedProps="{
-        size: 60,
-        src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-      }"
-    />
-  </div>
-</template>
-```
-
-:::
-
 ## 形状
 
 :::demo
@@ -113,33 +56,6 @@
     <SwyAvatar
       shape="square"
       src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-    />
-  </div>
-</template>
-```
-
-:::
-
-### ProField 用法
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; gap: 16px; align-items: center;">
-    <ProField
-      valueType="Avatar"
-      :filedProps="{
-        shape: 'circle',
-        src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-      }"
-    />
-    <ProField
-      valueType="Avatar"
-      :filedProps="{
-        shape: 'square',
-        src: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-      }"
     />
   </div>
 </template>
