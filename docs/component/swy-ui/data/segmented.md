@@ -1,6 +1,6 @@
-# Segmented 分段控制�?
+# Segmented 分段控制器
 
-分段控制器，用于展示多个选项并允许用户选择其中单个选项�?
+分段控制器，用于展示多个选项并允许用户选择其中单个选项。
 
 ## 基础用法
 
@@ -31,7 +31,7 @@ const options1 = [
 
 :::
 
-## 带图�?
+## 带图标
 
 :::demo
 
@@ -61,7 +61,7 @@ const options2 = [
 
 :::
 
-## 禁用状�?
+## 禁用状态
 
 :::demo
 
@@ -69,12 +69,12 @@ const options2 = [
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">整体禁用�?/div>
+      <div style="margin-bottom: 8px; color: #606266;">整体禁用：</div>
       <SwySegmented v-model="value3" :options="options3" disabled />
     </div>
 
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">部分禁用�?/div>
+      <div style="margin-bottom: 8px; color: #606266;">部分禁用：</div>
       <SwySegmented v-model="value4" :options="options4" />
     </div>
   </div>
@@ -116,7 +116,7 @@ const options4 = [
     </div>
 
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">默认尺寸�?/div>
+      <div style="margin-bottom: 8px; color: #606266;">默认尺寸：</div>
       <SwySegmented v-model="value5" :options="sizeOptions" />
     </div>
 
@@ -174,24 +174,24 @@ const blockOptions = [
 
 ### Segmented Props
 
-| 参数                 | 说明           | 类型                      | 默认�?  |
+| 参数                 | 说明           | 类型                      | 默认值  |
 | -------------------- | -------------- | ------------------------- | ------- |
-| modelValue / v-model | 绑定�?         | `string / number`         | �?      |
+| modelValue / v-model | 绑定值         | `string / number`         | -       |
 | options              | 数据选项       | `array`                   | []      |
 | size                 | 尺寸           | `large / default / small` | default |
-| block                | 是否为块级元�? | `boolean`                 | false   |
+| block                | 是否为块级元素 | `boolean`                 | false   |
 | disabled             | 是否禁用       | `boolean`                 | false   |
 
 ### Segmented Events
 
-| 事件�? | 说明         | 参数      |
+| 事件名 | 说明         | 参数      |
 | ------ | ------------ | --------- |
 | change | 值改变时触发 | `(value)` |
 
 ### Options
 
-| 参数     | 说明           | 类型              | 默认�? |
+| 参数     | 说明           | 类型              | 默认值 |
 | -------- | -------------- | ----------------- | ------ |
-| label    | 选项显示的内�? | `string`          | �?     |
-| value    | 选项的�?       | `string / number` | �?     |
+| label    | 选项显示的内容 | `string`          | -      |
+| value    | 选项的值       | `string / number` | -      |
 | disabled | 是否禁用该选项 | `boolean`         | false  |

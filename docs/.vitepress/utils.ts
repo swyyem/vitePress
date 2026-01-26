@@ -724,8 +724,20 @@ const wholeList: MenuItem[] = [
         collapsed: true, // 默认折叠
         items: [
           {
-            text: 'Empty / Progress / Result / Skeleton',
-            link: '/component/swy-ui/feedback/',
+            text: 'Empty 空状态',
+            link: '/component/swy-ui/feedback/empty',
+          },
+          {
+            text: 'Progress 进度条',
+            link: '/component/swy-ui/feedback/progress',
+          },
+          {
+            text: 'Result 结果',
+            link: '/component/swy-ui/feedback/result',
+          },
+          {
+            text: 'Skeleton 骨架屏',
+            link: '/component/swy-ui/feedback/skeleton',
           },
           {
             text: 'Tooltip / Popover / Notification / Loading',
