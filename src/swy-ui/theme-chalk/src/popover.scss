@@ -6,28 +6,30 @@
   @include set-component-css-var('popover', $popover);
 
   &.#{$namespace}-popper {
-    background: getCssVar('popover-bg-color');
+    background: getCssVar('bg-color-overlay');
     min-width: 150px;
-    border-radius: getCssVar('popover-border-radius');
-    border: 1px solid getCssVar('popover-border-color');
-    padding: getCssVar('popover-padding');
+    border-radius: 8px;
+    border: 1px solid getCssVar('border-color-lighter');
+    padding: 12px;
     z-index: getCssVar('index-popper');
-    color: getCssVar('text-color', 'regular');
-    line-height: 1.4;
-    font-size: getCssVar('popover-font-size');
+    color: getCssVar('text-color-regular');
+    line-height: 1.5;
+    font-size: 14px;
     box-shadow: getCssVar('box-shadow-light');
     overflow-wrap: break-word;
     box-sizing: border-box;
+    backdrop-filter: blur(10px);
 
     @include m(plain) {
-      padding: getCssVar('popover-padding-large');
+      padding: 16px;
     }
 
     @include e(title) {
-      color: getCssVar('popover-title-text-color');
-      font-size: getCssVar('popover-title-font-size');
+      color: getCssVar('text-color-primary');
+      font-size: 16px;
+      font-weight: 600;
       line-height: 1;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     @include e(reference) {
@@ -38,19 +40,15 @@
     }
 
     @include when(dark) {
-      @include set-css-var-value(
-        ('popover', 'bg-color'),
-        var(#{getCssVarName('text-color', 'primary')})
-      );
-      @include set-css-var-value(
-        ('popover', 'border-color'),
-        var(#{getCssVarName('text-color', 'primary')})
-      );
-      @include set-css-var-value(
-        ('popover', 'title-text-color'),
-        var(#{getCssVarName('bg-color')})
-      );
-      color: getCssVar('bg-color');
+      background: getCssVar('bg-color', 'overlay');
+      border-color: getCssVar('border-color-darker');
+      color: getCssVar('text-color-primary');
+    }
+
+    @include when(light) {
+      background: getCssVar('bg-color', 'page');
+      border-color: getCssVar('border-color-lighter');
+      color: getCssVar('text-color-regular');
     }
 
     &:focus:active,

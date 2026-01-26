@@ -14,7 +14,20 @@ export const tooltipProps = buildProps({
    */
   placement: {
     type: String,
-    values: ['top', 'bottom', 'left', 'right'],
+    values: [
+      'top',
+      'bottom',
+      'left',
+      'right',
+      'top-start',
+      'top-end',
+      'bottom-start',
+      'bottom-end',
+      'left-start',
+      'left-end',
+      'right-start',
+      'right-end',
+    ] as const,
     default: 'top',
   },
   /**

@@ -740,8 +740,20 @@ const wholeList: MenuItem[] = [
             link: '/component/swy-ui/feedback/skeleton',
           },
           {
-            text: 'Tooltip / Popover / Notification / Loading',
-            link: '/component/swy-ui/feedback-interaction/',
+            text: 'Tooltip 文字提示',
+            link: '/component/swy-ui/feedback/tooltip',
+          },
+          {
+            text: 'Popover 弹出框',
+            link: '/component/swy-ui/feedback/popover',
+          },
+          {
+            text: 'Notification 通知',
+            link: '/component/swy-ui/feedback/notification',
+          },
+          {
+            text: 'Loading 加载',
+            link: '/component/swy-ui/feedback/loading',
           },
           {
             text: 'Tour 漫游式引导',

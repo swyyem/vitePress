@@ -8,24 +8,27 @@
 
 @include b(notification) {
   display: flex;
-  width: getCssVar('notification-width');
-  padding: getCssVar('notification-padding');
-  border-radius: getCssVar('notification-radius');
+  width: 330px;
+  padding: 16px;
+  border-radius: 8px;
   box-sizing: border-box;
-  border: 1px solid getCssVar('notification-border-color');
+  border: 1px solid getCssVar('border-color-lighter');
   position: fixed;
-  background-color: getCssVar('bg-color', 'overlay');
-  box-shadow: getCssVar('notification-shadow');
+  background-color: getCssVar('bg-color', 'page');
+  box-shadow:
+    getCssVar('box-shadow-light'),
+    0 0 30px rgba(0, 0, 0, 0.12);
   transition:
-    opacity getCssVar('transition-duration'),
-    transform getCssVar('transition-duration'),
-    left getCssVar('transition-duration'),
-    right getCssVar('transition-duration'),
+    opacity 0.3s,
+    transform 0.3s,
+    left 0.3s,
+    right 0.3s,
     top 0.4s,
-    bottom getCssVar('transition-duration');
+    bottom 0.3s;
   overflow-wrap: break-word;
   overflow: hidden;
   z-index: 9999;
+  backdrop-filter: blur(10px);
 
   &.right {
     right: 16px;
@@ -38,23 +41,23 @@
   @include e(group) {
     flex: 1;
     min-width: 0;
-    margin-left: getCssVar('notification-group-margin-left');
-    margin-right: getCssVar('notification-group-margin-right');
+    margin-left: 12px;
+    margin-right: 30px;
   }
 
   @include e(title) {
-    font-weight: bold;
-    font-size: getCssVar('notification-title-font-size');
-    line-height: getCssVar('notification-icon-size');
-    color: getCssVar('notification-title-color');
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 20px;
+    color: getCssVar('text-color-primary');
     margin: 0;
   }
 
   @include e(content) {
-    font-size: getCssVar('notification-content-font-size');
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 22px;
     margin: 6px 0 0;
-    color: getCssVar('notification-content-color');
+    color: getCssVar('text-color-regular');
 
     p {
       margin: 0;
@@ -63,28 +66,57 @@
 
   & .#{$namespace}-notification__icon {
     flex-shrink: 0;
-    height: getCssVar('notification-icon-size');
-    width: getCssVar('notification-icon-size');
-    font-size: getCssVar('notification-icon-size');
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    line-height: 1;
+
+    @include when(success) {
+      background: getCssVar('color-success-light-9');
+      color: getCssVar('color-success');
+    }
+
+    @include when(warning) {
+      background: getCssVar('color-warning-light-9');
+      color: getCssVar('color-warning');
+    }
+
+    @include when(info) {
+      background: getCssVar('color-info-light-9');
+      color: getCssVar('color-info');
+    }
+
+    @include when(error) {
+      background: getCssVar('color-danger-light-9');
+      color: getCssVar('color-danger');
+    }
   }
 
   & .#{$namespace}-notification__closeBtn {
     position: absolute;
-    top: 18px;
-    right: 15px;
+    top: 16px;
+    right: 16px;
     cursor: pointer;
-    color: getCssVar('notification-close-color');
-    font-size: getCssVar('notification-close-font-size');
+    color: getCssVar('text-color-placeholder');
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
-      color: getCssVar('notification-close-hover-color');
+      color: getCssVar('text-color-secondary');
     }
   }
 
   @each $type in (primary, success, info, warning, error) {
     & .#{$namespace}-notification--#{$type} {
-      @include css-var-from-global(('notification', 'icon-color'), ('color', $type));
-      color: getCssVar('notification-icon-color');
+      border-left: 4px solid getCssVar('color', $type);
     }
   }
 }

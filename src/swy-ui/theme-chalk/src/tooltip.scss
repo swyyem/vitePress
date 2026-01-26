@@ -12,53 +12,271 @@
 
   @include e(popper) {
     position: absolute;
-    background: #303133;
-    color: #fff;
-    padding: 6px 10px;
-    border-radius: 4px;
-    font-size: 12px;
+    background: getCssVar('bg-color-overlay');
+    color: getCssVar('text-color-primary');
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
     z-index: 2000;
-    white-space: nowrap;
-    line-height: 1.2;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    white-space: normal;
+    line-height: 1.4;
+    box-shadow: getCssVar('box-shadow-light');
+    max-width: 300px;
+    word-wrap: break-word;
+
+    @include e(arrow) {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: inherit;
+      z-index: -1;
+
+      @include m(top) {
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      @include m(bottom) {
+        top: -4px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      @include m(left) {
+        right: -4px;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      @include m(right) {
+        left: -4px;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      @include m(top-start) {
+        bottom: -4px;
+        left: 20%;
+        transform: rotate(45deg);
+      }
+
+      @include m(top-end) {
+        bottom: -4px;
+        left: 80%;
+        transform: rotate(45deg);
+      }
+
+      @include m(bottom-start) {
+        top: -4px;
+        left: 20%;
+        transform: rotate(45deg);
+      }
+
+      @include m(bottom-end) {
+        top: -4px;
+        left: 80%;
+        transform: rotate(45deg);
+      }
+
+      @include m(left-start) {
+        right: -4px;
+        top: 20%;
+        transform: rotate(45deg);
+      }
+
+      @include m(left-end) {
+        right: -4px;
+        top: 80%;
+        transform: rotate(45deg);
+      }
+
+      @include m(right-start) {
+        left: -4px;
+        top: 20%;
+        transform: rotate(45deg);
+      }
+
+      @include m(right-end) {
+        left: -4px;
+        top: 80%;
+        transform: rotate(45deg);
+      }
+    }
 
     @include m(top) {
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 4px solid transparent;
+        border-top-color: inherit;
+      }
+    }
+
+    @include m(top-start) {
+      margin-bottom: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 20%;
+        border: 4px solid transparent;
+        border-top-color: inherit;
+      }
+    }
+
+    @include m(top-end) {
+      margin-bottom: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 80%;
+        border: 4px solid transparent;
+        border-top-color: inherit;
+      }
     }
 
     @include m(bottom) {
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      margin-top: 12px;
+      margin-top: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 4px solid transparent;
+        border-bottom-color: inherit;
+      }
+    }
+
+    @include m(bottom-start) {
+      margin-top: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: 20%;
+        border: 4px solid transparent;
+        border-bottom-color: inherit;
+      }
+    }
+
+    @include m(bottom-end) {
+      margin-top: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: 80%;
+        border: 4px solid transparent;
+        border-bottom-color: inherit;
+      }
     }
 
     @include m(left) {
-      right: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-right: 12px;
+      margin-right: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 4px solid transparent;
+        border-left-color: inherit;
+      }
+    }
+
+    @include m(left-start) {
+      margin-right: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: 20%;
+        border: 4px solid transparent;
+        border-left-color: inherit;
+      }
+    }
+
+    @include m(left-end) {
+      margin-right: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: 80%;
+        border: 4px solid transparent;
+        border-left-color: inherit;
+      }
     }
 
     @include m(right) {
-      left: 100%;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-left: 12px;
+      margin-left: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 4px solid transparent;
+        border-right-color: inherit;
+      }
+    }
+
+    @include m(right-start) {
+      margin-left: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: 20%;
+        border: 4px solid transparent;
+        border-right-color: inherit;
+      }
+    }
+
+    @include m(right-end) {
+      margin-left: 8px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: -4px;
+        top: 80%;
+        border: 4px solid transparent;
+        border-right-color: inherit;
+      }
     }
 
     @include when(dark) {
-      background: #303133;
-      color: #fff;
+      background: getCssVar('bg-color', 'overlay');
+      color: getCssVar('text-color', 'primary');
     }
 
     @include when(light) {
-      background: #fff;
-      color: #303133;
-      border: 1px solid #dcdfe6;
+      background: getCssVar('bg-color', 'page');
+      color: getCssVar('text-color', 'primary');
+      border: 1px solid getCssVar('border-color-lighter');
+
+      &::after {
+        border-color: getCssVar('border-color-lighter');
+      }
     }
   }
 }
@@ -73,4 +291,5 @@
 .swy-tooltip-fade-enter-from,
 .swy-tooltip-fade-leave-to {
   opacity: 0;
+  transform: scale(0.8);
 }
