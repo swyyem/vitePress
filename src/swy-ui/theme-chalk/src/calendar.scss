@@ -5,18 +5,59 @@
 @include b(calendar) {
   @include set-component-css-var('calendar', $calendar);
 
-  background-color: getCssVar('fill-color', 'blank');
+  background-color: getCssVar('bg-color', 'blank');
 
   @include e(header) {
     display: flex;
     justify-content: space-between;
+    align-items: center; // 确保 Header 纵向居中对齐
     padding: 12px 20px;
     border-bottom: getCssVar('calendar', 'header-border-bottom');
   }
 
   @include e(title) {
-    color: getCssVar('text-color');
-    align-self: center;
+    color: getCssVar('text-color', 'primary');
+    font-weight: 500;
+  }
+
+  @include e(button-group) {
+    display: flex;
+
+    button {
+      background: getCssVar('fill-color', 'blank');
+      border: 1px solid getCssVar('border-color', 'light');
+      padding: 8px 15px;
+      font-size: 12px;
+      color: getCssVar('text-color', 'regular');
+      cursor: pointer;
+      line-height: 1; // 修正按钮文字垂直居中
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      transition: all getCssVar('transition-duration', 'fast');
+
+      &:hover {
+        color: getCssVar('color-primary');
+        border-color: getCssVar('color-primary-light-7');
+        background-color: getCssVar('color-primary-light-9');
+      }
+
+      &:active {
+        background-color: getCssVar('fill-color', 'dark');
+      }
+
+      &:not(:last-child) {
+        border-right: none;
+      }
+
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+    }
   }
 
   @include e(body) {
@@ -27,54 +68,57 @@
 @include b(calendar-table) {
   table-layout: fixed;
   width: 100%;
+  border-collapse: collapse;
 
   thead th {
     padding: 12px 0;
     color: getCssVar('text-color', 'regular');
     font-weight: normal;
-  }
-
-  &:not(.is-range) {
-    td.prev,
-    td.next {
-      color: getCssVar('text-color', 'placeholder');
-    }
+    text-align: center; // 星期水平居中
+    vertical-align: middle; // 星期垂直居中
+    border-bottom: getCssVar('calendar', 'border');
   }
 
   td {
-    border-bottom: getCssVar('calendar', 'border');
-    border-right: getCssVar('calendar', 'border');
-    vertical-align: top;
+    border: getCssVar('calendar', 'border');
+    vertical-align: middle; // 单元格垂直对齐基准
     transition: background-color getCssVar('transition-duration', 'fast') ease;
 
-    @include when(selected) {
+    &:hover {
       background-color: getCssVar('calendar', 'selected-bg-color');
+      cursor: pointer;
     }
 
-    @include when(today) {
+    &.prev,
+    &.next {
+      color: getCssVar('text-color', 'placeholder');
+    }
+
+    &.is-today {
+      color: getCssVar('color-primary');
+      font-weight: bold;
+    }
+
+    &.is-selected {
+      background-color: getCssVar('calendar', 'selected-bg-color');
       color: getCssVar('color-primary');
     }
   }
 
-  tr:first-child td {
-    border-top: getCssVar('calendar', 'border');
-  }
-
-  tr td:first-child {
-    border-left: getCssVar('calendar', 'border');
-  }
-
-  tr.#{$namespace}-calendar-table__row--hide-border td {
-    border-top: none;
-  }
-
   @include b(calendar-day) {
     box-sizing: border-box;
-    padding: 8px;
-    height: getCssVar('calendar', 'cell-width');
-    &:hover {
-      cursor: pointer;
-      background-color: getCssVar('calendar', 'selected-bg-color');
+    height: 85px;
+    display: flex;
+    justify-content: center; // 单元格日期水平居中
+    align-items: center; // 单元格日期垂直居中
+
+    @include e(content) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      text-align: center;
     }
   }
 }
