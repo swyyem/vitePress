@@ -1,14 +1,26 @@
-import { buildProps } from '@swy-ui/utils'
-import type { ExtractPropTypes } from 'vue'
+import { buildProps, definePropType } from '@swy-ui/utils'
+import type { ExtractPropTypes, StyleValue } from 'vue'
 
 export const scrollbarProps = buildProps({
-  height: [String, Number],
-  maxHeight: [String, Number],
+  height: {
+    type: [String, Number],
+  },
+  maxHeight: {
+    type: [String, Number],
+  },
   native: Boolean,
-  wrapStyle: [String, Object, Array],
-  wrapClass: [String, Array],
-  viewClass: [String, Array],
-  viewStyle: [String, Array],
+  wrapStyle: {
+    type: definePropType<StyleValue>([String, Object, Array]),
+  },
+  wrapClass: {
+    type: [String, Array],
+  },
+  viewClass: {
+    type: [String, Array],
+  },
+  viewStyle: {
+    type: [String, Array],
+  },
   noresize: Boolean,
   tag: {
     type: String,
@@ -21,4 +33,9 @@ export const scrollbarProps = buildProps({
   },
 } as const)
 
+export const scrollbarEmits = {
+  scroll: (_: { scrollTop: number; scrollLeft: number }) => true,
+}
+
+export type ScrollbarEmits = typeof scrollbarEmits
 export type ScrollbarProps = ExtractPropTypes<typeof scrollbarProps>

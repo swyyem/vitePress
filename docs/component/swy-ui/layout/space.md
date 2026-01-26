@@ -1,6 +1,6 @@
 # Space 间距
 
-设置组件之间的间距�?
+设置组件之间的间距
 
 ## 基础用法
 
@@ -10,7 +10,7 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <div>
-      <div style="margin-bottom: 10px; color: #606266;">水平间距�?/div>
+      <div style="margin-bottom: 10px; color: #606266;">水平间距</div>
       <SwySpace>
         <SwyButton>按钮1</SwyButton>
         <SwyButton type="primary">按钮2</SwyButton>
@@ -57,7 +57,7 @@
     </div>
 
     <div>
-      <div style="margin-bottom: 10px; color: #606266;">默认间距�?/div>
+      <div style="margin-bottom: 10px; color: #606266;">默认间距：</div>
       <SwySpace>
         <SwyButton>按钮1</SwyButton>
         <SwyButton>按钮2</SwyButton>
@@ -112,34 +112,34 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <div>
-      <div style="margin-bottom: 10px; color: #606266;">顶部对齐（默认）�?/div>
+      <div style="margin-bottom: 10px; color: #606266;">顶部对齐（默认）</div>
       <div style="border: 1px dashed #dcdfe6; border-radius: 4px; padding: 15px;">
         <SwySpace align="start">
-          <SwyButton size="large">大按�?/SwyButton>
+          <SwyButton size="large">大按钮</SwyButton>
           <SwyButton>默认按钮</SwyButton>
-          <SwyButton size="small">小按�?/SwyButton>
+          <SwyButton size="small">小按钮</SwyButton>
         </SwySpace>
       </div>
     </div>
 
     <div>
-      <div style="margin-bottom: 10px; color: #606266;">居中对齐�?/div>
+      <div style="margin-bottom: 10px; color: #606266;">居中对齐</div>
       <div style="border: 1px dashed #dcdfe6; border-radius: 4px; padding: 15px;">
         <SwySpace align="center">
-          <SwyButton size="large">大按�?/SwyButton>
+          <SwyButton size="large">大按钮</SwyButton>
           <SwyButton>默认按钮</SwyButton>
-          <SwyButton size="small">小按�?/SwyButton>
+          <SwyButton size="small">小按钮</SwyButton>
         </SwySpace>
       </div>
     </div>
 
     <div>
-      <div style="margin-bottom: 10px; color: #606266;">底部对齐�?/div>
+      <div style="margin-bottom: 10px; color: #606266;">底部对齐</div>
       <div style="border: 1px dashed #dcdfe6; border-radius: 4px; padding: 15px;">
         <SwySpace align="end">
-          <SwyButton size="large">大按�?/SwyButton>
+          <SwyButton size="large">大按钮</SwyButton>
           <SwyButton>默认按钮</SwyButton>
-          <SwyButton size="small">小按�?/SwyButton>
+          <SwyButton size="small">小按钮</SwyButton>
         </SwySpace>
       </div>
     </div>
@@ -149,7 +149,7 @@
 
 :::
 
-## 分隔�?
+## 分隔
 
 :::demo
 
@@ -157,24 +157,16 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <SwySpace :size="15">
-      首页
       <template #split><span style="color: #dcdfe6;">|</span></template>
-      产品
-      <template #split><span style="color: #dcdfe6;">|</span></template>
-      关于
-      <template #split><span style="color: #dcdfe6;">|</span></template>
-      联系
+      首页 产品 关于 联系
     </SwySpace>
 
     <SwySpace>
+      <template #split>
+        <div style="width: 1px; height: 20px; background: #dcdfe6;"></div>
+      </template>
       <SwyButton>操作1</SwyButton>
-      <template #split>
-        <div style="width: 1px; height: 20px; background: #dcdfe6;"></div>
-      </template>
       <SwyButton>操作2</SwyButton>
-      <template #split>
-        <div style="width: 1px; height: 20px; background: #dcdfe6;"></div>
-      </template>
       <SwyButton>操作3</SwyButton>
     </SwySpace>
   </div>
@@ -187,17 +179,17 @@
 
 ### Space Props
 
-| 参数      | 说明                                  | 类型                               | 默认�?     |
-| --------- | ------------------------------------- | ---------------------------------- | ---------- |
-| direction | 间距方向                              | `horizontal / vertical`            | horizontal |
-| size      | 间距大小                              | `small / default / large / number` | default    |
-| wrap      | 是否自动换行（仅�?horizontal 时有效） | `boolean`                          | false      |
-| align     | 对齐方式                              | `start / end / center / baseline`  | �?         |
-| fill      | 子元素是否填充父容器                  | `boolean`                          | false      |
+| 参数      | 说明                                 | 类型                               | 默认值     |
+| --------- | ------------------------------------ | ---------------------------------- | ---------- |
+| direction | 间距方向                             | `horizontal / vertical`            | horizontal |
+| size      | 间距大小                             | `small / default / large / number` | default    |
+| wrap      | 是否自动换行（仅 horizontal 时有效） | `boolean`                          | false      |
+| align     | 对齐方式                             | `start / end / center / baseline`  | —          |
+| fill      | 子元素是否填充父容器                 | `boolean`                          | false      |
 
 ### Space Slots
 
 | 名称    | 说明               |
 | ------- | ------------------ |
 | default | 需要添加间距的元素 |
-| split   | 分隔�?             |
+| split   | 分隔符             |

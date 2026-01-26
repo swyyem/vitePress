@@ -1,6 +1,6 @@
-# Scrollbar 滚动�?
+﻿# Scrollbar 滚动条
 
-用于替换浏览器原生滚动条�?
+用于替换浏览器原生滚动条
 
 ## 基础用法
 
@@ -10,7 +10,7 @@
 <template>
   <SwyScrollbar height="300px">
     <p v-for="i in 30" :key="i" style="padding: 10px 15px; border-bottom: 1px solid #f0f0f0;">
-      �?{{ i }} 行内�?
+      {{ i }} 行内容
     </p>
   </SwyScrollbar>
 </template>
@@ -51,7 +51,7 @@
 
 :::
 
-## 最大高�?
+## 最大高度
 
 :::demo
 
@@ -62,18 +62,19 @@
       <div style="padding: 15px;">
         <h4 style="margin-top: 0;">文章内容</h4>
         <p v-for="i in 20" :key="i" style="line-height: 1.8;">
-          这是�?{{ i }} 段文字内容。滚动条会在内容超过最大高度时自动出现�?        </p>
+          这是第 {{ i }} 段文字内容。滚动条会在内容超过最大高度时自动出现。
+        </p>
       </div>
     </SwyScrollbar>
 
-    <div style="color: #909399; font-size: 14px;">提示：内容超�?00px时会出现滚动�?/div>
+    <div style="color: #909399; font-size: 14px;">提示：内容超过 200px 时会出现滚动条</div>
   </div>
 </template>
 ```
 
 :::
 
-## 自定义样�?
+## 自定义样式
 
 :::demo
 
@@ -95,7 +96,7 @@
       "
       >
         <h4 style="margin: 0 0 8px 0;">项目 {{ i }}</h4>
-        <p style="margin: 0; color: #606266;">这是项目的描述内�?/p></p>
+        <p style="margin: 0; color: #606266;">这是项目的描述内容。</p>
       </div>
     </div>
   </SwyScrollbar>
@@ -104,7 +105,7 @@
 
 :::
 
-## 永远显示滚动�?
+## 永远显示滚动条
 
 :::demo
 
@@ -112,7 +113,7 @@
 <template>
   <SwyScrollbar height="200px" always>
     <p v-for="i in 10" :key="i" style="padding: 10px 15px; border-bottom: 1px solid #f0f0f0;">
-      滚动条始终显�?- �?{{ i }} �?
+      滚动条始终显示 - {{ i }}
     </p>
   </SwyScrollbar>
 </template>
@@ -124,25 +125,25 @@
 
 ### Scrollbar Props
 
-| 参数      | 说明             | 类型              | 默认�? |
+| 参数      | 说明             | 类型              | 默认值 |
 | --------- | ---------------- | ----------------- | ------ |
-| height    | 滚动条高�?       | `string / number` | �?     |
-| maxHeight | 滚动条最大高�?   | `string / number` | �?     |
+| height    | 滚动条高度       | `string / number` | —      |
+| maxHeight | 滚动条最大高度   | `string / number` | —      |
 | native    | 是否使用原生滚动 | `boolean`         | false  |
-| wrapStyle | 包裹层样�?       | `string / object` | �?     |
-| viewStyle | 视图层样�?       | `string / object` | �?     |
+| wrapStyle | 包裹层样式       | `string / object` | —      |
+| viewStyle | 视图层样式       | `string / object` | —      |
 | always    | 滚动条总是显示   | `boolean`         | false  |
 
 ### Scrollbar Events
 
-| 事件�? | 说明       | 参数                          |
+| 事件名 | 说明       | 参数                          |
 | ------ | ---------- | ----------------------------- |
-| scroll | 滚动时触�? | `({ scrollTop, scrollLeft })` |
+| scroll | 滚动时触发 | `({ scrollTop, scrollLeft })` |
 
 ### Scrollbar Methods
 
-| 方法�?        | 说明                   | 参数                   |
+| 方法名        | 说明                   | 参数                   |
 | ------------- | ---------------------- | ---------------------- |
-| setScrollTop  | 设置滚动条到顶部的距�? | `(scrollTop: number)`  |
-| setScrollLeft | 设置滚动条到左边的距�? | `(scrollLeft: number)` |
-| update        | 更新滚动条状�?         | �?                     |
+| setScrollTop  | 设置滚动条到顶部的距离 | `(scrollTop: number)`  |
+| setScrollLeft | 设置滚动条到左边的距离 | `(scrollLeft: number)` |
+| update        | 更新滚动条状态         | —                      |

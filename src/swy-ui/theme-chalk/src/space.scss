@@ -4,17 +4,51 @@
 @include b(space) {
   display: inline-flex;
   vertical-align: top;
+  flex-wrap: nowrap;
 
   @include e(item) {
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
+    align-items: center;
+  }
 
-    & > * {
-      flex: 1;
-    }
+  @include e(separator) {
+    display: inline-flex;
+    align-items: center;
   }
 
   @include m(vertical) {
     flex-direction: column;
+  }
+
+  @include when(wrap) {
+    flex-wrap: wrap;
+  }
+
+  @include when(fill) {
+    width: 100%;
+
+    @include e(item) {
+      flex: 1;
+    }
+  }
+
+  @include when(align-start) {
+    align-items: flex-start;
+  }
+
+  @include when(align-center) {
+    align-items: center;
+  }
+
+  @include when(align-end) {
+    align-items: flex-end;
+  }
+
+  @include when(align-baseline) {
+    align-items: baseline;
+  }
+
+  @include when(align-stretch) {
+    align-items: stretch;
   }
 }

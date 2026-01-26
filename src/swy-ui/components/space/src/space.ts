@@ -9,7 +9,7 @@ export const spaceProps = buildProps({
   },
   size: {
     type: [String, Number],
-    default: 'small',
+    default: 'default',
     values: ['small', 'default', 'large'],
   },
   wrap: Boolean,
@@ -18,7 +18,7 @@ export const spaceProps = buildProps({
     type: Number,
     default: 100,
   },
-  alignment: {
+  align: {
     type: String,
     values: ['start', 'end', 'center', 'baseline', 'stretch'],
   },

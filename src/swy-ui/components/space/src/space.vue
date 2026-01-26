@@ -1,15 +1,11 @@
 <template>
   <component :is="tag" :class="spaceKls" :style="spaceStyle">
     <template v-for="(item, index) in items" :key="index">
-      <div v-if="index > 0 && separator" :class="ns.e('separator')">
-        <component v-if="typeof separator === 'object'" :is="separator" />
-        <span v-else>{{ separator }}</span>
+      <div v-if="index > 0 && hasSplit" :class="ns.e('separator')">
+        <slot name="split" />
       </div>
       <div :class="ns.e('item')">
-        <slot :name="`item-${index}`" :item="item">
-          <component :is="item" v-if="typeof item === 'object'" />
-          <span v-else>{{ item }}</span>
-        </slot>
+        <component :is="item" />
       </div>
     </template>
   </component>
@@ -34,24 +30,30 @@ const items = computed(() => {
   return defaultSlot.filter(item => item.type !== Comment)
 })
 
+const hasSplit = computed(() => !!slots.split)
+
 const spaceKls = computed(() => [
   ns.b(),
   ns.m(props.direction),
-  ns.m(props.size),
   ns.is('wrap', props.wrap),
   ns.is('fill', props.fill),
-  {
-    [ns.m(`align-${props.alignment}`)]: props.alignment,
-  },
+  props.align ? ns.is(`align-${props.align}`) : '',
 ])
+
+const getSizeValue = (size: string | number) => {
+  if (typeof size === 'number') return `${size}px`
+  const sizeMap: Record<string, string> = {
+    small: '8px',
+    default: '12px',
+    large: '16px',
+  }
+  return sizeMap[size] || '12px'
+}
 
 const spaceStyle = computed(() => {
   const style: Record<string, string> = {}
-
-  if (typeof props.size === 'number') {
-    style.gap = `${props.size}px`
-  }
-
+  const gap = getSizeValue(props.size)
+  style.gap = gap
   return style
 })
 </script>
