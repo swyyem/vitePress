@@ -15,6 +15,26 @@ $slider-height: map.merge(
   $slider-height
 );
 
+$slider-runway-height: () !default;
+$slider-runway-height: map.merge(
+  (
+    'large': 6px,
+    'default': 6px,
+    'small': 4px,
+  ),
+  $slider-runway-height
+);
+
+$slider-button-size: () !default;
+$slider-button-size: map.merge(
+  (
+    'large': 20px,
+    'default': 16px,
+    'small': 12px,
+  ),
+  $slider-button-size
+);
+
 @include b(slider) {
   @include set-component-css-var('slider', $slider);
 }
@@ -24,58 +44,21 @@ $slider-height: map.merge(
   height: map.get($slider-height, 'default');
   display: flex;
   align-items: center;
+  user-select: none;
+  position: relative;
 
   @include e(runway) {
     flex: 1;
-    height: getCssVar('slider-height');
-    background-color: getCssVar('slider-runway-bg-color');
-    border-radius: getCssVar('slider-border-radius');
+    height: map.get($slider-runway-height, 'default');
+    background-color: #e4e7ed;
+    border-radius: 3px;
     position: relative;
     cursor: pointer;
+    vertical-align: middle;
 
     &.show-input {
       margin-right: 30px;
       width: auto;
-    }
-
-    &.is-disabled {
-      cursor: default;
-
-      .#{$namespace}-slider__bar {
-        background-color: getCssVar('slider-disabled-color');
-      }
-
-      .#{$namespace}-slider__button {
-        border-color: getCssVar('slider-disabled-color');
-      }
-
-      .#{$namespace}-slider__button-wrapper {
-        &:hover,
-        &.hover {
-          cursor: not-allowed;
-        }
-
-        &.dragging {
-          cursor: not-allowed;
-        }
-      }
-
-      .#{$namespace}-slider__button {
-        &:hover,
-        &.hover,
-        &.dragging {
-          transform: scale(1);
-        }
-
-        &:hover,
-        &.hover {
-          cursor: not-allowed;
-        }
-
-        &.dragging {
-          cursor: not-allowed;
-        }
-      }
     }
   }
 
@@ -85,113 +68,143 @@ $slider-height: map.merge(
   }
 
   @include e(bar) {
-    height: getCssVar('slider-height');
-    background-color: getCssVar('slider-main-bg-color');
-    border-top-left-radius: getCssVar('slider-border-radius');
-    border-bottom-left-radius: getCssVar('slider-border-radius');
+    height: map.get($slider-runway-height, 'default');
+    background-color: getCssVar('color-primary');
+    border-radius: 3px;
     position: absolute;
+    left: 0;
+    top: 0;
   }
 
   @include e(button-wrapper) {
-    height: getCssVar('slider-button-wrapper-size');
-    width: getCssVar('slider-button-wrapper-size');
     position: absolute;
-    z-index: 1;
-    top: getCssVar('slider-button-wrapper-offset');
-    transform: translateX(-50%);
+    z-index: 1001;
+    width: 36px;
+    height: 36px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: -18px;
     background-color: transparent;
-    text-align: center;
-    user-select: none;
-    line-height: normal;
-    outline: none;
-    @include utils-vertical-center;
+    cursor: grab;
 
-    &:hover,
-    &.hover {
-      cursor: grab;
+    .#{$namespace}-tooltip {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     &.dragging {
       cursor: grabbing;
+    }
+
+    &:hover,
+    &.dragging {
+      .#{$namespace}-slider__button {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
     }
   }
 
   @include e(button) {
-    display: inline-block;
-    width: getCssVar('slider-button-size');
-    height: getCssVar('slider-button-size');
-    vertical-align: middle;
-    border: solid 2px getCssVar('slider-main-bg-color');
-    background-color: getCssVar('color-white');
+    width: map.get($slider-button-size, 'default');
+    height: map.get($slider-button-size, 'default');
+    border: solid 2px getCssVar('color-primary');
+    background-color: #fff;
     border-radius: 50%;
-    box-sizing: border-box;
-    transition: getCssVar('transition-duration-fast');
+    transition: transform 0.2s;
     user-select: none;
-
-    &:hover,
-    &.hover,
-    &.dragging {
-      transform: scale(1.2);
-    }
-
-    &:hover,
-    &.hover {
-      cursor: grab;
-    }
-
-    &.dragging {
-      cursor: grabbing;
-    }
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   @include e(stop) {
     position: absolute;
-    height: getCssVar('slider-height');
-    width: getCssVar('slider-height');
-    border-radius: getCssVar('border-radius-circle');
-    background-color: getCssVar('slider-stop-bg-color');
+    height: map.get($slider-runway-height, 'default');
+    width: map.get($slider-runway-height, 'default');
+    border-radius: 100%;
+    background-color: #fff;
     transform: translateX(-50%);
   }
 
   @include e(marks) {
+    position: absolute;
+    left: 0;
     top: 0;
-    left: 12px;
     width: 18px;
     height: 100%;
+  }
 
-    @include e(marks-text) {
-      position: absolute;
-      transform: translateX(-50%);
-      font-size: 14px;
-      color: getCssVar('color-info');
-      margin-top: 15px;
-      white-space: pre;
+  @include e(marks-text) {
+    position: absolute;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #909399;
+    margin-top: 15px;
+    white-space: pre;
+  }
+
+  @include m(large) {
+    height: map.get($slider-height, 'large');
+
+    @include e(runway) {
+      height: map.get($slider-runway-height, 'large');
+    }
+
+    @include e(bar) {
+      height: map.get($slider-runway-height, 'large');
+    }
+
+    @include e(button) {
+      width: map.get($slider-button-size, 'large');
+      height: map.get($slider-button-size, 'large');
+    }
+  }
+
+  @include m(small) {
+    height: map.get($slider-height, 'small');
+
+    @include e(runway) {
+      height: map.get($slider-runway-height, 'small');
+    }
+
+    @include e(bar) {
+      height: map.get($slider-runway-height, 'small');
+    }
+
+    @include e(button) {
+      width: map.get($slider-button-size, 'small');
+      height: map.get($slider-button-size, 'small');
     }
   }
 
   @include when(vertical) {
     position: relative;
-    display: inline-flex;
-    width: auto;
-    height: 100%;
-    flex: 0;
+    display: inline-block;
 
-    .#{$namespace}-slider__runway {
-      width: getCssVar('slider-height');
+    @include e(runway) {
+      width: map.get($slider-runway-height, 'default');
       height: 100%;
       margin: 0 16px;
     }
-    .#{$namespace}-slider__bar {
-      width: getCssVar('slider-height');
+
+    @include e(bar) {
+      width: map.get($slider-runway-height, 'default');
       height: auto;
+      top: auto;
       border-radius: 0 0 3px 3px;
     }
-    .#{$namespace}-slider__button-wrapper {
+
+    @include e(button-wrapper) {
+      left: 50%;
       top: auto;
-      left: getCssVar('slider-button-wrapper-offset');
-      transform: translateY(50%);
+      margin-left: 0;
+      transform: translateX(-50%) translateY(50%);
     }
-    .#{$namespace}-slider__stop {
+
+    @include e(stop) {
       transform: translateY(50%);
     }
 
@@ -200,13 +213,62 @@ $slider-height: map.merge(
       left: 15px;
       transform: translateY(50%);
     }
+
+    @include m(large) {
+      @include e(runway) {
+        width: map.get($slider-runway-height, 'large');
+      }
+
+      @include e(bar) {
+        width: map.get($slider-runway-height, 'large');
+      }
+    }
+
+    @include m(small) {
+      @include e(runway) {
+        width: map.get($slider-runway-height, 'small');
+      }
+
+      @include e(bar) {
+        width: map.get($slider-runway-height, 'small');
+      }
+    }
   }
 
-  @each $size in (large, small) {
-    @include m($size) {
-      height: map.get($slider-height, $size);
-      @include e(runway) {
+  @include when(disabled) {
+    @include e(runway) {
+      background-color: #e4e7ed;
+    }
+
+    @include e(bar) {
+      background-color: #c0c4cc;
+    }
+
+    @include e(button) {
+      border-color: #c0c4cc;
+    }
+
+    @include e(button-wrapper) {
+      cursor: not-allowed;
+
+      &:hover,
+      &.dragging {
+        cursor: not-allowed;
+
+        .#{$namespace}-slider__button {
+          transform: translate(-50%, -50%) scale(1);
+        }
       }
+    }
+  }
+}
+
+// Slider Tooltip 样式
+.#{$namespace}-slider {
+  .#{$namespace}-tooltip__popper {
+    &.is-dark {
+      background: #303133;
+      color: #fff;
     }
   }
 }

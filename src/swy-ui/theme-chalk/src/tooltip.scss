@@ -1,0 +1,76 @@
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
+
+@include b(tooltip) {
+  display: inline-block;
+  position: relative;
+
+  @include e(trigger) {
+    display: inline-block;
+  }
+
+  @include e(popper) {
+    position: absolute;
+    background: #303133;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 2000;
+    white-space: nowrap;
+    line-height: 1.2;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+
+    @include m(top) {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 12px;
+    }
+
+    @include m(bottom) {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 12px;
+    }
+
+    @include m(left) {
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-right: 12px;
+    }
+
+    @include m(right) {
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 12px;
+    }
+
+    @include when(dark) {
+      background: #303133;
+      color: #fff;
+    }
+
+    @include when(light) {
+      background: #fff;
+      color: #303133;
+      border: 1px solid #dcdfe6;
+    }
+  }
+}
+
+.swy-tooltip-fade-enter-active,
+.swy-tooltip-fade-leave-active {
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.swy-tooltip-fade-enter-from,
+.swy-tooltip-fade-leave-to {
+  opacity: 0;
+}

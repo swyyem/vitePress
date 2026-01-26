@@ -4,25 +4,25 @@
       ns.b(),
       ns.m(size),
       ns.is('disabled', disabled),
-      ns.is('without-controls', !controlsPosition),
+      ns.is('without-controls', !controls),
       ns.is('controls-right', controlsPosition === 'right'),
     ]"
   >
     <span
-      v-if="controlsPosition !== 'right'"
+      v-if="controls && controlsPosition !== 'right'"
       :class="[ns.e('decrease'), ns.is('disabled', minDisabled)]"
       @click="decrease"
     >
       -
     </span>
     <span
-      v-if="controlsPosition !== 'right'"
+      v-if="controls && controlsPosition !== 'right'"
       :class="[ns.e('increase'), ns.is('disabled', maxDisabled)]"
       @click="increase"
     >
       +
     </span>
-    <Input
+    <SwyInput
       :model-value="displayValue"
       :disabled="disabled"
       :readonly="readonly"
@@ -31,7 +31,7 @@
       @blur="handleBlur"
       @focus="handleFocus"
     />
-    <template v-if="controlsPosition === 'right'">
+    <template v-if="controls && controlsPosition === 'right'">
       <span :class="[ns.e('increase'), ns.is('disabled', maxDisabled)]" @click="increase">+</span>
       <span :class="[ns.e('decrease'), ns.is('disabled', minDisabled)]" @click="decrease">-</span>
     </template>
@@ -42,7 +42,7 @@
 import { ref, computed, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { inputNumberProps, inputNumberEmits } from './input-number'
-import Input from '../../input/src/input.vue'
+import SwyInput from '../../input'
 
 defineOptions({
   name: 'SwyInputNumber',

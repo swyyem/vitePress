@@ -62,6 +62,13 @@ export const inputNumberProps = buildProps({
     default: false,
   },
   /**
+   * @description 是否显示控制按钮
+   */
+  controls: {
+    type: Boolean,
+    default: true,
+  },
+  /**
    * @description 控制按钮位置
    */
   controlsPosition: {

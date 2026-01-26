@@ -14,12 +14,14 @@ $rate-height: map.merge(
   $rate-height
 );
 
-$rate-size: () !default;
-$rate-size: map.merge(
+$rate-icon-size: () !default;
+$rate-icon-size: map.merge(
   (
-    'small': 14px,
+    'large': 24px,
+    'default': 20px,
+    'small': 16px,
   ),
-  $rate-size
+  $rate-icon-size
 );
 
 @include b(rate) {
@@ -30,6 +32,7 @@ $rate-size: map.merge(
   display: inline-flex;
   align-items: center;
   height: map.get($rate-height, 'default');
+  user-select: none;
 
   &:focus,
   &:active {
@@ -38,12 +41,11 @@ $rate-size: map.merge(
 
   &:focus-visible {
     @include e(item) {
-      & .#{bem('rate', 'icon')} {
+      .swy-rate-icon {
         @include when(focus-visible) {
           outline: 2px solid getCssVar('rate', 'outline-color');
-          transition:
-            outline-offset 0s,
-            outline 0s;
+          outline-offset: 1px;
+          border-radius: 2px;
         }
       }
     }
@@ -51,29 +53,35 @@ $rate-size: map.merge(
 
   @include e(item) {
     cursor: pointer;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    font-size: 0;
     vertical-align: middle;
-    color: getCssVar('rate-void-color');
-    line-height: normal;
-  }
+    line-height: 1;
+    transition: all getCssVar('transition-duration');
 
-  & .#{bem('rate', 'icon')} {
-    position: relative;
-    display: inline-block;
-    font-size: getCssVar('rate-icon-size');
-    margin-right: getCssVar('rate-icon-margin');
-    transition: getCssVar('transition-duration');
-
-    &.hover {
-      transform: scale(1.15);
+    &:not(:last-child) {
+      margin-right: 2px;
     }
 
-    .path2 {
-      position: absolute;
-      left: 0;
-      top: 0;
+    &:hover {
+      .swy-rate-icon {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .swy-rate-icon {
+    position: relative;
+    display: inline-block;
+    font-size: map.get($rate-icon-size, 'default');
+    line-height: 1;
+    transition: all getCssVar('transition-duration');
+    color: getCssVar('rate-void-color');
+
+    @include when(hover) {
+      transform: scale(1.1);
     }
 
     @include when(active) {
@@ -87,7 +95,7 @@ $rate-size: map.merge(
     left: 0;
     display: inline-block;
     overflow: hidden;
-    color: getCssVar('rate', 'fill-color');
+    color: inherit;
 
     @include m('box') {
       position: absolute;
@@ -97,25 +105,51 @@ $rate-size: map.merge(
   }
 
   @include e(text) {
-    font-size: getCssVar('rate-font-size');
+    font-size: getCssVar('font-size-base');
     vertical-align: middle;
-    color: getCssVar('rate', 'text-color');
+    margin-left: 10px;
+    color: getCssVar('text-color-primary');
+    line-height: 1;
+    font-weight: 500;
   }
 
-  @each $size in (large, small) {
-    @include m($size) {
-      height: map.get($rate-height, $size);
+  @include m(large) {
+    height: map.get($rate-height, 'large');
 
-      & .#{bem('rate', 'icon')} {
-        font-size: map.get($rate-size, $size);
-      }
+    .swy-rate-icon {
+      font-size: map.get($rate-icon-size, 'large');
+    }
+
+    @include e(text) {
+      font-size: 16px;
+    }
+  }
+
+  @include m(small) {
+    height: map.get($rate-height, 'small');
+
+    .swy-rate-icon {
+      font-size: map.get($rate-icon-size, 'small');
+    }
+
+    @include e(text) {
+      font-size: 12px;
+      margin-left: 6px;
     }
   }
 
   @include when(disabled) {
+    cursor: not-allowed;
+
     @include e(item) {
       cursor: not-allowed;
-      color: getCssVar('rate', 'disabled-void-color');
+      opacity: 0.6;
+
+      &:hover {
+        .swy-rate-icon {
+          transform: none;
+        }
+      }
     }
   }
 }

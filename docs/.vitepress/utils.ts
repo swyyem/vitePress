@@ -654,8 +654,16 @@ const wholeList: MenuItem[] = [
         collapsed: true, // 默认折叠
         items: [
           {
-            text: 'InputNumber / Rate / Slider',
-            link: '/component/swy-ui/form-enhanced/',
+            text: 'InputNumber 数字输入框',
+            link: '/component/swy-ui/form/input-number',
+          },
+          {
+            text: 'Rate 评分',
+            link: '/component/swy-ui/form/rate',
+          },
+          {
+            text: 'Slider 滑块',
+            link: '/component/swy-ui/form/slider',
           },
         ],
       },

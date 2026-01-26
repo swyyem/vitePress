@@ -1,4 +1,4 @@
-import { buildProps } from '@swy-ui/utils'
+import { buildProps, definePropType } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
 
 export const rateSizes = ['large', 'default', 'small'] as const
@@ -48,6 +48,55 @@ export const rateProps = buildProps({
     default: false,
   },
   /**
+   * @description 是否显示当前分数
+   */
+  showScore: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @description 辅助文字颜色
+   */
+  textColor: {
+    type: String,
+    default: '',
+  },
+  /**
+   * @description 辅助文字数组
+   */
+  texts: {
+    type: definePropType<string[]>(Array),
+    default: () => ['极差', '失望', '一般', '满意', '惊喜'],
+  },
+  /**
+   * @description 分数显示模板
+   */
+  scoreTemplate: {
+    type: String,
+    default: '{value}',
+  },
+  /**
+   * @description 图标颜色数组
+   */
+  colors: {
+    type: definePropType<string[] | string>([Array, String]),
+    default: () => ['#F7BA2A', '#F7BA2A', '#F7BA2A'],
+  },
+  /**
+   * @description 未选中图标颜色
+   */
+  voidColor: {
+    type: String,
+    default: '#C6D1DE',
+  },
+  /**
+   * @description 只读时未选中图标颜色
+   */
+  disabledVoidColor: {
+    type: String,
+    default: '#EFF2F7',
+  },
+  /**
    * @description 自定义图标（空星）
    */
   voidIcon: {
@@ -60,6 +109,20 @@ export const rateProps = buildProps({
   icon: {
     type: String,
     default: '★',
+  },
+  /**
+   * @description 低分图标类名
+   */
+  iconClasses: {
+    type: definePropType<string[]>(Array),
+    default: () => [],
+  },
+  /**
+   * @description 是否可清空
+   */
+  clearable: {
+    type: Boolean,
+    default: false,
   },
 } as const)
 
