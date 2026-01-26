@@ -5,31 +5,42 @@
 @include b(statistic) {
   @include set-component-css-var('statistic', $statistic);
 
+  display: inline-block;
+  width: 100%; // 确保占位
+
   @include e(head) {
-    font-weight: getCssVar('statistic-title-font-weight');
-    font-size: getCssVar('statistic-title-font-size');
-    color: getCssVar('statistic-title-color');
-    line-height: 20px;
+    font-weight: 400;
+    font-size: 14px;
+    color: getCssVar('text-color', 'regular');
     margin-bottom: 4px;
+    line-height: 20px;
   }
 
   @include e(content) {
-    font-weight: getCssVar('statistic-content-font-weight');
-    font-size: getCssVar('statistic-content-font-size');
-    color: getCssVar('statistic-content-color');
+    display: flex;
+    align-items: baseline;
+    font-weight: 400;
+    font-size: 20px;
+    color: getCssVar('text-color', 'primary');
+    line-height: 1.2;
 
     @include e(value) {
       display: inline-block;
+      font-variant-numeric: tabular-nums;
     }
 
     @include e(prefix) {
       margin-right: 4px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.9em; // 默认比数值小一点
     }
 
     @include e(suffix) {
       margin-left: 4px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.9em;
     }
   }
 }

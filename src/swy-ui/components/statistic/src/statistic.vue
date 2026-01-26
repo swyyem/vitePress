@@ -1,15 +1,13 @@
 <template>
   <div :class="statisticKls">
     <div v-if="title || $slots.title" :class="ns.e('head')">
-      <div :class="ns.e('title')">
-        <slot name="title">{{ title }}</slot>
-      </div>
+      <slot name="title">{{ title }}</slot>
     </div>
     <div :class="ns.e('content')">
       <div v-if="prefix || $slots.prefix" :class="ns.e('prefix')">
         <slot name="prefix">{{ prefix }}</slot>
       </div>
-      <div :class="ns.e('number')" :style="valueStyle">
+      <div :class="ns.e('value')" :style="valueStyle">
         <slot name="formatter" :value="displayValue">
           {{ displayValue }}
         </slot>
@@ -31,7 +29,6 @@ defineOptions({
 })
 
 const props = defineProps(statisticProps)
-
 const ns = useNamespace('statistic')
 
 const statisticKls = computed(() => [ns.b()])
@@ -42,7 +39,7 @@ const displayValue = computed(() => {
   }
 
   if (typeof props.value === 'number') {
-    return props.value.toLocaleString(props.decimalSeparator, {
+    return props.value.toLocaleString(undefined, {
       minimumFractionDigits: props.precision,
       maximumFractionDigits: props.precision,
     })
@@ -51,7 +48,5 @@ const displayValue = computed(() => {
   return props.value
 })
 
-const valueStyle = computed(() => ({
-  color: props.valueStyle?.color,
-}))
+const valueStyle = computed(() => props.valueStyle)
 </script>

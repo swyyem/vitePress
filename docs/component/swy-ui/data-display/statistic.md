@@ -1,6 +1,6 @@
-# Statistic 统计数�?
+﻿# Statistic 统计数
 
-用于突出显示某个数据�?
+用于突出显示某个数据
 
 ## 基础用法
 
@@ -11,7 +11,7 @@
   <div style="display: flex; gap: 40px;">
     <SwyStatistic title="今日访问" :value="1234" />
     <SwyStatistic title="新增用户" :value="567" />
-    <SwyStatistic title="转化�? :value="89.5" suffix="%" />
+    <SwyStatistic title="转化" :value="89.5" suffix="%" />
   </div>
 </template>
 ```
@@ -26,16 +26,16 @@
 <template>
   <div style="display: flex; gap: 40px; flex-wrap: wrap;">
     <SwyStatistic title="账户余额" :value="9999.99" prefix="¥" :precision="2" />
-    <SwyStatistic title="在线用户" :value="5678" suffix="�? />
-    <SwyStatistic title="增长�? :value="15.8" suffix="%" prefix="+" />
-    <SwyStatistic title="下载�? :value="1234567" suffix="�? />
+    <SwyStatistic title="在线用户" :value="5678" suffix="人" />
+    <SwyStatistic title="增长" :value="15.8" suffix="%" prefix="+" />
+    <SwyStatistic title="下载人数" :value="1234567" suffix="次" />
   </div>
 </template>
 ```
 
 :::
 
-## 自定义样�?
+## 自定义样
 
 :::demo
 
@@ -57,7 +57,7 @@
     />
 
     <SwyStatistic
-      title="待处�?
+      title="待处理"
       :value="56"
       :value-style="{ color: '#faad14', fontSize: '28px' }"
     />
@@ -67,7 +67,7 @@
 
 :::
 
-## 数值动�?
+## 数值动
 
 :::demo
 
@@ -76,7 +76,7 @@
   <div style="display: flex; flex-direction: column; gap: 30px;">
     <div style="display: flex; gap: 40px;">
       <SwyStatistic
-        title="访问�?
+        title="访问量"
         :value="count"
         :value-style="{ color: '#409eff', fontSize: '32px' }"
       />
@@ -91,7 +91,7 @@
     </div>
 
     <div>
-      <SwyButton type="primary" @click="startCount">开始动�?/SwyButton>
+      <SwyButton type="primary" @click="startCount">开始动画</SwyButton>
     </div>
   </div>
 </template>
@@ -157,7 +157,7 @@ const startCount = () => {
       <SwyStatistic
         title="新增订单"
         :value="3456"
-        suffix="�?
+        suffix="单"
         :title-style="{ color: 'rgba(255,255,255,0.85)' }"
         :value-style="{ color: 'white', fontSize: '28px', fontWeight: 'bold' }"
       />
@@ -169,7 +169,7 @@ const startCount = () => {
       <SwyStatistic
         title="活跃用户"
         :value="12890"
-        suffix="�?
+        suffix="人"
         :title-style="{ color: 'rgba(255,255,255,0.85)' }"
         :value-style="{ color: 'white', fontSize: '28px', fontWeight: 'bold' }"
       />
@@ -179,7 +179,7 @@ const startCount = () => {
       style="padding: 20px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 8px; color: white;"
     >
       <SwyStatistic
-        title="转化�?
+        title="转化率"
         :value="68.5"
         suffix="%"
         :precision="1"
@@ -197,22 +197,22 @@ const startCount = () => {
 
 ### Statistic Props
 
-| 参数             | 说明         | 类型     | 默认�? |
-| ---------------- | ------------ | -------- | ------ |
-| value            | 数值内�?     | `number` | 0      |
-| title            | 标题         | `string` | �?     |
-| precision        | 数值精�?     | `number` | 0      |
-| prefix           | 前缀         | `string` | �?     |
-| suffix           | 后缀         | `string` | �?     |
-| valueStyle       | 数值样�?     | `object` | �?     |
-| titleStyle       | 标题样式     | `object` | �?     |
-| groupSeparator   | 千分位分隔符 | `string` | ,      |
-| decimalSeparator | 小数�?       | `string` | .      |
+| 参数             | 说明         | 类型     | 默认 |
+| ---------------- | ------------ | -------- | ---- |
+| value            | 数值内       | `number` | 0    |
+| title            | 标题         | `string` |      |
+| precision        | 数值精       | `number` | 0    |
+| prefix           | 前缀         | `string` |      |
+| suffix           | 后缀         | `string` |      |
+| valueStyle       | 数值样       | `object` |      |
+| titleStyle       | 标题样式     | `object` |      |
+| groupSeparator   | 千分位分隔符 | `string` | ,    |
+| decimalSeparator | 小数         | `string` | .    |
 
 ### Statistic Slots
 
 | 名称   | 说明       |
 | ------ | ---------- |
-| title  | 自定义标�? |
+| title  | 自定义标   |
 | prefix | 自定义前缀 |
 | suffix | 自定义后缀 |
