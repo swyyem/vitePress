@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, provide, ref } from 'vue'
+import { computed, provide, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { anchorEmits, anchorProps } from './anchor'
 
@@ -17,7 +17,7 @@ defineOptions({
   name: 'SwyAnchor',
 })
 
-const props = defineProps(anchorProps)
+defineProps(anchorProps)
 const emit = defineEmits(anchorEmits)
 
 const ns = useNamespace('anchor')

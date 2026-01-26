@@ -22,19 +22,19 @@ const colKls = computed(() => {
   const classes: string[] = [ns.b()]
 
   if (props.span) {
-    classes.push(ns.is(`span-${props.span}`))
+    classes.push(`${ns.namespace.value}-col-${props.span}`)
   }
 
   if (props.offset) {
-    classes.push(ns.is(`offset-${props.offset}`))
+    classes.push(`${ns.namespace.value}-col-offset-${props.offset}`)
   }
 
   if (props.pull) {
-    classes.push(ns.is(`pull-${props.pull}`))
+    classes.push(`${ns.namespace.value}-col-pull-${props.pull}`)
   }
 
   if (props.push) {
-    classes.push(ns.is(`push-${props.push}`))
+    classes.push(`${ns.namespace.value}-col-push-${props.push}`)
   }
 
   return classes
