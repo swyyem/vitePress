@@ -77,11 +77,11 @@ $descriptions-cell-font-size: map.merge(
   @include e(body) {
     background-color: getCssVar('fill-color', 'blank');
 
-    .#{$namespace}-descriptions__table {
+    @include e(table) {
       border-collapse: collapse;
       width: 100%;
 
-      .#{$namespace}-descriptions__cell {
+      @include e(cell) {
         box-sizing: border-box;
         text-align: left;
         line-height: 23px;
@@ -100,15 +100,27 @@ $descriptions-cell-font-size: map.merge(
         }
       }
 
+      @include e(item) {
+        display: contents;
+      }
+
       &.is-bordered {
-        .#{$namespace}-descriptions__cell {
-          border: getCssVar('descriptions-table-border');
+        @include e(label) {
+          border: 1px solid #ebeef5;
+          padding: map.get($descriptions-bordered-cell-padding, 'default');
+          background-color: #f5f7fa;
+        }
+        @include e(content) {
+          border: 1px solid #ebeef5;
           padding: map.get($descriptions-bordered-cell-padding, 'default');
         }
       }
 
       &:not(.is-bordered) {
-        .#{$namespace}-descriptions__cell {
+        @include e(label) {
+          padding-bottom: map.get($descriptions-cell-padding-bottom, 'default');
+        }
+        @include e(content) {
           padding-bottom: map.get($descriptions-cell-padding-bottom, 'default');
         }
       }
@@ -128,19 +140,25 @@ $descriptions-cell-font-size: map.merge(
       }
 
       @include e(body) {
-        .#{$namespace}-descriptions__table {
-          .#{$namespace}-descriptions__cell {
+        @include e(table) {
+          @include e(cell) {
             font-size: map.get($descriptions-cell-font-size, $size);
           }
 
           &.is-bordered {
-            .#{$namespace}-descriptions__cell {
+            @include e(label) {
+              padding: map.get($descriptions-bordered-cell-padding, $size);
+            }
+            @include e(content) {
               padding: map.get($descriptions-bordered-cell-padding, $size);
             }
           }
 
           &:not(.is-bordered) {
-            .#{$namespace}-descriptions__cell {
+            @include e(label) {
+              padding-bottom: map.get($descriptions-cell-padding-bottom, $size);
+            }
+            @include e(content) {
               padding-bottom: map.get($descriptions-cell-padding-bottom, $size);
             }
           }

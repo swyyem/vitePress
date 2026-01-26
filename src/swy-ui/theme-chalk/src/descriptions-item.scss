@@ -25,29 +25,36 @@ $descriptions-item-vertical-label-padding-bottom: map.merge(
 
 @include b(descriptions) {
   @include e(label) {
-    &.#{$namespace}-descriptions__cell.is-bordered-label {
-      font-weight: bold;
-      color: getCssVar('text-color', 'regular');
-      background: getCssVar('descriptions-item-bordered-label-background');
+    font-weight: bold;
+    color: getCssVar('text-color', 'primary');
+    white-space: nowrap;
+
+    &.is-bordered-label {
+      background: #f5f7fa;
     }
 
     &:not(.is-bordered-label) {
-      color: getCssVar('text-color', 'primary');
       margin-right: map.get($descriptions-item-label-margin-right, 'default');
+      &::after {
+        content: ':';
+        margin-left: 2px;
+      }
     }
 
-    &.#{$namespace}-descriptions__cell:not(.is-bordered-label).is-vertical-label {
+    &.is-vertical-label {
       padding-bottom: map.get($descriptions-item-vertical-label-padding-bottom, 'default');
+      &::after {
+        content: none;
+      }
     }
   }
 
   @include e(content) {
-    &.#{$namespace}-descriptions__cell.is-bordered-content {
-      color: getCssVar('text-color', 'primary');
-    }
+    color: getCssVar('text-color', 'regular');
+    word-break: break-all;
 
-    &:not(.is-bordered-label) {
-      color: getCssVar('text-color', 'regular');
+    &.is-bordered-content {
+      color: getCssVar('text-color', 'primary');
     }
   }
 
@@ -58,7 +65,7 @@ $descriptions-item-vertical-label-padding-bottom: map.merge(
           margin-right: map.get($descriptions-item-label-margin-right, $size);
         }
 
-        &.#{$namespace}-descriptions__cell:not(.is-bordered-label).is-vertical-label {
+        &.is-vertical-label {
           padding-bottom: map.get($descriptions-item-vertical-label-padding-bottom, $size);
         }
       }

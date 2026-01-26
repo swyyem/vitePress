@@ -673,8 +673,12 @@ const wholeList: MenuItem[] = [
         collapsed: true, // 默认折叠
         items: [
           {
-            text: 'Image / Descriptions',
-            link: '/component/swy-ui/data/',
+            text: 'Image 图片',
+            link: '/component/swy-ui/data/image',
+          },
+          {
+            text: 'Descriptions 描述列表',
+            link: '/component/swy-ui/data/descriptions',
           },
           {
             text: 'Table / Tree / Collapse / Carousel',

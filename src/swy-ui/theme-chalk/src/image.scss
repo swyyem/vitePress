@@ -30,20 +30,42 @@
   @include e(placeholder) {
     @extend %size !optional;
     background: getCssVar('fill-color', 'light');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include when(loading) {
+      animation: rotating 2s linear infinite;
+    }
   }
 
   @include e(error) {
     @extend %size !optional;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 14px;
     background: getCssVar('fill-color', 'light');
     color: getCssVar('text-color', 'placeholder');
     vertical-align: middle;
+
+    .#{$namespace}-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
   }
 
   @include e(preview) {
     cursor: pointer;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

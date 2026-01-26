@@ -33,6 +33,14 @@ export const descriptionsProps = buildProps({
     type: Boolean,
     default: false,
   },
+  /**
+   * @description 排列方向
+   */
+  direction: {
+    type: String,
+    values: ['horizontal', 'vertical'],
+    default: 'horizontal',
+  },
 } as const)
 
 export type DescriptionsProps = ExtractPropTypes<typeof descriptionsProps>
