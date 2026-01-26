@@ -16,6 +16,21 @@ export const collapseProps = buildProps({
     type: Boolean,
     default: false,
   },
+  /**
+   * @description 箭头位置
+   */
+  arrowPlacement: {
+    type: String,
+    values: ['left', 'right'],
+    default: 'right',
+  },
+  /**
+   * @description 是否为幽灵模式（无边框透明背景）
+   */
+  ghost: {
+    type: Boolean,
+    default: false,
+  },
 } as const)
 
 export const collapseEmits = {
@@ -26,3 +41,8 @@ export const collapseEmits = {
 export type CollapseProps = ExtractPropTypes<typeof collapseProps>
 export type CollapsePropsPublic = ExtractPublicPropTypes<typeof collapseProps>
 export type CollapseEmits = typeof collapseEmits
+
+export interface CollapseContext {
+  activeNames: { value: (string | number)[] }
+  handleItemClick: (name: string | number) => void
+}

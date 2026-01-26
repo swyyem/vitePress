@@ -8,6 +8,7 @@
         :node-key="nodeKey"
         :expand-on-click-node="expandOnClickNode"
         :default-expand-all="defaultExpandAll"
+        :indent="indent"
         @node-click="handleNodeClick"
       />
     </template>
@@ -20,20 +21,34 @@
 </template>
 
 <script lang="ts" setup>
+import { provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
-import { treeProps, treeEmits, type TreeNode as TreeNodeType } from './tree'
+import { treeProps, treeEmits, type TreeNode as TreeNodeType, treeContextKey } from './tree'
 import TreeNode from './tree-node.vue'
+import { useTree } from './use-tree'
 
 defineOptions({
   name: 'SwyTree',
 })
 
-defineProps(treeProps)
+const props = defineProps(treeProps)
 const emit = defineEmits(treeEmits)
 
 const ns = useNamespace('tree')
 
+const { toggleCheck, getCheckedNodes, getCheckedKeys } = useTree(props, emit)
+
+provide(treeContextKey, {
+  props,
+  toggleCheck,
+})
+
 const handleNodeClick = (node: TreeNodeType, event: Event) => {
   emit('node-click', node, event)
 }
+
+defineExpose({
+  getCheckedNodes,
+  getCheckedKeys,
+})
 </script>

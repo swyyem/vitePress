@@ -1,5 +1,11 @@
 <template>
-  <div :class="ns.b()">
+  <div
+    :class="[
+      ns.b(),
+      ns.is('arrow-placement-left', arrowPlacement === 'left'),
+      ns.is('ghost', ghost),
+    ]"
+  >
     <slot />
   </div>
 </template>

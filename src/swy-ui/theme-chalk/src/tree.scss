@@ -43,8 +43,14 @@
 @include b(tree-node) {
   white-space: nowrap;
   outline: none;
+
+  @include when(current) {
+    > .#{$namespace}-tree-node__content {
+      background-color: getCssVar('tree-node-hover-bg-color');
+    }
+  }
+
   &:focus {
-    /* focus */
     > .#{$namespace}-tree-node__content {
       background-color: getCssVar('tree-node-hover-bg-color');
     }
@@ -64,10 +70,13 @@
     align-items: center;
     height: getCssVar('tree-node-content-height');
     cursor: pointer;
+    position: relative;
 
     & > .#{$namespace}-tree-node__expand-icon {
       padding: 6px;
       box-sizing: content-box;
+      margin-right: 4px;
+      cursor: pointer;
     }
     & > label.#{$namespace}-checkbox {
       margin-right: 8px;
@@ -108,6 +117,12 @@
     }
     &.is-hidden {
       visibility: hidden;
+    }
+
+    // 控制内部图标大小
+    svg {
+      width: 1em;
+      height: 1em;
     }
   }
 

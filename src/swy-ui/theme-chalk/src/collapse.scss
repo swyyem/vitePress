@@ -7,6 +7,27 @@
 
   border-top: 1px solid getCssVar('collapse-border-color');
   border-bottom: 1px solid getCssVar('collapse-border-color');
+
+  @include when(ghost) {
+    border-top: none;
+    border-bottom: none;
+  }
+}
+
+@include b(collapse) {
+  @include when(arrow-placement-left) {
+    .#{$namespace}-collapse-item__header {
+      .swy-collapse-item__arrow {
+        margin-left: 0;
+        margin-right: 8px;
+        order: -1;
+      }
+
+      .swy-collapse-item__title {
+        text-align: right;
+      }
+    }
+  }
 }
 
 .#{$namespace}-collapse-icon-position {
@@ -15,6 +36,7 @@
       &header {
         gap: 8px;
       }
+
       &title {
         order: 1;
       }

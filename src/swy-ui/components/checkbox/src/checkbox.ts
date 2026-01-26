@@ -24,6 +24,13 @@ export const checkboxProps = buildProps({
     default: false,
   },
   /**
+   * @description checkbox indeterminate state
+   */
+  indeterminate: {
+    type: Boolean,
+    default: false,
+  },
+  /**
    * @description 复选框尺寸
    */
   size: {

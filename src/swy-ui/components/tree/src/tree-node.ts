@@ -19,6 +19,14 @@ export const treeNodeProps = buildProps({
     type: Boolean,
     default: false,
   },
+  indent: {
+    type: Number,
+    default: 18,
+  },
+  level: {
+    type: Number,
+    default: 0,
+  },
 } as const)
 
 export const treeNodeEmits = {

@@ -2,66 +2,109 @@
 @use 'mixins/var' as *;
 @use 'common/var' as *;
 
+// 仿 Element Plus 变量 (本地定义，防止全局变量缺失导致显示问题)
+$collapse-header-height: 48px;
+$collapse-header-font-size: 13px;
+$collapse-arrow-size: 11px; // 稍微调小一点，显得更清秀
+$collapse-border-color: getCssVar('border-color', 'lighter');
+
 @include b(collapse-item) {
+  border-bottom: 1px solid $collapse-border-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
   @include when(disabled) {
     .#{$namespace}-collapse-item__header {
       color: getCssVar('text-color-disabled');
       cursor: not-allowed;
     }
   }
+
   @include e(header) {
-    width: 100%;
-    padding: 0;
-    border: none;
     display: flex;
     align-items: center;
-    min-height: getCssVar('collapse-header-height');
-    line-height: getCssVar('collapse-header-height');
-    background-color: getCssVar('collapse-header-bg-color');
-    color: getCssVar('collapse-header-text-color');
+    width: 100%;
+    height: $collapse-header-height;
+    line-height: $collapse-header-height;
+    padding: 0 16px;
+    background-color: getCssVar('fill-color', 'blank');
+    color: getCssVar('text-color', 'primary');
     cursor: pointer;
-    border-bottom: 1px solid getCssVar('collapse-border-color');
-    font-size: getCssVar('collapse-header-font-size');
+    font-size: $collapse-header-font-size;
     font-weight: 500;
-    transition: border-bottom-color getCssVar('transition-duration');
+    transition:
+      background-color getCssVar('transition-duration'),
+      border-bottom-color getCssVar('transition-duration');
     outline: none;
-    @include e(arrow) {
-      transition: transform getCssVar('transition-duration');
-      font-weight: 300;
-      @include when(active) {
-        transform: rotate(90deg);
-      }
-    }
 
-    @include e(title) {
-      text-align: left;
-      flex: auto;
+    &:hover {
+      background-color: getCssVar('fill-color', 'light');
     }
 
     &.focusing:focus:not(:hover) {
       color: getCssVar('color-primary');
     }
+
     @include when(active) {
       border-bottom-color: transparent;
     }
   }
 
+  @include e(arrow) {
+    margin-left: auto;
+    padding: 6px;
+    cursor: pointer;
+    color: getCssVar('text-color', 'placeholder');
+    font-size: $collapse-arrow-size;
+    transform: rotate(0deg);
+    transition: transform getCssVar('transition-duration') ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto; // 让 padding 撑开
+    height: auto;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+
+    @include when(active) {
+      transform: rotate(90deg);
+    }
+  }
+
+  @include e(title) {
+    flex: 1;
+    text-align: left;
+  }
+
   @include e(wrap) {
     will-change: height;
-    background-color: getCssVar('collapse-content-bg-color');
+    background-color: getCssVar('fill-color', 'blank');
     overflow: hidden;
     box-sizing: border-box;
-    border-bottom: 1px solid getCssVar('collapse-border-color');
   }
 
   @include e(content) {
+    padding: 16px;
     padding-bottom: 25px;
-    font-size: getCssVar('collapse-content-font-size');
-    color: getCssVar('collapse-content-text-color');
-    line-height: 1.769230769230769;
+    font-size: 13px;
+    color: getCssVar('text-color', 'primary');
+    line-height: 1.7;
   }
+}
 
-  &:last-child {
-    margin-bottom: -1px;
+// 幽灵模式支持
+.#{$namespace}-collapse.is-ghost {
+  border: none;
+
+  .swy-collapse-item,
+  .swy-collapse-item__header,
+  .swy-collapse-item__wrap {
+    background-color: transparent;
+    border: none;
   }
 }

@@ -1,6 +1,21 @@
 <template>
-  <label :class="[ns.b(), ns.m(size), ns.is('disabled', disabled), ns.is('checked', isChecked)]">
-    <span :class="[ns.e('input'), ns.is('disabled', disabled), ns.is('checked', isChecked)]">
+  <label
+    :class="[
+      ns.b(),
+      ns.m(size),
+      ns.is('disabled', disabled),
+      ns.is('checked', isChecked),
+      ns.is('indeterminate', indeterminate),
+    ]"
+  >
+    <span
+      :class="[
+        ns.e('input'),
+        ns.is('disabled', disabled),
+        ns.is('checked', isChecked),
+        ns.is('indeterminate', indeterminate),
+      ]"
+    >
       <span :class="ns.e('inner')" />
       <input
         ref="inputRef"

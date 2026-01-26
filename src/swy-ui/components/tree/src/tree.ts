@@ -6,7 +6,10 @@ export interface TreeNode {
   label: string
   children?: TreeNode[]
   disabled?: boolean
-  [key: string]: any
+  parent?: TreeNode | null
+  checked?: boolean
+  indeterminate?: boolean
+  [key: string]: unknown
 }
 
 export const treeProps = buildProps({
@@ -52,12 +55,43 @@ export const treeProps = buildProps({
     type: Boolean,
     default: false,
   },
+  /**
+   * @description 相邻级节点间的水平缩进，单位为像素
+   */
+  indent: {
+    type: Number,
+    default: 18,
+  },
+  /**
+   * @description 是否显示复选框
+   */
+  showCheckbox: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @description 默认勾选的节点的 key 的数组
+   */
+  defaultCheckedKeys: {
+    type: Array as () => (string | number)[],
+    default: () => [],
+  },
+  /**
+   * @description 默认展开的节点的 key 的数组
+   */
+  defaultExpandedKeys: {
+    type: Array as () => (string | number)[],
+    default: () => [],
+  },
 } as const)
 
 export const treeEmits = {
   'node-click': (_node: TreeNode, _event: Event) => true,
+  'check-change': (_node: TreeNode, _checked: boolean, _indeterminate: boolean) => true,
 }
 
 export type TreeProps = ExtractPropTypes<typeof treeProps>
 export type TreePropsPublic = ExtractPublicPropTypes<typeof treeProps>
 export type TreeEmits = typeof treeEmits
+
+export const treeContextKey = Symbol('treeContextKey')
