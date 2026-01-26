@@ -1,6 +1,6 @@
-# Splitter 分割面板
+﻿# Splitter 分割面板
 
-可调整大小的分割面板�?
+可调整大小的分割面板
 
 ## 基础用法
 
@@ -18,7 +18,7 @@
     <template #pane2>
       <div style="padding: 20px; height: 100%; background: #f0f9ff;">
         <h4 style="margin-top: 0;">右侧面板</h4>
-        <p>支持水平和垂直分�?/p></p>
+        <p>支持水平和垂直分割</p>
       </div>
     </template>
   </SwySplitter>
@@ -62,13 +62,13 @@
     <template #pane1>
       <div style="padding: 20px; height: 100%; background: #f3f4f6;">
         <h4 style="margin-top: 0;">30% 宽度</h4>
-        <p>左侧面板默认�?0%宽度</p>
+        <p>左侧面板默认 30% 宽度</p>
       </div>
     </template>
     <template #pane2>
       <div style="padding: 20px; height: 100%; background: #fafafa;">
         <h4 style="margin-top: 0;">70% 宽度</h4>
-        <p>右侧面板默认�?0%宽度</p>
+        <p>右侧面板默认 70% 宽度</p>
       </div>
     </template>
   </SwySplitter>
@@ -77,7 +77,7 @@
 
 :::
 
-## 最�?最大尺�?
+## 最小最大尺寸
 
 :::demo
 
@@ -90,9 +90,9 @@
   >
     <template #pane1>
       <div style="padding: 20px; height: 100%; background: #fffbeb;">
-        <h4 style="margin-top: 0;">有尺寸限�?/h4>
-        <p>最�?0%，最�?0%</p>
-        <p style="color: #909399; font-size: 14px;">尝试拖动分割线，会受到限�?/p>
+        <h4 style="margin-top: 0;">有尺寸限制</h4>
+        <p>最小 20%，最大 60%</p>
+        <p style="color: #909399; font-size: 14px;">尝试拖动分割线，会受到限制</p>
       </div>
     </template>
     <template #pane2>
@@ -116,7 +116,7 @@
   <SwySplitter style="height: 400px; border: 1px solid #dcdfe6;">
     <template #pane1>
       <div style="padding: 20px; height: 100%; background: #dbeafe;">
-        <h4 style="margin-top: 0;">侧边�?/h4>
+        <h4 style="margin-top: 0;">侧边栏</h4>
         <p>固定在左侧的导航区域</p>
       </div>
     </template>
@@ -125,13 +125,13 @@
         <template #pane1>
           <div style="padding: 20px; height: 100%; background: #f0fdf4;">
             <h4 style="margin-top: 0;">顶部内容</h4>
-            <p>主要内容区域的顶�?/p>
+            <p>主要内容区域的顶部</p>
           </div>
         </template>
         <template #pane2>
           <div style="padding: 20px; height: 100%; background: #fef2f2;">
             <h4 style="margin-top: 0;">底部内容</h4>
-            <p>主要内容区域的底�?/p>
+            <p>主要内容区域的底部</p>
           </div>
         </template>
       </SwySplitter>
@@ -146,18 +146,18 @@
 
 ### Splitter Props
 
-| 参数         | 说明                                         | 类型                    | 默认�?     |
-| ------------ | -------------------------------------------- | ----------------------- | ---------- |
-| direction    | 分割方向                                     | `horizontal / vertical` | horizontal |
-| pane1Size    | 第一个面板的初始大小�?-1之间的小数或像素值） | `number / string`       | 0.5        |
-| pane1MinSize | 第一个面板的最小大�?                         | `number`                | 0.1        |
-| pane1MaxSize | 第一个面板的最大大�?                         | `number`                | 0.9        |
+| 参数         | 说明                                          | 类型                    | 默认值     |
+| ------------ | --------------------------------------------- | ----------------------- | ---------- |
+| direction    | 分割方向                                      | `horizontal / vertical` | horizontal |
+| pane1Size    | 第一个面板的初始大小（0-1之间的小数或像素值） | `number / string`       | 0.5        |
+| pane1MinSize | 第一个面板的最小大小                          | `number`                | 0.1        |
+| pane1MaxSize | 第一个面板的最大大小                          | `number`                | 0.9        |
 
 ### Splitter Events
 
-| 事件�? | 说明               | 参数                  |
+| 事件名 | 说明               | 参数                  |
 | ------ | ------------------ | --------------------- |
-| resize | 面板大小改变时触�? | `(pane1Size: number)` |
+| resize | 面板大小改变时触发 | `(pane1Size: number)` |
 
 ### Splitter Slots
 
