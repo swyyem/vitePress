@@ -265,18 +265,34 @@
     }
 
     @include when(dark) {
-      background: getCssVar('bg-color', 'overlay');
-      color: getCssVar('text-color', 'primary');
+      background: getCssVarWithDefault(('tooltip-bg-color', 'dark'), #303133);
+      color: getCssVarWithDefault(('tooltip-text-color', 'dark'), #ffffff);
     }
 
     @include when(light) {
-      background: getCssVar('bg-color', 'page');
-      color: getCssVar('text-color', 'primary');
-      border: 1px solid getCssVar('border-color-lighter');
+      background: getCssVarWithDefault(('tooltip-bg-color', 'light'), #ffffff);
+      color: getCssVarWithDefault(('tooltip-text-color', 'light'), #606266);
+      border: 1px solid getCssVarWithDefault(('tooltip-border-color', 'light'), #dcdfe6);
 
       &::after {
-        border-color: getCssVar('border-color-lighter');
+        border-color: getCssVarWithDefault(('tooltip-border-color', 'light'), #dcdfe6);
       }
+    }
+  }
+}
+
+@include b(tooltip) {
+  @include when(disabled) {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  @include e(trigger) {
+    @include when(disabled) {
+      pointer-events: none;
+      cursor: not-allowed;
+      opacity: 0.6;
     }
   }
 }

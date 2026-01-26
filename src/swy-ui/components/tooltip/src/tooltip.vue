@@ -1,6 +1,10 @@
 <template>
-  <div :class="ns.b()" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-    <div :class="ns.e('trigger')" ref="triggerRef">
+  <div
+    :class="[ns.b(), ns.is('disabled', props.disabled)]"
+    @mouseenter="handleMouseEnter"
+    @mouseleave="handleMouseLeave"
+  >
+    <div :class="[ns.e('trigger'), ns.is('disabled', props.disabled)]" ref="triggerRef">
       <slot />
     </div>
     <teleport to="body">
@@ -8,12 +12,13 @@
         <div
           v-if="shouldShow"
           ref="popperRef"
-          :class="[ns.e('popper'), ns.m(placement), ns.m(effect)]"
+          :class="[ns.e('popper'), ns.m(placement), ns.is(effect)]"
           :style="popperStyle"
         >
           <div :class="[ns.e('arrow'), ns.m(placement)]" />
-          {{ content }}
-          <slot name="content" />
+          <slot name="content" :fallback="content">
+            {{ content }}
+          </slot>
         </div>
       </transition>
     </teleport>
