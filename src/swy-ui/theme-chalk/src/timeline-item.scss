@@ -4,6 +4,7 @@
 @include b(timeline-item) {
   position: relative;
   padding-bottom: 20px;
+  list-style: none;
 
   @include e(wrapper) {
     position: relative;
@@ -13,9 +14,10 @@
 
   @include e(tail) {
     position: absolute;
-    left: 4px;
+    left: 6px; // 默认居中于 12px 的 node
     height: 100%;
     border-left: 2px solid getCssVar('timeline-node-color');
+    transform: translateX(-50%);
   }
 
   & .#{$namespace}-timeline-item__icon {
@@ -32,19 +34,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1; // 确保在 tail 之上
+    left: 0; // 改为 0，靠 margin 调整
+    transform: translateX(-50%); // 绝对水平居中于轴线
 
     @include m(normal) {
-      left: -1px;
       width: getCssVar('timeline-node-size-normal');
       height: getCssVar('timeline-node-size-normal');
+      left: 6px;
     }
+
     @include m(large) {
-      left: -2px;
       width: getCssVar('timeline-node-size-large');
       height: getCssVar('timeline-node-size-large');
+      left: 6px;
     }
+
     @include when(hollow) {
-      background: getCssVar('color-white');
+      background: getCssVar('bg-color', 'overlay') !important;
       border-style: solid;
       border-width: 2px;
     }
@@ -53,6 +60,11 @@
       @include m($type) {
         background-color: getCssVar('color', $type);
         border-color: getCssVar('color', $type);
+
+        @include when(hollow) {
+          border-color: getCssVar('color', $type);
+          color: getCssVar('color', $type);
+        }
       }
     }
   }
@@ -62,6 +74,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 6px;
+    transform: translateX(-50%);
   }
 
   @include e(content) {
@@ -77,6 +91,7 @@
       margin-bottom: 8px;
       padding-top: 4px;
     }
+
     @include when(bottom) {
       margin-top: 8px;
     }

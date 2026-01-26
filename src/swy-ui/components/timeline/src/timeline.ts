@@ -3,6 +3,7 @@ import type { ExtractPropTypes } from 'vue'
 
 export const timelineProps = buildProps({
   reverse: Boolean,
+  center: Boolean,
 } as const)
 
 export type TimelineProps = ExtractPropTypes<typeof timelineProps>

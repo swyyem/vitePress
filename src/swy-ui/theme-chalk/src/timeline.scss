@@ -4,43 +4,47 @@
 
 @include b(timeline) {
   @include set-component-css-var('timeline', $timeline);
-}
-
-@include b(timeline) {
   margin: 0;
   font-size: getCssVar('font-size', 'base');
   list-style: none;
 
+  @include when(center) {
+    .#{$namespace}-timeline-item {
+      // 保证整行占据 100% 宽度
+      width: 100%;
+
+      // 整体轴向居中
+      .#{$namespace}-timeline-item__node,
+      .#{$namespace}-timeline-item__dot,
+      .#{$namespace}-timeline-item__tail {
+        left: 50%;
+        transform: translateX(-50%); // 使用百分比位移实现绝对居中
+        margin-left: 0; // 移除之前的 margin 补偿
+      }
+
+      .#{$namespace}-timeline-item__wrapper {
+        width: 50%;
+        text-align: left;
+        padding-left: 20px;
+        box-sizing: border-box;
+      }
+
+      // 偶数项翻转到左侧
+      &:nth-child(even) {
+        .#{$namespace}-timeline-item__wrapper {
+          transform: translateX(-100%);
+          margin-left: 50%;
+          text-align: right;
+          padding-left: 0;
+          padding-right: 20px;
+        }
+      }
+    }
+  }
+
   .#{$namespace}-timeline-item:last-child {
     .#{$namespace}-timeline-item__tail {
       display: none;
-    }
-  }
-
-  .#{$namespace}-timeline-item__center {
-    display: flex;
-    align-items: center;
-
-    .#{$namespace}-timeline-item__wrapper {
-      width: 100%;
-    }
-
-    .#{$namespace}-timeline-item__tail {
-      top: 0;
-    }
-  }
-
-  .#{$namespace}-timeline-item__center:first-child {
-    .#{$namespace}-timeline-item__tail {
-      height: calc(50% + 10px);
-      top: calc(50% - 10px);
-    }
-  }
-
-  .#{$namespace}-timeline-item__center:last-child {
-    .#{$namespace}-timeline-item__tail {
-      display: block;
-      height: calc(50% - 10px);
     }
   }
 }

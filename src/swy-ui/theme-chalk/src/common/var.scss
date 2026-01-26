@@ -1675,6 +1675,17 @@ $transfer: map.merge(
   $transfer
 );
 
+// Timeline
+$timeline: () !default;
+$timeline: map.merge(
+  (
+    'node-size-normal': 12px,
+    'node-size-large': 14px,
+    'node-color': getCssVar('border-color-light'),
+  ),
+  $timeline
+);
+
 $breakpoints: (
   'xs': '(max-width: #{$sm - 1})',
   'sm': '(min-width: #{$sm})',

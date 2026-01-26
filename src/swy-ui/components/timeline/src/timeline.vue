@@ -1,11 +1,11 @@
 <template>
-  <ul :class="timelineKls">
+  <ul :class="[ns.b(), ns.is('center', props.center)]">
     <slot />
   </ul>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { timelineProps } from './timeline'
 
@@ -13,9 +13,8 @@ defineOptions({
   name: 'SwyTimeline',
 })
 
-defineProps(timelineProps)
-
+const props = defineProps(timelineProps)
 const ns = useNamespace('timeline')
 
-const timelineKls = computed(() => [ns.b()])
+provide('timeline', { props })
 </script>
