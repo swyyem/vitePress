@@ -4,8 +4,8 @@
     :style="{ height: heightValue, maxHeight: maxHeightValue }"
   >
     <div :class="ns.e('inner-wrapper')">
-      <!-- 隐藏的 slot 用于收集列信息 -->
-      <div v-show="false" ref="columnHost">
+      <!-- 渲染 slot 以触发 SwyTableColumn 的挂载与注册 -->
+      <div v-show="false">
         <slot />
       </div>
 
@@ -70,7 +70,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, useSlots, onMounted, watch } from 'vue'
+import { computed, ref, provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tableProps, tableEmits } from './table'
 import ProField from '../../../proField'
@@ -83,8 +83,6 @@ const props = defineProps(tableProps)
 const emit = defineEmits(tableEmits)
 
 const ns = useNamespace('table')
-const slots = useSlots()
-const columnHost = ref<HTMLElement>()
 const columns = ref<any[]>([])
 
 const heightValue = computed(() => {
@@ -95,35 +93,22 @@ const maxHeightValue = computed(() => {
   return typeof props.maxHeight === 'number' ? `${props.maxHeight}px` : props.maxHeight
 })
 
-const parseColumns = () => {
-  const defaultSlot = slots.default?.()
-  if (!defaultSlot) return
-
-  const cols: any[] = []
-  const traverse = (vnodes: any[]) => {
-    vnodes.forEach(vnode => {
-      if (vnode.type?.name === 'SwyTableColumn') {
-        cols.push(vnode.props || {})
-      } else if (Array.isArray(vnode.children)) {
-        traverse(vnode.children)
-      }
-    })
-  }
-  traverse(defaultSlot)
-  columns.value = cols
+// 提供注册函数给子组件 SwyTableColumn
+const registerColumn = (column: any) => {
+  columns.value.push(column)
 }
 
-onMounted(() => {
-  parseColumns()
-})
-
-// 监听 slot 变化（简单处理）
-watch(
-  () => slots.default?.(),
-  () => {
-    parseColumns()
+const unregisterColumn = (column: any) => {
+  const index = columns.value.indexOf(column)
+  if (index > -1) {
+    columns.value.splice(index, 1)
   }
-)
+}
+
+provide('SwyTable', {
+  registerColumn,
+  unregisterColumn,
+})
 
 const getColumnStyle = (col: any) => {
   const style: any = {}

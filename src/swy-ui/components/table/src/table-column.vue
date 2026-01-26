@@ -1,15 +1,12 @@
 <template>
-  <th
-    :class="[ns.b('table__cell'), ns.is(align, align !== 'left')]"
-    :style="{ width: widthValue, minWidth: minWidthValue }"
-  >
-    {{ label }}
-  </th>
+  <!-- SwyTableColumn 不直接渲染 th，而是由 SwyTable 根据注册的信息统一渲染 -->
+  <div v-if="false">
+    <slot />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { useNamespace } from '@swy-ui/hooks'
+import { inject, onMounted, onBeforeUnmount } from 'vue'
 import { tableColumnProps } from './table-column'
 
 defineOptions({
@@ -18,13 +15,16 @@ defineOptions({
 
 const props = defineProps(tableColumnProps)
 
-const ns = useNamespace('swy')
+// 注入父组件提供的注册函数
+const swyTable = inject<any>('SwyTable', null)
 
-const widthValue = computed(() => {
-  return typeof props.width === 'number' ? `${props.width}px` : props.width
-})
+if (swyTable) {
+  onMounted(() => {
+    swyTable.registerColumn(props)
+  })
 
-const minWidthValue = computed(() => {
-  return typeof props.minWidth === 'number' ? `${props.minWidth}px` : props.minWidth
-})
+  onBeforeUnmount(() => {
+    swyTable.unregisterColumn(props)
+  })
+}
 </script>

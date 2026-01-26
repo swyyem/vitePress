@@ -681,8 +681,20 @@ const wholeList: MenuItem[] = [
             link: '/component/swy-ui/data/descriptions',
           },
           {
-            text: 'Table / Tree / Collapse / Carousel',
-            link: '/component/swy-ui/data-display/',
+            text: 'Table 表格',
+            link: '/component/swy-ui/data-display/table',
+          },
+          {
+            text: 'Tree 树形控件',
+            link: '/component/swy-ui/data-display/tree',
+          },
+          {
+            text: 'Collapse 折叠面板',
+            link: '/component/swy-ui/data-display/collapse',
+          },
+          {
+            text: 'Carousel 走马灯',
+            link: '/component/swy-ui/data-display/carousel',
           },
           {
             text: 'Transfer 穿梭框',
