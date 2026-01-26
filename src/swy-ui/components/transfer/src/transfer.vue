@@ -1,53 +1,116 @@
 <template>
-  <div :class="transferKls">
-    <div :class="ns.e('panel')">
-      <div :class="ns.e('header')">
-        <el-checkbox v-model="leftAllChecked" @change="handleLeftCheckAll">
+  <div :class="[ns.b(), ns.is('filterable', filterable)]">
+    <!-- Left Panel -->
+    <div :class="panelNs.b()">
+      <div :class="panelNs.e('header')">
+        <swy-checkbox
+          v-model="leftAllChecked"
+          :indeterminate="leftIndeterminate"
+          @change="handleLeftCheckAllChange"
+        >
           {{ leftTitle }}
-        </el-checkbox>
-        <span>{{ leftCheckedCount }} / {{ leftData.length }}</span>
+          <span>{{ leftCheckedCount }} / {{ leftData.length }}</span>
+        </swy-checkbox>
       </div>
-      <div :class="ns.e('body')">
-        <el-checkbox-group v-model="leftChecked">
-          <el-checkbox
-            v-for="item in leftData"
+      <div :class="[panelNs.e('body'), ns.is('filterable', filterable)]">
+        <div v-if="filterable" :class="panelNs.e('filter')">
+          <swy-icon name="search" />
+          <input
+            v-model="leftQuery"
+            :placeholder="filterPlaceholder || '请输入关键词'"
+            class="swy-input__inner"
+          />
+        </div>
+        <div :class="panelNs.e('list')">
+          <swy-checkbox
+            v-for="item in filteredLeftData as any[]"
             :key="item[props.props.key]"
+            v-model="leftChecked"
             :label="item[props.props.key]"
             :disabled="item[props.props.disabled]"
+            :class="panelNs.e('item')"
           >
-            {{ item[props.props.label] }}
-          </el-checkbox>
-        </el-checkbox-group>
+            <slot :item="item">
+              <span>{{ item[props.props.label] }}</span>
+            </slot>
+          </swy-checkbox>
+          <p v-if="filteredLeftData.length === 0" :class="panelNs.e('empty')">
+            {{ filterPlaceholder || '无数据' }}
+          </p>
+        </div>
+      </div>
+      <div v-if="$slots['left-footer']" :class="panelNs.e('footer')">
+        <slot name="left-footer" />
       </div>
     </div>
 
+    <!-- Operation Buttons -->
     <div :class="ns.e('buttons')">
-      <el-button type="primary" :disabled="leftChecked.length === 0" @click="addToRight">
-        &gt;
-      </el-button>
-      <el-button type="primary" :disabled="rightChecked.length === 0" @click="addToLeft">
-        &lt;
-      </el-button>
+      <swy-button
+        type="primary"
+        :class="ns.e('button')"
+        :disabled="leftChecked.length === 0"
+        @click="addToRight"
+      >
+        <span>
+          <template v-if="buttonTexts[1]">{{ buttonTexts[1] }}</template>
+          <swy-icon name="arrow-right" />
+        </span>
+      </swy-button>
+      <swy-button
+        type="primary"
+        :class="ns.e('button')"
+        :disabled="rightChecked.length === 0"
+        @click="addToLeft"
+      >
+        <span>
+          <swy-icon name="arrow-left" />
+          <template v-if="buttonTexts[0]">{{ buttonTexts[0] }}</template>
+        </span>
+      </swy-button>
     </div>
 
-    <div :class="ns.e('panel')">
-      <div :class="ns.e('header')">
-        <el-checkbox v-model="rightAllChecked" @change="handleRightCheckAll">
+    <!-- Right Panel -->
+    <div :class="panelNs.b()">
+      <div :class="panelNs.e('header')">
+        <swy-checkbox
+          v-model="rightAllChecked"
+          :indeterminate="rightIndeterminate"
+          @change="handleRightCheckAllChange"
+        >
           {{ rightTitle }}
-        </el-checkbox>
-        <span>{{ rightCheckedCount }} / {{ rightData.length }}</span>
+          <span>{{ rightCheckedCount }} / {{ rightData.length }}</span>
+        </swy-checkbox>
       </div>
-      <div :class="ns.e('body')">
-        <el-checkbox-group v-model="rightChecked">
-          <el-checkbox
-            v-for="item in rightData"
+      <div :class="[panelNs.e('body'), ns.is('filterable', filterable)]">
+        <div v-if="filterable" :class="panelNs.e('filter')">
+          <swy-icon name="search" />
+          <input
+            v-model="rightQuery"
+            :placeholder="filterPlaceholder || '请输入关键词'"
+            class="swy-input__inner"
+          />
+        </div>
+        <div :class="panelNs.e('list')">
+          <swy-checkbox
+            v-for="item in filteredRightData as any[]"
             :key="item[props.props.key]"
+            v-model="rightChecked"
             :label="item[props.props.key]"
             :disabled="item[props.props.disabled]"
+            :class="panelNs.e('item')"
           >
-            {{ item[props.props.label] }}
-          </el-checkbox>
-        </el-checkbox-group>
+            <slot :item="item">
+              <span>{{ item[props.props.label] }}</span>
+            </slot>
+          </swy-checkbox>
+          <p v-if="filteredRightData.length === 0" :class="panelNs.e('empty')">
+            {{ filterPlaceholder || '无数据' }}
+          </p>
+        </div>
+      </div>
+      <div v-if="$slots['right-footer']" :class="panelNs.e('footer')">
+        <slot name="right-footer" />
       </div>
     </div>
   </div>
@@ -55,7 +118,10 @@
 
 <script lang="ts" setup>
 import { computed, ref, watch } from 'vue'
-import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
+import { useNamespace } from '@swy-ui/hooks'
+import SwyCheckbox from '@swy-ui/components/checkbox'
+import SwyButton from '@swy-ui/components/button'
+import { SwyIcon } from '@swy-ui/components/icon'
 import { transferEmits, transferProps } from './transfer'
 
 defineOptions({
@@ -66,40 +132,72 @@ const props = defineProps(transferProps)
 const emit = defineEmits(transferEmits)
 
 const ns = useNamespace('transfer')
-const leftChecked = ref<unknown[]>([])
-const rightChecked = ref<unknown[]>([])
-const leftAllChecked = ref(false)
-const rightAllChecked = ref(false)
+const panelNs = useNamespace('transfer-panel')
 
-const transferKls = computed(() => [ns.b()])
+const leftChecked = ref<any[]>([])
+const rightChecked = ref<any[]>([])
+const leftQuery = ref('')
+const rightQuery = ref('')
 
+// Data partition
 const leftData = computed(() => {
-  return props.data.filter(
-    (item: Record<string, unknown>) => !props.modelValue.includes(item[props.props.key])
-  )
+  return props.data.filter((item: any) => !props.modelValue.includes(item[props.props.key]))
 })
 
 const rightData = computed(() => {
-  return props.data.filter((item: Record<string, unknown>) =>
-    props.modelValue.includes(item[props.props.key])
-  )
+  return props.data.filter((item: any) => props.modelValue.includes(item[props.props.key]))
 })
 
+// Filtering
+const filteredLeftData = computed(() => {
+  if (!props.filterable) return leftData.value
+  return leftData.value.filter((item: any) => {
+    const label = String(item[props.props.label])
+    return label.toLowerCase().includes(leftQuery.value.toLowerCase())
+  })
+})
+
+const filteredRightData = computed(() => {
+  if (!props.filterable) return rightData.value
+  return rightData.value.filter((item: any) => {
+    const label = String(item[props.props.label])
+    return label.toLowerCase().includes(rightQuery.value.toLowerCase())
+  })
+})
+
+// Titles & Counts
+const leftTitle = computed(() => props.titles[0] || '列表1')
+const rightTitle = computed(() => props.titles[1] || '列表2')
 const leftCheckedCount = computed(() => leftChecked.value.length)
 const rightCheckedCount = computed(() => rightChecked.value.length)
 
-const leftTitle = computed(() => props.titles[0] || '列表1')
-const rightTitle = computed(() => props.titles[1] || '列表2')
+// Indeterminate states
+const leftIndeterminate = computed(() => {
+  const count = leftChecked.value.length
+  return count > 0 && count < leftData.value.filter(i => !i[props.props.disabled]).length
+})
 
-const handleLeftCheckAll = (val: boolean) => {
+const rightIndeterminate = computed(() => {
+  const count = rightChecked.value.length
+  return count > 0 && count < rightData.value.filter(i => !i[props.props.disabled]).length
+})
+
+const leftAllChecked = ref(false)
+const rightAllChecked = ref(false)
+
+const handleLeftCheckAllChange = (val: boolean) => {
   leftChecked.value = val
-    ? leftData.value.map((item: Record<string, unknown>) => item[props.props.key])
+    ? leftData.value
+        .filter((item: any) => !item[props.props.disabled])
+        .map((item: any) => item[props.props.key])
     : []
 }
 
-const handleRightCheckAll = (val: boolean) => {
+const handleRightCheckAllChange = (val: boolean) => {
   rightChecked.value = val
-    ? rightData.value.map((item: Record<string, unknown>) => item[props.props.key])
+    ? rightData.value
+        .filter((item: any) => !item[props.props.disabled])
+        .map((item: any) => item[props.props.key])
     : []
 }
 
@@ -111,22 +209,31 @@ const addToRight = () => {
 }
 
 const addToLeft = () => {
-  const newValue = props.modelValue.filter((item: unknown) => !rightChecked.value.includes(item))
+  const newValue = props.modelValue.filter((item: any) => !rightChecked.value.includes(item))
   emit('update:modelValue', newValue)
   emit('change', newValue, 'left', rightChecked.value)
   rightChecked.value = []
 }
+
+watch(leftChecked, val => {
+  const availableData = leftData.value.filter(i => !i[props.props.disabled])
+  leftAllChecked.value = availableData.length > 0 && val.length === availableData.length
+  emit('leftCheckChange', val, [])
+})
+
+watch(rightChecked, val => {
+  const availableData = rightData.value.filter(i => !i[props.props.disabled])
+  rightAllChecked.value = availableData.length > 0 && val.length === availableData.length
+  emit('rightCheckChange', val, [])
+})
 
 watch(
   () => props.modelValue,
   () => {
     leftChecked.value = []
     rightChecked.value = []
+    leftAllChecked.value = false
+    rightAllChecked.value = false
   }
 )
-
-defineExpose({
-  leftChecked,
-  rightChecked,
-})
 </script>

@@ -9,7 +9,7 @@ export const checkboxProps = buildProps({
    * @description 绑定值
    */
   modelValue: {
-    type: [Boolean, String, Number],
+    type: [Boolean, String, Number, Array],
     default: false,
   },
   /**
@@ -40,8 +40,11 @@ export const checkboxProps = buildProps({
 } as const)
 
 export const checkboxEmits = {
-  'update:modelValue': (val: boolean | string | number) =>
-    typeof val === 'boolean' || typeof val === 'string' || typeof val === 'number',
+  'update:modelValue': (val: boolean | string | number | any[]) =>
+    typeof val === 'boolean' ||
+    typeof val === 'string' ||
+    typeof val === 'number' ||
+    Array.isArray(val),
   change: (val: boolean) => typeof val === 'boolean',
 }
 

@@ -1658,6 +1658,23 @@ $md: 992px !default;
 $lg: 1200px !default;
 $xl: 1920px !default;
 
+// Transfer
+$transfer: () !default;
+$transfer: map.merge(
+  (
+    'panel-width': 200px,
+    'panel-body-height': 246px,
+    'panel-header-height': 40px,
+    'panel-header-bg-color': getCssVar('fill-color', 'light'),
+    'panel-footer-height': 40px,
+    'border-color': getCssVar('border-color', 'lighter'),
+    'border-radius': getCssVar('border-radius', 'base'),
+    'item-height': 30px,
+    'filter-height': 32px,
+  ),
+  $transfer
+);
+
 $breakpoints: (
   'xs': '(max-width: #{$sm - 1})',
   'sm': '(min-width: #{$sm})',

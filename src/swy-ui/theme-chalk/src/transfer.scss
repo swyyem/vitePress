@@ -5,58 +5,100 @@
 
 @include b(transfer) {
   @include set-component-css-var('transfer', $transfer);
-}
-
-@include b(transfer) {
   font-size: getCssVar('font-size', 'base');
+  display: flex;
+  align-items: center;
 
   @include e(buttons) {
     display: inline-block;
     vertical-align: middle;
     padding: 0 30px;
+    display: flex;
+    flex-direction: row; // 改为横向
+    gap: 12px;
   }
 
   @include e(button) {
-    vertical-align: top;
-
-    &:nth-child(2) {
-      margin: 0 0 0 10px;
-    }
+    // 回归矩形按钮
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     i,
     span {
       font-size: 14px;
     }
 
-    & .#{$namespace}-icon + span {
+    & [class*='#{$namespace}-icon'] + span {
       margin-left: 0;
+    }
+
+    // 处理内部文字和箭头的排版
+    .is-left {
+      margin-right: 5px;
+    }
+
+    .is-right {
+      margin-left: 5px;
     }
   }
 }
 
 @include b(transfer-panel) {
-  overflow: hidden;
-  background: getCssVar('bg-color', 'overlay');
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
-  width: getCssVar('transfer-panel-width');
-  max-height: 100%;
+  border: 1px solid getCssVar('transfer-border-color');
+  border-radius: getCssVar('transfer-border-radius');
   box-sizing: border-box;
-  position: relative;
+  width: getCssVar('transfer-panel-width');
+  background: getCssVar('bg-color', 'overlay');
+  vertical-align: middle;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+
+  @include e(header) {
+    height: getCssVar('transfer-panel-header-height');
+    line-height: getCssVar('transfer-panel-header-height');
+    background: getCssVar('transfer-panel-header-bg-color');
+    margin: 0;
+    padding-left: 15px;
+    border-bottom: 1px solid getCssVar('transfer-border-color');
+    box-sizing: border-box;
+    color: getCssVar('color-black');
+    display: flex;
+    align-items: center;
+
+    .#{$namespace}-checkbox {
+      display: flex;
+      align-items: center;
+      width: 100%; // 撑满头部
+
+      .#{$namespace}-checkbox__label {
+        display: flex; // 变成 flex
+        align-items: center;
+        justify-content: space-between; // 两端对齐
+        flex: 1; // 填满剩余空间
+        font-size: 16px;
+        color: getCssVar('text-color', 'primary');
+        font-weight: normal;
+
+        span {
+          color: getCssVar('text-color', 'secondary');
+          font-size: 12px;
+          font-weight: normal;
+          margin-left: auto; // 强制靠右
+          padding-right: 15px;
+        }
+      }
+    }
+  }
 
   @include e(body) {
     height: getCssVar('transfer-panel-body-height');
-    border-left: 1px solid getCssVar('transfer-border-color');
-    border-right: 1px solid getCssVar('transfer-border-color');
-    border-bottom: 1px solid getCssVar('transfer-border-color');
-    border-bottom-left-radius: getCssVar('transfer-border-radius');
-    border-bottom-right-radius: getCssVar('transfer-border-radius');
     overflow: hidden;
-    @include when('with-footer') {
-      border-bottom: none;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+    position: relative;
+
+    @include when(with-footer) {
+      padding-bottom: getCssVar('transfer-panel-footer-height');
     }
   }
 
@@ -67,6 +109,7 @@
     height: getCssVar('transfer-panel-body-height');
     overflow: auto;
     box-sizing: border-box;
+
     @include when(filterable) {
       height: calc(100% - getCssVar('transfer-filter-height') - 30px);
       padding-top: 0;
@@ -77,33 +120,25 @@
     height: getCssVar('transfer-item-height');
     line-height: getCssVar('transfer-item-height');
     padding-left: 15px;
-    display: block !important;
-
-    & + .#{$namespace}-transfer-panel__item {
-      margin-left: 0;
-    }
-
-    &.#{$namespace}-checkbox {
-      color: getCssVar('text-color', 'regular');
-      margin-right: 30px;
-    }
+    display: flex !important;
+    align-items: center;
+    color: getCssVar('text-color', 'regular');
 
     &:hover {
       color: getCssVar('color-primary');
+      background-color: getCssVar('fill-color', 'light');
     }
 
-    &.#{$namespace}-checkbox .#{$namespace}-checkbox__label {
+    &.#{$namespace}-checkbox {
+      margin-right: 0;
+      width: 100%;
+    }
+
+    .#{$namespace}-checkbox__label {
       width: 100%;
       @include utils-ellipsis;
-      display: block;
       box-sizing: border-box;
-      padding-left: 22px;
-      line-height: getCssVar('transfer-item-height');
-    }
-
-    .#{$namespace}-checkbox__input {
-      position: absolute;
-      top: 8px;
+      padding-left: 8px;
     }
   }
 
@@ -118,67 +153,19 @@
       font-size: 12px;
       display: inline-block;
       box-sizing: border-box;
-    }
+      border-radius: 16px; // Element 风格圆角搜索框
+      padding-left: 30px;
+      padding-right: 10px;
+      border: 1px solid getCssVar('border-color');
+      outline: none;
 
-    .#{$namespace}-icon-circle-close {
-      cursor: pointer;
-    }
-  }
-
-  .#{$namespace}-transfer-panel__header {
-    display: flex;
-    align-items: center;
-    height: getCssVar('transfer-panel-header-height');
-    background: getCssVar('transfer-panel-header-bg-color');
-    margin: 0;
-    padding-left: 15px;
-    border: 1px solid getCssVar('transfer-border-color');
-    border-top-left-radius: getCssVar('transfer-border-radius');
-    border-top-right-radius: getCssVar('transfer-border-radius');
-    box-sizing: border-box;
-    color: getCssVar('color-black');
-
-    .#{$namespace}-checkbox {
-      position: relative;
-      display: flex;
-      width: 100%;
-      align-items: center;
-
-      .#{$namespace}-checkbox__label {
-        font-size: 16px;
-        color: getCssVar('text-color', 'primary');
-        font-weight: normal;
-
-        span {
-          position: absolute;
-          right: 15px;
-          top: 50%;
-          transform: translate3d(0, -50%, 0);
-          color: getCssVar('text-color', 'secondary');
-          font-size: 12px;
-          font-weight: normal;
-        }
+      &:focus {
+        border-color: getCssVar('color-primary');
       }
     }
   }
 
-  .#{$namespace}-transfer-panel__footer {
-    height: getCssVar('transfer-panel-footer-height');
-    background: getCssVar('bg-color', 'overlay');
-    margin: 0;
-    padding: 0;
-    border: 1px solid getCssVar('transfer-border-color');
-    border-bottom-left-radius: getCssVar('transfer-border-radius');
-    border-bottom-right-radius: getCssVar('transfer-border-radius');
-    @include utils-vertical-center;
-
-    .#{$namespace}-checkbox {
-      padding-left: 20px;
-      color: getCssVar('text-color', 'regular');
-    }
-  }
-
-  .#{$namespace}-transfer-panel__empty {
+  @include e(empty) {
     margin: 0;
     height: getCssVar('transfer-item-height');
     line-height: getCssVar('transfer-item-height');
@@ -187,7 +174,22 @@
     text-align: center;
   }
 
-  .#{$namespace}-checkbox__label {
-    padding-left: 8px;
+  @include e(footer) {
+    height: getCssVar('transfer-panel-footer-height');
+    background: getCssVar('bg-color', 'overlay');
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid getCssVar('transfer-border-color');
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    @include utils-vertical-center;
+
+    .#{$namespace}-checkbox {
+      padding-left: 20px;
+      color: getCssVar('text-color', 'regular');
+    }
   }
 }

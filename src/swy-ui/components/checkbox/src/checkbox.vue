@@ -58,10 +58,17 @@ const checked = computed({
   },
 })
 
-const isChecked = computed(() => !!props.modelValue)
+const isChecked = computed(() => {
+  const value = props.modelValue
+  if (Array.isArray(value)) {
+    return value.includes(props.label)
+  }
+  return !!value
+})
 
 const handleChange = (e: Event) => {
   const target = e.target as HTMLInputElement
+  // 如果是数组绑定，emit 的 val 会由 v-model 自动处理成数组
   emit('change', target.checked)
 }
 
