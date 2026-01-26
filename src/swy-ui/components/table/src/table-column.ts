@@ -1,5 +1,6 @@
-import { buildProps } from '@swy-ui/utils'
+import { buildProps, definePropType } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
+import type { ValueType } from '../../../proField'
 
 export const tableColumnProps = buildProps({
   /**
@@ -37,6 +38,27 @@ export const tableColumnProps = buildProps({
     type: String,
     values: ['left', 'center', 'right'],
     default: 'left',
+  },
+  /**
+   * @description 是否可编辑
+   */
+  editable: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * @description 编辑时的组件类型
+   */
+  valueType: {
+    type: definePropType<ValueType>(String),
+    default: 'Input',
+  },
+  /**
+   * @description 编辑组件的属性
+   */
+  fieldProps: {
+    type: definePropType<Record<string, any>>(Object),
+    default: () => ({}),
   },
 } as const)
 

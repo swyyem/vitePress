@@ -92,6 +92,12 @@ $slider-button-size: map.merge(
       display: block;
       width: 100%;
       height: 100%;
+
+      @include e(trigger) {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     &.dragging {

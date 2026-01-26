@@ -120,8 +120,8 @@ const dragging1 = ref(false)
 const dragging2 = ref(false)
 const hovering1 = ref(false)
 const hovering2 = ref(false)
-const tooltipVisible1 = ref(false)
-const tooltipVisible2 = ref(false)
+const tooltipVisible1 = computed(() => hovering1.value || dragging1.value)
+const tooltipVisible2 = computed(() => hovering2.value || dragging2.value)
 
 // 当前值（内部状态）
 const currentValue = ref<number | number[]>(
@@ -328,10 +328,8 @@ const onButtonDown = (event: MouseEvent, index: number) => {
 
   if (index === 0) {
     dragging1.value = true
-    tooltipVisible1.value = true
   } else {
     dragging2.value = true
-    tooltipVisible2.value = true
   }
 
   const handleMouseMove = (e: MouseEvent) => {
@@ -349,11 +347,6 @@ const onButtonDown = (event: MouseEvent, index: number) => {
   const handleMouseUp = () => {
     dragging1.value = false
     dragging2.value = false
-
-    setTimeout(() => {
-      tooltipVisible1.value = false
-      tooltipVisible2.value = false
-    }, 100)
 
     document.removeEventListener('mousemove', handleMouseMove)
     document.removeEventListener('mouseup', handleMouseUp)

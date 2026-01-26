@@ -1,12 +1,12 @@
 import { buildProps, definePropType } from '@swy-ui/utils'
-import { createComponentMap } from './utils'
+import { getComponentMap } from './utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
 
 import type ProField from './proField.vue'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export const componentMap = createComponentMap()
+export const componentMap = getComponentMap()
 
 type PublicObject = Record<string, any>
 

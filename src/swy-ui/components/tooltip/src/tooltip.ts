@@ -39,6 +39,13 @@ export const tooltipProps = buildProps({
     type: Number,
     default: 0,
   },
+  /**
+   * @description 是否手动控制显示
+   */
+  visible: {
+    type: Boolean,
+    default: null,
+  },
 } as const)
 
 export type TooltipProps = ExtractPropTypes<typeof tooltipProps>

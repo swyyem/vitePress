@@ -4,7 +4,7 @@
       <slot />
     </div>
     <transition name="swy-tooltip-fade">
-      <div v-if="visible" :class="[ns.e('popper'), ns.m(placement), ns.m(effect)]">
+      <div v-if="shouldShow" :class="[ns.e('popper'), ns.m(placement), ns.m(effect)]">
         {{ content }}
         <slot name="content" />
       </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tooltipProps } from './tooltip'
 
@@ -25,26 +25,34 @@ const props = defineProps(tooltipProps)
 
 const ns = useNamespace('tooltip')
 
-const visible = ref(false)
+const internalVisible = ref(false)
 let timer: any = null
 
+const shouldShow = computed(() => {
+  if (props.disabled) return false
+  if (props.visible !== null) return props.visible
+  return internalVisible.value
+})
+
 const handleMouseEnter = () => {
-  if (props.disabled) return
+  if (props.disabled || props.visible !== null) return
 
   if (props.showAfter > 0) {
     timer = setTimeout(() => {
-      visible.value = true
+      internalVisible.value = true
     }, props.showAfter)
   } else {
-    visible.value = true
+    internalVisible.value = true
   }
 }
 
 const handleMouseLeave = () => {
+  if (props.disabled || props.visible !== null) return
+
   if (timer) {
     clearTimeout(timer)
     timer = null
   }
-  visible.value = false
+  internalVisible.value = false
 }
 </script>
