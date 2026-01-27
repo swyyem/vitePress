@@ -179,13 +179,18 @@
 
 ### Space Props
 
-| 参数      | 说明                                 | 类型                               | 默认值     |
-| --------- | ------------------------------------ | ---------------------------------- | ---------- |
-| direction | 间距方向                             | `horizontal / vertical`            | horizontal |
-| size      | 间距大小                             | `small / default / large / number` | default    |
-| wrap      | 是否自动换行（仅 horizontal 时有效） | `boolean`                          | false      |
-| align     | 对齐方式                             | `start / end / center / baseline`  | —          |
-| fill      | 子元素是否填充父容器                 | `boolean`                          | false      |
+| 参数      | 说明                                 | 类型                                                  | 默认值     |
+| --------- | ------------------------------------ | ----------------------------------------------------- | ---------- |
+| direction | 间距方向                             | `horizontal / vertical`                               | horizontal |
+| size      | 间距大小                             | `small / default / large / number / [number, number]` | default    |
+| wrap      | 是否自动换行（仅 horizontal 时有效） | `boolean`                                             | false      |
+| align     | 对齐方式                             | `start / end / center / baseline / stretch`           | —          |
+| alignment | 子元素的对齐方式                     | `string`                                              | center     |
+| spacer    | 自定义分隔符                         | `string / number / VNode`                             | —          |
+| fill      | 子元素是否填充父容器                 | `boolean`                                             | false      |
+| fillRatio | 填充比例                             | `number`                                              | 100        |
+| prefixCls | 自定义类名前缀                       | `string`                                              | —          |
+| tag       | 自定义容器标签                       | `string`                                              | div        |
 
 ### Space Slots
 

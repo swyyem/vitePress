@@ -1,5 +1,5 @@
 import { withNoopInstall } from '@swy-ui/utils'
-import Space from './src/space.vue'
+import Space from './src/space'
 
 import type { SFCWithInstall } from '@swy-ui/utils'
 
