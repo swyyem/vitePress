@@ -773,17 +773,6 @@ const wholeList: MenuItem[] = [
         ],
       },
       {
-        text: '新增组件总览',
-        collapsible: true,
-        collapsed: false,
-        items: [
-          {
-            text: '📦 新增组件展示 (33个)',
-            link: '/component/swy-ui/new-components',
-          },
-        ],
-      },
-      {
         text: '表单组件',
         collapsible: true, // 允许折叠
         collapsed: false, // 默认展开
