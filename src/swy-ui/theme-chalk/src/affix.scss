@@ -1,7 +1,38 @@
 @use 'mixins/mixins' as *;
+@use 'var' as *;
 
 @include b(affix) {
-  @include m(fixed) {
-    position: fixed;
+  @include e(inner) {
+    transition: transform var(--el-transition-duration);
+
+    @include m(top) {
+      &.is-fixed {
+        box-shadow: var(--el-box-shadow-light);
+      }
+    }
+
+    @include m(bottom) {
+      &.is-fixed {
+        box-shadow: var(--el-box-shadow-light);
+      }
+    }
+
+    &.is-fixed {
+      z-index: var(--el-affix-z-index, 100);
+
+      // 添加一些视觉反馈
+      animation: affixSlideIn 0.2s ease-out;
+    }
+  }
+}
+
+@keyframes affixSlideIn {
+  from {
+    opacity: 0.8;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
