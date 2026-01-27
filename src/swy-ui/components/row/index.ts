@@ -7,3 +7,4 @@ export const SwyRow: SFCWithInstall<typeof Row> = withNoopInstall(Row)
 export default Row
 
 export * from './src/row'
+export * from './src/constants'

@@ -6,8 +6,9 @@
 
 <script lang="ts" setup>
 import { computed, provide } from 'vue'
-import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
+import { useNamespace } from '@swy-ui/hooks'
 import { rowProps } from './row'
+import { rowContextKey } from './constants'
 
 defineOptions({
   name: 'SwyRow',
@@ -16,6 +17,11 @@ defineOptions({
 const props = defineProps(rowProps)
 
 const ns = useNamespace('row')
+const gutter = computed(() => props.gutter)
+
+provide(rowContextKey, {
+  gutter,
+})
 
 const rowKls = computed(() => [
   ns.b(),
@@ -31,11 +37,8 @@ const rowStyle = computed(() => {
   return style
 })
 
-provide('row', {
-  gutter: props.gutter,
-})
-
 defineExpose({
-  gutter: props.gutter,
+  /** @description 栅格间隔 */
+  gutter,
 })
 </script>

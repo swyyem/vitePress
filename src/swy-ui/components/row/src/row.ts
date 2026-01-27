@@ -1,5 +1,17 @@
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes } from 'vue'
+import type Row from './row.vue'
+
+export const RowJustify = [
+  'start',
+  'center',
+  'end',
+  'space-around',
+  'space-between',
+  'space-evenly',
+] as const
+
+export const RowAlign = ['top', 'middle', 'bottom'] as const
 
 export const rowProps = buildProps({
   tag: {
@@ -12,14 +24,15 @@ export const rowProps = buildProps({
   },
   justify: {
     type: String,
+    values: RowJustify,
     default: 'start',
-    values: ['start', 'end', 'center', 'space-around', 'space-between', 'space-evenly'],
   },
   align: {
     type: String,
+    values: RowAlign,
     default: 'top',
-    values: ['top', 'middle', 'bottom'],
   },
 } as const)
 
 export type RowProps = ExtractPropTypes<typeof rowProps>
+export type RowInstance = InstanceType<typeof Row>

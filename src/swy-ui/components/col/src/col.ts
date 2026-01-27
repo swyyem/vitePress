@@ -1,5 +1,14 @@
-import { buildProps } from '@swy-ui/utils'
+import { buildProps, definePropType } from '@swy-ui/utils'
 import type { ExtractPropTypes } from 'vue'
+import type Col from './col.vue'
+
+export type ColSizeObject = {
+  span?: number
+  offset?: number
+  pull?: number
+  push?: number
+}
+export type ColSize = number | ColSizeObject
 
 export const colProps = buildProps({
   tag: {
@@ -22,11 +31,27 @@ export const colProps = buildProps({
     type: Number,
     default: 0,
   },
-  xs: [Number, Object],
-  sm: [Number, Object],
-  md: [Number, Object],
-  lg: [Number, Object],
-  xl: [Number, Object],
+  xs: {
+    type: definePropType<ColSize>([Number, Object]),
+    default: () => ({}),
+  },
+  sm: {
+    type: definePropType<ColSize>([Number, Object]),
+    default: () => ({}),
+  },
+  md: {
+    type: definePropType<ColSize>([Number, Object]),
+    default: () => ({}),
+  },
+  lg: {
+    type: definePropType<ColSize>([Number, Object]),
+    default: () => ({}),
+  },
+  xl: {
+    type: definePropType<ColSize>([Number, Object]),
+    default: () => ({}),
+  },
 } as const)
 
 export type ColProps = ExtractPropTypes<typeof colProps>
+export type ColInstance = InstanceType<typeof Col>

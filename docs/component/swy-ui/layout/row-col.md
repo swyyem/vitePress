@@ -332,23 +332,88 @@
 
 :::
 
+## 响应式布局
+
+参照 Bootstrap 的响应式设计，预设了五个响应尺寸：`xs`、`sm`、`md`、`lg` 和 `xl`。
+:::demo
+
+```vue
+<template>
+  <SwyRow :gutter="10">
+    <SwyCol :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
+      <div style="background: #409eff; padding: 15px; color: white; border-radius: 4px;">Col</div>
+    </SwyCol>
+    <SwyCol :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
+      <div style="background: #67c23a; padding: 15px; color: white; border-radius: 4px;">Col</div>
+    </SwyCol>
+    <SwyCol :xs="4" :sm="6" :md="8" :lg="9" :xl="11">
+      <div style="background: #e6a23c; padding: 15px; color: white; border-radius: 4px;">Col</div>
+    </SwyCol>
+    <SwyCol :xs="8" :sm="6" :md="4" :lg="3" :xl="1">
+      <div style="background: #f56c6c; padding: 15px; color: white; border-radius: 4px;">Col</div>
+    </SwyCol>
+  </SwyRow>
+</template>
+```
+
+:::
+
+## 基于断点的对象配置
+
+你可以通过对象形式为不同断点设置具体的 `span` 和 `offset` 等属性。
+:::demo
+
+```vue
+<template>
+  <SwyRow :gutter="10">
+    <SwyCol :xs="{ span: 24 }" :sm="{ span: 12 }" :md="{ span: 8 }" :lg="{ span: 6 }">
+      <div style="background: #409eff; padding: 15px; color: white; border-radius: 4px;">
+        Card 1
+      </div>
+    </SwyCol>
+    <SwyCol :xs="{ span: 24 }" :sm="{ span: 12 }" :md="{ span: 8 }" :lg="{ span: 6 }">
+      <div style="background: #67c23a; padding: 15px; color: white; border-radius: 4px;">
+        Card 2
+      </div>
+    </SwyCol>
+    <SwyCol :xs="{ span: 24 }" :sm="{ span: 12 }" :md="{ span: 8 }" :lg="{ span: 6 }">
+      <div style="background: #e6a23c; padding: 15px; color: white; border-radius: 4px;">
+        Card 3
+      </div>
+    </SwyCol>
+    <SwyCol :xs="{ span: 24 }" :sm="{ span: 12 }" :md="{ span: 8 }" :lg="{ span: 6 }">
+      <div style="background: #f56c6c; padding: 15px; color: white; border-radius: 4px;">
+        Card 4
+      </div>
+    </SwyCol>
+  </SwyRow>
+</template>
+```
+
+:::
+
 ## API
 
-### Row Props
+### Row 属性
 
-| 参数    | 说明           | 类型                                                  | 默认值 |
-| ------- | -------------- | ----------------------------------------------------- | ------ |
-| gutter  | 栅格间隔       | `number`                                              | 0      |
-| justify | 水平排列方式   | `start / end / center / space-around / space-between` | start  |
-| align   | 垂直排列方式   | `top / middle / bottom`                               | top    |
-| tag     | 自定义元素标签 | `string`                                              | div    |
+| 参数    | 说明           | 类型                                                                 | 默认值 |
+| ------- | -------------- | -------------------------------------------------------------------- | ------ |
+| gutter  | 栅格间隔       | `number`                                                             | 0      |
+| justify | 水平排列方式   | `start / end / center / space-around / space-between / space-evenly` | start  |
+| align   | 垂直排列方式   | `top / middle / bottom`                                              | top    |
+| tag     | 自定义元素标签 | `string`                                                             | div    |
 
-### Col Props
+### Col 属性
 
-| 参数   | 说明               | 类型     | 默认值 |
-| ------ | ------------------ | -------- | ------ |
-| span   | 栅格占据的列数     | `number` | 24     |
-| offset | 栅格左侧的间隔格数 | `number` | 0      |
-| push   | 栅格向右移动格数   | `number` | 0      |
-| pull   | 栅格向左移动格数   | `number` | 0      |
-| tag    | 自定义元素标签     | `string` | div    |
+| 参数   | 说明                 | 类型               | 默认值 |
+| ------ | -------------------- | ------------------ | ------ |
+| span   | 栅格占据的列数       | `number`           | 24     |
+| offset | 栅格左侧的间隔格数   | `number`           | 0      |
+| push   | 栅格向右移动格数     | `number`           | 0      |
+| pull   | 栅格向左移动格数     | `number`           | 0      |
+| xs     | `<768px` 响应式配置  | `number / ColSize` | —      |
+| sm     | `≥768px` 响应式配置  | `number / ColSize` | —      |
+| md     | `≥992px` 响应式配置  | `number / ColSize` | —      |
+| lg     | `≥1200px` 响应式配置 | `number / ColSize` | —      |
+| xl     | `≥1920px` 响应式配置 | `number / ColSize` | —      |
+| tag    | 自定义元素标签       | `string`           | div    |

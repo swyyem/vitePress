@@ -6,7 +6,9 @@
 
 <script lang="ts" setup>
 import { computed, inject } from 'vue'
-import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
+import { isNumber, isObject } from '@swy-ui/utils'
+import { useNamespace } from '@swy-ui/hooks'
+import { rowContextKey } from '@swy-ui/components/row'
 import { colProps } from './col'
 
 defineOptions({
@@ -16,34 +18,44 @@ defineOptions({
 const props = defineProps(colProps)
 
 const ns = useNamespace('col')
-const row = inject<{ gutter?: number }>('row', {})
+const { gutter } = inject(rowContextKey, { gutter: computed(() => 0) })
 
 const colKls = computed(() => {
-  const classes: string[] = [ns.b()]
+  const classes: string[] = []
+  const pos = ['span', 'offset', 'pull', 'push'] as const
 
-  if (props.span) {
-    classes.push(`${ns.namespace.value}-col-${props.span}`)
+  pos.forEach(prop => {
+    const size = props[prop]
+    if (isNumber(size)) {
+      if (prop === 'span') classes.push(ns.b(`${props[prop]}`))
+      else if (size > 0) classes.push(ns.b(`${prop}-${props[prop]}`))
+    }
+  })
+
+  const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
+  sizes.forEach(size => {
+    if (isNumber(props[size])) {
+      classes.push(ns.b(`${size}-${props[size]}`))
+    } else if (isObject(props[size])) {
+      Object.entries(props[size]).forEach(([prop, sizeProp]) => {
+        classes.push(
+          prop !== 'span' ? ns.b(`${size}-${prop}-${sizeProp}`) : ns.b(`${size}-${sizeProp}`)
+        )
+      })
+    }
+  })
+
+  // this is for the fix
+  if (gutter.value) {
+    classes.push(ns.is('guttered'))
   }
-
-  if (props.offset) {
-    classes.push(`${ns.namespace.value}-col-offset-${props.offset}`)
-  }
-
-  if (props.pull) {
-    classes.push(`${ns.namespace.value}-col-pull-${props.pull}`)
-  }
-
-  if (props.push) {
-    classes.push(`${ns.namespace.value}-col-push-${props.push}`)
-  }
-
-  return classes
+  return [ns.b(), classes]
 })
 
 const colStyle = computed(() => {
   const style: Record<string, string> = {}
-  if (row.gutter) {
-    style.paddingLeft = style.paddingRight = `${row.gutter / 2}px`
+  if (gutter.value) {
+    style.paddingLeft = style.paddingRight = `${gutter.value / 2}px`
   }
   return style
 })
