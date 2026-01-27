@@ -127,9 +127,9 @@ const icons = [
 
 :::
 
-## 所有图
+## 完整的图标列表
 
-查看[完整图标列表](https://element-plus.org/zh-CN/component/icon.html)
+你可以查看 [Element Plus 官方图标列表](https://element-plus.org/zh-CN/component/icon.html)，本项目包含了其中绝大部分常用的图标组件。
 
 ## 在按钮中使用
 
@@ -165,20 +165,28 @@ const icons = [
 
 :::
 
-## Icon 属
+## Icon 属性
 
-| 属性名 | 说明             | 类型               | 可选                                        | 默认    |
-| ------ | ---------------- | ------------------ | ------------------------------------------- | ------- |
-| name   | 图标名称或图标组 | string / Component |                                             |         |
-| size   | 图标大小         | string             | small / default / large 或具体尺寸如 '20px' | default |
-| color  | 图标颜色         | string             |                                             |         |
+| 属性名 | 说明               | 类型               | 可选值                                      | 默认值  |
+| ------ | ------------------ | ------------------ | ------------------------------------------- | ------- |
+| name   | 图标名称或图标组件 | string / Component | —                                           | —       |
+| size   | 图标大小           | string             | small / default / large 或具体尺寸如 '20px' | default |
+| color  | 图标颜色           | string             | —                                           | —       |
+
+## 插槽 (Slots)
+
+| 插槽名  | 说明           |
+| ------- | -------------- |
+| default | 自定义图标内容 |
 
 ## 图标名称对照
 
-图标名称采用 kebab-case 命名（小写字连字符），例如：
+图标名称采用 kebab-case 命名（小写字母 + 连字符），例如：
 
 - `search` - 搜索
 - `edit` - 编辑
-- `arrow-left` - 左箭- `circle-check` - 圆形勾- `star-filled` - 实心星星
+- `arrow-left` - 左箭头
+- `circle-check` - 圆形勾选
+- `star-filled` - 实心星星
 
-查看完整图标列表请参[Element Plus Icons](https://element-plus.org/zh-CN/component/icon.html)
+查看完整图标列表请参考 [Element Plus Icons](https://element-plus.org/zh-CN/component/icon.html)

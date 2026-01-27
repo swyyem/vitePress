@@ -9,7 +9,6 @@ export const iconProps = buildProps({
    */
   name: {
     type: definePropType<string | Component>([String, Object]),
-    required: true,
   },
   /**
    * @description 图标颜色

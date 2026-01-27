@@ -1,10 +1,14 @@
 <template>
-  <component :is="iconComponent" :class="iconKls" :style="iconStyle" v-bind="$attrs" />
+  <i :class="iconKls" :style="iconStyle" v-bind="$attrs">
+    <slot>
+      <component :is="iconComponent" v-if="iconComponent" />
+    </slot>
+  </i>
 </template>
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
+import { useNamespace } from '@swy-ui/hooks'
 import { iconProps } from './icon'
 import * as Icons from './icons'
 
@@ -34,14 +38,13 @@ const iconComponent = computed(() => {
 const iconKls = computed(() => [
   ns.b(),
   {
-    [ns.m(props.size)]: props.size,
+    [ns.m(props.size)]: props.size && ['small', 'default', 'large'].includes(props.size),
   },
 ])
 
 const iconStyle = computed(() => ({
-  ...(props.color ? { color: props.color } : {}),
-  ...(props.size && !['small', 'default', 'large'].includes(props.size)
-    ? { fontSize: props.size }
-    : {}),
+  color: props.color || undefined,
+  fontSize:
+    props.size && !['small', 'default', 'large'].includes(props.size) ? props.size : undefined,
 }))
 </script>
