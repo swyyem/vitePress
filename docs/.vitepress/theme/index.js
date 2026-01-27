@@ -36,13 +36,14 @@ export default {
     //   console.warn(`注册组件 ${key} 失败`, e)
     // }
 
-    try {
-      if (!ctx.app.config.globalProperties.$swyUiRegistered) {
-        ctx.app.config.globalProperties.$swyUiRegistered = true
+    // 使用更可靠的组件注册检查机制
+    if (!ctx.app.config.globalProperties.$swyUiInstalled) {
+      ctx.app.config.globalProperties.$swyUiInstalled = true
+      try {
         ctx.app.use(SwyUi)
+      } catch (e) {
+        console.warn(`注册 SwyUi 组件库失败`, e)
       }
-    } catch (e) {
-      console.warn(`注册组件 失败`, e)
     }
 
     ctx.app.component('Demo', Demo)

@@ -20,7 +20,11 @@ const SwyUiPlugin = {
       Object.keys(module).forEach(exportKey => {
         const component = module[exportKey]
         if (component && (component.name || exportKey.startsWith('El'))) {
-          app.component(component.name || exportKey, component)
+          // 检查组件是否已注册，避免重复注册警告
+          const componentName = component.name || exportKey
+          if (!app.component(componentName)) {
+            app.component(componentName, component)
+          }
         }
       })
     })
