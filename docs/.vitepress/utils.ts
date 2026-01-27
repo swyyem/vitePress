@@ -561,6 +561,34 @@ const wholeList: MenuItem[] = [
             link: '/component/swy-ui/jichu/button',
           },
           {
+            text: 'ColorPicker 颜色选择器',
+            link: '/component/swy-ui/form/color-picker',
+          },
+          {
+            text: 'Container 容器布局',
+            link: '/component/swy-ui/layout/',
+          },
+          {
+            text: 'Icon 图标',
+            link: '/component/swy-ui/jichu/icon',
+          },
+          {
+            text: 'Row / Col 栅格布局',
+            link: '/component/swy-ui/layout/row-col',
+          },
+          {
+            text: 'Space 间距',
+            link: '/component/swy-ui/layout/space',
+          },
+          {
+            text: 'Scrollbar 滚动条',
+            link: '/component/swy-ui/layout/scrollbar',
+          },
+          {
+            text: 'Splitter 分割面板',
+            link: '/component/swy-ui/layout/splitter',
+          },
+          {
             text: 'Link 链接',
             link: '/component/swy-ui/jichu/link',
           },
@@ -568,10 +596,7 @@ const wholeList: MenuItem[] = [
             text: 'Text 文本',
             link: '/component/swy-ui/jichu/text',
           },
-          {
-            text: 'Icon 图标',
-            link: '/component/swy-ui/jichu/icon',
-          },
+
           {
             text: 'Card 卡片',
             link: '/component/swy-ui/jichu/card',
@@ -630,10 +655,6 @@ const wholeList: MenuItem[] = [
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
         items: [
-          {
-            text: 'Container 容器布局',
-            link: '/component/swy-ui/layout/',
-          },
           {
             text: 'Row / Col 栅格布局',
             link: '/component/swy-ui/layout/row-col',
@@ -833,10 +854,7 @@ const wholeList: MenuItem[] = [
             text: 'Autocomplete 自动完成',
             link: '/component/swy-ui/form/autocomplete',
           },
-          {
-            text: 'ColorPicker 颜色选择器',
-            link: '/component/swy-ui/form/color-picker',
-          },
+
           {
             text: '表单综合示例',
             link: '/component/swy-ui/form/example',
