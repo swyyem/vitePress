@@ -123,27 +123,35 @@
 
 ## API
 
-### Scrollbar Props
+### Scrollbar 属性
 
-| 参数      | 说明             | 类型              | 默认值 |
-| --------- | ---------------- | ----------------- | ------ |
-| height    | 滚动条高度       | `string / number` | —      |
-| maxHeight | 滚动条最大高度   | `string / number` | —      |
-| native    | 是否使用原生滚动 | `boolean`         | false  |
-| wrapStyle | 包裹层样式       | `string / object` | —      |
-| viewStyle | 视图层样式       | `string / object` | —      |
-| always    | 滚动条总是显示   | `boolean`         | false  |
+| 参数       | 说明                                                 | 类型              | 默认值 |
+| ---------- | ---------------------------------------------------- | ----------------- | ------ |
+| height     | 滚动条高度                                           | `string / number` | —      |
+| maxHeight  | 滚动条最大高度                                       | `string / number` | —      |
+| native     | 是否使用原生滚动条                                   | `boolean`         | false  |
+| wrap-style | 包裹层样式                                           | `string / object` | —      |
+| wrap-class | 包裹层类名                                           | `string / array`  | —      |
+| view-style | 视图层样式                                           | `string / object` | —      |
+| view-class | 视图层类名                                           | `string / array`  | —      |
+| noresize   | 不响应容器尺寸变化，容器尺寸不变时设置它可以优化性能 | `boolean`         | false  |
+| tag        | 视图层的元素标签                                     | `string`          | div    |
+| always     | 滚动条总是显示                                       | `boolean`         | false  |
+| min-size   | 滚动条最小尺寸                                       | `number`          | 20     |
+| distance   | 触发距离 (px)                                        | `number`          | 0      |
 
-### Scrollbar Events
+### Scrollbar 事件
 
-| 事件名 | 说明       | 参数                          |
-| ------ | ---------- | ----------------------------- |
-| scroll | 滚动时触发 | `({ scrollTop, scrollLeft })` |
+| 事件名      | 说明                                      | 参数                                               |
+| ----------- | ----------------------------------------- | -------------------------------------------------- |
+| scroll      | 滚动时触发                                | `({ scrollTop, scrollLeft })`                      |
+| end-reached | 滚动到底部或边缘时触发（需设置 distance） | `(direction: 'top' / 'bottom' / 'left' / 'right')` |
 
-### Scrollbar Methods
+### Scrollbar 方法
 
-| 方法名        | 说明                   | 参数                   |
-| ------------- | ---------------------- | ---------------------- |
-| setScrollTop  | 设置滚动条到顶部的距离 | `(scrollTop: number)`  |
-| setScrollLeft | 设置滚动条到左边的距离 | `(scrollLeft: number)` |
-| update        | 更新滚动条状态         | —                      |
+| 方法名        | 说明                   | 参数                                                  |
+| ------------- | ---------------------- | ----------------------------------------------------- |
+| scrollTo      | 滚动到特定坐标         | `(options: ScrollToOptions) / (x: number, y: number)` |
+| setScrollTop  | 设置滚动条到顶部的距离 | `(scrollTop: number)`                                 |
+| setScrollLeft | 设置滚动条到左边的距离 | `(scrollLeft: number)`                                |
+| update        | 更新滚动条状态         | —                                                     |

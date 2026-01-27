@@ -1,29 +1,43 @@
 <template>
-  <div :class="scrollbarKls" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-    <div ref="wrapRef" :class="ns.e('wrap')" :style="wrapStyle" @scroll="handleScroll">
-      <div ref="resizeRef" :class="ns.e('view')" :style="viewStyle">
-        <slot />
-      </div>
-    </div>
+  <div ref="scrollbarRef" :class="ns.b()">
     <div
-      v-show="!props.native && thumbVisible"
-      :class="[ns.e('bar'), ns.is('vertical')]"
-      :style="barStyle"
+      ref="wrapRef"
+      :class="wrapKls"
+      :style="wrapStyle"
+      :tabindex="tabindex"
+      @scroll="handleScroll"
     >
-      <div
-        ref="thumbRef"
-        :class="ns.e('thumb')"
-        :style="thumbStyle"
-        @mousedown="handleThumbMouseDown"
-      />
+      <component
+        :is="tag"
+        :id="id"
+        ref="resizeRef"
+        :class="resizeKls"
+        :style="viewStyle"
+        :role="role"
+        :aria-label="ariaLabel"
+        :aria-orientation="ariaOrientation"
+      >
+        <slot />
+      </component>
     </div>
+    <template v-if="!native">
+      <bar ref="barRef" :always="always" :min-size="minSize" />
+    </template>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch } from 'vue'
-import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
+import { computed, nextTick, onMounted, onUpdated, provide, reactive, ref, watch } from 'vue'
+import { useEventListener, useResizeObserver } from '@vueuse/core'
+import { addUnit, debugWarn, isNumber, isObject } from '@swy-ui/utils'
+import { useNamespace } from '@swy-ui/hooks'
+import Bar from './bar.vue'
+import { scrollbarContextKey } from './constants'
 import { scrollbarEmits, scrollbarProps } from './scrollbar'
+
+import type { ScrollbarDirection } from './scrollbar'
+import type { BarInstance } from './bar'
+import type { CSSProperties, StyleValue } from 'vue'
 
 defineOptions({
   name: 'SwyScrollbar',
@@ -33,134 +47,195 @@ const props = defineProps(scrollbarProps)
 const emit = defineEmits(scrollbarEmits)
 
 const ns = useNamespace('scrollbar')
+
+let stopResizeObserver: (() => void) | undefined = undefined
+let stopWrapResizeObserver: (() => void) | undefined = undefined
+let stopResizeListener: (() => void) | undefined = undefined
+let wrapScrollTop = 0
+let wrapScrollLeft = 0
+let direction = '' as ScrollbarDirection
+const distanceScrollState = {
+  bottom: false,
+  top: false,
+  right: false,
+  left: false,
+}
+
+const scrollbarRef = ref<HTMLDivElement>()
 const wrapRef = ref<HTMLDivElement>()
-const resizeRef = ref<HTMLDivElement>()
-const thumbRef = ref<HTMLDivElement>()
-const thumbVisible = ref(props.always)
-const scrollbarSize = ref(0)
-const moveY = ref(0)
+const resizeRef = ref<HTMLElement>()
+const barRef = ref<BarInstance>()
 
-const scrollbarKls = computed(() => [ns.b(), ns.is('always', props.always)])
-
-const wrapStyle = computed(() => {
-  const style: Record<string, any> = {}
-  if (props.height) {
-    style.height = typeof props.height === 'number' ? `${props.height}px` : props.height
-  }
-  if (props.maxHeight) {
-    style.maxHeight = typeof props.maxHeight === 'number' ? `${props.maxHeight}px` : props.maxHeight
-  }
-  return style
+const wrapStyle = computed<StyleValue>(() => {
+  const style: CSSProperties = {}
+  const height = addUnit(props.height)
+  const maxHeight = addUnit(props.maxHeight)
+  if (height) style.height = height
+  if (maxHeight) style.maxHeight = maxHeight
+  return [props.wrapStyle, style]
 })
 
-const viewStyle = computed(() => {
-  if (typeof props.viewStyle === 'string') {
-    return props.viewStyle
-  }
-  return props.viewStyle || {}
+const wrapKls = computed(() => {
+  return [props.wrapClass, ns.e('wrap'), { [ns.em('wrap', 'hidden-default')]: !props.native }]
 })
 
-const barStyle = computed(() => ({}))
-
-const thumbStyle = computed(() => {
-  const style: Record<string, string> = {}
-  if (scrollbarSize.value) {
-    style.height = `${scrollbarSize.value}%`
-    style.transform = `translateY(${moveY.value}%)`
-  }
-  return style
+const resizeKls = computed(() => {
+  return [ns.e('view'), props.viewClass]
 })
 
-const handleMouseEnter = () => {
-  if (!props.always) {
-    thumbVisible.value = true
+const shouldSkipDirection = (direction: ScrollbarDirection) => {
+  return distanceScrollState[direction] ?? false
+}
+
+const DIRECTION_PAIRS: Record<ScrollbarDirection, ScrollbarDirection> = {
+  top: 'bottom',
+  bottom: 'top',
+  left: 'right',
+  right: 'left',
+}
+const updateTriggerStatus = (arrivedStates: Record<string, boolean>) => {
+  const oppositeDirection = DIRECTION_PAIRS[direction]
+  if (!oppositeDirection) return
+
+  const arrived = arrivedStates[direction]
+  const oppositeArrived = arrivedStates[oppositeDirection]
+
+  if (arrived && !distanceScrollState[direction]) {
+    distanceScrollState[direction] = true
+  }
+
+  if (!oppositeArrived && distanceScrollState[oppositeDirection]) {
+    distanceScrollState[oppositeDirection] = false
   }
 }
 
-const handleMouseLeave = () => {
-  if (!props.always) {
-    thumbVisible.value = false
+const handleScroll = () => {
+  if (wrapRef.value) {
+    barRef.value?.handleScroll(wrapRef.value)
+    const prevTop = wrapScrollTop
+    const prevLeft = wrapScrollLeft
+    wrapScrollTop = wrapRef.value.scrollTop
+    wrapScrollLeft = wrapRef.value.scrollLeft
+
+    const arrivedStates = {
+      bottom:
+        wrapScrollTop + wrapRef.value.clientHeight >= wrapRef.value.scrollHeight - props.distance,
+      top: wrapScrollTop <= props.distance && prevTop !== 0,
+      right:
+        wrapScrollLeft + wrapRef.value.clientWidth >= wrapRef.value.scrollWidth - props.distance &&
+        prevLeft !== wrapScrollLeft,
+      left: wrapScrollLeft <= props.distance && prevLeft !== 0,
+    }
+
+    emit('scroll', {
+      scrollTop: wrapScrollTop,
+      scrollLeft: wrapScrollLeft,
+    })
+
+    if (prevTop !== wrapScrollTop) {
+      direction = wrapScrollTop > prevTop ? 'bottom' : 'top'
+    }
+    if (prevLeft !== wrapScrollLeft) {
+      direction = wrapScrollLeft > prevLeft ? 'right' : 'left'
+    }
+    if (props.distance > 0) {
+      if (shouldSkipDirection(direction)) {
+        return
+      }
+      updateTriggerStatus(arrivedStates)
+    }
+    if (arrivedStates[direction]) emit('end-reached', direction)
   }
 }
 
-const handleScroll = (e: Event) => {
-  const wrap = e.target as HTMLElement
-  const scrollTop = wrap.scrollTop
-  const scrollLeft = wrap.scrollLeft
-
-  // 计算滚动条位置
-  if (wrap.scrollHeight > wrap.clientHeight) {
-    const scrollRatio = scrollTop / (wrap.scrollHeight - wrap.clientHeight)
-    moveY.value = scrollRatio * (100 - scrollbarSize.value)
+function scrollTo(xCord: number, yCord?: number): void
+function scrollTo(options: ScrollToOptions): void
+function scrollTo(arg1: unknown, arg2?: number) {
+  if (isObject(arg1)) {
+    wrapRef.value!.scrollTo(arg1 as ScrollToOptions)
+  } else if (isNumber(arg1) && isNumber(arg2)) {
+    wrapRef.value!.scrollTo(arg1 as number, arg2 as number)
   }
-
-  emit('scroll', { scrollTop, scrollLeft })
 }
 
-const handleThumbMouseDown = (e: MouseEvent) => {
-  e.stopPropagation()
-  if (!wrapRef.value) return
-
-  const startY = e.clientY
-  const startTop = wrapRef.value.scrollTop
-
-  const handleMouseMove = (moveEvent: MouseEvent) => {
-    if (!wrapRef.value) return
-    const delta = moveEvent.clientY - startY
-    const scrollRatio = delta / wrapRef.value.clientHeight
-    wrapRef.value.scrollTop =
-      startTop + scrollRatio * (wrapRef.value.scrollHeight - wrapRef.value.clientHeight)
+const setScrollTop = (value: number) => {
+  if (!isNumber(value)) {
+    debugWarn('SwyScrollbar', 'value must be a number')
+    return
   }
+  wrapRef.value!.scrollTop = value
+}
 
-  const handleMouseUp = () => {
-    document.removeEventListener('mousemove', handleMouseMove)
-    document.removeEventListener('mouseup', handleMouseUp)
+const setScrollLeft = (value: number) => {
+  if (!isNumber(value)) {
+    debugWarn('SwyScrollbar', 'value must be a number')
+    return
   }
-
-  document.addEventListener('mousemove', handleMouseMove)
-  document.addEventListener('mouseup', handleMouseUp)
+  wrapRef.value!.scrollLeft = value
 }
 
 const update = () => {
-  if (!wrapRef.value) return
-
-  const wrap = wrapRef.value
-  const heightRatio = (wrap.clientHeight / wrap.scrollHeight) * 100
-
-  if (heightRatio >= 100) {
-    scrollbarSize.value = 0
-  } else {
-    scrollbarSize.value = Math.max(heightRatio, props.minSize)
-  }
+  barRef.value?.update()
+  distanceScrollState[direction] = false
 }
-
-const setScrollTop = (scrollTop: number) => {
-  if (!wrapRef.value) return
-  wrapRef.value.scrollTop = scrollTop
-}
-
-const setScrollLeft = (scrollLeft: number) => {
-  if (!wrapRef.value) return
-  wrapRef.value.scrollLeft = scrollLeft
-}
-
-onMounted(() => {
-  if (!props.native) {
-    update()
-  }
-})
 
 watch(
-  () => props.always,
-  val => {
-    thumbVisible.value = val
+  () => props.noresize,
+  noresize => {
+    if (noresize) {
+      stopResizeObserver?.()
+      stopWrapResizeObserver?.()
+      stopResizeListener?.()
+    } else {
+      ;({ stop: stopResizeObserver } = useResizeObserver(resizeRef, update))
+      ;({ stop: stopWrapResizeObserver } = useResizeObserver(wrapRef, update))
+      stopResizeListener = useEventListener('resize', update)
+    }
+  },
+  { immediate: true }
+)
+
+watch(
+  () => [props.maxHeight, props.height],
+  () => {
+    if (!props.native)
+      nextTick(() => {
+        update()
+        if (wrapRef.value) {
+          barRef.value?.handleScroll(wrapRef.value)
+        }
+      })
   }
 )
 
+provide(
+  scrollbarContextKey,
+  reactive({
+    scrollbarElement: scrollbarRef,
+    wrapElement: wrapRef,
+  })
+)
+
+onMounted(() => {
+  if (!props.native)
+    nextTick(() => {
+      update()
+    })
+})
+onUpdated(() => update())
+
 defineExpose({
+  /** @description 滚动条包裹层引用 */
   wrapRef,
+  /** @description 手动更新滚动条状态 */
   update,
+  /** @description 滚动到特定坐标 */
+  scrollTo,
+  /** @description 设置垂直滚动距离 */
   setScrollTop,
+  /** @description 设置水平滚动距离 */
   setScrollLeft,
+  /** @description 处理滚动事件 */
+  handleScroll,
 })
 </script>
