@@ -548,6 +548,10 @@ const wholeList: MenuItem[] = [
     collapsed: true, // 默认折叠
     items: [
       {
+        text: '组件总览',
+        link: '/component/swy-ui/overview',
+      },
+      {
         text: '基础组件',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
@@ -758,6 +762,14 @@ const wholeList: MenuItem[] = [
           {
             text: 'Tour 漫游式引导',
             link: '/component/swy-ui/feedback/tour',
+          },
+          {
+            text: 'Popconfirm 气泡确认框',
+            link: '/component/swy-ui/others/popconfirm',
+          },
+          {
+            text: 'MessageBox 弹框',
+            link: '/component/swy-ui/others/message-box',
           },
         ],
       },
