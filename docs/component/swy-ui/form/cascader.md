@@ -1,6 +1,6 @@
-# Cascader 级联选择�?
+﻿# Cascader 级联选择
 
-当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择�?
+当一个数据集合有清晰的层级结构时，可通过级联选择器逐级查看并选择
 
 ## 基础用法
 
@@ -10,7 +10,7 @@
 <template>
   <div style="display: flex; flex-direction: column; gap: 20px;">
     <div>
-      <div style="margin-bottom: 8px; color: #606266;">选择地区�?/div>
+      <div style="margin-bottom: 8px; color: #606266;">选择地区</div>
       <SwyCascader v-model="value" :options="options" placeholder="请选择地区" />
     </div>
 
@@ -60,7 +60,7 @@ const options = [
 
 :::
 
-## 可清�?
+## 可清
 
 :::demo
 
@@ -85,8 +85,8 @@ const options = [
     value: 'beijing',
     label: '北京',
     children: [
-      { value: 'chaoyang', label: '朝阳�? },
-      { value: 'haidian', label: '海淀�? },
+      { value: 'chaoyang', label: '朝阳' },
+      { value: 'haidian', label: '海淀' },
     ],
   },
   {
@@ -94,7 +94,7 @@ const options = [
     label: '上海',
     children: [
       { value: 'pudong', label: '浦东新区' },
-      { value: 'huangpu', label: '黄浦�? },
+      { value: 'huangpu', label: '黄浦' },
     ],
   },
 ]
@@ -103,7 +103,7 @@ const options = [
 
 :::
 
-## 多�?
+## 多
 
 :::demo
 
@@ -115,7 +115,7 @@ const options = [
       :options="options"
       multiple
       collapse-tags
-      placeholder="支持多�?
+      placeholder="支持多选"
     />
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px;">
@@ -162,9 +162,9 @@ const options = [
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 15px;">
-    <SwyCascader v-model="value1" :options="options" size="large" placeholder="大尺�? />
+    <SwyCascader v-model="value1" :options="options" size="large" placeholder="大尺寸" />
     <SwyCascader v-model="value2" :options="options" placeholder="默认尺寸" />
-    <SwyCascader v-model="value3" :options="options" size="small" placeholder="小尺�? />
+    <SwyCascader v-model="value3" :options="options" size="small" placeholder="小尺寸" />
   </div>
 </template>
 
@@ -194,22 +194,22 @@ const options = [
 
 ### Cascader Props
 
-| 参数                 | 说明              | 类型                      | 默认�?  |
+| 参数                 | 说明              | 类型                      | 默认    |
 | -------------------- | ----------------- | ------------------------- | ------- |
-| modelValue / v-model | 绑定�?            | `array`                   | []      |
-| options              | 可选项数据�?      | `array`                   | []      |
+| modelValue / v-model | 绑定值            | `array`                   | []      |
+| options              | 可选项数据源      | `array`                   | []      |
 | placeholder          | 占位内容          | `string`                  | 请选择  |
 | size                 | 尺寸              | `large / default / small` | default |
-| clearable            | 是否可清�?        | `boolean`                 | false   |
-| multiple             | 是否多�?          | `boolean`                 | false   |
+| clearable            | 是否可清空        | `boolean`                 | false   |
+| multiple             | 是否多选          | `boolean`                 | false   |
 | collapseTags         | 多选时是否折叠Tag | `boolean`                 | false   |
 | disabled             | 是否禁用          | `boolean`                 | false   |
-| separator            | 选项分隔�?        | `string`                  | /       |
+| separator            | 选项分隔符        | `string`                  | /       |
 
 ### Cascader Events
 
-| 事件�? | 说明           | 参数                  |
+| 事件   | 说明           | 参数                  |
 | ------ | -------------- | --------------------- |
 | change | 值变化时触发   | `(value: array)`      |
-| blur   | 失去焦点时触�? | `(event: FocusEvent)` |
-| focus  | 获得焦点时触�? | `(event: FocusEvent)` |
+| blur   | 失去焦点时触发 | `(event: FocusEvent)` |
+| focus  | 获得焦点时触发 | `(event: FocusEvent)` |

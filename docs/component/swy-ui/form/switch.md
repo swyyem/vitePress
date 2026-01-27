@@ -1,17 +1,17 @@
-# Switch 开�?
+﻿# Switch 开关
 
-表示两种相互对立的状态间的切换，多用于触发「开/关」�?
+表示两种相互对立的状态间的切换，多用于触发「开/关」
 
 ## 基础用法
 
-绑定 `v-model` 到一�?`Boolean` 类型的变量�?
+绑定 `v-model` 到一个`Boolean` 类型的变量
 :::demo
 
 ```vue
 <template>
   <div>
     <SwySwitch v-model="value1" @change="handleChange" />
-    <p>开关状�? {{ value1 ? '开�? : '关闭' }}</p>
+    <p>开关状态：{{ value1 ? '开启' : '关闭' }}</p>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ const handleChange = val => {
 <template>
   <div>
     <ProField valueType="Switch" v-model="value1" @change="handleChange" />
-    <p>开关状�? {{ value1 ? '开�? : '关闭' }}</p>
+    <p>开关状态：{{ value1 ? '开启' : '关闭' }}</p>
   </div>
 </template>
 
@@ -55,14 +55,14 @@ const handleChange = val => {
 
 ## 文字描述
 
-使用 `active-text` �?`inactive-text` 属性来设置开关的文字描述�?
+使用 `active-text` `inactive-text` 属性来设置开关的文字描述
 :::demo
 
 ```vue
 <template>
   <div>
-    <SwySwitch v-model="value2" active-text="开�? inactive-text="关闭" />
-    <p style="margin-top: 10px;">当前状�? {{ value2 ? '已开�? : '已关�? }}</p>
+    <SwySwitch v-model="value2" active-text="开启" inactive-text="关闭" />
+    <p style="margin-top: 10px;">当前状态：{{ value2 ? '已开启' : '已关闭' }}</p>
   </div>
 </template>
 
@@ -85,9 +85,9 @@ const value2 = ref(false)
     <ProField
       valueType="Switch"
       v-model="value2"
-      :filedProps="{ activeText: '开�?, inactiveText: '关闭' }"
+      :fieldProps="{ activeText: '开启', inactiveText: '关闭' }"
     />
-    <p style="margin-top: 10px;">当前状�? {{ value2 ? '已开�? : '已关�? }}</p>
+    <p style="margin-top: 10px;">当前状态：{{ value2 ? '已开启' : '已关闭' }}</p>
   </div>
 </template>
 
@@ -100,9 +100,9 @@ const value2 = ref(false)
 
 :::
 
-## 禁用状�?
+## 禁用状态
 
-设置 `disabled` 属性，接受一�?`Boolean`，设�?`true` 即可禁用�?
+设置 `disabled` 属性，接受一个`Boolean`，设为`true` 即可禁用
 :::demo
 
 ```vue
@@ -130,8 +130,8 @@ const value4 = ref(false)
 ```vue
 <template>
   <div style="display: flex; gap: 20px;">
-    <ProField valueType="Switch" v-model="value3" :filedProps="{ disabled: true }" />
-    <ProField valueType="Switch" v-model="value4" :filedProps="{ disabled: true }" />
+    <ProField valueType="Switch" v-model="value3" :fieldProps="{ disabled: true }" />
+    <ProField valueType="Switch" v-model="value4" :fieldProps="{ disabled: true }" />
   </div>
 </template>
 
@@ -145,9 +145,9 @@ const value4 = ref(false)
 
 :::
 
-## 扩展�?value 类型
+## 扩展value类型
 
-可以设置 `active-value` �?`inactive-value` 属性，它们接受 `Boolean`、`String` �?`Number` 类型的值�?
+可以设置 `active-value` `inactive-value` 属性，它们接受 `Boolean`、`String`、`Number` 类型的值
 :::demo
 
 ```vue
@@ -157,11 +157,10 @@ const value4 = ref(false)
       v-model="value5"
       :active-value="1"
       :inactive-value="0"
-      active-text="�?
-      inactive-text="
-      �?
+      active-text="开"
+      inactive-text="关"
     />
-    <p style="margin-top: 10px;">当前�? {{ value5 }} (类型: {{ typeof value5 }})</p>
+    <p style="margin-top: 10px;">当前 {{ value5 }} (类型: {{ typeof value5 }})</p>
   </div>
 </template>
 
@@ -184,9 +183,9 @@ const value5 = ref(1)
     <ProField
       valueType="Switch"
       v-model="value5"
-      :filedProps="{ activeValue: 1, inactiveValue: 0, activeText: '�?, inactiveText: '�? }"
+      :fieldProps="{ activeValue: 1, inactiveValue: 0, activeText: '开', inactiveText: '关' }"
     />
-    <p style="margin-top: 10px;">当前�? {{ value5 }} (类型: {{ typeof value5 }})</p>
+    <p style="margin-top: 10px;">当前 {{ value5 }} (类型: {{ typeof value5 }})</p>
   </div>
 </template>
 
@@ -199,9 +198,9 @@ const value5 = ref(1)
 
 :::
 
-## 字符串�?
+## 字符串
 
-使用字符串作为开关的值�?
+使用字符串作为开关的值
 :::demo
 
 ```vue
@@ -214,7 +213,7 @@ const value5 = ref(1)
       active-text="ON"
       inactive-text="OFF"
     />
-    <p style="margin-top: 10px;">当前�? {{ value6 }}</p>
+    <p style="margin-top: 10px;">当前 {{ value6 }}</p>
   </div>
 </template>
 
@@ -237,14 +236,14 @@ const value6 = ref('off')
     <ProField
       valueType="Switch"
       v-model="value6"
-      :filedProps="{
+      :fieldProps="{
         activeValue: 'on',
         inactiveValue: 'off',
         activeText: 'ON',
         inactiveText: 'OFF',
       }"
     />
-    <p style="margin-top: 10px;">当前�? {{ value6 }}</p>
+    <p style="margin-top: 10px;">当前 {{ value6 }}</p>
   </div>
 </template>
 
@@ -264,9 +263,9 @@ const value6 = ref('off')
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start;">
-    <SwySwitch v-model="value7" size="large" active-text="大尺�? />
+    <SwySwitch v-model="value7" size="large" active-text="大尺寸" />
     <SwySwitch v-model="value7" size="default" active-text="默认" />
-    <SwySwitch v-model="value7" size="small" active-text="�? />
+    <SwySwitch v-model="value7" size="small" active-text="小尺寸" />
   </div>
 </template>
 
@@ -289,17 +288,17 @@ const value7 = ref(true)
     <ProField
       valueType="Switch"
       v-model="value7"
-      :filedProps="{ size: 'large', activeText: '大尺�? }"
+      :fieldProps="{ size: 'large', activeText: '大尺寸' }"
     />
     <ProField
       valueType="Switch"
       v-model="value7"
-      :filedProps="{ size: 'default', activeText: '默认' }"
+      :fieldProps="{ size: 'default', activeText: '默认' }"
     />
     <ProField
       valueType="Switch"
       v-model="value7"
-      :filedProps="{ size: 'small', activeText: '�? }"
+      :fieldProps="{ size: 'small', activeText: '小尺寸' }"
     />
   </div>
 </template>
@@ -315,7 +314,7 @@ const value7 = ref(true)
 
 ## 实际应用示例
 
-控制通知设置�?
+控制通知设置
 :::demo
 
 ```vue
@@ -324,22 +323,22 @@ const value7 = ref(true)
     <div style="margin-bottom: 15px;">
       <div style="display: flex; align-items: center; margin-bottom: 10px;">
         <span style="width: 150px;">邮件通知</span>
-        <SwySwitch v-model="settings.email" active-text="开�? inactive-text="关闭" />
+        <SwySwitch v-model="settings.email" active-text="开启" inactive-text="关闭" />
       </div>
       <div style="display: flex; align-items: center; margin-bottom: 10px;">
         <span style="width: 150px;">短信通知</span>
-        <SwySwitch v-model="settings.sms" active-text="开�? inactive-text="关闭" />
+        <SwySwitch v-model="settings.sms" active-text="开启" inactive-text="关闭" />
       </div>
       <div style="display: flex; align-items: center;">
         <span style="width: 150px;">推送通知</span>
-        <SwySwitch v-model="settings.push" active-text="开�? inactive-text="关闭" />
+        <SwySwitch v-model="settings.push" active-text="开启" inactive-text="关闭" />
       </div>
     </div>
     <div style="padding: 10px; background: #f5f5f5; border-radius: 4px;">
       <p style="margin: 0; font-weight: bold;">当前设置:</p>
-      <p style="margin: 5px 0;">邮件: {{ settings.email ? '�? : '�? }}</p>
-      <p style="margin: 5px 0;">短信: {{ settings.sms ? '�? : '�? }}</p>
-      <p style="margin: 5px 0;">推�? {{ settings.push ? '�? : '�? }}</p>
+      <p style="margin: 5px 0;">邮件: {{ settings.email ? '开启' : '关闭' }}</p>
+      <p style="margin: 5px 0;">短信: {{ settings.sms ? '开启' : '关闭' }}</p>
+      <p style="margin: 5px 0;">推送: {{ settings.push ? '开启' : '关闭' }}</p>
     </div>
   </div>
 </template>
@@ -361,25 +360,25 @@ const settings = ref({
 
 ### Props
 
-| 属性名               | 说明                 | 类型                            | 默认�?      |
+| 属性名               | 说明                 | 类型                            | 默认        |
 | -------------------- | -------------------- | ------------------------------- | ----------- |
-| modelValue / v-model | 绑定�?               | `boolean / string / number`     | `false`     |
+| modelValue / v-model | 绑定值               | `boolean / string / number`     | `false`     |
 | disabled             | 是否禁用             | `boolean`                       | `false`     |
-| active-text          | 开关打开时的文字描述 | `string`                        | �?          |
-| inactive-text        | 开关关闭时的文字描�? | `string`                        | �?          |
-| active-value         | 开关打开时的�?       | `boolean / string / number`     | `true`      |
-| inactive-value       | 开关关闭时的�?       | `boolean / string / number`     | `false`     |
+| active-text          | 开关打开时的文字描述 | `string`                        |             |
+| inactive-text        | 开关关闭时的文字描述 | `string`                        |             |
+| active-value         | 开关打开时的值       | `boolean / string / number`     | `true`      |
+| inactive-value       | 开关关闭时的值       | `boolean / string / number`     | `false`     |
 | size                 | 尺寸                 | `'large' / 'default' / 'small'` | `'default'` |
 
 ### Events
 
-| 事件�? | 说明               | 类型                                           |
+| 事件   | 说明               | 类型                                           |
 | ------ | ------------------ | ---------------------------------------------- |
 | change | 状态发生变化时触发 | `(value: boolean \| string \| number) => void` |
 
 ### Exposes
 
-| 名称     | 说明                | 类型                    |
-| -------- | ------------------- | ----------------------- |
-| inputRef | switch �?input 元素 | `Ref<HTMLInputElement>` |
-| checked  | 是否选中            | `ComputedRef<boolean>`  |
+| 名称     | 说明              | 类型                    |
+| -------- | ----------------- | ----------------------- |
+| inputRef | switch input 元素 | `Ref<HTMLInputElement>` |
+| checked  | 是否选中          | `ComputedRef<boolean>`  |

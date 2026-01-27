@@ -1,17 +1,17 @@
-# Select 选择�?
+﻿# Select 选择
 
-当选项过多时，使用下拉菜单展示并选择内容�?
+当选项过多时，使用下拉菜单展示并选择内容
 
 ## 基础用法
 
-适用广泛的基础单选�?
+适用广泛的基础单选
 :::demo
 
 ```vue
 <template>
   <div>
     <SwySelect v-model="value1" :options="options1" placeholder="请选择" @change="handleChange" />
-    <p>选中的�? {{ value1 }}</p>
+    <p>选中的 {{ value1 }}</p>
   </div>
 </template>
 
@@ -45,10 +45,10 @@ const handleChange = val => {
     <ProField
       valueType="Select"
       v-model="value1"
-      :filedProps="{ options: options1, placeholder: '请选择' }"
+      :fieldProps="{ options: options1, placeholder: '请选择' }"
       @change="handleChange"
     />
-    <p>选中的�? {{ value1 }}</p>
+    <p>选中的 {{ value1 }}</p>
   </div>
 </template>
 
@@ -80,7 +80,7 @@ const handleChange = val => {
 <template>
   <div>
     <SwySelect v-model="value2" :options="options2" placeholder="请选择" />
-    <p>选中的�? {{ value2 }}</p>
+    <p>选中的 {{ value2 }}</p>
   </div>
 </template>
 
@@ -110,9 +110,9 @@ const options2 = ref([
     <ProField
       valueType="Select"
       v-model="value2"
-      :filedProps="{ options: options2, placeholder: '请选择' }"
+      :fieldProps="{ options: options2, placeholder: '请选择' }"
     />
-    <p>选中的�? {{ value2 }}</p>
+    <p>选中的 {{ value2 }}</p>
   </div>
 </template>
 
@@ -132,9 +132,9 @@ const options2 = ref([
 
 :::
 
-## 禁用状�?
+## 禁用状态
 
-整个选择器禁用�?
+整个选择器禁用
 :::demo
 
 ```vue
@@ -168,7 +168,7 @@ const options3 = ref([
     <ProField
       valueType="Select"
       v-model="value3"
-      :filedProps="{ options: options3, placeholder: '请选择', disabled: true }"
+      :fieldProps="{ options: options3, placeholder: '请选择', disabled: true }"
     />
   </div>
 </template>
@@ -194,9 +194,9 @@ const options3 = ref([
 ```vue
 <template>
   <div style="display: flex; flex-direction: column; gap: 10px;">
-    <SwySelect v-model="value4" :options="sizeOptions" placeholder="大尺�? size="large" />
+    <SwySelect v-model="value4" :options="sizeOptions" placeholder="大尺寸" size="large" />
     <SwySelect v-model="value4" :options="sizeOptions" placeholder="默认尺寸" size="default" />
-    <SwySelect v-model="value4" :options="sizeOptions" placeholder="小尺�? size="small" />
+    <SwySelect v-model="value4" :options="sizeOptions" placeholder="小尺寸" size="small" />
   </div>
 </template>
 
@@ -224,17 +224,17 @@ const sizeOptions = ref([
     <ProField
       valueType="Select"
       v-model="value4"
-      :filedProps="{ options: sizeOptions, placeholder: '大尺�?, size: 'large' }"
+      :fieldProps="{ options: sizeOptions, placeholder: '大尺寸', size: 'large' }"
     />
     <ProField
       valueType="Select"
       v-model="value4"
-      :filedProps="{ options: sizeOptions, placeholder: '默认尺寸', size: 'default' }"
+      :fieldProps="{ options: sizeOptions, placeholder: '默认尺寸', size: 'default' }"
     />
     <ProField
       valueType="Select"
       v-model="value4"
-      :filedProps="{ options: sizeOptions, placeholder: '小尺�?, size: 'small' }"
+      :fieldProps="{ options: sizeOptions, placeholder: '小尺寸', size: 'small' }"
     />
   </div>
 </template>
@@ -255,7 +255,7 @@ const sizeOptions = ref([
 
 ## 实际应用示例
 
-选择城市�?
+选择城市
 :::demo
 
 ```vue
@@ -290,7 +290,7 @@ const getCityLabel = value => {
 }
 
 const onCityChange = value => {
-  console.log('选择的城�?', getCityLabel(value))
+  console.log('选择的城市', getCityLabel(value))
 }
 </script>
 ```
@@ -301,9 +301,9 @@ const onCityChange = value => {
 
 ### Props
 
-| 属性名               | 说明     | 类型                                                                  | 默认�?      |
+| 属性名               | 说明     | 类型                                                                  | 默认        |
 | -------------------- | -------- | --------------------------------------------------------------------- | ----------- |
-| modelValue / v-model | 绑定�?   | `string / number`                                                     | `''`        |
+| modelValue / v-model | 绑定值   | `string / number`                                                     | `''`        |
 | options              | 选项数组 | `Array<{label: string, value: string \| number, disabled?: boolean}>` | `[]`        |
 | placeholder          | 占位文本 | `string`                                                              | `'请选择'`  |
 | disabled             | 是否禁用 | `boolean`                                                             | `false`     |
@@ -311,12 +311,12 @@ const onCityChange = value => {
 
 ### Events
 
-| 事件�? | 说明                 | 类型                                |
+| 事件   | 说明                 | 类型                                |
 | ------ | -------------------- | ----------------------------------- |
 | change | 选中值发生变化时触发 | `(value: string \| number) => void` |
 
 ### Exposes
 
-| 名称      | 说明                  | 类型                     |
-| --------- | --------------------- | ------------------------ |
-| selectRef | select 的原�?DOM 元素 | `Ref<HTMLSelectElement>` |
+| 名称      | 说明                | 类型                     |
+| --------- | ------------------- | ------------------------ |
+| selectRef | select 的原DOM 元素 | `Ref<HTMLSelectElement>` |

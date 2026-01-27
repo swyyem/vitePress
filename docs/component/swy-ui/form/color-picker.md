@@ -1,6 +1,6 @@
-# ColorPicker 颜色选择�?
+﻿# ColorPicker 颜色选择
 
-用于选择颜色�?
+用于选择颜色
 
 ## 基础用法
 
@@ -26,7 +26,7 @@ const color1 = ref('#409EFF')
 
 :::
 
-## 支持透明�?
+## 支持透明
 
 :::demo
 
@@ -59,7 +59,7 @@ const color2 = ref('rgba(64, 158, 255, 0.5)')
 
 :::
 
-## 预定义颜�?
+## 预定义颜
 
 :::demo
 
@@ -121,18 +121,18 @@ const color4 = ref('#409EFF')
 
 ### ColorPicker Props
 
-| 参数                 | 说明               | 类型                      | 默认�?  |
+| 参数                 | 说明               | 类型                      | 默认    |
 | -------------------- | ------------------ | ------------------------- | ------- |
-| modelValue / v-model | 绑定�?             | `string`                  | �?      |
+| modelValue / v-model | 绑定               | `string`                  |         |
 | disabled             | 是否禁用           | `boolean`                 | false   |
 | size                 | 尺寸               | `large / default / small` | default |
 | showAlpha            | 是否支持透明度选择 | `boolean`                 | false   |
-| colorFormat          | 颜色的格�?         | `hex / rgb / hsl / hsv`   | hex     |
-| predefine            | 预定义颜�?         | `array`                   | �?      |
+| colorFormat          | 颜色的格           | `hex / rgb / hsl / hsv`   | hex     |
+| predefine            | 预定义颜           | `array`                   |         |
 
 ### ColorPicker Events
 
-| 事件�?       | 说明                               | 参数              |
-| ------------ | ---------------------------------- | ----------------- |
-| change       | 颜色值改变时触发                   | `(value: string)` |
-| activeChange | 面板中当前显示的颜色发生改变时触�? | `(value: string)` |
+| 事件         | 说明                             | 参数              |
+| ------------ | -------------------------------- | ----------------- |
+| change       | 颜色值改变时触发                 | `(value: string)` |
+| activeChange | 面板中当前显示的颜色发生改变时触 | `(value: string)` |
