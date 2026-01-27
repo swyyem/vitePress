@@ -1,7 +1,13 @@
-import { buildProps } from '@swy-ui/utils'
-import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
+import { buildProps, iconPropType } from '@swy-ui/utils'
+import type { ExtractPropTypes, ExtractPublicPropTypes, PropType } from 'vue'
+import type Link from './link.vue'
 
 export const linkTypes = ['primary', 'success', 'warning', 'danger', 'info', 'default'] as const
+
+export interface LinkConfigContext {
+  type?: string
+  underline?: string | boolean
+}
 
 export const linkProps = buildProps({
   /**
@@ -10,14 +16,15 @@ export const linkProps = buildProps({
   type: {
     type: String,
     values: linkTypes,
-    default: 'default',
+    default: undefined,
   },
   /**
-   * @description 是否下划线
+   * @description 下划线显示时机
    */
   underline: {
-    type: Boolean,
-    default: true,
+    type: [Boolean, String],
+    values: [true, false, 'always', 'hover', 'never'],
+    default: undefined,
   },
   /**
    * @description 是否禁用
@@ -29,11 +36,23 @@ export const linkProps = buildProps({
   /**
    * @description 原生 href 属性
    */
-  href: String,
+  href: {
+    type: String,
+    default: '',
+  },
+  /**
+   * @description 原生 target 属性
+   */
+  target: {
+    type: String as PropType<'_blank' | '_parent' | '_self' | '_top' | string>,
+    default: '_self',
+  },
   /**
    * @description 图标组件
    */
-  icon: String,
+  icon: {
+    type: iconPropType,
+  },
 } as const)
 
 export const linkEmits = {
@@ -43,5 +62,5 @@ export const linkEmits = {
 export type LinkProps = ExtractPropTypes<typeof linkProps>
 export type LinkPropsPublic = ExtractPublicPropTypes<typeof linkProps>
 export type LinkEmits = typeof linkEmits
-
+export type LinkInstance = InstanceType<typeof Link>
 export type LinkType = LinkProps['type']

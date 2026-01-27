@@ -7,7 +7,7 @@ import type { ButtonConfigContext } from '@swy-ui/components/button'
 import type { CardConfigContext } from '@swy-ui/components/card'
 // import type { DialogConfigContext } from '@swy-ui/components/dialog'
 // import type { MessageConfigContext } from '@swy-ui/components/message'
-// import type { LinkConfigContext } from '@swy-ui/components/link'
+import type { LinkConfigContext } from '@swy-ui/components/link'
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 export type ExperimentalFeatures = {
@@ -54,7 +54,7 @@ export const configProviderProps = buildProps({
    * @description link related configuration, [see the following table](https://.org/en-US/component/config-provider.html#link-attribute)
    */
   link: {
-    type: definePropType<any>(Object),
+    type: definePropType<LinkConfigContext>(Object),
   },
   /**
    * @description features at experimental stage to be added, all features are default to be set to false, [see the following table](https://.org/en-US/component/config-provider.html#experimental-features)                                                                            | ^[object]

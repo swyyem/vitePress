@@ -55,6 +55,12 @@
     }
   }
 
+  & .#{$namespace}-icon {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+
   & [class*='#{$namespace}-icon-'] {
     & + span {
       margin-left: 5px;
