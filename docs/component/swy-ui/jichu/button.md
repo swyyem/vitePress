@@ -82,16 +82,32 @@
 
 :::
 
-## 文字按钮
+## 链接按钮
 
-没有边框和背景色的按钮
+使用 `link` 属性来定义链接样式的按钮
 :::demo
 
 ```vue
 <template>
   <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-    <SwyButton type="text">文字按钮</SwyButton>
-    <SwyButton type="text" disabled>禁用文字按钮</SwyButton>
+    <SwyButton link>链接按钮</SwyButton>
+    <SwyButton link disabled>禁用链接按钮</SwyButton>
+  </div>
+</template>
+```
+
+:::
+
+## 文字按钮
+
+使用 `text` 属性创建无边框和背景的文字按钮
+:::demo
+
+```vue
+<template>
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <SwyButton text type="primary">文字按钮</SwyButton>
+    <SwyButton text disabled>禁用文字按钮</SwyButton>
   </div>
 </template>
 ```
@@ -269,6 +285,8 @@ const handleThrottleClick = () => {
       <ProField valueType="Button" :fieldProps="{ type: 'danger', circle: true, shadow: true }">
         <template #icon>🔥</template>
       </ProField>
+      <ProField valueType="Button" :fieldProps="{ link: true }">链接按钮</ProField>
+      <ProField valueType="Button" :fieldProps="{ text: true }">文字按钮</ProField>
     </div>
     <ProField valueType="Button" :fieldProps="{ type: 'primary', block: true, shadow: true }">
       块级阴影按钮
@@ -281,29 +299,29 @@ const handleThrottleClick = () => {
 
 ## Button 属
 
-| 属性名            | 说明                         | 类型               | 可选                                               | 默认    |
-| ----------------- | ---------------------------- | ------------------ | -------------------------------------------------- | ------- |
-| size              | 按钮尺寸                     | string             | large / default / small                            | default |
-| type              | 按钮类型                     | string             | primary / success / warning / danger / info / text |         |
-| plain             | 是否为朴素按                 | boolean            |                                                    | false   |
-| text              | 是否为文本按                 | boolean            |                                                    | false   |
-| link              | 是否为链接按                 | boolean            |                                                    | false   |
-| bg                | 文本按钮背景色是否常         | boolean            |                                                    | false   |
-| round             | 是否为圆角按                 | boolean            |                                                    | false   |
-| circle            | 是否为圆形按                 | boolean            |                                                    | false   |
-| loading           | 是否为加载状                 | boolean            |                                                    | false   |
-| loading-icon      | 自定义加载图                 | Component          |                                                    | Loading |
-| disabled          | 是否禁用                     | boolean            |                                                    | false   |
-| icon              | 图标组件                     | Component          |                                                    |         |
-| autofocus         | 是否自动聚焦                 | boolean            |                                                    | false   |
-| native-type       | 原生 type 属                 | string             | button / submit / reset                            | button  |
-| auto-insert-space | 自动在两个汉字之间插入空     | boolean            |                                                    | false   |
-| color             | 自定义按钮颜                 | string             |                                                    |         |
-| dark              | 深色模式                     | boolean            |                                                    | false   |
-| tag               | 自定义元素标                 | string / Component |                                                    | button  |
-| shadow            | 阴影效果                     | boolean            |                                                    | false   |
-| block             | 块级按钮                     | boolean            |                                                    | false   |
-| throttle          | 节流时间（毫秒）防止重复点击 | number             |                                                    | 0       |
+| 属性名            | 说明                           | 类型               | 可选                                               | 默认    |
+| ----------------- | ------------------------------ | ------------------ | -------------------------------------------------- | ------- |
+| size              | 按钮尺寸                       | string             | large / default / small                            | default |
+| type              | 按钮类型                       | string             | primary / success / warning / danger / info / text |         |
+| plain             | 是否为朴素按                   | boolean            |                                                    | false   |
+| text              | 是否为文字按钮（无边框和背景） | boolean            |                                                    | false   |
+| link              | 是否为链接按钮                 | boolean            |                                                    | false   |
+| bg                | 文本按钮背景色是否常           | boolean            |                                                    | false   |
+| round             | 是否为圆角按                   | boolean            |                                                    | false   |
+| circle            | 是否为圆形按                   | boolean            |                                                    | false   |
+| loading           | 是否为加载状                   | boolean            |                                                    | false   |
+| loading-icon      | 自定义加载图                   | Component          |                                                    | Loading |
+| disabled          | 是否禁用                       | boolean            |                                                    | false   |
+| icon              | 图标组件                       | Component          |                                                    |         |
+| autofocus         | 是否自动聚焦                   | boolean            |                                                    | false   |
+| native-type       | 原生 type 属                   | string             | button / submit / reset                            | button  |
+| auto-insert-space | 自动在两个汉字之间插入空       | boolean            |                                                    | false   |
+| color             | 自定义按钮颜                   | string             |                                                    |         |
+| dark              | 深色模式                       | boolean            |                                                    | false   |
+| tag               | 自定义元素标                   | string / Component |                                                    | button  |
+| shadow            | 阴影效果                       | boolean            |                                                    | false   |
+| block             | 块级按钮                       | boolean            |                                                    | false   |
+| throttle          | 节流时间（毫秒）防止重复点击   | number             |                                                    | 0       |
 
 ## Button 事件
 

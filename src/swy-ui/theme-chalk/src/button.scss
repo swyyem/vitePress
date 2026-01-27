@@ -239,7 +239,7 @@ $button-icon-span-gap: map.merge(
     padding: 2px;
     height: auto;
     min-width: auto; // link 按钮不需要最小宽度限制
-    text-decoration: underline; // link 按钮默认下划线
+    text-decoration: none; // link 按钮默认无下划线
 
     &:hover,
     &:focus {
