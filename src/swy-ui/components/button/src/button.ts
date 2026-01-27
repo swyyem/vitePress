@@ -145,6 +145,13 @@ export const buttonProps = buildProps({
     type: Number,
     default: 0,
   },
+  /**
+   * @description 是否为幽灵按钮（透明背景）
+   */
+  ghost: {
+    type: Boolean,
+    default: false,
+  },
 } as const)
 export const buttonEmits = {
   click: (evt: MouseEvent) => evt instanceof MouseEvent,

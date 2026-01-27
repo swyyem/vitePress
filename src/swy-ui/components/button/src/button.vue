@@ -63,6 +63,7 @@ const buttonKls = computed(() => [
   ns.is('has-bg', props.bg),
   ns.is('shadow', props.shadow),
   ns.is('block', props.block),
+  ns.is('ghost', props.ghost),
 ])
 
 defineExpose({

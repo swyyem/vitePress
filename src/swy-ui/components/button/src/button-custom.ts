@@ -24,7 +24,7 @@ export function useButtonCustomStyle(props: ButtonProps) {
       const match = (buttonColor as string).match(/var\((.*?)\)/)
       if (match) {
         buttonColor = window
-          .getComputedStyle(window.document.documentSwyement)
+          .getComputedStyle(window.document.documentElement)
           .getPropertyValue(match[1])
       }
       const color = new TinyColor(buttonColor)

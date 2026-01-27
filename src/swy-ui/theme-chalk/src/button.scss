@@ -184,6 +184,30 @@ $button-icon-span-gap: map.merge(
     }
   }
 
+  @include when(ghost) {
+    background-color: transparent;
+    border-color: getCssVar('color', 'primary');
+    color: getCssVar('color', 'primary');
+
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      border-color: getCssVar('color', 'primary', 'light-3');
+      color: getCssVar('color', 'primary', 'light-3');
+    }
+
+    &:active {
+      border-color: getCssVar('color', 'primary', 'dark-2');
+      color: getCssVar('color', 'primary', 'dark-2');
+    }
+
+    @include when(disabled) {
+      color: getCssVar('button', 'disabled', 'text-color');
+      border-color: getCssVar('button', 'disabled', 'text-color');
+      opacity: 0.7;
+    }
+  }
+
   @include when(text) {
     color: getCssVar('button', 'text-color');
     border: 0 solid transparent;
