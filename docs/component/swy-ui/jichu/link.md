@@ -19,7 +19,6 @@
 
 :::
 
-
 ## 禁用状
 
 :::demo
@@ -35,7 +34,6 @@
 ```
 
 :::
-
 
 ## 下划
 
@@ -60,9 +58,9 @@
 ```vue
 <template>
   <div style="display: flex; gap: 16px; align-items: center;">
-    <ProField valueType="Link" :filedProps="{ underline: false }">无下划线</ProField>
+    <ProField valueType="Link" :fieldProps="{ underline: false }">无下划线</ProField>
     <ProField valueType="Link">默认下划</ProField>
-    <ProField valueType="Link" :filedProps="{ type: 'primary' }">主要链接下划</ProField>
+    <ProField valueType="Link" :fieldProps="{ type: 'primary' }">主要链接下划</ProField>
   </div>
 </template>
 ```
@@ -71,16 +69,16 @@
 
 ## Link 属性
 
-| 属性名 | 说明 | 类型 | 可选值 | 默认值 |
-| ------ | ---- | ---- | ------ | ------ |
-| type | 链接类型 | string | primary / success / warning / danger / info / default | default |
-| underline | 是否下划线 | boolean | — | true |
-| disabled | 是否禁用 | boolean | — | false |
-| href | 原生 href 属性 | string | — | — |
-| icon | 图标组件 | string | — | — |
+| 属性名    | 说明           | 类型    | 可选值                                                | 默认值  |
+| --------- | -------------- | ------- | ----------------------------------------------------- | ------- |
+| type      | 链接类型       | string  | primary / success / warning / danger / info / default | default |
+| underline | 是否下划线     | boolean | —                                                     | true    |
+| disabled  | 是否禁用       | boolean | —                                                     | false   |
+| href      | 原生 href 属性 | string  | —                                                     | —       |
+| icon      | 图标组件       | string  | —                                                     | —       |
 
 ## Link 事件
 
-| 事件名 | 说明 | 回调参数 |
-| ------ | ---- | -------- |
-| click | 点击链接时触发 | (event: MouseEvent) |
+| 事件名 | 说明           | 回调参数            |
+| ------ | -------------- | ------------------- |
+| click  | 点击链接时触发 | (event: MouseEvent) |

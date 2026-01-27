@@ -20,14 +20,14 @@
       <SwyBacktop target="#container1" :visibility-height="100" />
     </div>
 
-    <div style="margin-top: 10px; color: #909399; font-size: 14px;">提示：向下滚动容器查看效</div>
+    <div style="margin-top: 10px; color: #909399; font-size: 14px;">提示：向下滚动容器查看效果</div>
   </div>
 </template>
 ```
 
 :::
 
-## 自定义内
+## 自定义内容
 
 :::demo
 
@@ -37,12 +37,11 @@
     style="height: 400px; overflow: auto; border: 1px solid #dcdfe6; border-radius: 4px; padding: 20px; position: relative;"
     id="container2"
   >
-    <p v-for="i in 30" :key="i" style="line-height: 2;">
-      {{ i }} 行内/p>
+    <p v-for="i in 30" :key="i" style="line-height: 2;">{{ i }} 行内容</p>
 
-      <SwyBacktop target="#container2" :bottom="50" :right="50">
-        <div
-          style="
+    <SwyBacktop target="#container2" :bottom="50" :right="50">
+      <div
+        style="
         width: 50px;
         height: 50px;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -55,11 +54,10 @@
         cursor: pointer;
         box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
       "
-        >
-          
-        </div>
-      </SwyBacktop>
-    </p>
+      >
+        ↑
+      </div>
+    </SwyBacktop>
   </div>
 </template>
 ```
@@ -77,20 +75,16 @@
       style="flex: 1; height: 300px; overflow: auto; border: 1px solid #dcdfe6; border-radius: 4px; padding: 20px; position: relative;"
       id="container3"
     >
-      <p v-for="i in 20" :key="i" style="line-height: 2;">
-        右下
-        <SwyBacktop target="#container3" :right="20" :bottom="20" />
-      </p>
+      <p v-for="i in 20" :key="i" style="line-height: 2;">右下角</p>
+      <SwyBacktop target="#container3" :right="20" :bottom="20" />
     </div>
 
     <div
       style="flex: 1; height: 300px; overflow: auto; border: 1px solid #dcdfe6; border-radius: 4px; padding: 20px; position: relative;"
       id="container4"
     >
-      <p v-for="i in 20" :key="i" style="line-height: 2;">
-        左下
-        <SwyBacktop target="#container4" :left="20" :bottom="20" />
-      </p>
+      <p v-for="i in 20" :key="i" style="line-height: 2;">左下角</p>
+      <SwyBacktop target="#container4" :left="20" :bottom="20" />
     </div>
   </div>
 </template>
@@ -98,7 +92,7 @@
 
 :::
 
-## 自定义滚动距
+## 自定义滚动距离
 
 :::demo
 
@@ -112,20 +106,18 @@
       <div
         style="margin-bottom: 10px; padding: 10px; background: #ecf5ff; border-radius: 4px; color: #409eff;"
       >
-        滚动200px后显示按
+        滚动200px后显示按钮
       </div>
-      <p v-for="i in 25" :key="i" style="line-height: 2;">
-        {{ i }} 行内/p>
+      <p v-for="i in 25" :key="i" style="line-height: 2;">{{ i }} 行内容</p>
 
-        <SwyBacktop target="#container5" :visibility-height="200" @click="handleClick" />
-      </p>
+      <SwyBacktop target="#container5" :visibility-height="200" @click="handleClick" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 const handleClick = () => {
-  console.log('点击了回到顶')
+  console.log('点击了回到顶部')
 }
 </script>
 ```
@@ -136,22 +128,22 @@ const handleClick = () => {
 
 ### Backtop Props
 
-| 参数             | 说明                       | 类型     | 默认 |
+| 参数             | 说明                       | 类型     | 默认值 |
 | ---------------- | -------------------------- | -------- | ------ |
-| target           | 触发滚动的对             | `string` |      |
+| target           | 触发滚动的对象             | `string` | —      |
 | visibilityHeight | 滚动高度达到此参数值才出现 | `number` | 200    |
 | right            | 控制其距离右侧的位置       | `number` | 40     |
 | bottom           | 控制其距离底部的位置       | `number` | 40     |
-| left             | 控制其距离左侧的位置       | `number` |      |
+| left             | 控制其距离左侧的位置       | `number` | —      |
 
 ### Backtop Events
 
-| 事件 | 说明           | 参数                  |
+| 事件名 | 说明           | 参数                  |
 | ------ | -------------- | --------------------- |
-| click  | 点击按钮时触 | `(event: MouseEvent)` |
+| click  | 点击按钮时触发 | `(event: MouseEvent)` |
 
 ### Backtop Slots
 
 | 名称    | 说明           |
 | ------- | -------------- |
-| default | 自定义默认内 |
+| default | 自定义默认内容 |
