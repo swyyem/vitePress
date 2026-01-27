@@ -33,6 +33,9 @@ Popover 是一种类似于 Tooltip 的组件，但可以承载更多内容，适
     <SwyPopover title="标题" content="点击触发" trigger="click">
       <SwyButton>Click 激活</SwyButton>
     </SwyPopover>
+    <SwyPopover title="标题" content="聚焦触发" trigger="focus">
+      <SwyButton>Focus 激活</SwyButton>
+    </SwyPopover>
   </div>
 </template>
 
@@ -206,20 +209,38 @@ Popover 提供了 show 和 hide 事件，在相应时刻触发。
 
 ```vue
 <template>
-  <SwyPopover title="事件监听" content="监听 show 和 hide 事件" @show="onShow" @hide="onHide">
-    <SwyButton>触发事件</SwyButton>
-  </SwyPopover>
+  <div>
+    <SwyPopover title="事件监听" content="监听 show 和 hide 事件" @show="onShow" @hide="onHide">
+      <SwyButton>触发事件</SwyButton>
+    </SwyPopover>
+    <SwyMessage
+      v-if="showMsg"
+      :message="msgText"
+      :type="msgType"
+      :duration="2000"
+      @close="showMsg = false"
+    />
+  </div>
 </template>
 
 <script setup>
-import { ElMessage } from 'element-plus'
+import { ref } from 'vue'
+import SwyMessage from '@swy-ui/components/message'
+
+const showMsg = ref(false)
+const msgText = ref('')
+const msgType = ref('info')
 
 const onShow = () => {
-  ElMessage.success('Popover 显示了')
+  showMsg.value = true
+  msgText.value = 'Popover 显示了'
+  msgType.value = 'success'
 }
 
 const onHide = () => {
-  ElMessage.info('Popover 隐藏了')
+  showMsg.value = true
+  msgText.value = 'Popover 隐藏了'
+  msgType.value = 'info'
 }
 </script>
 ```
@@ -233,7 +254,7 @@ const onHide = () => {
 | title      | 标题         | string          | —                                                                                                         | —      |
 | content    | 显示的内容   | string          | —                                                                                                         | —      |
 | placement  | 出现位置     | string          | top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end | top    |
-| trigger    | 触发方式     | string          | click/hover                                                                                               | hover  |
+| trigger    | 触发方式     | string          | click/hover/focus                                                                                         | hover  |
 | width      | 宽度         | string / number | —                                                                                                         | 150    |
 | show-arrow | 是否显示箭头 | boolean         | —                                                                                                         | true   |
 
@@ -243,6 +264,16 @@ const onHide = () => {
 | ------ | ---------- | -------- |
 | show   | 显示时触发 | —        |
 | hide   | 隐藏时触发 | —        |
+
+## 可访问性优化
+
+优化后的弹出框组件具有更好的可访问性支持：
+
+- 支持focus触发方式，方便键盘导航
+- 弹出框具有正确的ARIA属性（role="dialog", aria-modal="true"等）
+- 非悬停触发的弹出框提供关闭按钮
+- 支持ESC键关闭弹出框
+- 内容区域使用语义化标签
 
 ## Slots
 

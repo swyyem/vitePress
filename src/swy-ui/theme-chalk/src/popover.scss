@@ -5,7 +5,8 @@
 @include b(popover) {
   @include set-component-css-var('popover', $popover);
 
-  &.#{$namespace}-popper {
+  &.#{$namespace}-popper,
+  &__popper {
     background: getCssVar('bg-color-overlay');
     min-width: 150px;
     border-radius: 8px;
@@ -36,6 +37,34 @@
       &:focus:not(.focusing),
       &:focus:hover {
         outline-width: 0;
+      }
+    }
+
+    @include e(close-btn) {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      font-size: 18px;
+      cursor: pointer;
+      color: #909399;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f0f0f0;
+        color: #606266;
+      }
+
+      &:focus {
+        outline: 2px solid #409eff;
       }
     }
 

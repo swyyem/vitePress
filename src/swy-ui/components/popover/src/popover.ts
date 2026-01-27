@@ -29,7 +29,7 @@ export const popoverProps = buildProps({
    */
   trigger: {
     type: String,
-    values: ['click', 'hover'],
+    values: ['click', 'hover', 'focus'],
     default: 'hover',
   },
   /**
