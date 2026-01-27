@@ -19,7 +19,7 @@ export const textProps = buildProps({
   size: {
     type: String,
     values: textSizes,
-    default: 'default',
+    default: '',
   },
   /**
    * @description 是否截断
