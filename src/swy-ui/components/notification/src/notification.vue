@@ -1,7 +1,7 @@
 <template>
   <transition name="swy-notification-fade">
-    <div v-if="visible" :class="[ns.b(), position]" :style="positionStyle">
-      <i v-if="type" :class="[ns.e('icon'), `swy-notification--${type}`]">
+    <div v-if="visible" :class="[ns.b(), ns.m(type), position]" :style="positionStyle">
+      <i v-if="type" :class="[ns.e('icon'), ns.is(type)]">
         {{ typeIcon }}
       </i>
       <div :class="ns.e('group')">
