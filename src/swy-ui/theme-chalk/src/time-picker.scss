@@ -1,5 +1,14 @@
-@use './date-picker/picker.scss';
-@use './date-picker/picker-panel.scss';
-@use './date-picker/time-spinner.scss';
-@use './date-picker/time-picker.scss';
-@use './date-picker/time-range-picker.scss';
+@use 'mixins/mixins' as *;
+@use 'common/var' as *;
+
+@include b(time-picker) {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+
+  @include e(icon) {
+    display: inline-flex;
+    align-items: center;
+    color: #c0c4cc;
+  }
+}
