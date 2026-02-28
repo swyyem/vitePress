@@ -1,131 +1,90 @@
-﻿# Select 选择
+# Select 选择器
 
-当选项过多时，使用下拉菜单展示并选择内容
+当选项过多时，使用下拉菜单展示并选择内容。
 
 ## 基础用法
 
-适用广泛的基础单选
 :::demo
 
 ```vue
 <template>
-  <div>
-    <SwySelect v-model="value1" :options="options1" placeholder="请选择" @change="handleChange" />
-    <p>选中的 {{ value1 }}</p>
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 300px;">
+    <SwySelect v-model="value" :options="options" placeholder="请选择" @change="handleChange" />
+    <p style="margin: 0; font-size: 13px; color: #606266;">当前选中：{{ value || '—' }}</p>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value1 = ref('')
-const options1 = ref([
-  { label: '选项1', value: '1' },
-  { label: '选项2', value: '2' },
-  { label: '选项3', value: '3' },
-  { label: '选项4', value: '4' },
-  { label: '选项5', value: '5' },
+const value = ref('')
+const options = ref([
+  { label: '选项一', value: '1' },
+  { label: '选项二', value: '2' },
+  { label: '选项三', value: '3' },
+  { label: '选项四', value: '4' },
+  { label: '选项五', value: '5' },
 ])
 
-const handleChange = val => {
-  console.log('select changed:', val)
+function handleChange(val: string) {
+  console.log('change:', val)
 }
 </script>
 ```
 
 :::
 
-### ProField 用法
+## 可清空
+
+设置 `clearable` 后，当有选中值时，鼠标悬停会出现清除按钮。
 
 :::demo
 
 ```vue
 <template>
-  <div>
-    <ProField
-      valueType="Select"
-      v-model="value1"
-      :fieldProps="{ options: options1, placeholder: '请选择' }"
-      @change="handleChange"
-    />
-    <p>选中的 {{ value1 }}</p>
+  <div style="max-width: 300px;">
+    <SwySelect v-model="value" :options="options" clearable placeholder="可以清空" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value1 = ref('')
-const options1 = ref([
-  { label: '选项1', value: '1' },
-  { label: '选项2', value: '2' },
-  { label: '选项3', value: '3' },
-  { label: '选项4', value: '4' },
-  { label: '选项5', value: '5' },
-])
-
-const handleChange = val => {
-  console.log('select changed:', val)
-}
-</script>
-```
-
-:::
-
-## 有禁用选项
-
-:::demo
-
-```vue
-<template>
-  <div>
-    <SwySelect v-model="value2" :options="options2" placeholder="请选择" />
-    <p>选中的 {{ value2 }}</p>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const value2 = ref('')
-const options2 = ref([
-  { label: '北京', value: 'beijing' },
-  { label: '上海', value: 'shanghai', disabled: true },
-  { label: '广州', value: 'guangzhou' },
-  { label: '深圳', value: 'shenzhen', disabled: true },
-  { label: '杭州', value: 'hangzhou' },
+const value = ref('1')
+const options = ref([
+  { label: '北京', value: '1' },
+  { label: '上海', value: '2' },
+  { label: '广州', value: '3' },
+  { label: '深圳', value: '4' },
 ])
 </script>
 ```
 
 :::
 
-### ProField 用法
+## 禁用选项
+
+在选项中设置 `disabled: true` 可禁用某个选项。
 
 :::demo
 
 ```vue
 <template>
-  <div>
-    <ProField
-      valueType="Select"
-      v-model="value2"
-      :fieldProps="{ options: options2, placeholder: '请选择' }"
-    />
-    <p>选中的 {{ value2 }}</p>
+  <div style="max-width: 300px;">
+    <SwySelect v-model="value" :options="options" placeholder="部分选项已禁用" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value2 = ref('')
-const options2 = ref([
-  { label: '北京', value: 'beijing' },
-  { label: '上海', value: 'shanghai', disabled: true },
-  { label: '广州', value: 'guangzhou' },
-  { label: '深圳', value: 'shenzhen', disabled: true },
-  { label: '杭州', value: 'hangzhou' },
+const value = ref('')
+const options = ref([
+  { label: '选项一（正常）', value: '1' },
+  { label: '选项二（禁用）', value: '2', disabled: true },
+  { label: '选项三（正常）', value: '3' },
+  { label: '选项四（禁用）', value: '4', disabled: true },
+  { label: '选项五（正常）', value: '5' },
 ])
 </script>
 ```
@@ -134,164 +93,56 @@ const options2 = ref([
 
 ## 禁用状态
 
-整个选择器禁用
+整个选择器设置 `disabled` 时不可交互。
+
 :::demo
 
 ```vue
 <template>
-  <div>
-    <SwySelect v-model="value3" :options="options3" placeholder="请选择" disabled />
+  <div style="max-width: 300px;">
+    <SwySelect v-model="value" :options="options" disabled placeholder="已禁用" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value3 = ref('option1')
-const options3 = ref([
-  { label: '选项1', value: 'option1' },
-  { label: '选项2', value: 'option2' },
-  { label: '选项3', value: 'option3' },
+const value = ref('1')
+const options = ref([
+  { label: '选项一', value: '1' },
+  { label: '选项二', value: '2' },
 ])
 </script>
 ```
 
 :::
 
-### ProField 用法
+## 尺寸
+
+提供 `large`、`default`、`small` 三种尺寸。
 
 :::demo
 
 ```vue
 <template>
-  <div>
-    <ProField
-      valueType="Select"
-      v-model="value3"
-      :fieldProps="{ options: options3, placeholder: '请选择', disabled: true }"
-    />
+  <div style="display: flex; flex-direction: column; gap: 12px; max-width: 300px;">
+    <SwySelect v-model="v1" :options="options" size="large" placeholder="大尺寸 large" />
+    <SwySelect v-model="v2" :options="options" size="default" placeholder="默认尺寸 default" />
+    <SwySelect v-model="v3" :options="options" size="small" placeholder="小尺寸 small" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue'
 
-const value3 = ref('option1')
-const options3 = ref([
-  { label: '选项1', value: 'option1' },
-  { label: '选项2', value: 'option2' },
-  { label: '选项3', value: 'option3' },
+const v1 = ref('')
+const v2 = ref('')
+const v3 = ref('')
+const options = ref([
+  { label: '选项一', value: '1' },
+  { label: '选项二', value: '2' },
+  { label: '选项三', value: '3' },
 ])
-</script>
-```
-
-:::
-
-## 不同尺寸
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; flex-direction: column; gap: 10px;">
-    <SwySelect v-model="value4" :options="sizeOptions" placeholder="大尺寸" size="large" />
-    <SwySelect v-model="value4" :options="sizeOptions" placeholder="默认尺寸" size="default" />
-    <SwySelect v-model="value4" :options="sizeOptions" placeholder="小尺寸" size="small" />
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const value4 = ref('')
-const sizeOptions = ref([
-  { label: '选项1', value: '1' },
-  { label: '选项2', value: '2' },
-  { label: '选项3', value: '3' },
-])
-</script>
-```
-
-:::
-
-### ProField 用法
-
-:::demo
-
-```vue
-<template>
-  <div style="display: flex; flex-direction: column; gap: 10px;">
-    <ProField
-      valueType="Select"
-      v-model="value4"
-      :fieldProps="{ options: sizeOptions, placeholder: '大尺寸', size: 'large' }"
-    />
-    <ProField
-      valueType="Select"
-      v-model="value4"
-      :fieldProps="{ options: sizeOptions, placeholder: '默认尺寸', size: 'default' }"
-    />
-    <ProField
-      valueType="Select"
-      v-model="value4"
-      :fieldProps="{ options: sizeOptions, placeholder: '小尺寸', size: 'small' }"
-    />
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const value4 = ref('')
-const sizeOptions = ref([
-  { label: '选项1', value: '1' },
-  { label: '选项2', value: '2' },
-  { label: '选项3', value: '3' },
-])
-</script>
-```
-
-:::
-
-## 实际应用示例
-
-选择城市
-:::demo
-
-```vue
-<template>
-  <div>
-    <SwySelect
-      v-model="selectedCity"
-      :options="cityOptions"
-      placeholder="请选择城市"
-      @change="onCityChange"
-    />
-    <p v-if="selectedCity">您选择的城市是: {{ getCityLabel(selectedCity) }}</p>
-  </div>
-</template>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-
-const selectedCity = ref('')
-const cityOptions = ref([
-  { label: '北京 - 首都', value: 'beijing' },
-  { label: '上海 - 魔都', value: 'shanghai' },
-  { label: '广州 - 羊城', value: 'guangzhou' },
-  { label: '深圳 - 鹏城', value: 'shenzhen' },
-  { label: '成都 - 天府之国', value: 'chengdu' },
-  { label: '杭州 - 人间天堂', value: 'hangzhou' },
-])
-
-const getCityLabel = value => {
-  const city = cityOptions.value.find(item => item.value === value)
-  return city ? city.label : ''
-}
-
-const onCityChange = value => {
-  console.log('选择的城市', getCityLabel(value))
-}
 </script>
 ```
 
@@ -301,22 +152,23 @@ const onCityChange = value => {
 
 ### Props
 
-| 属性名               | 说明     | 类型                                                                  | 默认        |
-| -------------------- | -------- | --------------------------------------------------------------------- | ----------- |
-| modelValue / v-model | 绑定值   | `string / number`                                                     | `''`        |
-| options              | 选项数组 | `Array<{label: string, value: string \| number, disabled?: boolean}>` | `[]`        |
-| placeholder          | 占位文本 | `string`                                                              | `'请选择'`  |
-| disabled             | 是否禁用 | `boolean`                                                             | `false`     |
-| size                 | 尺寸     | `'large' / 'default' / 'small'`                                       | `'default'` |
+| 参数                 | 说明               | 类型                                 | 默认值    |
+| -------------------- | ------------------ | ------------------------------------ | --------- |
+| modelValue / v-model | 绑定值             | `string \| number`                   | `''`      |
+| options              | 选项数组           | `Array<{ label, value, disabled? }>` | `[]`      |
+| placeholder          | 占位文本           | `string`                             | `请选择`  |
+| disabled             | 是否禁用整个选择器 | `boolean`                            | `false`   |
+| clearable            | 是否可清空         | `boolean`                            | `false`   |
+| size                 | 尺寸               | `'large' \| 'default' \| 'small'`    | `default` |
 
 ### Events
 
-| 事件   | 说明                 | 类型                                |
-| ------ | -------------------- | ----------------------------------- |
-| change | 选中值发生变化时触发 | `(value: string \| number) => void` |
+| 事件名 | 说明             | 回调参数                    |
+| ------ | ---------------- | --------------------------- |
+| change | 选中值变化时触发 | `(value: string \| number)` |
 
 ### Exposes
 
-| 名称      | 说明                | 类型                     |
-| --------- | ------------------- | ------------------------ |
-| selectRef | select 的原DOM 元素 | `Ref<HTMLSelectElement>` |
+| 名称    | 说明        | 类型               |
+| ------- | ----------- | ------------------ |
+| rootRef | 根 DOM 元素 | `Ref<HTMLElement>` |
