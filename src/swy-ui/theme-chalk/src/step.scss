@@ -302,7 +302,9 @@
       }
     }
 
+    // 箭头分隔符：position: relative 保证 ::before/::after 相对此容器定位
     @include e(arrow) {
+      position: relative;
       flex-grow: 1;
       display: flex;
       align-items: center;
