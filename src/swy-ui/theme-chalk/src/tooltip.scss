@@ -11,50 +11,57 @@
   }
 
   @include e(popper) {
-    position: absolute;
-    background: getCssVar('bg-color-overlay');
-    color: getCssVar('text-color-primary');
+    // 使用 fixed 定位：坐标由 JS 计算为视口坐标，无需处理滚动偏移
+    position: fixed;
     padding: 8px 12px;
     border-radius: 6px;
     font-size: 13px;
     z-index: 2000;
     white-space: normal;
     line-height: 1.4;
-    box-shadow: getCssVar('box-shadow-light');
     max-width: 300px;
     word-wrap: break-word;
+    box-sizing: border-box;
 
+    // ===== 箭头：相对 popper 定位的三角形 =====
     @include e(arrow) {
       position: absolute;
       width: 8px;
       height: 8px;
       background: inherit;
+      border: inherit;
       z-index: -1;
+      box-sizing: border-box;
 
+      // top 方向：箭头在 popper 底部
       @include m(top) {
         bottom: -4px;
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
       }
 
+      // bottom 方向：箭头在 popper 顶部
       @include m(bottom) {
         top: -4px;
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
       }
 
+      // left 方向：箭头在 popper 右侧
       @include m(left) {
         right: -4px;
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
       }
 
+      // right 方向：箭头在 popper 左侧
       @include m(right) {
         left: -4px;
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
       }
 
+      // 偏移变体：箭头位置微调
       @include m(top-start) {
         bottom: -4px;
         left: 20%;
@@ -63,7 +70,7 @@
 
       @include m(top-end) {
         bottom: -4px;
-        left: 80%;
+        right: 20%;
         transform: rotate(45deg);
       }
 
@@ -75,7 +82,7 @@
 
       @include m(bottom-end) {
         top: -4px;
-        left: 80%;
+        right: 20%;
         transform: rotate(45deg);
       }
 
@@ -87,7 +94,7 @@
 
       @include m(left-end) {
         right: -4px;
-        top: 80%;
+        bottom: 20%;
         transform: rotate(45deg);
       }
 
@@ -99,188 +106,29 @@
 
       @include m(right-end) {
         left: -4px;
-        top: 80%;
+        bottom: 20%;
         transform: rotate(45deg);
       }
     }
 
-    @include m(top) {
-      margin-bottom: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 4px solid transparent;
-        border-top-color: inherit;
-      }
-    }
-
-    @include m(top-start) {
-      margin-bottom: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 20%;
-        border: 4px solid transparent;
-        border-top-color: inherit;
-      }
-    }
-
-    @include m(top-end) {
-      margin-bottom: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -4px;
-        left: 80%;
-        border: 4px solid transparent;
-        border-top-color: inherit;
-      }
-    }
-
-    @include m(bottom) {
-      margin-top: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: -4px;
-        left: 50%;
-        transform: translateX(-50%);
-        border: 4px solid transparent;
-        border-bottom-color: inherit;
-      }
-    }
-
-    @include m(bottom-start) {
-      margin-top: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: -4px;
-        left: 20%;
-        border: 4px solid transparent;
-        border-bottom-color: inherit;
-      }
-    }
-
-    @include m(bottom-end) {
-      margin-top: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        top: -4px;
-        left: 80%;
-        border: 4px solid transparent;
-        border-bottom-color: inherit;
-      }
-    }
-
-    @include m(left) {
-      margin-right: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: -4px;
-        top: 50%;
-        transform: translateY(-50%);
-        border: 4px solid transparent;
-        border-left-color: inherit;
-      }
-    }
-
-    @include m(left-start) {
-      margin-right: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: -4px;
-        top: 20%;
-        border: 4px solid transparent;
-        border-left-color: inherit;
-      }
-    }
-
-    @include m(left-end) {
-      margin-right: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: -4px;
-        top: 80%;
-        border: 4px solid transparent;
-        border-left-color: inherit;
-      }
-    }
-
-    @include m(right) {
-      margin-left: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: -4px;
-        top: 50%;
-        transform: translateY(-50%);
-        border: 4px solid transparent;
-        border-right-color: inherit;
-      }
-    }
-
-    @include m(right-start) {
-      margin-left: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: -4px;
-        top: 20%;
-        border: 4px solid transparent;
-        border-right-color: inherit;
-      }
-    }
-
-    @include m(right-end) {
-      margin-left: 8px;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: -4px;
-        top: 80%;
-        border: 4px solid transparent;
-        border-right-color: inherit;
-      }
-    }
-
+    // ===== 主题：dark =====
     @include when(dark) {
       background: getCssVarWithDefault(('tooltip-bg-color', 'dark'), #303133);
       color: getCssVarWithDefault(('tooltip-text-color', 'dark'), #ffffff);
+      box-shadow: getCssVar('box-shadow-light');
     }
 
+    // ===== 主题：light =====
     @include when(light) {
       background: getCssVarWithDefault(('tooltip-bg-color', 'light'), #ffffff);
       color: getCssVarWithDefault(('tooltip-text-color', 'light'), #606266);
       border: 1px solid getCssVarWithDefault(('tooltip-border-color', 'light'), #dcdfe6);
-
-      &::after {
-        border-color: getCssVarWithDefault(('tooltip-border-color', 'light'), #dcdfe6);
-      }
+      box-shadow: getCssVar('box-shadow-light');
     }
   }
 }
 
+// ===== 禁用状态 =====
 @include b(tooltip) {
   @include when(disabled) {
     pointer-events: none;
@@ -297,15 +145,16 @@
   }
 }
 
+// ===== 显示/隐藏过渡动画 =====
 .swy-tooltip-fade-enter-active,
 .swy-tooltip-fade-leave-active {
   transition:
-    opacity 0.2s,
-    transform 0.2s;
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .swy-tooltip-fade-enter-from,
 .swy-tooltip-fade-leave-to {
   opacity: 0;
-  transform: scale(0.8);
+  transform: scale(0.9);
 }

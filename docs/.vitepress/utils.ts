@@ -651,48 +651,6 @@ const wholeList: MenuItem[] = [
         ],
       },
       {
-        text: '布局类组件',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        items: [
-          {
-            text: 'Row / Col 栅格布局',
-            link: '/component/swy-ui/layout/row-col',
-          },
-          {
-            text: 'Space 间距',
-            link: '/component/swy-ui/layout/space',
-          },
-          {
-            text: 'Scrollbar 滚动条',
-            link: '/component/swy-ui/layout/scrollbar',
-          },
-          {
-            text: 'Splitter 分割面板',
-            link: '/component/swy-ui/layout/splitter',
-          },
-        ],
-      },
-      {
-        text: '表单增强类组件',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        items: [
-          {
-            text: 'InputNumber 数字输入框',
-            link: '/component/swy-ui/form/input-number',
-          },
-          {
-            text: 'Rate 评分',
-            link: '/component/swy-ui/form/rate',
-          },
-          {
-            text: 'Slider 滑块',
-            link: '/component/swy-ui/form/slider',
-          },
-        ],
-      },
-      {
         text: '数据展示类组件',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
@@ -810,6 +768,18 @@ const wholeList: MenuItem[] = [
         collapsible: true, // 允许折叠
         collapsed: false, // 默认展开
         items: [
+          {
+            text: 'InputNumber 数字输入框',
+            link: '/component/swy-ui/form/input-number',
+          },
+          {
+            text: 'Rate 评分',
+            link: '/component/swy-ui/form/rate',
+          },
+          {
+            text: 'Slider 滑块',
+            link: '/component/swy-ui/form/slider',
+          },
           {
             text: 'ProField 原子组件',
             link: '/component/swy-ui/form/profield',
