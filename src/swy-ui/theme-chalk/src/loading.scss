@@ -6,15 +6,36 @@
   @include set-component-css-var('loading', $loading);
 }
 
+// ────────────────────────────────────────────────────────────────
+// 指令 / 组件：父容器辅助类（v-loading 指令动态添加）
+// ────────────────────────────────────────────────────────────────
+
 @include b(loading-parent) {
+  // 保证遮罩 position:absolute 有参照
   @include m(relative) {
     position: relative !important;
   }
 
+  // 防止用户滚动底层内容
   @include m(hidden) {
     overflow: hidden !important;
   }
 }
+
+// ────────────────────────────────────────────────────────────────
+// 组件用法：局部加载容器（<SwyLoading> 非 fullscreen 时渲染的包裹 div）
+// ────────────────────────────────────────────────────────────────
+
+@include b(loading-container) {
+  // 为内部 mask 的 position:absolute 提供参照
+  position: relative;
+  // 容器高度至少保证 spinner 有空间显示
+  min-height: 60px;
+}
+
+// ────────────────────────────────────────────────────────────────
+// 遮罩层
+// ────────────────────────────────────────────────────────────────
 
 @include b(loading-mask) {
   position: absolute;
@@ -26,43 +47,38 @@
   bottom: 0;
   left: 0;
   transition: opacity 0.3s;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(4px);
 
+  // 全屏模式：fixed 定位覆盖整个视口
   @include when(fullscreen) {
     position: fixed;
-
-    .#{$namespace}-loading-spinner {
-      margin-top: -21px;
-
-      .circular {
-        height: 42px;
-        width: 42px;
-      }
-    }
   }
 }
 
+// ────────────────────────────────────────────────────────────────
+// Spinner 容器：用 transform 居中，兼顾「无文字」和「有文字」两种情况
+// ────────────────────────────────────────────────────────────────
+
 @include b(loading-spinner) {
-  top: 50%;
-  margin-top: -21px;
-  width: 100%;
-  text-align: center;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  // 使用 translate 精确居中，无论 spinner 高度是否变化（有无文字）都能正确对齐
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 
-  .#{$namespace}-loading-text {
-    color: getCssVar('color-primary');
-    margin: 12px 0 0;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
+  // SVG 环形动画
   .circular {
-    display: inline-block;
+    display: block;
     height: 42px;
     width: 42px;
     animation: loading-rotate 2s linear infinite;
   }
 
+  // 路径描边
   .path {
     animation: loading-dash 1.5s ease-in-out infinite;
     stroke-dasharray: 90, 150;
@@ -72,15 +88,40 @@
     stroke-linecap: round;
   }
 
+  // 图标颜色（使用 icon 插槽时）
   i {
     color: getCssVar('color-primary');
   }
 }
 
+// ────────────────────────────────────────────────────────────────
+// 加载文案
+// ────────────────────────────────────────────────────────────────
+
+@include b(loading-text) {
+  color: getCssVar('color-primary');
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// ────────────────────────────────────────────────────────────────
+// 显示/隐藏过渡动画
+// ────────────────────────────────────────────────────────────────
+
 .#{$namespace}-loading-fade-enter-from,
 .#{$namespace}-loading-fade-leave-to {
   opacity: 0;
 }
+
+.#{$namespace}-loading-fade-enter-active,
+.#{$namespace}-loading-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+// ────────────────────────────────────────────────────────────────
+// 关键帧动画
+// ────────────────────────────────────────────────────────────────
 
 @keyframes loading-rotate {
   100% {
