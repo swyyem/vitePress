@@ -1,17 +1,360 @@
 @use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
 @use 'common/var' as *;
 
 @include b(popconfirm) {
+  @include set-component-css-var('popconfirm', $popconfirm);
+
+  display: inline-block;
   outline: none;
+
+  // 触发元素容器
+  @include e(reference) {
+    display: inline-block;
+  }
+
+  // 弹出面板
+  @include e(popper) {
+    position: fixed;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid getCssVar('border-color-lighter');
+    padding: 12px 16px;
+    z-index: getCssVar('index-popper');
+    color: getCssVar('text-color-regular');
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    word-break: break-all;
+
+    &:focus,
+    &:focus:active {
+      outline-width: 0;
+    }
+  }
+
+  // 箭头基础样式
+  @include e(arrow) {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border: 1px solid getCssVar('border-color-lighter');
+  }
+
+  // 顶部弹出 → 箭头在面板底部
+  @include m(top) {
+    @include e(arrow) {
+      bottom: -5px;
+      left: 50%;
+      margin-left: -5px;
+      transform: rotate(45deg);
+      border-top: none;
+      border-left: none;
+    }
+  }
+
+  @include m(top-start) {
+    @include e(arrow) {
+      bottom: -5px;
+      left: 16px;
+      transform: rotate(45deg);
+      border-top: none;
+      border-left: none;
+    }
+  }
+
+  @include m(top-end) {
+    @include e(arrow) {
+      bottom: -5px;
+      right: 16px;
+      transform: rotate(45deg);
+      border-top: none;
+      border-left: none;
+    }
+  }
+
+  // 底部弹出 → 箭头在面板顶部
+  @include m(bottom) {
+    @include e(arrow) {
+      top: -5px;
+      left: 50%;
+      margin-left: -5px;
+      transform: rotate(45deg);
+      border-bottom: none;
+      border-right: none;
+    }
+  }
+
+  @include m(bottom-start) {
+    @include e(arrow) {
+      top: -5px;
+      left: 16px;
+      transform: rotate(45deg);
+      border-bottom: none;
+      border-right: none;
+    }
+  }
+
+  @include m(bottom-end) {
+    @include e(arrow) {
+      top: -5px;
+      right: 16px;
+      transform: rotate(45deg);
+      border-bottom: none;
+      border-right: none;
+    }
+  }
+
+  // 右侧弹出 → 箭头在面板左侧
+  @include m(right) {
+    @include e(arrow) {
+      left: -5px;
+      top: 50%;
+      margin-top: -5px;
+      transform: rotate(45deg);
+      border-right: none;
+      border-top: none;
+    }
+  }
+
+  @include m(right-start) {
+    @include e(arrow) {
+      left: -5px;
+      top: 16px;
+      transform: rotate(45deg);
+      border-right: none;
+      border-top: none;
+    }
+  }
+
+  @include m(right-end) {
+    @include e(arrow) {
+      left: -5px;
+      bottom: 16px;
+      transform: rotate(45deg);
+      border-right: none;
+      border-top: none;
+    }
+  }
+
+  // 左侧弹出 → 箭头在面板右侧
+  @include m(left) {
+    @include e(arrow) {
+      right: -5px;
+      top: 50%;
+      margin-top: -5px;
+      transform: rotate(45deg);
+      border-left: none;
+      border-bottom: none;
+    }
+  }
+
+  @include m(left-start) {
+    @include e(arrow) {
+      right: -5px;
+      top: 16px;
+      transform: rotate(45deg);
+      border-left: none;
+      border-bottom: none;
+    }
+  }
+
+  @include m(left-end) {
+    @include e(arrow) {
+      right: -5px;
+      bottom: 16px;
+      transform: rotate(45deg);
+      border-left: none;
+      border-bottom: none;
+    }
+  }
+
+  // 标题行：图标 + 文字
   @include e(main) {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
   }
+
   @include e(icon) {
-    margin-right: 5px;
+    font-size: 16px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1px;
+
+    svg {
+      display: block;
+    }
   }
+
+  @include e(title) {
+    font-size: 14px;
+    color: getCssVar('text-color-primary');
+    font-weight: normal;
+    word-break: break-word;
+  }
+
+  // 操作按钮行
   @include e(action) {
-    text-align: right;
-    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 0;
   }
+
+  // 按钮基础样式（Element Plus small 尺寸）
+  @include e(btn) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      color 0.15s,
+      background 0.15s,
+      border-color 0.15s;
+    outline: none;
+    user-select: none;
+    vertical-align: middle;
+
+    // 取消按钮：默认灰色外观
+    @include m(cancel) {
+      background: #fff;
+      border-color: getCssVar('border-color');
+      color: getCssVar('text-color-regular');
+
+      &:hover {
+        border-color: getCssVar('color-primary-light-5');
+        color: getCssVar('color-primary');
+        background: getCssVar('color-primary-light-9');
+      }
+
+      &:active {
+        border-color: getCssVar('color-primary');
+        color: getCssVar('color-primary');
+      }
+    }
+
+    // 确认按钮：品牌色外观
+    @include m(confirm) {
+      background: getCssVar('color-primary');
+      border-color: getCssVar('color-primary');
+      color: #fff;
+
+      &:hover {
+        background: getCssVar('color-primary-light-3');
+        border-color: getCssVar('color-primary-light-3');
+      }
+
+      &:active {
+        background: getCssVar('color-primary-dark-2');
+        border-color: getCssVar('color-primary-dark-2');
+      }
+    }
+
+    // 颜色变体
+    @include m(default) {
+      background: #fff;
+      border-color: getCssVar('border-color');
+      color: getCssVar('text-color-regular');
+
+      &:hover {
+        border-color: getCssVar('color-primary-light-5');
+        color: getCssVar('color-primary');
+        background: getCssVar('color-primary-light-9');
+      }
+    }
+
+    @include m(primary) {
+      background: getCssVar('color-primary');
+      border-color: getCssVar('color-primary');
+      color: #fff;
+
+      &:hover {
+        background: getCssVar('color-primary-light-3');
+        border-color: getCssVar('color-primary-light-3');
+      }
+    }
+
+    @include m(success) {
+      background: getCssVar('color-success');
+      border-color: getCssVar('color-success');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    @include m(warning) {
+      background: getCssVar('color-warning');
+      border-color: getCssVar('color-warning');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    @include m(danger) {
+      background: getCssVar('color-danger');
+      border-color: getCssVar('color-danger');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    @include m(info) {
+      background: getCssVar('color-info');
+      border-color: getCssVar('color-info');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  // 禁用状态
+  @include when(disabled) {
+    cursor: not-allowed;
+
+    @include e(reference) {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+  }
+}
+
+// 过渡动画
+.swy-popconfirm-fade-enter-active {
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.swy-popconfirm-fade-leave-active {
+  transition:
+    opacity 0.1s ease,
+    transform 0.1s ease;
+}
+
+.swy-popconfirm-fade-enter-from,
+.swy-popconfirm-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
 }

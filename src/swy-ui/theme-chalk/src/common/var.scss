@@ -1,4 +1,4 @@
-@use 'sass:math'; // 导入数学函数
+﻿@use 'sass:math'; // 导入数学函数
 @use 'sass:map'; // 导入映射函数
 @use 'sass:color'; // 导入颜色函数
 
@@ -1101,6 +1101,16 @@ $popper: map.merge(
     'bg-color-dark': getCssVar('text-color', 'primary'),
   ),
   $popper
+);
+// Popconfirm
+// css3 var in packages/theme-chalk/src/popconfirm.scss
+$popconfirm: () !default;
+$popconfirm: map.merge(
+  (
+    'border-radius': 4px,
+    'padding': 12px,
+  ),
+  $popconfirm
 );
 
 // skeleton
