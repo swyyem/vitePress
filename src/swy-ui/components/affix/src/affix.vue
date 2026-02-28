@@ -1,159 +1,165 @@
-﻿/** File: affix.vue - Vue Component */
-
+<!-- File: affix.vue - 固钉组件 -->
 <template>
-  <div ref="rootRef" :class="affixKls" :style="rootStyle">
-    <div :class="affixInnerClass" :style="affixStyle">
+  <!-- 占位根节点：固定时保持原始尺寸防止布局跳动 -->
+  <div ref="rootRef" :class="ns.b()" :style="rootStyle">
+    <!-- 实际内容：固定时使用 position:fixed -->
+    <div :class="[ns.e('inner'), ns.is('fixed', fixed)]" :style="affixStyle">
       <slot />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-// ========== Dependencies Import ==========
+// ========== 依赖导入 ==========
 import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { affixEmits, affixProps } from './affix'
 
-defineOptions({
-  name: 'SwyAffix',
-})
+defineOptions({ name: 'SwyAffix' })
 
 const props = defineProps(affixProps)
 const emit = defineEmits(affixEmits)
 
+// ========== 命名空间 ==========
 const ns = useNamespace('affix')
+
+// ========== 状态 ==========
+/** 根节点 ref */
 const rootRef = ref<HTMLElement>()
+/** 当前是否处于固定状态 */
 const fixed = ref(false)
 
-// 计算 affix 的类名
-const affixInnerClass = computed(() => [
-  ns.e('inner'),
-  {
-    [ns.is('fixed')]: fixed.value,
-    [ns.m(props.position)]: !!props.position,
-  },
-])
+// 记录元素未固定时的原始位置信息（用于 fixed 后保持宽度和占位）
+const rectLeft = ref(0)
+const rectWidth = ref(0)
+const rectHeight = ref(0)
 
-const affixKls = computed(() => [ns.b()])
+// ========== 样式计算 ==========
 
+/** 根节点占位样式：固定时撑起原始高度防止布局跳动 */
 const rootStyle = computed(() => ({
-  height: fixed.value ? `${rootRef.value?.offsetHeight}px` : '',
-  width: fixed.value ? `${rootRef.value?.offsetWidth}px` : '',
+  height: fixed.value ? `${rectHeight.value}px` : '',
+  width: fixed.value ? `${rectWidth.value}px` : '',
 }))
 
+/** 固定时的内联样式：保留元素原始 left/width，不拉伸至全视口 */
 const affixStyle = computed(() => {
   if (!fixed.value) return {}
-
-  const offset = props.offset || 0
   return {
-    position: 'fixed',
-    top: props.position === 'top' ? `${offset}px` : 'auto',
-    bottom: props.position === 'bottom' ? `${offset}px` : 'auto',
-    left: 0,
-    right: 0,
+    position: 'fixed' as const,
+    top: props.position === 'top' ? `${props.offset}px` : 'auto',
+    bottom: props.position === 'bottom' ? `${props.offset}px` : 'auto',
+    left: `${rectLeft.value}px`,
+    width: `${rectWidth.value}px`,
     zIndex: props.zIndex,
   }
 })
 
-// 获取目标容器的滚动信息
-const getScrollInfo = (target: HTMLElement | Window) => {
-  if (target === window) {
-    return {
-      scrollTop: document.documentElement.scrollTop || document.body.scrollTop,
-      scrollLeft: document.documentElement.scrollLeft || document.body.scrollLeft,
-      clientHeight: document.documentElement.clientHeight,
-      scrollHeight: document.documentElement.scrollHeight,
-    }
-  } else {
-    const el = target as HTMLElement
-    return {
-      scrollTop: el.scrollTop,
-      scrollLeft: el.scrollLeft,
-      clientHeight: el.clientHeight,
-      scrollHeight: el.scrollHeight,
-    }
-  }
+// ========== 工具函数 ==========
+
+/** 在元素未固定时更新原始 Rect 信息 */
+function updateRect() {
+  if (!rootRef.value || fixed.value) return
+  const rect = rootRef.value.getBoundingClientRect()
+  rectLeft.value = rect.left
+  rectWidth.value = rect.width
+  rectHeight.value = rect.height
 }
 
-// 检查是否超出容器边界
-const checkBoundary = (target: HTMLElement | Window) => {
-  if (!rootRef.value) return false
-
-  const scrollInfo = getScrollInfo(target)
-
-  // 如果目标不是window，需要获取容器的位置信息
-  if (target !== window) {
-    const targetRect = (target as HTMLElement).getBoundingClientRect()
-    const containerTop = targetRect.top
-    const containerBottom = targetRect.bottom
-
-    if (props.position === 'top') {
-      // 顶部固定：当容器顶部到达偏移位置时固定
-      return containerTop <= props.offset
-    } else {
-      // 底部固定：当容器底部接近视口底部时固定
-      return containerBottom >= scrollInfo.clientHeight - props.offset
-    }
-  } else {
-    // 对于 window 的情况
-    const elementHeight = rootRef.value.offsetHeight
-    if (props.position === 'top') {
-      return scrollInfo.scrollTop >= props.offset
-    } else {
-      const documentHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      )
-      return (
-        scrollInfo.scrollTop + scrollInfo.clientHeight >=
-        documentHeight - elementHeight - props.offset
-      )
-    }
-  }
+/** 获取滚动容器的可视高度 */
+function getClientHeight(el: HTMLElement | Window): number {
+  return el === window ? document.documentElement.clientHeight : (el as HTMLElement).clientHeight
 }
+
+/** 获取滚动容器的 scrollTop */
+function getScrollTop(el: HTMLElement | Window): number {
+  return el === window
+    ? document.documentElement.scrollTop || document.body.scrollTop
+    : (el as HTMLElement).scrollTop
+}
+
+// ========== 核心滚动处理 ==========
 
 const handleScroll = () => {
   if (!rootRef.value) return
 
-  const target = props.target ? document.querySelector<HTMLElement>(props.target) : window
+  // 找到监听的滚动容器（没有 target 则为 window）
+  const scrollEl: HTMLElement | Window = props.target
+    ? (document.querySelector<HTMLElement>(props.target) ?? window)
+    : window
 
-  if (!target) return
+  // 用 getBoundingClientRect 获取元素相对视口的实时位置
+  const rect = rootRef.value.getBoundingClientRect()
+  const clientH = getClientHeight(scrollEl)
+  let shouldFix = false
 
-  const shouldFix = checkBoundary(target)
+  if (props.position === 'top') {
+    // 元素顶部到达偏移位置时固定
+    shouldFix = rect.top <= props.offset
+  } else {
+    // 元素底部到达视口底部偏移位置时固定
+    shouldFix = rect.bottom >= clientH - props.offset
+  }
 
+  // 有 target 容器时：防止固定元素浮出容器外
+  if (props.target && shouldFix) {
+    const containerEl = document.querySelector<HTMLElement>(props.target)
+    if (containerEl) {
+      const cRect = containerEl.getBoundingClientRect()
+      if (props.position === 'top') {
+        // 容器底部需高于 offset + 元素自身高度，才允许保持固定
+        shouldFix = cRect.bottom > props.offset + rectHeight.value
+      } else {
+        // 容器顶部需低于视口底部偏移处减去元素高度
+        shouldFix = cRect.top < clientH - props.offset - rectHeight.value
+      }
+    }
+  }
+
+  // 取消固定前先更新 Rect 快照（供下次固定时使用）
+  if (!shouldFix) updateRect()
+
+  // 仅在状态变化时 emit change
   if (shouldFix !== fixed.value) {
     fixed.value = shouldFix
     emit('change', shouldFix)
   }
 
-  // 发送滚动事件
-  const scrollInfo = getScrollInfo(target)
+  // 每次滚动都 emit scroll
   emit('scroll', {
-    scrollTop: scrollInfo.scrollTop,
+    scrollTop: getScrollTop(scrollEl),
     fixed: fixed.value,
   })
 }
 
+// ========== 生命周期 ==========
+
 onMounted(() => {
   nextTick(() => {
-    const target = props.target ? document.querySelector<HTMLElement>(props.target) : window
+    // 初始化 Rect 快照
+    updateRect()
 
-    if (target) {
-      target.addEventListener('scroll', handleScroll, { passive: true })
-      handleScroll()
-    }
+    const scrollEl: HTMLElement | Window = props.target
+      ? (document.querySelector<HTMLElement>(props.target) ?? window)
+      : window
+
+    scrollEl.addEventListener('scroll', handleScroll, { passive: true })
+    // 窗口缩放时同步更新位置
+    window.addEventListener('resize', handleScroll, { passive: true })
+    // 初始检测
+    handleScroll()
   })
 })
 
 onUnmounted(() => {
-  const target = props.target ? document.querySelector<HTMLElement>(props.target) : window
+  const scrollEl: HTMLElement | Window = props.target
+    ? (document.querySelector<HTMLElement>(props.target) ?? window)
+    : window
 
-  if (target) {
-    target.removeEventListener('scroll', handleScroll)
-  }
+  scrollEl.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('resize', handleScroll)
 })
 
-defineExpose({
-  fixed,
-})
+// ========== 暴露 ==========
+defineExpose({ fixed })
 </script>

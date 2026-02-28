@@ -1,38 +1,18 @@
 @use 'mixins/mixins' as *;
-@use 'var' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
 
+// ─────────────────────────────────────────
+// Affix 固钉
+// ─────────────────────────────────────────
 @include b(affix) {
+  // 根节点：相对定位，固定时作为占位容器
+  position: relative;
+
   @include e(inner) {
-    transition: transform var(--el-transition-duration);
-
-    @include m(top) {
-      &.is-fixed {
-        box-shadow: var(--el-box-shadow-light);
-      }
+    // 固定状态：添加轻微阴影提示层级
+    @include when(fixed) {
+      box-shadow: getCssVar('box-shadow-light');
     }
-
-    @include m(bottom) {
-      &.is-fixed {
-        box-shadow: var(--el-box-shadow-light);
-      }
-    }
-
-    &.is-fixed {
-      z-index: var(--el-affix-z-index, 100);
-
-      // 添加一些视觉反馈
-      animation: affixSlideIn 0.2s ease-out;
-    }
-  }
-}
-
-@keyframes affixSlideIn {
-  from {
-    opacity: 0.8;
-    transform: translateY(-5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
