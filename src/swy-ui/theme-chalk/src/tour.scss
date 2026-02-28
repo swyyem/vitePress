@@ -4,14 +4,45 @@
 @use 'mixins/var' as *;
 @use 'common/var' as *;
 
+// ────────────────────────────────────────────────────────────────
+// Tour 根容器
+// 全屏固定层，自身 pointer-events: none，子元素按需恢复交互
+// ────────────────────────────────────────────────────────────────
+
 @include b(tour) {
   @include set-component-css-var('tour', $tour);
 
-  @include e(hollow) {
-    transition: all getCssVar('transition-duration') ease;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  // ── 遮罩点击捕获层（透明，全屏，仅用于 maskClosable 点击检测）
+  @include e(mask) {
+    position: fixed;
+    inset: 0;
+    background: transparent;
+    pointer-events: auto;
   }
 
+  // ── 高亮聚焦框（动态定位，box-shadow 制造背景暗化 + 目标高亮效果）
+  @include e(spotlight) {
+    position: fixed;
+    border-radius: 4px;
+    pointer-events: none;
+    // 9999px 阴影填充整个视口，形成"打孔"遮罩效果
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+    // 步骤切换时平滑跟随目标元素移动
+    transition:
+      top 0.25s ease,
+      left 0.25s ease,
+      width 0.25s ease,
+      height 0.25s ease;
+  }
+
+  // ── 内容面板（position:fixed，由 JS updatePosition 动态设置 top/left）
   @include e(content) {
+    position: fixed;
+    pointer-events: auto;
     border-radius: getCssVar('tour-border-radius');
     width: var(#{getCssVarName('tour-width')});
     padding: getCssVar('tour-padding-primary');
@@ -20,41 +51,58 @@
     box-sizing: border-box;
     overflow-wrap: break-word;
     outline: none;
+    // 步骤切换时平滑移动面板
+    transition:
+      top 0.25s ease,
+      left 0.25s ease;
 
-    $content-selector: &;
-
-    $sides: (
-      'top': 'bottom',
-      'bottom': 'top',
-      'left': 'right',
-      'right': 'left',
-    );
-
+    // ── 箭头（指向目标元素的旋转正方形）
     @include e(arrow) {
       position: absolute;
-      background: getCssVar('tour-bg-color');
       width: 10px;
       height: 10px;
-      pointer-events: none;
-      transform: rotate(45deg);
-      box-sizing: border-box;
+      background: getCssVar('tour-bg-color');
+      border: 1px solid getCssVar('border-color-light');
+      z-index: -1;
 
-      @each $side,
-        $adjacency in ('top': 'left', 'bottom': 'right', 'left': 'bottom', 'right': 'top')
-      {
-        #{$content-selector}[data-side^='#{$side}'] & {
-          border-#{$side}-color: transparent;
-          border-#{$adjacency}-color: transparent;
-        }
+      // 箭头在面板顶部（面板在目标下方，placement = 'bottom'）
+      &--top {
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        border-right-color: transparent;
+        border-bottom-color: transparent;
       }
 
-      @each $side, $opposite in $sides {
-        #{$content-selector}[data-side^='#{$side}'] & {
-          #{$opposite}: -5px;
-        }
+      // 箭头在面板底部（面板在目标上方，placement = 'top'）
+      &--bottom {
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        border-left-color: transparent;
+        border-top-color: transparent;
+      }
+
+      // 箭头在面板右侧（面板在目标左方，placement = 'left'）
+      &--right {
+        right: -5px;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        border-left-color: transparent;
+        border-bottom-color: transparent;
+      }
+
+      // 箭头在面板左侧（面板在目标右方，placement = 'right'）
+      &--left {
+        left: -5px;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        border-right-color: transparent;
+        border-top-color: transparent;
       }
     }
 
+    // ── 关闭按钮
     @include e(closebtn) {
       position: absolute;
       top: 0;
@@ -66,29 +114,30 @@
       border: none;
       outline: none;
       cursor: pointer;
-      font-size: var(#{getCssVarName('message-close-size')}, map.get($message, 'close-size'));
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      .#{$namespace}-tour__close {
+      @include e(close) {
         color: getCssVar('tour-close-color');
-        font-size: inherit;
+        transition: color getCssVar('transition-duration');
       }
 
-      &:focus,
       &:hover {
-        .#{$namespace}-tour__close {
-          color: getCssVar('color', 'primary');
+        @include e(close) {
+          color: getCssVar('color-primary');
         }
       }
     }
 
+    // ── 标题区
     @include e(header) {
       padding-bottom: getCssVar('tour-padding-primary');
 
+      // 有关闭按钮时右侧留出空间
       &.show-close {
-        padding-right: calc(
-          getCssVar('tour-padding-primary') +
-            var(#{getCssVarName('message-close-size')}, map.get($message, 'close-size'))
-        );
+        padding-right: 40px;
       }
     }
 
@@ -99,77 +148,168 @@
       font-weight: getCssVar('tour-title-font-weight');
     }
 
+    // ── 描述区
     @include e(body) {
       color: getCssVar('tour-text-color');
       font-size: getCssVar('tour-font-size');
+
       img,
       video {
         max-width: 100%;
       }
     }
 
+    @include e(description) {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    // ── 底部（步骤点 + 按钮）
     @include e(footer) {
       padding-top: getCssVar('tour-padding-primary');
-      box-sizing: border-box;
       display: flex;
+      align-items: center;
       justify-content: space-between;
     }
 
-    @include b(tour-indicators) {
-      display: inline-block;
+    // 步骤点指示器容器
+    @include e(indicators) {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       flex: 1;
     }
 
-    @include b(tour-indicator) {
+    // 单个步骤点
+    @include e(indicator) {
       width: 6px;
       height: 6px;
-      display: inline-block;
       border-radius: 50%;
-      background: getCssVar('color', 'info-light-9');
-      margin-right: 6px;
+      background: getCssVar('color-info-light-9');
+      transition: background getCssVar('transition-duration');
 
       @include when(active) {
-        background: getCssVar('color', 'primary');
+        background: getCssVar('color-primary');
       }
     }
-  }
 
-  &.#{$namespace}-tour--primary {
-    @include set-css-var-value('tour-title-text-color', #fff);
-    @include set-css-var-value('tour-text-color', #fff);
-    @include set-css-var-value('tour-bg-color', getCssVar('color', 'primary'));
-    @include set-css-var-value('tour-close-color', #fff);
+    // 按钮组
+    @include e(buttons) {
+      display: flex;
+      gap: 8px;
+    }
 
-    .#{$namespace}-tour__closebtn {
-      &:focus,
-      &:hover {
-        .#{$namespace}-tour__close {
-          color: getCssVar('tour-title-text-color');
+    // ── primary 主题变体（品牌色背景）
+    @include m(primary) {
+      @include set-css-var-value('tour-title-text-color', #fff);
+      @include set-css-var-value('tour-text-color', #fff);
+      @include set-css-var-value('tour-bg-color', getCssVar('color-primary'));
+      @include set-css-var-value('tour-close-color', #fff);
+
+      @include e(arrow) {
+        background: getCssVar('color-primary');
+        border-color: getCssVar('color-primary');
+      }
+
+      @include e(indicator) {
+        background: rgba(255, 255, 255, 0.3);
+
+        @include when(active) {
+          background: #fff;
         }
-      }
-    }
-
-    .#{$namespace}-button--default {
-      color: getCssVar('color', 'primary');
-      border-color: getCssVar('color', 'primary');
-      background: #fff;
-    }
-
-    .#{$namespace}-button--primary {
-      border-color: #fff;
-    }
-
-    @include b(tour-indicator) {
-      background: rgba(255, 255, 255, 0.15);
-      @include when(active) {
-        background: #fff;
       }
     }
   }
 }
 
+// ────────────────────────────────────────────────────────────────
+// 导航按钮（swy-tour-btn / swy-tour-btn--primary）
+// 独立 block，不依赖外部 SwyButton 组件
+// ────────────────────────────────────────────────────────────────
+
+@include b(tour-btn) {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: getCssVar('border-radius-base');
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid getCssVar('border-color');
+  background: #fff;
+  color: getCssVar('text-color-regular');
+  transition:
+    color getCssVar('transition-duration'),
+    border-color getCssVar('transition-duration'),
+    background getCssVar('transition-duration');
+  white-space: nowrap;
+  user-select: none;
+
+  &:hover {
+    color: getCssVar('color-primary');
+    border-color: getCssVar('color-primary-light-7');
+  }
+
+  // primary 变体（蓝底白字）
+  @include m(primary) {
+    background: getCssVar('color-primary');
+    border-color: getCssVar('color-primary');
+    color: #fff;
+
+    &:hover {
+      background: getCssVar('color-primary-light-3');
+      border-color: getCssVar('color-primary-light-3');
+    }
+  }
+}
+
+// primary 主题内的按钮样式覆写（白底蓝字）
+@include b(tour) {
+  @include e(content) {
+    @include m(primary) {
+      @include b(tour-btn) {
+        background: #fff;
+        color: getCssVar('color-primary');
+        border-color: rgba(255, 255, 255, 0.6);
+
+        &:hover {
+          border-color: #fff;
+        }
+
+        @include m(primary) {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.6);
+          color: #fff;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.35);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ────────────────────────────────────────────────────────────────
+// 父容器辅助类（保留，方便业务方控制滚动）
+// ────────────────────────────────────────────────────────────────
+
 @include b(tour-parent) {
   @include m(hidden) {
     overflow: hidden;
   }
+}
+
+// ────────────────────────────────────────────────────────────────
+// 过渡动画（整体 tour 层淡入淡出）
+// ────────────────────────────────────────────────────────────────
+
+.#{$namespace}-tour-fade-enter-from,
+.#{$namespace}-tour-fade-leave-to {
+  opacity: 0;
+}
+
+.#{$namespace}-tour-fade-enter-active,
+.#{$namespace}-tour-fade-leave-active {
+  transition: opacity 0.25s ease;
 }
