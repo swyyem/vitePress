@@ -106,6 +106,29 @@
     }
   }
 
+  // 省略号按钮：显示 ••• 并在 hover 时切换为快进/快退箭头样式
+  .btn-quickprev,
+  .btn-quicknext {
+    border-color: transparent;
+    background: transparent;
+    color: getCssVar('text-color', 'secondary');
+    letter-spacing: 2px;
+
+    &:hover {
+      color: getCssVar('color-primary');
+      border-color: transparent;
+      background: transparent;
+    }
+
+    &:disabled,
+    &.is-disabled {
+      cursor: not-allowed;
+      color: getCssVar('pagination-button-disabled-color');
+      background: transparent;
+      border-color: transparent;
+    }
+  }
+
   & > * {
     @include when(first) {
       margin-left: 0 !important;
@@ -165,6 +188,37 @@
       }
     }
 
+    // 跳转器原生 input 的样式（非 swy-input 时的兜底方案）
+    @include e(editor) {
+      width: 56px;
+      height: getCssVar('pagination-button-height');
+      line-height: getCssVar('pagination-button-height');
+      border: 1px solid getCssVar('border-color-base');
+      border-radius: getCssVar('pagination-border-radius');
+      padding: 0 8px;
+      font-size: getCssVar('pagination-font-size');
+      color: getCssVar('text-color', 'regular');
+      outline: none;
+      transition: border-color 0.2s;
+      -moz-appearance: textfield;
+
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &:focus {
+        border-color: getCssVar('color-primary');
+      }
+
+      &:disabled {
+        background-color: getCssVar('disabled-bg-color');
+        color: getCssVar('text-color', 'placeholder');
+        cursor: not-allowed;
+      }
+    }
+
     @include e(classifier) {
       margin-left: 8px;
     }
@@ -216,6 +270,13 @@
     .btn-prev:first-child {
       margin-left: 0;
     }
+
+    // 背景色模式下省略号按钮保持透明背景
+    .btn-quickprev,
+    .btn-quicknext {
+      background: transparent;
+      border-color: transparent;
+    }
   }
 
   @include m(small) {
@@ -251,7 +312,7 @@
     }
   }
 
-  // pager 容器
+  // pager 容器（ul > li 结构的兼容写法）
   @include b(pager) {
     user-select: none;
     list-style: none;
