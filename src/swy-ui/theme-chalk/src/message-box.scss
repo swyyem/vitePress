@@ -1,214 +1,327 @@
 @use 'sass:map';
-
 @use 'mixins/mixins' as *;
 @use 'mixins/var' as *;
 @use 'common/var' as *;
-@use 'common/popup' as *;
 
-@include b(message-box) {
-  @include set-component-css-var('messagebox', $messagebox);
+// ─────────────────────────────────────────────────────────
+// 全屏遮罩层
+// ─────────────────────────────────────────────────────────
+.swy-message-box-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: getCssVar('index-popper');
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+// ─────────────────────────────────────────────────────────
+// 弹框主体
+// ─────────────────────────────────────────────────────────
 @include b(message-box) {
-  display: inline-block;
+  @include set-component-css-var('messagebox', $messagebox);
+
   position: relative;
-  max-width: getCssVar('messagebox-width');
-  width: 100%;
-  padding: getCssVar('messagebox-padding-primary');
-  vertical-align: middle;
-  background-color: getCssVar('bg-color');
-  border-radius: getCssVar('messagebox-border-radius');
-  font-size: getCssVar('messagebox-font-size');
-  box-shadow: getCssVar('messagebox-box-shadow');
-  text-align: left;
-  overflow: hidden;
-  backface-visibility: hidden;
-  // To avoid small screen overflowing, see #11919
+  background: #fff;
+  border-radius: 4px;
+  width: getCssVar('messagebox-width');
+  max-width: calc(100vw - 32px);
+  padding: 20px;
   box-sizing: border-box;
+  box-shadow:
+    0 12px 32px 4px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.08);
   overflow-wrap: break-word;
 
   &:focus {
-    outline: none !important;
-  }
-
-  @at-root .is-message-box {
-    .#{$namespace}-overlay-message-box {
-      text-align: center;
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      padding: 16px;
-      overflow: auto;
-
-      &::after {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        width: 0;
-        vertical-align: middle;
-      }
-    }
-  }
-
-  @include when(draggable) {
-    @include e(header) {
-      cursor: move;
-      user-select: none;
-    }
-  }
-
-  @include e(header) {
-    padding-bottom: getCssVar('messagebox-padding-primary');
-
-    &.show-close {
-      padding-right: calc(
-        getCssVar('messagebox-padding-primary') +
-          var(#{getCssVarName('message-close-size')}, map.get($message, 'close-size'))
-      );
-    }
-  }
-
-  @include e(title) {
-    font-size: getCssVar('messagebox-font-size');
-    line-height: getCssVar('messagebox-font-line-height');
-    color: getCssVar('messagebox-title-color');
-  }
-
-  @include e(headerbtn) {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    border: none;
     outline: none;
-    background: transparent;
-    font-size: var(#{getCssVarName('message-close-size')}, map.get($message, 'close-size'));
-    cursor: pointer;
+  }
 
-    .#{$namespace}-message-box__close {
-      color: getCssVar('color-info');
-      font-size: inherit;
+  // 居中模式
+  @include when(center) {
+    @include e(header) {
+      text-align: center;
     }
 
-    &:focus,
-    &:hover {
-      .#{$namespace}-message-box__close {
-        color: getCssVar('color-primary');
-      }
-    }
-  }
-
-  @include e(content) {
-    color: getCssVar('messagebox-content-color');
-    font-size: getCssVar('messagebox-content-font-size');
-  }
-
-  @include e(container) {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  @include e(input) {
-    padding-top: 12px;
-
-    & div.invalid > input {
-      border-color: getCssVar('color-error');
-
-      &:focus {
-        border-color: getCssVar('color-error');
-      }
-    }
-  }
-
-  @include e(status) {
-    font-size: 24px;
-
-    @each $type in (primary, success, info, warning, error) {
-      &.#{$namespace}-message-box-icon--#{$type} {
-        @include css-var-from-global(('messagebox', 'color'), ('color', $type));
-        color: getCssVar('messagebox-color');
-      }
-    }
-  }
-
-  @include e(message) {
-    margin: 0;
-    min-width: 0;
-
-    & p {
-      margin: 0;
-      line-height: getCssVar('messagebox-font-line-height');
-    }
-  }
-
-  @include e(errormsg) {
-    color: getCssVar('color-error');
-    font-size: getCssVar('messagebox-error-font-size');
-    line-height: getCssVar('messagebox-font-line-height');
-  }
-
-  @include e(btns) {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-items: center;
-    padding-top: getCssVar('messagebox-padding-primary');
-  }
-
-  // centerAlign 布局
-  @include m(center) {
-    @include e(title) {
-      display: flex;
+    @include e(container) {
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    @include e(status) {
-      font-size: inherit;
+      text-align: center;
     }
 
     @include e(btns) {
       justify-content: center;
     }
+  }
 
-    @include e(container) {
-      justify-content: center;
+  // ── 关闭按钮 ──────────────────────────────────────────
+  @include e(close) {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: getCssVar('text-color-placeholder');
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    padding: 0;
+    outline: none;
+    transition:
+      color 0.15s,
+      background 0.15s;
+
+    &:hover {
+      color: getCssVar('text-color-secondary');
+      background: getCssVar('fill-color');
+    }
+  }
+
+  // ── 标题 ──────────────────────────────────────────────
+  @include e(header) {
+    padding-bottom: 16px;
+    padding-right: 24px;
+  }
+
+  @include e(title) {
+    font-size: 18px;
+    font-weight: 600;
+    color: getCssVar('text-color-primary');
+    line-height: 1.4;
+  }
+
+  // ── 内容区域 ──────────────────────────────────────────
+  @include e(content) {
+    color: getCssVar('messagebox-content-color');
+    font-size: getCssVar('messagebox-content-font-size');
+    padding-bottom: 20px;
+  }
+
+  @include e(container) {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  // ── 图标 ──────────────────────────────────────────────
+  @include e(status) {
+    font-size: 24px;
+    flex-shrink: 0;
+    display: inline-flex;
+    margin-top: 1px;
+
+    &--success {
+      color: getCssVar('color-success');
+    }
+    &--warning {
+      color: getCssVar('color-warning');
+    }
+    &--error {
+      color: getCssVar('color-danger');
+    }
+    &--info {
+      color: getCssVar('color-info');
+    }
+  }
+
+  // ── 消息文字 ──────────────────────────────────────────
+  @include e(message) {
+    flex: 1;
+    min-width: 0;
+    font-size: 14px;
+    color: getCssVar('text-color-regular');
+    line-height: 1.6;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // ── Prompt 输入框 ─────────────────────────────────────
+  @include e(input) {
+    margin-top: 12px;
+  }
+
+  @include e(input-inner) {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid getCssVar('border-color');
+    border-radius: 4px;
+    font-size: 14px;
+    color: getCssVar('text-color-regular');
+    background: #fff;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.15s;
+
+    &::placeholder {
+      color: getCssVar('text-color-placeholder');
+    }
+
+    &:focus {
+      border-color: getCssVar('color-primary');
+    }
+  }
+
+  // ── 操作按钮行 ────────────────────────────────────────
+  @include e(btns) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid getCssVar('border-color-lighter');
+    padding-top: 16px;
+    margin-top: 0;
+  }
+
+  // ── 按钮基础样式 ──────────────────────────────────────
+  @include e(btn) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    padding: 0 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background 0.15s,
+      border-color 0.15s,
+      color 0.15s;
+    outline: none;
+    user-select: none;
+
+    // 取消按钮
+    &--cancel {
+      background: #fff;
+      border-color: getCssVar('border-color');
+      color: getCssVar('text-color-regular');
+
+      &:hover {
+        border-color: getCssVar('color-primary-light-5');
+        color: getCssVar('color-primary');
+        background: getCssVar('color-primary-light-9');
+      }
+    }
+
+    // 确认按钮
+    &--confirm {
+      background: getCssVar('color-primary');
+      border-color: getCssVar('color-primary');
+      color: #fff;
+
+      &:hover {
+        background: getCssVar('color-primary-light-3');
+        border-color: getCssVar('color-primary-light-3');
+      }
+    }
+
+    // 颜色变体
+    &--default {
+      background: #fff;
+      border-color: getCssVar('border-color');
+      color: getCssVar('text-color-regular');
+
+      &:hover {
+        border-color: getCssVar('color-primary-light-5');
+        color: getCssVar('color-primary');
+      }
+    }
+
+    &--primary {
+      background: getCssVar('color-primary');
+      border-color: getCssVar('color-primary');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    &--success {
+      background: getCssVar('color-success');
+      border-color: getCssVar('color-success');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    &--warning {
+      background: getCssVar('color-warning');
+      border-color: getCssVar('color-warning');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    &--danger {
+      background: getCssVar('color-danger');
+      border-color: getCssVar('color-danger');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.85;
+      }
+    }
+
+    &--info {
+      background: getCssVar('color-info');
+      border-color: getCssVar('color-info');
+      color: #fff;
+
+      &:hover {
+        opacity: 0.85;
+      }
     }
   }
 }
 
-@include b(message-box-parent) {
-  @include m(hidden) {
-    overflow: hidden;
+// ─────────────────────────────────────────────────────────
+// 过渡动画
+// ─────────────────────────────────────────────────────────
+.swy-message-box-fade-enter-active {
+  transition: opacity 0.2s ease;
+
+  .swy-message-box {
+    animation: swy-msgbox-in 0.2s ease;
   }
 }
 
-.fade-in-linear-enter-active {
-  .#{$namespace}-overlay-message-box {
-    animation: msgbox-fade-in getCssVar('transition-duration');
+.swy-message-box-fade-leave-active {
+  transition: opacity 0.15s ease;
+
+  .swy-message-box {
+    animation: swy-msgbox-in 0.15s ease reverse;
   }
 }
 
-.fade-in-linear-leave-active {
-  .#{$namespace}-overlay-message-box {
-    animation: msgbox-fade-in getCssVar('transition-duration') reverse;
-  }
+.swy-message-box-fade-enter-from,
+.swy-message-box-fade-leave-to {
+  opacity: 0;
 }
 
-@keyframes msgbox-fade-in {
+@keyframes swy-msgbox-in {
   0% {
-    transform: translate3d(0, -20px, 0);
+    transform: translateY(-20px);
     opacity: 0;
   }
 
   100% {
-    transform: translate3d(0, 0, 0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
