@@ -1,3 +1,5 @@
+﻿/** File: input.vue - Vue Component */
+
 <template>
   <div
     :class="[
@@ -151,6 +153,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import {
   computed,
   nextTick,

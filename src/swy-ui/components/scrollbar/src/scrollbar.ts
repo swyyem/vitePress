@@ -1,3 +1,6 @@
+﻿/** File: scrollbar.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType, isNumber } from '@swy-ui/utils'
 import type { ExtractPropTypes, StyleValue } from 'vue'
 import type Scrollbar from './scrollbar.vue'

@@ -1,3 +1,5 @@
+﻿/** File: menu-item.vue - Vue Component */
+
 <template>
   <li
     :class="[ns.b('menu-item'), ns.is('active', isActive), ns.is('disabled', disabled)]"
@@ -11,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject, computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { menuItemProps } from './menu-item'

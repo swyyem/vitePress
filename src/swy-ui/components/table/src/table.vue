@@ -1,3 +1,5 @@
+﻿/** File: table.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.m(size), ns.is('border', border), ns.is('stripe', stripe)]"
@@ -70,6 +72,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tableProps, tableEmits } from './table'

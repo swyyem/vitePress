@@ -1,3 +1,6 @@
+﻿/** File: types.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type { SetupContext, UnwrapRef } from 'vue'
 import type { RuleItem, ValidateError, ValidateFieldsError } from 'async-validator'
 import type { ComponentSize } from '@swy-ui/constants'

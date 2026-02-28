@@ -1,3 +1,6 @@
+﻿/** File: instance.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type Tabs from './tabs.vue'
 import type TabPane from './tab-pane.vue'
 

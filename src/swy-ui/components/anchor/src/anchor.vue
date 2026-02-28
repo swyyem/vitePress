@@ -1,3 +1,5 @@
+﻿/** File: anchor.vue - Vue Component */
+
 <template>
   <div :class="anchorKls">
     <div :class="ns.e('line')" />
@@ -9,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, provide, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { anchorEmits, anchorProps } from './anchor'

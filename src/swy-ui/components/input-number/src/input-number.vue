@@ -1,3 +1,5 @@
+﻿/** File: input-number.vue - Vue Component */
+
 <template>
   <div
     :class="[
@@ -39,6 +41,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { inputNumberProps, inputNumberEmits } from './input-number'

@@ -1,3 +1,6 @@
+﻿/** File: instance.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type Button from './button.vue'
 import type ButtonGroup from './button-group.vue'
 

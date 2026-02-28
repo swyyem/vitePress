@@ -1,3 +1,5 @@
+﻿/** File: result.vue - Vue Component */
+
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('icon')">
@@ -55,6 +57,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { resultProps } from './result'
 

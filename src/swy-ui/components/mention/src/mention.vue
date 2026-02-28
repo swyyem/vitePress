@@ -1,3 +1,5 @@
+﻿/** File: mention.vue - Vue Component */
+
 <template>
   <div :class="mentionKls">
     <el-input
@@ -29,6 +31,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { mentionEmits, mentionProps } from './mention'

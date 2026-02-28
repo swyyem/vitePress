@@ -1,3 +1,6 @@
+﻿/** File: use-form-common-props.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, inject, ref, unref } from 'vue'
 import { useGlobalSize } from '@swy-ui/hooks/use-size'
 import { useProp } from '@swy-ui/hooks/use-prop'

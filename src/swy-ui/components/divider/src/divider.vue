@@ -1,3 +1,5 @@
+﻿/** File: divider.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(direction)]" role="separator">
     <div
@@ -10,6 +12,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { dividerProps } from './divider'
 

@@ -1,3 +1,5 @@
+﻿/** File: notification.vue - Vue Component */
+
 <template>
   <transition name="swy-notification-fade">
     <div v-if="visible" :class="[ns.b(), ns.m(type), position]" :style="positionStyle">
@@ -19,6 +21,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, onMounted } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { notificationProps, notificationEmits } from './notification'

@@ -1,3 +1,5 @@
+﻿/** File: tag.vue - Vue Component */
+
 <template>
   <span
     v-if="!disableTransitions"
@@ -51,6 +53,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tagProps, tagEmits } from './tag'

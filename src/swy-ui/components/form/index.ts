@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withNoopInstall } from '@swy-ui/utils'
 import Form from './src/form.vue'
 import FormItem from './src/form-item.vue'

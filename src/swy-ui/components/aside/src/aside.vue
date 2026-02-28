@@ -1,3 +1,5 @@
+﻿/** File: aside.vue - Vue Component */
+
 <template>
   <aside :class="ns.b()" :style="{ width }">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { asideProps } from './aside'
 

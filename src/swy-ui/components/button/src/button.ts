@@ -1,3 +1,6 @@
+﻿/** File: button.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { useSizeProp } from '@swy-ui/hooks'
 import { buildProps, definePropType, iconPropType } from '@swy-ui/utils'
 import { Loading } from '@element-plus/icons-vue'

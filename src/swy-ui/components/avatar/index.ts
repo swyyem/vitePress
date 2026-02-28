@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Avatar from './src/avatar.vue'
 
 export default Avatar

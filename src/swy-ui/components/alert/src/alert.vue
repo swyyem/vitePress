@@ -1,3 +1,5 @@
+﻿/** File: alert.vue - Vue Component */
+
 <template>
   <transition name="swy-alert-fade">
     <div
@@ -34,6 +36,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { alertProps, alertEmits } from './alert'

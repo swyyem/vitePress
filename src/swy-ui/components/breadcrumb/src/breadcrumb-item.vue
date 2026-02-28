@@ -1,3 +1,5 @@
+﻿/** File: breadcrumb-item.vue - Vue Component */
+
 <template>
   <span :class="ns.b()">
     <span :class="ns.e('inner')" @click="handleClick">
@@ -8,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { breadcrumbItemProps } from './breadcrumb-item'

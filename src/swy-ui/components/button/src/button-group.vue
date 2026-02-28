@@ -1,3 +1,5 @@
+﻿/** File: button-group.vue - Vue Component */
+
 <template>
   <div :class="[ns.b('group'), ns.bm('group', props.direction)]">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { provide, reactive, toRef } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { buttonGroupProps } from './button-group'

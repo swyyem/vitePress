@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Alert from './src/alert.vue'
 
 export default Alert

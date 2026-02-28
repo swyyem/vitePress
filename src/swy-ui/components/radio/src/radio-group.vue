@@ -1,3 +1,5 @@
+﻿/** File: radio-group.vue - Vue Component */
+
 <template>
   <div
     :id="groupId"
@@ -19,6 +21,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, nextTick, onMounted, provide, reactive, ref, toRefs, watch } from 'vue'
 import { useFormItem, useFormItemInputId } from '@swy-ui/components/form'
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '@swy-ui/constants'

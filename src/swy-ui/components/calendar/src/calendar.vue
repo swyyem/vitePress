@@ -1,3 +1,5 @@
+﻿/** File: calendar.vue - Vue Component */
+
 <template>
   <div :class="calendarKls">
     <div :class="ns.e('header')">
@@ -50,6 +52,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { calendarEmits, calendarProps } from './calendar'

@@ -1,3 +1,5 @@
+﻿/** File: switch.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.m(size), ns.is('disabled', disabled), ns.is('checked', checked)]"
@@ -21,6 +23,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { switchProps, switchEmits } from './switch'

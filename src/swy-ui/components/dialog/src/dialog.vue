@@ -1,3 +1,5 @@
+﻿/** File: dialog.vue - Vue Component */
+
 <template>
   <teleport to="body">
     <transition name="dialog-fade">
@@ -28,6 +30,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { dialogProps, dialogEmits } from './dialog'

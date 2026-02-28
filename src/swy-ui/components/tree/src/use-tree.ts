@@ -1,3 +1,6 @@
+﻿/** File: use-tree.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { ref, watch } from 'vue'
 import type { TreeProps, TreeNode } from './tree'
 

@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withNoopInstall } from '@swy-ui/utils'
 import Radio from './src/radio.vue'
 import RadioButton from './src/radio-button.vue'

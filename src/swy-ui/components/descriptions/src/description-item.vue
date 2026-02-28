@@ -1,3 +1,5 @@
+﻿/** File: description-item.vue - Vue Component */
+
 <template>
   <div :class="[ns.e('item'), { 'is-vertical': direction === 'vertical' }]" :style="itemStyle">
     <div
@@ -21,6 +23,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, inject } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { descriptionsItemProps } from './description-item'

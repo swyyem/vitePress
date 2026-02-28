@@ -1,3 +1,5 @@
+﻿/** File: loading.vue - Vue Component */
+
 <template>
   <transition name="swy-loading-fade">
     <div
@@ -18,6 +20,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { loadingProps } from './loading'
 

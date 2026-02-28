@@ -1,3 +1,5 @@
+﻿/** File: time-picker.vue - Vue Component */
+
 <template>
   <div :class="timePickerKls" :style="timePickerStyle">
     <el-input
@@ -24,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { timePickerEmits, timePickerProps } from './time-picker'

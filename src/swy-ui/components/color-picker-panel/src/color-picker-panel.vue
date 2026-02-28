@@ -1,3 +1,5 @@
+﻿/** File: color-picker-panel.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.is('disabled', disabled), ns.is('border', border)]"
@@ -30,6 +32,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, inject, nextTick, onMounted, provide, ref, watch } from 'vue'
 import type { ComponentPublicInstance } from 'vue'
 import SwyInput from '@swy-ui/components/input'

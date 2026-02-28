@@ -1,3 +1,5 @@
+﻿/** File: backtop.vue - Vue Component */
+
 <template>
   <transition name="swy-fade-in">
     <div v-show="visible" :class="backtopKls" :style="backtopStyle" @click="handleClick">
@@ -9,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { backtopEmits, backtopProps } from './backtop'

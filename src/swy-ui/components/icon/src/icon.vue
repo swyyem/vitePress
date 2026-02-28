@@ -1,3 +1,5 @@
+﻿/** File: icon.vue - Vue Component */
+
 <template>
   <i :class="iconKls" :style="iconStyle" v-bind="$attrs">
     <slot>
@@ -7,6 +9,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { iconProps } from './icon'

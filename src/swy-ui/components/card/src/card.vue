@@ -1,3 +1,5 @@
+﻿/** File: card.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.is(`${shadow || globalConfig?.shadow || 'always'}-shadow`)]">
     <div v-if="$slots.header || header" :class="[ns.e('header'), headerClass]">
@@ -13,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { useGlobalConfig } from '@swy-ui/components/config-provider'
 import { cardProps } from './card'

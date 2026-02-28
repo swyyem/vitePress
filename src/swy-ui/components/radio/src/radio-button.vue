@@ -1,3 +1,5 @@
+﻿/** File: radio-button.vue - Vue Component */
+
 <template>
   <label
     :class="[
@@ -33,6 +35,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { useRadio } from './use-radio'

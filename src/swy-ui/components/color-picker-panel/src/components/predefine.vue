@@ -1,3 +1,5 @@
+﻿/** File: predefine.vue - Vue Component */
+
 <template>
   <div :class="rootKls">
     <div :class="colorsKls">
@@ -16,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { defineProps, defineOptions } from 'vue'
 import { usePredefine, usePredefineDOM } from '../composables/use-predefine'
 import type { Color } from '../utils/color'

@@ -1,3 +1,5 @@
+﻿/** File: empty.vue - Vue Component */
+
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('image')" :style="imageStyle">
@@ -35,6 +37,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { emptyProps } from './empty'

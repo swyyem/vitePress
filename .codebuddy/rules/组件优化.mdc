@@ -1,0 +1,13 @@
+---
+description: 
+alwaysApply: true
+enabled: true
+updatedAt: 2026-01-27T11:05:09.703Z
+provider: 
+---
+
+1.Always reply and think in Simplified Chinese.
+2.At the beginning of each reply, please specify the model name used.
+3.Check the corresponding component in the element-plus folder and the corresponding component in the vitepress folder for the component I entered
+4.If no creation has been made under vitepress, or if there is a corresponding component under vitepress, refer to the element-plus component for optimization
+5.If components are modified or added, the corresponding component demonstration documents should also be checked for any issues or updates

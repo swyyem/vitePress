@@ -1,3 +1,6 @@
+﻿/** File: use-sv-panel.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
 import { EVENT_CODE } from '@swy-ui/constants'
 import { useNamespace } from '@swy-ui/hooks'

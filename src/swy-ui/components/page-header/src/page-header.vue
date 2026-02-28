@@ -1,3 +1,5 @@
+﻿/** File: page-header.vue - Vue Component */
+
 <template>
   <div :class="pageHeaderKls">
     <div v-if="breadcrumb && breadcrumb.length" :class="ns.e('breadcrumb')">
@@ -31,6 +33,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { pageHeaderEmits, pageHeaderProps } from './page-header'

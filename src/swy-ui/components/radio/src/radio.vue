@@ -1,3 +1,5 @@
+﻿/** File: radio.vue - Vue Component */
+
 <template>
   <label
     :class="[
@@ -41,6 +43,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { nextTick } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { CHANGE_EVENT } from '@swy-ui/constants'

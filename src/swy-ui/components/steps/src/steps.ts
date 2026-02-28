@@ -1,3 +1,6 @@
+﻿/** File: steps.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes } from 'vue'
 

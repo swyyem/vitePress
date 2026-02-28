@@ -1,3 +1,5 @@
+﻿/** File: descriptions.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(size)]">
     <div v-if="title || $slots.title || $slots.extra" :class="ns.e('header')">
@@ -17,6 +19,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, provide, reactive } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { descriptionsProps } from './descriptions'

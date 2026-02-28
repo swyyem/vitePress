@@ -1,3 +1,5 @@
+﻿/** File: select.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(size), ns.is('disabled', disabled), ns.is('focus', isFocused)]">
     <select
@@ -25,6 +27,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { selectProps, selectEmits } from './select'

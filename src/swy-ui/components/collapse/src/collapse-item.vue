@@ -1,3 +1,5 @@
+﻿/** File: collapse-item.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.is('active', isActive), ns.is('disabled', disabled)]">
     <div :class="ns.e('header')" @click="handleHeaderClick">
@@ -24,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject, computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { collapseItemProps } from './collapse-item'

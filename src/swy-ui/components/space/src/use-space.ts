@@ -1,3 +1,6 @@
+﻿/** File: use-space.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, ref, watchEffect } from 'vue'
 import { isArray, isNumber } from '@swy-ui/utils'
 import { useNamespace } from '@swy-ui/hooks'

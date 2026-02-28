@@ -1,3 +1,5 @@
+﻿/** File: segmented.vue - Vue Component */
+
 <template>
   <div :class="segmentedKls">
     <div
@@ -24,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { segmentedEmits, segmentedProps } from './segmented'

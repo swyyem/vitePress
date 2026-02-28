@@ -1,3 +1,5 @@
+﻿/** File: footer.vue - Vue Component */
+
 <template>
   <footer :class="ns.b()" :style="{ height }">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { footerProps } from './footer'
 

@@ -1,3 +1,5 @@
+﻿/** File: carousel-item.vue - Vue Component */
+
 <template>
   <div v-show="isActive" :class="ns.b('carousel-item')">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject, computed, onMounted, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { carouselItemProps } from './carousel-item'

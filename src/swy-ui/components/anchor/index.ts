@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withNoopInstall } from '@swy-ui/utils'
 import Anchor from './src/anchor.vue'
 import AnchorLink from './src/anchor-link.vue'

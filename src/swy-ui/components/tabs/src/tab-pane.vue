@@ -1,3 +1,5 @@
+﻿/** File: tab-pane.vue - Vue Component */
+
 <template>
   <div v-if="isActive" :class="ns.b('tab-pane')">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject, computed, onMounted } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tabPaneProps } from './tab-pane'

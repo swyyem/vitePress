@@ -1,3 +1,5 @@
+﻿/** File: breadcrumb.vue - Vue Component */
+
 <template>
   <div :class="ns.b()">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { breadcrumbProps } from './breadcrumb'

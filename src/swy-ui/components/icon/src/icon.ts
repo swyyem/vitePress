@@ -1,3 +1,6 @@
+﻿/** File: icon.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import type { Component, ExtractPropTypes } from 'vue'
 

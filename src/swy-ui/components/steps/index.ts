@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withNoopInstall } from '@swy-ui/utils'
 import Steps from './src/steps.vue'
 import Step from './src/step.vue'

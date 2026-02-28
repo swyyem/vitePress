@@ -1,3 +1,6 @@
+﻿/** File: tree-node.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
 import type { TreeNode } from './tree'

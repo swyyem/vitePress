@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Popover from './src/popover.vue'
 
 export const SwyPopover = Popover

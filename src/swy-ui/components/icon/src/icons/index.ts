@@ -1,3 +1,5 @@
+﻿/** File: index.ts - TypeScript File */
+
 export { default as AddLocation } from './add-location.vue'
 export { default as Aim } from './aim.vue'
 export { default as AlarmClock } from './alarm-clock.vue'

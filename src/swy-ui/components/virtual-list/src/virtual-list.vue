@@ -1,3 +1,5 @@
+﻿/** File: virtual-list.vue - Vue Component */
+
 <template>
   <div ref="containerRef" :class="virtualListKls" :style="containerStyle" @scroll="handleScroll">
     <div :class="ns.e('phantom')" :style="phantomStyle" />
@@ -12,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { virtualListProps } from './virtual-list'

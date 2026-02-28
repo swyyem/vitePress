@@ -1,3 +1,5 @@
+﻿/** File: autocomplete.vue - Vue Component */
+
 <template>
   <div :class="autocompleteKls">
     <el-input
@@ -30,6 +32,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { autocompleteEmits, autocompleteProps } from './autocomplete'

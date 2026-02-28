@@ -1,3 +1,5 @@
+﻿/** File: tooltip.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.is('disabled', props.disabled)]"
@@ -26,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tooltipProps } from './tooltip'

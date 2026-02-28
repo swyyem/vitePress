@@ -1,3 +1,5 @@
+﻿/** File: col.vue - Vue Component */
+
 <template>
   <component :is="tag" :class="colKls" :style="colStyle">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, inject } from 'vue'
 import { isNumber, isObject } from '@swy-ui/utils'
 import { useNamespace } from '@swy-ui/hooks'

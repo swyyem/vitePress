@@ -1,3 +1,6 @@
+﻿/** File: use-button.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { Text, computed, inject, ref, useSlots } from 'vue'
 import { useFormDisabled, useFormItem, useFormSize } from '@swy-ui/components/form'
 import { useGlobalConfig } from '@swy-ui/components/config-provider'

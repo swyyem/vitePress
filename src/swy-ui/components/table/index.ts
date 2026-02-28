@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Table from './src/table.vue'
 import TableColumn from './src/table-column.vue'
 

@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withNoopInstall } from '@swy-ui/utils'
 import Button from './src/button.vue'
 import ButtonGroup from '../button/src/button-group.vue'

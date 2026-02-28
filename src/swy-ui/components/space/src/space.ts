@@ -1,3 +1,6 @@
+﻿/** File: space.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { Comment, defineComponent, isVNode, renderSlot, createVNode, createTextVNode } from 'vue'
 import {
   buildProps,

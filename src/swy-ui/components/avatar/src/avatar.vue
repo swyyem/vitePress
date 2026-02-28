@@ -1,3 +1,5 @@
+﻿/** File: avatar.vue - Vue Component */
+
 <template>
   <span :class="[ns.b(), ns.m(shape), ns.m(sizeClass), hasIcon && ns.m('icon')]" :style="sizeStyle">
     <img v-if="src" :src="src" :alt="alt" @error="handleError" />
@@ -7,6 +9,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { avatarProps, avatarEmits, avatarSizes } from './avatar'

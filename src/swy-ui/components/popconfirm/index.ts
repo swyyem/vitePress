@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Popconfirm from './src/popconfirm.vue'
 
 export const SwyPopconfirm = Popconfirm

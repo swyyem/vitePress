@@ -1,3 +1,5 @@
+﻿/** File: message.vue - Vue Component */
+
 <template>
   <transition name="swy-message-fade">
     <div
@@ -15,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, onMounted } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { messageProps, messageEmits } from './message'

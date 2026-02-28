@@ -1,3 +1,5 @@
+﻿/** File: image.vue - Vue Component */
+
 <template>
   <div ref="containerRef" :class="[ns.b(), $attrs.class]" :style="containerStyle">
     <img
@@ -39,6 +41,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, onMounted, onUnmounted, useAttrs, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { getScrollContainer } from '@swy-ui/utils'

@@ -1,3 +1,6 @@
+﻿/** File: radio-group.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import { useAriaProps, useSizeProp } from '@swy-ui/hooks'
 import { radioEmits } from './radio'

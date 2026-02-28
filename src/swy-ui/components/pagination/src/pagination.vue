@@ -1,3 +1,5 @@
+﻿/** File: pagination.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(small ? 'small' : ''), ns.is('background', background)]">
     <button class="btn-prev" :disabled="currentPage <= 1" @click="handlePrev">‹</button>
@@ -14,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { paginationProps, paginationEmits } from './pagination'

@@ -1,4 +1,5 @@
-// types/index.ts
+﻿// types/index.ts
+// ========== Dependencies Import ==========
 import type { App, Plugin } from 'vue'
 
 export interface ComponentOptions {

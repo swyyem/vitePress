@@ -1,3 +1,5 @@
+﻿/** File: rate.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(size), ns.is('disabled', disabled)]">
     <div
@@ -37,6 +39,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { rateProps, rateEmits } from './rate'

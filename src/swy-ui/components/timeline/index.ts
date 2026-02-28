@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withNoopInstall } from '@swy-ui/utils'
 import Timeline from './src/timeline.vue'
 import TimelineItem from './src/timeline-item.vue'

@@ -1,3 +1,5 @@
+﻿/** File: tree-select.vue - Vue Component */
+
 <template>
   <div :class="treeSelectKls">
     <el-input
@@ -27,6 +29,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { treeSelectEmits, treeSelectProps } from './tree-select'

@@ -1,3 +1,6 @@
+﻿/** File: switch.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { useSizeProp } from '@swy-ui/hooks'
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'

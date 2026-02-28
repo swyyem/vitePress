@@ -1,3 +1,5 @@
+﻿/** File: check-tag.vue - Vue Component */
+
 <template>
   <span :class="checkTagKls" @click="handleClick">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { checkTagEmits, checkTagProps } from './check-tag'

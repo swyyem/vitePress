@@ -1,3 +1,5 @@
+﻿/** File: sv-panel.vue - Vue Component */
+
 <template>
   <div :class="rootKls" :style="rootStyle" @click="handleClick">
     <div
@@ -12,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useSvPanel, useSvPanelDOM } from '../composables/use-sv-panel'
 import Color from '../utils/color'
 

@@ -1,3 +1,5 @@
+﻿/** File: thumb.vue - Vue Component */
+
 <template>
   <transition :name="ns.b('fade')">
     <div
@@ -13,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, inject, onBeforeUnmount, ref, toRef } from 'vue'
 
 defineOptions({

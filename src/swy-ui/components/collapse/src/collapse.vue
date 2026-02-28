@@ -1,3 +1,5 @@
+﻿/** File: collapse.vue - Vue Component */
+
 <template>
   <div
     :class="[
@@ -11,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { provide, ref, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { collapseProps, collapseEmits } from './collapse'

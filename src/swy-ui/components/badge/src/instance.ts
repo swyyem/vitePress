@@ -1,3 +1,6 @@
+﻿/** File: instance.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type Badge from './badge.vue'
 
 export type BadgeInstance = InstanceType<typeof Badge>

@@ -1,9 +1,12 @@
+﻿/** File: bar.vue - Vue Component */
+
 <template>
   <thumb :move="moveX" :ratio="ratioX" :size="sizeWidth" :always="always" />
   <thumb :move="moveY" :ratio="ratioY" :size="sizeHeight" vertical :always="always" />
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject, ref } from 'vue'
 
 defineOptions({

@@ -1,3 +1,5 @@
+﻿/** File: upload.vue - Vue Component */
+
 <template>
   <div :class="uploadKls">
     <div :class="ns.e('trigger')" @click="handleClick">
@@ -41,6 +43,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { uploadEmits, uploadProps } from './upload'

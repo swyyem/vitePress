@@ -1,3 +1,6 @@
+﻿/** File: button-custom.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { TinyColor } from '@ctrl/tinycolor'
 import { useNamespace } from '@swy-ui/hooks'

@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Breadcrumb from './src/breadcrumb.vue'
 import BreadcrumbItem from './src/breadcrumb-item.vue'
 

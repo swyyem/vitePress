@@ -1,3 +1,5 @@
+﻿/** File: sub-menu.vue - Vue Component */
+
 <template>
   <li :class="[ns.b('sub-menu'), ns.is('opened', opened), ns.is('disabled', disabled)]">
     <div :class="ns.b('sub-menu__title')" @click="handleTitleClick">
@@ -18,6 +20,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { subMenuProps } from './sub-menu'

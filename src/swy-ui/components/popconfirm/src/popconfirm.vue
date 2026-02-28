@@ -1,3 +1,5 @@
+﻿/** File: popconfirm.vue - Vue Component */
+
 <template>
   <div :class="ns.b()" @click="handleToggle">
     <div :class="ns.e('reference')">
@@ -26,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { popconfirmProps, popconfirmEmits } from './popconfirm'

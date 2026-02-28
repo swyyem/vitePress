@@ -1,3 +1,5 @@
+﻿/** File: steps.vue - Vue Component */
+
 <template>
   <div :class="stepsKls">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, provide, reactive, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { stepsEmits, stepsProps } from './steps'

@@ -1,3 +1,5 @@
+﻿/** File: hue-slider.vue - Vue Component */
+
 <template>
   <div :class="rootKls">
     <div ref="bar" :class="barKls" @click="handleClick" />
@@ -13,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { defineProps, defineOptions, defineExpose } from 'vue'
 import { useSlider, useSliderDOM } from '../composables/use-slider'
 import type { Color } from '../utils/color'

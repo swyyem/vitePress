@@ -1,3 +1,5 @@
+﻿/** File: timeline.vue - Vue Component */
+
 <template>
   <ul :class="[ns.b(), ns.is('center', props.center)]">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { timelineProps } from './timeline'

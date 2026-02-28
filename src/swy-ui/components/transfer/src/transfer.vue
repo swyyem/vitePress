@@ -1,3 +1,5 @@
+﻿/** File: transfer.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.is('filterable', filterable)]">
     <!-- Left Panel -->
@@ -117,6 +119,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import SwyCheckbox from '@swy-ui/components/checkbox'

@@ -1,3 +1,5 @@
+﻿/** File: index.ts - TypeScript File */
+
 export * from './affix'
 export * from './alert'
 export * from './anchor'

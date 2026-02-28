@@ -1,3 +1,5 @@
+﻿/** File: drawer.vue - Vue Component */
+
 <template>
   <teleport to="body">
     <transition name="swy-drawer-fade">
@@ -24,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { drawerProps, drawerEmits } from './drawer'

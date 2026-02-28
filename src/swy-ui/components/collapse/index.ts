@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Collapse from './src/collapse.vue'
 import CollapseItem from './src/collapse-item.vue'
 

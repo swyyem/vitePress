@@ -1,3 +1,5 @@
+﻿/** File: step.vue - Vue Component */
+
 <template>
   <div :class="stepKls" :style="stepStyle">
     <div :class="[ns.e('head'), ns.is(status)]">
@@ -26,6 +28,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, getCurrentInstance, inject, onMounted, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { stepProps } from './step'

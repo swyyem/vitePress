@@ -1,3 +1,6 @@
+﻿/** File: link.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, iconPropType } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes, PropType } from 'vue'
 import type Link from './link.vue'

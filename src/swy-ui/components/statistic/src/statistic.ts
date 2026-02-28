@@ -1,3 +1,6 @@
+﻿/** File: statistic.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes, StyleValue } from 'vue'
 

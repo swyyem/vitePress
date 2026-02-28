@@ -1,3 +1,6 @@
+﻿/** File: instance.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type Menu from './menu.vue'
 import type MenuItem from './menu-item.vue'
 import type SubMenu from './sub-menu.vue'

@@ -1,3 +1,6 @@
+﻿/** File: color.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { TinyColor } from '@ctrl/tinycolor'
 import { hasOwn } from '@swy-ui/utils'
 

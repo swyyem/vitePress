@@ -1,3 +1,6 @@
+﻿/** File: bar.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes } from 'vue'
 import type Bar from './bar.vue'

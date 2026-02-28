@@ -1,3 +1,6 @@
+﻿/** File: color-picker-panel.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 
 import type { ComputedRef, ExtractPropTypes, InjectionKey } from 'vue'

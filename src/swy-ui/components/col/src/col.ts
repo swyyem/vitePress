@@ -1,3 +1,6 @@
+﻿/** File: col.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import type { ExtractPropTypes } from 'vue'
 import type Col from './col.vue'

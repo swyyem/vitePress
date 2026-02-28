@@ -1,3 +1,5 @@
+﻿/** File: tree-node.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.is('expanded', expanded)]"
@@ -45,6 +47,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, onMounted, inject } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import SwyCheckbox from '@swy-ui/components/checkbox'

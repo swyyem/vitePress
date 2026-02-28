@@ -1,3 +1,6 @@
+﻿/** File: image.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
 

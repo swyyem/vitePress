@@ -1,3 +1,5 @@
+﻿/** File: date-picker.vue - Vue Component */
+
 <template>
   <div :class="datePickerKls" :style="datePickerStyle">
     <SwyInput
@@ -43,7 +45,7 @@
                 ns.is('selected', date.isSelected),
                 ns.is('disabled', date.isDisabled),
                 ns.is('prev-month', date.isPrevMonth),
-                ns.is('next-month', date.isNextMonth)
+                ns.is('next-month', date.isNextMonth),
               ]"
               @click="handleDateClick(date)"
             >
@@ -57,6 +59,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, watch, onMounted, onUnmounted } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { datePickerEmits, datePickerProps } from './date-picker'
@@ -90,11 +93,7 @@ const currentMonth = ref(new Date().getMonth() + 1)
 
 const weekDays = ['日', '一', '二', '三', '四', '五', '六']
 
-const datePickerKls = computed(() => [
-  ns.b(),
-  ns.m(props.size),
-  ns.is('disabled', props.disabled)
-])
+const datePickerKls = computed(() => [ns.b(), ns.m(props.size), ns.is('disabled', props.disabled)])
 
 const datePickerStyle = computed(() => ({}))
 
@@ -126,7 +125,7 @@ const dateList = computed(() => {
       isNextMonth: false,
       isToday: false,
       isSelected: false,
-      isDisabled: props.disabledDate ? props.disabledDate(date) : false
+      isDisabled: props.disabledDate ? props.disabledDate(date) : false,
     })
   }
 
@@ -144,7 +143,7 @@ const dateList = computed(() => {
       isNextMonth: false,
       isToday,
       isSelected,
-      isDisabled: props.disabledDate ? props.disabledDate(date) : false
+      isDisabled: props.disabledDate ? props.disabledDate(date) : false,
     })
   }
 
@@ -160,7 +159,7 @@ const dateList = computed(() => {
       isNextMonth: true,
       isToday: false,
       isSelected: false,
-      isDisabled: props.disabledDate ? props.disabledDate(date) : false
+      isDisabled: props.disabledDate ? props.disabledDate(date) : false,
     })
   }
 
@@ -253,18 +252,21 @@ onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
 
-watch(() => props.modelValue, (newVal) => {
-  if (newVal) {
-    const date = new Date(newVal)
-    if (!isNaN(date.getTime())) {
-      selectedDate.value = date
-      displayValue.value = formatDate(date)
+watch(
+  () => props.modelValue,
+  newVal => {
+    if (newVal) {
+      const date = new Date(newVal)
+      if (!isNaN(date.getTime())) {
+        selectedDate.value = date
+        displayValue.value = formatDate(date)
+      }
+    } else {
+      selectedDate.value = null
+      displayValue.value = ''
     }
-  } else {
-    selectedDate.value = null
-    displayValue.value = ''
   }
-})
+)
 
 defineExpose({
   inputRef,

@@ -1,3 +1,6 @@
+﻿/** File: instance.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type Carousel from './carousel.vue'
 import type CarouselItem from './carousel-item.vue'
 

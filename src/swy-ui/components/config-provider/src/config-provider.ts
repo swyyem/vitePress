@@ -1,3 +1,6 @@
+﻿/** File: config-provider.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { defineComponent, renderSlot, watch } from 'vue'
 import { provideGlobalConfig } from './hooks/use-global-config'
 import { configProviderProps } from './config-provider-props'

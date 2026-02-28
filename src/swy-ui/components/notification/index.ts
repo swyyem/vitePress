@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Notification from './src/notification.vue'
 
 export const SwyNotification = Notification

@@ -1,3 +1,5 @@
+﻿/** File: message-box.vue - Vue Component */
+
 <template>
   <teleport to="body">
     <transition name="swy-fade">
@@ -30,6 +32,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { messageBoxEmits, messageBoxProps } from './message-box'

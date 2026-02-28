@@ -1,3 +1,5 @@
+﻿/** File: form.vue - Vue Component */
+
 <template>
   <form ref="formRef" :class="formClasses">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, provide, reactive, ref, toRefs, watch } from 'vue'
 import { debugWarn, isFunction } from '@swy-ui/utils'
 import { useNamespace } from '@swy-ui/hooks'

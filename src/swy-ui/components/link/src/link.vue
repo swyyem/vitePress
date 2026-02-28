@@ -1,3 +1,5 @@
+﻿/** File: link.vue - Vue Component */
+
 <template>
   <a
     :class="linkKls"
@@ -17,6 +19,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { SwyIcon } from '@swy-ui/components/icon'
 import { useGlobalConfig } from '@swy-ui/components/config-provider'

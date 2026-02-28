@@ -1,3 +1,5 @@
+﻿/** File: text.vue - Vue Component */
+
 <template>
   <component :is="tag" ref="textRef" :class="textKls" :style="lineClampStyle">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, onMounted, onUpdated, useAttrs } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { useFormSize } from '@swy-ui/components/form'

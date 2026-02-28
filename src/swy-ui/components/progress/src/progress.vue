@@ -1,3 +1,5 @@
+﻿/** File: progress.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(type), ns.is(status), ns.is('without-text', !showText)]">
     <div v-if="type === 'line'" :class="ns.b('bar')">
@@ -16,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { progressProps } from './progress'

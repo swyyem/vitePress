@@ -1,3 +1,5 @@
+﻿/** File: color-picker.vue - Vue Component */
+
 <template>
   <swy-tooltip
     ref="popper"
@@ -70,6 +72,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, nextTick, provide, ref, watch } from 'vue'
 import { debounce, pick } from 'lodash-unified'
 import ElIcon from '@swy-ui/components/icon'

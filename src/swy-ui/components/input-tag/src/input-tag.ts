@@ -1,3 +1,6 @@
+﻿/** File: input-tag.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps } from '@swy-ui/utils'
 import { useSizeProp } from '@swy-ui/hooks'
 import type { ExtractPropTypes } from 'vue'

@@ -1,3 +1,5 @@
+﻿/** File: splitter.vue - Vue Component */
+
 <template>
   <div :class="splitterKls" :style="containerStyle">
     <div :class="ns.e('pane')" :style="pane1Style">
@@ -16,6 +18,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref, watch } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { splitterEmits, splitterProps } from './splitter'

@@ -1,3 +1,5 @@
+﻿/** File: affix.vue - Vue Component */
+
 <template>
   <div ref="rootRef" :class="affixKls" :style="rootStyle">
     <div :class="affixInnerClass" :style="affixStyle">
@@ -7,6 +9,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, onMounted, onUnmounted, ref, nextTick } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { affixEmits, affixProps } from './affix'

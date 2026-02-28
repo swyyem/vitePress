@@ -1,3 +1,5 @@
+﻿/** File: container.vue - Vue Component */
+
 <template>
   <section :class="[ns.b(), ns.is('vertical', isVertical)]">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, useSlots } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { containerProps } from './container'

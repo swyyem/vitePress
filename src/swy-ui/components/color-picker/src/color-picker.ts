@@ -1,3 +1,6 @@
+﻿/** File: color-picker.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import { useSizeProp } from '@swy-ui/hooks'
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '@swy-ui/constants'

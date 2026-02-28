@@ -1,3 +1,5 @@
+﻿/** File: row.vue - Vue Component */
+
 <template>
   <component :is="tag" :class="rowKls" :style="rowStyle">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { rowProps } from './row'

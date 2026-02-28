@@ -1,3 +1,5 @@
+﻿/** File: overlay.vue - Vue Component */
+
 <template>
   <transition :name="ns.b()">
     <div v-show="visible" :class="overlayKls" :style="overlayStyle" @click="handleClick">
@@ -7,6 +9,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { overlayEmits, overlayProps } from './overlay'

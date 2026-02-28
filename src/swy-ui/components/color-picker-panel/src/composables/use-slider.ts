@@ -1,3 +1,6 @@
+﻿/** File: use-slider.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, getCurrentInstance, onMounted, ref, shallowRef, watch } from 'vue'
 import { addUnit, getClientXY, getEventCode } from '@swy-ui/utils'
 import { useNamespace } from '@swy-ui/hooks'

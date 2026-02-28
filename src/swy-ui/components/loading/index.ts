@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import Loading from './src/loading.vue'
 
 export const SwyLoading = Loading

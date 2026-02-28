@@ -1,3 +1,6 @@
+﻿/** File: use-global-config.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, getCurrentInstance, inject, provide, ref, unref } from 'vue'
 import { debugWarn, keysOf } from '@swy-ui/utils'
 import {

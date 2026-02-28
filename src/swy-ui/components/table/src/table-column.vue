@@ -1,3 +1,5 @@
+﻿/** File: table-column.vue - Vue Component */
+
 <template>
   <!-- SwyTableColumn 不直接渲染 th，而是由 SwyTable 根据注册的信息统一渲染 -->
   <div v-if="false">
@@ -6,6 +8,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject, onMounted, onBeforeUnmount } from 'vue'
 import { tableColumnProps } from './table-column'
 

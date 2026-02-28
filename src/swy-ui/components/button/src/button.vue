@@ -1,3 +1,5 @@
+﻿/** File: button.vue - Vue Component */
+
 <template>
   <component
     :is="tag"
@@ -20,6 +22,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { SwyIcon } from '@swy-ui/components/icon'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'

@@ -1,3 +1,5 @@
+﻿/** File: tree.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.is('highlight-current', highlightCurrent)]">
     <template v-if="data && data.length > 0">
@@ -21,6 +23,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { treeProps, treeEmits, type TreeNode as TreeNodeType, treeContextKey } from './tree'

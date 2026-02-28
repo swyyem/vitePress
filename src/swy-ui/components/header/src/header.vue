@@ -1,3 +1,5 @@
+﻿/** File: header.vue - Vue Component */
+
 <template>
   <header :class="ns.b()" :style="{ height }">
     <slot />
@@ -5,6 +7,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { headerProps } from './header'
 

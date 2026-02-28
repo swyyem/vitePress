@@ -1,3 +1,6 @@
+﻿/** File: constants.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type { ComputedRef, InjectionKey } from 'vue'
 
 export interface RowContext {

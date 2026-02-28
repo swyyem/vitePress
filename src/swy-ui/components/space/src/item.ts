@@ -1,3 +1,6 @@
+﻿/** File: item.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, defineComponent, h, renderSlot } from 'vue'
 import { buildProps } from '@swy-ui/utils'
 import { useNamespace } from '@swy-ui/hooks'

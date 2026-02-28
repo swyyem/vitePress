@@ -1,3 +1,5 @@
+﻿/** File: space.vue - Vue Component */
+
 <template>
   <component :is="tag" :class="spaceKls" :style="spaceStyle">
     <template v-for="(item, index) in items" :key="index">
@@ -12,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, useSlots } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { spaceProps } from './space'

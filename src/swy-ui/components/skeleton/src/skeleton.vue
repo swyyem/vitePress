@@ -1,3 +1,5 @@
+﻿/** File: skeleton.vue - Vue Component */
+
 <template>
   <div v-if="loading">
     <div v-for="i in count" :key="i" :class="[ns.b(), ns.is('animated', animated)]">
@@ -9,6 +11,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { useNamespace } from '@swy-ui/hooks'
 import { skeletonProps } from './skeleton'
 

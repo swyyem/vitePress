@@ -1,3 +1,5 @@
+﻿/** File: cascader.vue - Vue Component */
+
 <template>
   <div :class="cascaderKls" :style="cascaderStyle">
     <el-input
@@ -23,6 +25,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { cascaderEmits, cascaderProps } from './cascader'

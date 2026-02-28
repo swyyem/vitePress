@@ -1,3 +1,5 @@
+﻿/** File: tabs.vue - Vue Component */
+
 <template>
   <div :class="[ns.b(), ns.m(type)]">
     <div :class="ns.e('header')">
@@ -21,6 +23,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { provide, ref, toRef } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { tabsProps, tabsEmits } from './tabs'

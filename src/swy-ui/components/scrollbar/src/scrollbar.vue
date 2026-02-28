@@ -1,3 +1,5 @@
+﻿/** File: scrollbar.vue - Vue Component */
+
 <template>
   <div ref="scrollbarRef" :class="ns.b()">
     <div
@@ -27,6 +29,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, nextTick, onMounted, onUpdated, provide, reactive, ref, watch } from 'vue'
 import { useEventListener, useResizeObserver } from '@vueuse/core'
 import { addUnit, debugWarn, isNumber, isObject } from '@swy-ui/utils'

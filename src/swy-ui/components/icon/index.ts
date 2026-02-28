@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { withInstall } from '@swy-ui/utils'
 import Icon from './src/icon.vue'
 

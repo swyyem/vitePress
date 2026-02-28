@@ -1,3 +1,5 @@
+﻿/** File: statistic.vue - Vue Component */
+
 <template>
   <div :class="statisticKls">
     <div v-if="title || $slots.title" :class="ns.e('head')">
@@ -20,6 +22,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { statisticProps } from './statistic'

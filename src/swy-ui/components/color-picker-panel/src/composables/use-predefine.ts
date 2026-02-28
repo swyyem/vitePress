@@ -1,3 +1,6 @@
+﻿/** File: use-predefine.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { computed, inject, ref, watch, watchEffect } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { colorPickerPanelContextKey } from '../color-picker-panel'

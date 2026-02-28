@@ -1,3 +1,6 @@
+﻿/** File: use-common-color.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { reactive, watch } from 'vue'
 import Color from '../utils/color'
 

@@ -1,3 +1,5 @@
+﻿/** File: timeline-item.vue - Vue Component */
+
 <template>
   <li :class="[ns.b(), ns.is('center', center)]">
     <div :class="ns.e('tail')" />
@@ -34,6 +36,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, inject } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import SwyIcon from '@swy-ui/components/icon'

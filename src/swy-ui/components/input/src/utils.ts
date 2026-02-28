@@ -1,3 +1,6 @@
+﻿/** File: utils.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { isFirefox, isNumber } from '@swy-ui/utils'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 let hiddenTextarea: HTMLTextAreaElement | undefined = undefined

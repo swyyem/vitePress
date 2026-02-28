@@ -1,3 +1,6 @@
+﻿/** File: config-provider-props.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import { useEmptyValuesProps, useSizeProp } from '@swy-ui/hooks'
 

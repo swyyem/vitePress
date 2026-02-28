@@ -1,3 +1,6 @@
+﻿/** File: date-picker.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import { useSizeProp } from '@swy-ui/hooks'
 import type { ExtractPropTypes } from 'vue'

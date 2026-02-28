@@ -1,3 +1,5 @@
+﻿/** File: menu.vue - Vue Component */
+
 <template>
   <ul
     :class="[ns.b(), ns.m(mode)]"
@@ -11,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { menuProps, menuEmits } from './menu'

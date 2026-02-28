@@ -1,3 +1,6 @@
+﻿/** File: button-group.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { definePropType } from '@swy-ui/utils'
 import { buttonProps } from './button'
 

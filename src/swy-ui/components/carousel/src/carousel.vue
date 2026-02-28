@@ -1,3 +1,5 @@
+﻿/** File: carousel.vue - Vue Component */
+
 <template>
   <div :class="ns.b()" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
     <div :class="ns.e('container')" :style="{ height: height }">
@@ -49,6 +51,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, provide, onMounted, onUnmounted } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { carouselProps, carouselEmits } from './carousel'

@@ -1,3 +1,6 @@
+﻿/** File: draggable.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { isClient } from '@swy-ui/utils'
 
 let isDragging = false

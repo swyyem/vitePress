@@ -1,3 +1,5 @@
+﻿/** File: dropdown-item.vue - Vue Component */
+
 <template>
   <li
     :class="[ns.b('dropdown-menu__item'), ns.is('disabled', disabled), ns.m('divided', divided)]"
@@ -8,6 +10,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { inject } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { dropdownItemProps } from './dropdown-item'

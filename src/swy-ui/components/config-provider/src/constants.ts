@@ -1,3 +1,6 @@
+﻿/** File: constants.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import type { ConfigProviderProps } from './config-provider-props'
 import type { InjectionKey, Ref } from 'vue'
 

@@ -1,3 +1,6 @@
+﻿/** File: rate.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType } from '@swy-ui/utils'
 import type { ExtractPropTypes, ExtractPublicPropTypes } from 'vue'
 

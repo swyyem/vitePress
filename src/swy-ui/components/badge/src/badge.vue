@@ -1,3 +1,5 @@
+﻿/** File: badge.vue - Vue Component */
+
 <template>
   <div :class="ns.b()">
     <slot />
@@ -14,6 +16,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, useSlots } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { isNumber } from 'lodash-unified'

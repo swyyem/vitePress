@@ -1,3 +1,5 @@
+﻿/** File: popover.vue - Vue Component */
+
 <template>
   <div
     :class="ns.b()"
@@ -55,6 +57,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, nextTick } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { popoverProps, popoverEmits } from './popover'

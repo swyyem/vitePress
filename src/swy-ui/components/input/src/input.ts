@@ -1,3 +1,6 @@
+﻿/** File: input.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import { buildProps, definePropType, iconPropType, isString, mutable } from '@swy-ui/utils'
 import { UPDATE_MODEL_EVENT } from '@swy-ui/constants'
 import { useAriaProps, useSizeProp } from '@swy-ui/hooks'

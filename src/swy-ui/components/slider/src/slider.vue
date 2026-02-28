@@ -1,3 +1,5 @@
+﻿/** File: slider.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.m(size), ns.is('vertical', vertical), ns.is('disabled', disabled)]"
@@ -98,6 +100,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, computed, watch, nextTick } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { sliderProps, sliderEmits } from './slider'

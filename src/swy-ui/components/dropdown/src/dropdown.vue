@@ -1,3 +1,5 @@
+﻿/** File: dropdown.vue - Vue Component */
+
 <template>
   <div
     :class="[ns.b(), ns.m(size), ns.is('disabled', disabled)]"
@@ -17,6 +19,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { ref, provide } from 'vue'
 import { useNamespace } from '@swy-ui/hooks'
 import { dropdownProps, dropdownEmits } from './dropdown'

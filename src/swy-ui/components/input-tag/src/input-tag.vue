@@ -1,3 +1,5 @@
+﻿/** File: input-tag.vue - Vue Component */
+
 <template>
   <div :class="inputTagKls" @click="handleWrapperClick">
     <span v-for="(tag, index) in tags" :key="index" :class="ns.e('tag')">
@@ -20,6 +22,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import { computed, ref } from 'vue'
 import { useNamespace } from '@swy-ui/hooks/use-namespace/index'
 import { inputTagEmits, inputTagProps } from './input-tag'

@@ -1,3 +1,5 @@
+﻿/** File: form-item.vue - Vue Component */
+
 <template>
   <div
     ref="formItemRef"
@@ -37,6 +39,7 @@
 </template>
 
 <script lang="ts" setup>
+// ========== Dependencies Import ==========
 import {
   computed,
   inject,

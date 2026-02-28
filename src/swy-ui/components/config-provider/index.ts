@@ -1,3 +1,6 @@
+﻿/** File: index.ts - TypeScript File */
+
+// ========== Dependencies Import ==========
 import ConfigProvider from './src/config-provider'
 export default ConfigProvider
 
