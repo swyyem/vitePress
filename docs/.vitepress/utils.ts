@@ -764,6 +764,17 @@ const wholeList: MenuItem[] = [
         ],
       },
       {
+        text: '工具函数',
+        collapsible: true,
+        collapsed: true,
+        items: [
+          {
+            text: 'Utils 工具函数',
+            link: '/component/swy-ui/utils/',
+          },
+        ],
+      },
+      {
         text: '表单组件',
         collapsible: true, // 允许折叠
         collapsed: false, // 默认展开

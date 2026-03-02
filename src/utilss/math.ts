@@ -1,0 +1,22 @@
+// math/random utilities
+export {
+  randomInt,
+  clamp,
+  range,
+  randomHex,
+  randomColor,
+  uniqueId,
+  randomRGB,
+  median,
+  mode,
+  weightedRandom,
+  randomDate,
+  toHex,
+  fromHex,
+  rgbToHex,
+  hexToRgb,
+  sumBy,
+  differenceBy,
+  normalizeArray,
+  randomGaussian,
+} from './core'

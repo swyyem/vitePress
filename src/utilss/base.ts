@@ -1,0 +1,11 @@
+/* aggregator */
+export * from './core'
+export * from './types'
+export * from './arrays'
+export * from './strings'
+export * from './objects'
+export * from './date'
+export * from './dom'
+export * from './async'
+export * from './math'
+export * from './misc'

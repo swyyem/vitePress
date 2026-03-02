@@ -1,0 +1,22 @@
+// async and function utilities
+export {
+  sleep,
+  debounce,
+  throttle,
+  debouncePromise,
+  throttleAsync,
+  once,
+  onceAsync,
+  memoize,
+  memoizeAsync,
+  timeoutPromise,
+  retry,
+  waitFor,
+  limitConcurrency,
+  promisify,
+  callbackify,
+  compose,
+  pipe,
+  composeAsync,
+  pipeAsync,
+} from './core'
