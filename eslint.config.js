@@ -46,6 +46,15 @@ export default defineConfigWithVueTs(
     },
   },
 
+  // docs 示例组件：放宽命名限制
+  {
+    name: 'app/docs-demo-components',
+    files: ['docs/**/*.vue'],
+    rules: {
+      'vue/multi-word-component-names': 'off',
+    },
+  },
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],

@@ -2,8 +2,7 @@
 
 ## 基础写法
 
-``` md
-
+```md
 ::: info
 This is an info box.
 :::
@@ -23,7 +22,6 @@ This is a dangerous warning.
 ::: details
 This is a details block.
 :::
-
 ```
 
 ::: info
@@ -54,6 +52,3 @@ This is a details block.
 
 > [!WARNING]
 > 因为可能存在风险，所以需要用户立即关注的关键内容。
-
-
-

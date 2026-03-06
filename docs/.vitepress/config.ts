@@ -67,7 +67,7 @@ export default defineConfig({
       '/front/': getSideBar('front'),
       '/back/': getSideBar('back'),
       '/others': getSideBar('others'),
-      '/Markdown': getSideBar('Markdown'),
+      '/markdown': getSideBar('markdown'),
       '/component': getSideBar('SwyUI'),
       '/largeModel': getSideBar('largeModel'),
       '/python': getSideBar('python'),

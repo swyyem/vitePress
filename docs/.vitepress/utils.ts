@@ -517,39 +517,39 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'Markdown',
-    label: 'Markdown',
-    link: '/Markdown',
+    label: 'markdown',
+    link: '/markdown',
     items: [
       {
-        text: 'Markdown 语法',
+        text: 'markdown 语法',
         items: [
           {
             text: '表格',
-            link: '/Markdown/components/table',
+            link: '/markdown/table',
           },
           {
             text: '目录',
-            link: '/Markdown/components/mulu',
+            link: '/markdown/mulu',
           },
           {
             text: '容器',
-            link: '/Markdown/components/rongqi',
+            link: '/markdown/rongqi',
           },
           {
             text: '字体样式',
-            link: '/Markdown/components/ziti',
+            link: '/markdown/ziti',
           },
           {
             text: '支持的表情',
-            link: '/Markdown/components/emoji',
+            link: '/markdown/emoji',
           },
           {
             text: '代码块',
-            link: '/Markdown/components/daima',
+            link: '/markdown/daima',
           },
           {
             text: '组件',
-            link: '/Markdown/components/zujian',
+            link: '/markdown/zujian',
           },
         ],
       },
