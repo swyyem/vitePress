@@ -80,11 +80,8 @@ export default defineConfig({
         activeMatch: '/hufu/',
       },
       { text: 'Markdown', link: '/Markdown' },
-      { text: '演示', link: '/api/label' },
-      { text: 'SwyUI 组件库', link: '/component/swy-ui' },
-      { text: 'TocoUI 组件库', link: '/component' },
+      { text: '组件库', link: '/component/swy-ui' },
       { text: '前端', link: '/front/engi/rule', activeMatch: '/front/' },
-      { text: 'javascript', link: '/javascript' },
       {
         text: '后端',
         link: '/back/framework/chooseFrameWork',

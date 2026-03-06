@@ -301,6 +301,17 @@ const wholeList: MenuItem[] = [
         ],
       },
       {
+        text: 'JavaScript',
+        collapsible: true,
+        collapsed: false, // 默认展开
+        items: [
+          {
+            text: 'javascript',
+            link: '/front/javascript/',
+          },
+        ],
+      },
+      {
         text: '前端工程化',
         collapsible: true,
         collapsed: false, // 默认展开
@@ -400,6 +411,17 @@ const wholeList: MenuItem[] = [
           //   text: "Uniapp踩坑合集",
           //   link: "/front/mini/trap/",
           // },
+        ],
+      },
+      {
+        text: 'Flutter跨端开发',
+        collapsible: true,
+        collapsed: false, // 默认展开
+        items: [
+          {
+            text: 'Flutter入门与实践',
+            link: '/front/mini/flutter/',
+          },
         ],
       },
     ],
