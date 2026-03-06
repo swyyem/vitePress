@@ -15,15 +15,20 @@
 type CategoryMap = Record<string, MenuItem[]>
 interface MenuItem {
   text: string
-  items?: MenuItem[]
-  link?: string
+  label?: string
+  link: string
+  activeMatch?: string
+  items?: (Omit<MenuItem, 'link'> | Partial<Pick<MenuItem, 'link'>>)[]
   collapsed?: boolean
   collapsible?: boolean
 }
 
 const wholeList: MenuItem[] = [
+  { text: '首页', link: '/' },
   {
-    text: 'meinv',
+    text: 'beautifulWoman',
+    label: 'beautifulWoman',
+    link: '/beautifulWoman',
     items: [
       {
         text: '宝宝',
@@ -34,13 +39,13 @@ const wholeList: MenuItem[] = [
             text: '护肤',
             collapsible: true,
             collapsed: false, // 默认展开
-            link: '/meinv/hufu/',
+            link: '/beautifulWoman/skincare/',
           },
           {
-            text: '护肤1',
+            text: '化妆品',
             collapsible: true,
             collapsed: false, // 默认展开
-            link: '/meinv/hufu1/',
+            link: '/beautifulWoman/cosmetics/',
           },
         ],
       },
@@ -48,7 +53,8 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'front',
-
+    label: 'front',
+    link: '/front/engi/rule',
     items: [
       {
         text: '前端面试题',
@@ -428,6 +434,8 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'back',
+    label: 'back',
+    link: '/back/framework/chooseFrameWork',
     items: [
       {
         text: '后端基础',
@@ -463,6 +471,9 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'others',
+    label: 'others',
+    link: '/others/operation/git',
+    activeMatch: '/others/',
     items: [
       {
         text: '常用操作指令',
@@ -506,6 +517,8 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'Markdown',
+    label: 'Markdown',
+    link: '/Markdown',
     items: [
       {
         text: 'Markdown 语法',
@@ -543,29 +556,9 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'api',
-    items: [
-      {
-        text: '组建的演示方法',
-        items: [
-          {
-            text: '使用标签的写法',
-            link: '/api/label',
-          },
-          {
-            text: '使用相对路径的写法',
-            link: '/api/path',
-          },
-          {
-            text: '注册方法',
-            link: '/api/functions',
-          },
-        ],
-      },
-    ],
-  },
-  {
     text: 'SwyUI',
+    label: 'SwyUI',
+    link: '/component/swy-ui',
     collapsible: true, // 允许折叠
     collapsed: true, // 默认折叠
     items: [
@@ -868,6 +861,9 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'AILargeModel',
+    label: 'AILargeModel',
+    link: '/AILargeModel/TechnicalTerm',
+    activeMatch: '/AILargeModel/',
     items: [
       {
         text: 'AI大模型基本原理及API使用',
@@ -891,6 +887,9 @@ const wholeList: MenuItem[] = [
   },
   {
     text: 'python',
+    label: 'python',
+    link: '/python/basic',
+    activeMatch: '/python/',
     items: [
       {
         text: '基础语法结构',
@@ -942,17 +941,29 @@ const wholeList: MenuItem[] = [
       },
     ],
   },
+  {
+    text: 'Git 规范',
+    link: '/conventionalCommits/git',
+    activeMatch: '/conventionalCommits/',
+  },
 ]
 
 export default {
   getSideBar(path: string) {
     const map = wholeList.reduce((acc: CategoryMap, curr) => {
-      if (curr.text && curr.items) {
-        acc[curr.text] = curr.items
+      if (curr.label && curr.items) {
+        acc[curr.label] = curr.items
       }
       return acc
     }, {})
 
     return map[path] || []
+  },
+  getNav() {
+    return wholeList.map(item => ({
+      text: item.text,
+      link: item.link,
+      activeMatch: item.activeMatch,
+    }))
   },
 }
