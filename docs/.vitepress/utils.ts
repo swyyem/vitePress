@@ -435,35 +435,35 @@ const wholeList: MenuItem[] = [
   {
     text: '后端',
     label: 'back',
-    link: '/back/framework/chooseFrameWork',
+    link: '/back/chooseFrameWork',
     items: [
       {
         text: '后端基础',
         items: [
           {
             text: '论全干工程师的自我修养',
-            link: '/back/framework/chooseFrameWork/',
+            link: '/back/chooseFrameWork/',
           },
           {
             text: '浅析后端三层架构',
-            link: '/back/framework/structure/',
+            link: '/back/structure/',
           },
 
           {
             text: 'Nest入门与实践',
-            link: '/back/framework/nest/',
+            link: '/back/nest/',
           },
           {
             text: 'Redis入门与实践',
-            link: '/back/framework/redis/',
+            link: '/back/redis/',
           },
           {
             text: '关系型数据与非关系型数据库',
-            link: '/back/framework/database',
+            link: '/back/database',
           },
           {
             text: 'MySql入门与实践',
-            link: '/back/framework/mysql',
+            link: '/back/mysql',
           },
         ],
       },
@@ -518,7 +518,7 @@ const wholeList: MenuItem[] = [
   {
     text: 'Markdown',
     label: 'markdown',
-    link: '/markdown',
+    link: '/markdown/table',
     items: [
       {
         text: 'markdown 语法',

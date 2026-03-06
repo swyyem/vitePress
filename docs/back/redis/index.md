@@ -16,26 +16,31 @@ Redis（Remote Dictionary Server）是一个开源的、高性能的、基于内
 ## Redis的功能和作用
 
 ### 1. 缓存系统
+
 - 减轻数据库压力
 - 提高响应速度
 - 支持数据过期策略
 
 ### 2. 计数器
+
 - 实时统计
 - 访问量统计
 - 点赞数统计
 
 ### 3. 队列系统
+
 - 消息队列
 - 延迟队列
 - 任务队列
 
 ### 4. 会话管理
+
 - 存储用户session
 - 用户token管理
 - 在线用户管理
 
 ### 5. 排行榜
+
 - 实时榜单
 - 积分排名
 - 热门商品
@@ -57,9 +62,9 @@ npm install @nestjs/cache-manager cache-manager cache-manager-redis-store redis
 在app.module.ts中配置Redis：
 
 ```typescript
-import { Module } from '@nestjs/common';
-import { CacheModule } from '@nestjs/cache-manager';
-import * as redisStore from 'cache-manager-redis-store';
+import { Module } from '@nestjs/common'
+import { CacheModule } from '@nestjs/cache-manager'
+import * as redisStore from 'cache-manager-redis-store'
 
 @Module({
   imports: [
@@ -67,8 +72,8 @@ import * as redisStore from 'cache-manager-redis-store';
       store: redisStore,
       host: 'localhost',
       port: 6379,
-      ttl: 60 * 60 // 默认缓存时间1小时
-    })
+      ttl: 60 * 60, // 默认缓存时间1小时
+    }),
   ],
   controllers: [],
   providers: [],
@@ -81,30 +86,28 @@ export class AppModule {}
 创建一个用户服务作为示例：
 
 ```typescript
-import { Injectable, Inject } from '@nestjs/common';
-import { CACHE_MANAGER } from '@nestjs/cache-manager';
-import { Cache } from 'cache-manager';
+import { Injectable, Inject } from '@nestjs/common'
+import { CACHE_MANAGER } from '@nestjs/cache-manager'
+import { Cache } from 'cache-manager'
 
 @Injectable()
 export class UserService {
-  constructor(
-    @Inject(CACHE_MANAGER) private cacheManager: Cache
-  ) {}
+  constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
   async getUserById(id: number) {
     // 尝试从缓存获取数据
-    const cachedUser = await this.cacheManager.get(`user:${id}`);
+    const cachedUser = await this.cacheManager.get(`user:${id}`)
     if (cachedUser) {
-      return cachedUser;
+      return cachedUser
     }
 
     // 模拟从数据库获取数据
-    const user = await this.findUserFromDB(id);
-    
+    const user = await this.findUserFromDB(id)
+
     // 将数据存入缓存
-    await this.cacheManager.set(`user:${id}`, user, 3600);
-    
-    return user;
+    await this.cacheManager.set(`user:${id}`, user, 3600)
+
+    return user
   }
 
   private async findUserFromDB(id: number) {
@@ -112,8 +115,8 @@ export class UserService {
     return {
       id,
       name: 'John Doe',
-      email: 'john@example.com'
-    };
+      email: 'john@example.com',
+    }
   }
 }
 ```
@@ -123,7 +126,7 @@ export class UserService {
 Nest.js还提供了便捷的装饰器来实现缓存：
 
 ```typescript
-import { Injectable, UseInterceptors, CacheInterceptor } from '@nestjs/common';
+import { Injectable, UseInterceptors, CacheInterceptor } from '@nestjs/common'
 
 @Injectable()
 @UseInterceptors(CacheInterceptor)
@@ -133,8 +136,8 @@ export class ProductService {
     // 模拟获取产品列表
     return [
       { id: 1, name: 'Product 1' },
-      { id: 2, name: 'Product 2' }
-    ];
+      { id: 2, name: 'Product 2' },
+    ]
   }
 }
 ```

@@ -103,24 +103,28 @@ DELETE FROM users WHERE id = 1;
 ## 5. MySQL常用命令总结
 
 ### 数据库管理命令
+
 - `SHOW DATABASES` - 显示所有数据库
 - `CREATE DATABASE` - 创建数据库
 - `DROP DATABASE` - 删除数据库
 - `USE database_name` - 切换数据库
 
 ### 表管理命令
+
 - `SHOW TABLES` - 显示所有表
 - `DESC table_name` - 显示表结构
 - `SHOW CREATE TABLE table_name` - 显示创建表的SQL
 - `ALTER TABLE` - 修改表结构
 
 ### 数据操作命令
+
 - `SELECT` - 查询数据
 - `INSERT` - 插入数据
 - `UPDATE` - 更新数据
 - `DELETE` - 删除数据
 
 ### 用户管理命令
+
 - `CREATE USER` - 创建用户
 - `GRANT` - 授予权限
 - `REVOKE` - 撤销权限
@@ -133,6 +137,7 @@ DELETE FROM users WHERE id = 1;
    - 避免在频繁更新的列上创建过多索引
 
 2. **定期备份数据**：
+
    ```bash
    mysqldump -u root -p database_name > backup.sql
    ```

@@ -35,15 +35,16 @@
 - 异常处理和日志记录
 
 示例代码：
+
 ```typescript
 @Controller('users')
 export class UserController {
-    constructor(private userService: UserService) {}
-    
-    @Get(':id')
-    async getUser(@Param('id') id: string) {
-        return await this.userService.findById(id);
-    }
+  constructor(private userService: UserService) {}
+
+  @Get(':id')
+  async getUser(@Param('id') id: string) {
+    return await this.userService.findById(id)
+  }
 }
 ```
 
@@ -58,27 +59,28 @@ export class UserController {
 - 事务管理
 
 示例代码：
+
 ```typescript
 @Injectable()
 export class UserService {
-    constructor(private userRepository: UserRepository) {}
-    
-    async createUser(userData: CreateUserDto) {
-        // 业务逻辑处理
-        const existingUser = await this.userRepository.findByEmail(userData.email);
-        if (existingUser) {
-            throw new ConflictException('邮箱已存在');
-        }
-        
-        // 密码加密等业务处理
-        const hashedPassword = await this.hashPassword(userData.password);
-        
-        // 调用数据访问层
-        return await this.userRepository.create({
-            ...userData,
-            password: hashedPassword
-        });
+  constructor(private userRepository: UserRepository) {}
+
+  async createUser(userData: CreateUserDto) {
+    // 业务逻辑处理
+    const existingUser = await this.userRepository.findByEmail(userData.email)
+    if (existingUser) {
+      throw new ConflictException('邮箱已存在')
     }
+
+    // 密码加密等业务处理
+    const hashedPassword = await this.hashPassword(userData.password)
+
+    // 调用数据访问层
+    return await this.userRepository.create({
+      ...userData,
+      password: hashedPassword,
+    })
+  }
 }
 ```
 
@@ -92,19 +94,20 @@ export class UserService {
 - 数据模型的定义和映射
 
 示例代码：
+
 ```typescript
 @Injectable()
 export class UserRepository {
-    constructor(@InjectModel(User.name) private userModel: Model<User>) {}
-    
-    async findById(id: string): Promise<User> {
-        return await this.userModel.findById(id).exec();
-    }
-    
-    async create(userData: CreateUserDto): Promise<User> {
-        const user = new this.userModel(userData);
-        return await user.save();
-    }
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+
+  async findById(id: string): Promise<User> {
+    return await this.userModel.findById(id).exec()
+  }
+
+  async create(userData: CreateUserDto): Promise<User> {
+    const user = new this.userModel(userData)
+    return await user.save()
+  }
 }
 ```
 

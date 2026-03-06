@@ -9,16 +9,19 @@ Nest.js 是一个用于构建高效、可扩展的 Node.js 服务器端应用程
 ## 2. 核心优势
 
 ### 2.1 TypeScript 支持
+
 - 默认使用 TypeScript 开发，提供完整的类型系统
 - 更好的代码提示和错误检查
 - 面向对象编程的特性支持
 
 ### 2.2 模块化架构
+
 - 采用模块化设计，便于代码组织和维护
 - 每个功能模块都是独立的，可以方便地进行单元测试
 - 支持依赖注入，使代码更加解耦
 
 ### 2.3 完整的生态系统
+
 - 内置支持 WebSocket
 - 支持 GraphQL
 - 微服务支持
@@ -26,6 +29,7 @@ Nest.js 是一个用于构建高效、可扩展的 Node.js 服务器端应用程
 - 丰富的中间件
 
 ### 2.4 优秀的文档和社区支持
+
 - 完善的官方文档
 - 活跃的社区
 - 大量的最佳实践和示例
@@ -33,6 +37,7 @@ Nest.js 是一个用于构建高效、可扩展的 Node.js 服务器端应用程
 ## 3. 入门指南
 
 ### 3.1 环境准备
+
 首先确保你的机器上已经安装了 Node.js（建议版本 >= 12.x）。然后全局安装 Nest CLI：
 
 ```bash
@@ -40,6 +45,7 @@ npm i -g @nestjs/cli
 ```
 
 ### 3.2 创建新项目
+
 使用 Nest CLI 创建新项目：
 
 ```bash
@@ -47,6 +53,7 @@ nest new project-name
 ```
 
 ### 3.3 项目结构
+
 一个基本的 Nest.js 项目结构如下：
 
 ```
@@ -70,9 +77,9 @@ src/
 
 ```typescript
 // src/users/users.module.ts
-import { Module } from '@nestjs/common';
-import { UsersController } from './users.controller';
-import { UsersService } from './users.service';
+import { Module } from '@nestjs/common'
+import { UsersController } from './users.controller'
+import { UsersService } from './users.service'
 
 @Module({
   controllers: [UsersController],
@@ -86,10 +93,10 @@ export class UsersModule {}
 ```typescript
 // src/users/user.entity.ts
 export class User {
-  id: number;
-  name: string;
-  email: string;
-  createdAt: Date;
+  id: number
+  name: string
+  email: string
+  createdAt: Date
 }
 ```
 
@@ -97,46 +104,46 @@ export class User {
 
 ```typescript
 // src/users/users.service.ts
-import { Injectable } from '@nestjs/common';
-import { User } from './user.entity';
+import { Injectable } from '@nestjs/common'
+import { User } from './user.entity'
 
 @Injectable()
 export class UsersService {
-  private users: User[] = [];
+  private users: User[] = []
 
   create(user: Omit<User, 'id' | 'createdAt'>): User {
     const newUser = {
       id: Date.now(),
       ...user,
       createdAt: new Date(),
-    };
-    this.users.push(newUser);
-    return newUser;
+    }
+    this.users.push(newUser)
+    return newUser
   }
 
   findAll(): User[] {
-    return this.users;
+    return this.users
   }
 
   findOne(id: number): User {
-    return this.users.find(user => user.id === id);
+    return this.users.find(user => user.id === id)
   }
 
   update(id: number, updateUser: Partial<User>): User {
-    const user = this.findOne(id);
+    const user = this.findOne(id)
     if (user) {
-      Object.assign(user, updateUser);
+      Object.assign(user, updateUser)
     }
-    return user;
+    return user
   }
 
   remove(id: number): boolean {
-    const index = this.users.findIndex(user => user.id === id);
+    const index = this.users.findIndex(user => user.id === id)
     if (index !== -1) {
-      this.users.splice(index, 1);
-      return true;
+      this.users.splice(index, 1)
+      return true
     }
-    return false;
+    return false
   }
 }
 ```
@@ -145,9 +152,9 @@ export class UsersService {
 
 ```typescript
 // src/users/users.controller.ts
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { User } from './user.entity';
+import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common'
+import { UsersService } from './users.service'
+import { User } from './user.entity'
 
 @Controller('users')
 export class UsersController {
@@ -155,27 +162,27 @@ export class UsersController {
 
   @Post()
   create(@Body() createUser: Omit<User, 'id' | 'createdAt'>) {
-    return this.usersService.create(createUser);
+    return this.usersService.create(createUser)
   }
 
   @Get()
   findAll() {
-    return this.usersService.findAll();
+    return this.usersService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+    return this.usersService.findOne(+id)
   }
 
   @Put(':id')
   update(@Param('id') id: string, @Body() updateUser: Partial<User>) {
-    return this.usersService.update(+id, updateUser);
+    return this.usersService.update(+id, updateUser)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+    return this.usersService.remove(+id)
   }
 }
 ```
@@ -184,8 +191,8 @@ export class UsersController {
 
 ```typescript
 // src/app.module.ts
-import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
+import { Module } from '@nestjs/common'
+import { UsersModule } from './users/users.module'
 
 @Module({
   imports: [UsersModule],
