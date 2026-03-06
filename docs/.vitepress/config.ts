@@ -69,7 +69,7 @@ export default defineConfig({
       '/others': getSideBar('others'),
       '/Markdown': getSideBar('Markdown'),
       '/component': getSideBar('SwyUI'),
-      '/AILargeModel': getSideBar('AILargeModel'),
+      '/largeModel': getSideBar('largeModel'),
       '/python': getSideBar('python'),
     },
     carbonAds: {

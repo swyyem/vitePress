@@ -26,7 +26,7 @@ interface MenuItem {
 const wholeList: MenuItem[] = [
   { text: '首页', link: '/' },
   {
-    text: 'beautifulWoman',
+    text: '美女',
     label: 'beautifulWoman',
     link: '/beautifulWoman',
     items: [
@@ -52,7 +52,7 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'front',
+    text: '前端',
     label: 'front',
     link: '/front/engi/rule',
     items: [
@@ -433,7 +433,7 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'back',
+    text: '后端',
     label: 'back',
     link: '/back/framework/chooseFrameWork',
     items: [
@@ -470,7 +470,7 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'others',
+    text: '其他',
     label: 'others',
     link: '/others/operation/git',
     activeMatch: '/others/',
@@ -556,7 +556,7 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'SwyUI',
+    text: '组件',
     label: 'SwyUI',
     link: '/component/swy-ui',
     collapsible: true, // 允许折叠
@@ -860,33 +860,33 @@ const wholeList: MenuItem[] = [
     ],
   },
   {
-    text: 'AILargeModel',
-    label: 'AILargeModel',
-    link: '/AILargeModel/TechnicalTerm',
-    activeMatch: '/AILargeModel/',
+    text: '大模型',
+    label: 'largeModel',
+    link: '/largeModel/embedding',
+    activeMatch: '/largeModel/',
     items: [
       {
         text: 'AI大模型基本原理及API使用',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
-        link: '/AILargeModel/jibenyuanli',
+        link: '/largeModel/basic',
       },
       {
         text: 'RAG 大模型',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
-        link: '/AILargeModel/RAG',
+        link: '/largeModel/rag',
       },
       {
         text: 'Embedding 模型',
         collapsible: true, // 允许折叠
         collapsed: true, // 默认折叠
-        link: '/AILargeModel/Embedding',
+        link: '/largeModel/embedding',
       },
     ],
   },
   {
-    text: 'python',
+    text: 'Python',
     label: 'python',
     link: '/python/basic',
     activeMatch: '/python/',
@@ -952,7 +952,7 @@ export default {
   getSideBar(path: string) {
     const map = wholeList.reduce((acc: CategoryMap, curr) => {
       if (curr.label && curr.items) {
-        acc[curr.label] = curr.items
+        acc[curr.label] = curr.items as MenuItem[]
       }
       return acc
     }, {})
