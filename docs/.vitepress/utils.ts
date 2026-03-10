@@ -851,17 +851,14 @@ const wholeList: MenuItem[] = [
     items: [
       {
         text: 'AI大模型基本原理及API使用',
-
         link: '/largeModel/basic/',
       },
       {
         text: 'RAG 大模型',
-
         link: '/largeModel/rag/',
       },
       {
         text: 'Embedding 模型',
-
         link: '/largeModel/embedding/',
       },
     ],
@@ -874,42 +871,34 @@ const wholeList: MenuItem[] = [
     items: [
       {
         text: '基础语法结构',
-
         link: '/python/basic/',
       },
       {
         text: '面向对象编程',
-
         link: '/python/class/',
       },
       {
         text: '异常处理',
-
         link: '/python/error/',
       },
       {
         text: '函数定义与使用',
-
         link: '/python/function/',
       },
       {
         text: '上下文管理（with语句）',
-
         link: '/python/with/',
       },
       {
         text: 'Python 核心工具箱',
-
         link: '/python/toolbox/',
       },
       {
         text: 'Python 实用工具库',
-
         link: '/python/toollibrary/',
       },
       {
         text: '学习路径建议',
-
         link: '/python/student/',
       },
     ],
