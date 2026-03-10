@@ -28,23 +28,21 @@ const wholeList: MenuItem[] = [
   {
     text: '美女',
     label: 'beautifulWoman',
-    link: '/beautifulWoman',
+    link: '/beautifulWoman/skincare',
+    activeMatch: '/beautifulWoman/',
     items: [
       {
         text: '宝宝',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: '护肤',
-            collapsible: true,
-            collapsed: false, // 默认展开
+
             link: '/beautifulWoman/skincare/',
           },
           {
             text: '化妆品',
-            collapsible: true,
-            collapsed: false, // 默认展开
+
             link: '/beautifulWoman/cosmetics/',
           },
         ],
@@ -54,262 +52,260 @@ const wholeList: MenuItem[] = [
   {
     text: '前端',
     label: 'front',
-    link: '/front/engi/rule',
+    link: '/front/interview/html5/newFeatures',
+    activeMatch: '/front/',
     items: [
       {
         text: '前端面试题',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: 'HTML5与CSS3',
-            collapsible: true,
-            collapsed: false, // 默认展开
+
             items: [
               {
                 text: 'HTML5 新特性',
-                link: '/front/interview/html5/newFeatures',
+                link: '/front/interview/html5/newFeatures/',
               },
               {
                 text: 'CSS3 新特性',
-                link: '/front/interview/css3/newFeatures',
+                link: '/front/interview/css3/newFeatures/',
               },
             ],
           },
           {
             text: 'CSS布局方式',
-            link: '/front/interview/layout-method',
+            link: '/front/interview/layout-method/',
           },
           {
             text: 'DIV居中',
-            link: '/front/interview/div-center',
+            link: '/front/interview/div-center/',
           },
           {
             text: '伪类与伪元素的区别',
-            link: '/front/interview/pseudo-class',
+            link: '/front/interview/pseudo-class/',
           },
           {
             text: 'css 选择器的优先级排序',
-            link: '/front/interview/css-priority',
+            link: '/front/interview/css-priority/',
           },
           {
             text: '深拷贝与浅拷贝',
-            link: '/front/interview/copy',
+            link: '/front/interview/copy/',
           },
           {
             text: '封装过的组件',
-            link: '/front/interview/encapsulated',
+            link: '/front/interview/encapsulated/',
           },
           {
             text: 'JSONP原理',
-            link: '/front/interview/jsonp',
+            link: '/front/interview/jsonp/',
           },
           {
             text: '本地离线存储',
-            link: '/front/interview/Local-offline-storage',
+            link: '/front/interview/Local-offline-storage/',
           },
           {
             text: 'LINK与A标签',
-            link: '/front/interview/link',
+            link: '/front/interview/link/',
           },
           {
             text: '盒子模型',
-            link: '/front/interview/box-model',
+            link: '/front/interview/box-model/',
           },
           {
             text: '闭包',
-            link: '/front/interview/closure',
+            link: '/front/interview/closure/',
           },
           {
             text: '作用域',
-            link: '/front/interview/scope',
+            link: '/front/interview/scope/',
           },
           {
             text: '网站性能优化',
-            link: '/front/interview/website-performance',
+            link: '/front/interview/website-performance/',
           },
           {
             text: 'ES5 与 ES6新特性',
-            link: '/front/interview/es6',
+            link: '/front/interview/es6/',
           },
           {
             text: '对于MVVM的理解',
-            link: '/front/interview/mvvm',
+            link: '/front/interview/mvvm/',
           },
           {
             text: 'Vue生命周期',
-            link: '/front/interview/life-cycle',
+            link: '/front/interview/life-cycle/',
           },
           {
             text: 'Vue数据双向绑定',
-            link: '/front/interview/two-way-binding',
+            link: '/front/interview/two-way-binding/',
           },
           {
             text: '组件间传值',
-            link: '/front/interview/component-value-transfer',
+            link: '/front/interview/component-value-transfer/',
           },
           {
             text: 'Vue路由',
-            link: '/front/interview/route',
+            link: '/front/interview/route/',
           },
           {
             text: 'Vue路由钩子函数',
-            link: '/front/interview/route-hook-function',
+            link: '/front/interview/route-hook-function/',
           },
           {
             text: 'Vue数据管理中心',
-            link: '/front/interview/vuex',
+            link: '/front/interview/vuex/',
           },
           {
             text: 'keep-alive',
-            link: '/front/interview/keep-alive',
+            link: '/front/interview/keep-alive/',
           },
           {
             text: 'css样式隔离',
-            link: '/front/interview/style-isolation',
+            link: '/front/interview/style-isolation/',
           },
           {
             text: 'v-if 和 v-show',
-            link: '/front/interview/v-ifANDv-show',
+            link: '/front/interview/v-ifANDv-show/',
           },
           {
             text: 'vue-route 和 vue-router',
-            link: '/front/interview/vue-route-vs-router',
+            link: '/front/interview/vue-route-vs-router/',
           },
           {
             text: 'vue核心概念',
-            link: '/front/interview/vue-core-concepts',
+            link: '/front/interview/vue-core-concepts/',
           },
           {
             text: 'v-for 和 v-if',
-            link: '/front/interview/v-for-v-if',
+            link: '/front/interview/v-for-v-if/',
           },
           {
             text: 'Vue修饰符',
-            link: '/front/interview/vue-modifiers',
+            link: '/front/interview/vue-modifiers/',
           },
           {
             text: 'vue中的跨域问题',
-            link: '/front/interview/cross-domain',
+            link: '/front/interview/cross-domain/',
           },
           {
             text: '浏览器与服务器的交互原理',
-            link: '/front/interview/browser-server-interaction',
+            link: '/front/interview/browser-server-interaction/',
           },
           {
             text: 'v-on 可以绑定多个方法吗',
-            link: '/front/interview/v-on',
+            link: '/front/interview/v-on/',
           },
           {
             text: 'vue中key 值的作用',
-            link: '/front/interview/key',
+            link: '/front/interview/key/',
           },
           {
             text: '$nextTick的使用',
-            link: '/front/interview/nextTick',
+            link: '/front/interview/nextTick/',
           },
           {
             text: '父组件调用子组件方法',
-            link: '/front/interview/method',
+            link: '/front/interview/method/',
           },
           {
             text: '项目初始化页面闪动问题',
-            link: '/front/interview/page-flashing',
+            link: '/front/interview/page-flashing/',
           },
           {
             text: 'vue2 与vue3 的区别',
-            link: '/front/interview/vue2-vue3',
+            link: '/front/interview/vue2-vue3/',
           },
           {
             text: 'vue和react的区别',
-            link: '/front/interview/vue-react',
+            link: '/front/interview/vue-react/',
           },
           {
             text: 'js数组的方法',
-            link: '/front/interview/arrary',
+            link: '/front/interview/arrary/',
           },
           {
             text: '监听 DOM 树',
-            link: '/front/interview/DOM-tree',
+            link: '/front/interview/DOM-tree/',
           },
           {
             text: 'JavaScript 的事件循环机制',
-            link: '/front/interview/event-cycle-mechanism',
+            link: '/front/interview/event-cycle-mechanism/',
           },
           {
             text: 'Javascript的数据类型',
-            link: '/front/interview/data-type',
+            link: '/front/interview/data-type/',
           },
           {
             text: '怎样判断变量的类型',
-            link: '/front/interview/typeof',
+            link: '/front/interview/typeof/',
           },
           {
             text: '数据类型转换',
-            link: '/front/interview/transfer-type',
+            link: '/front/interview/transfer-type/',
           },
           {
             text: '原型和原型链',
-            link: '/front/interview/prototypeand-prototype-chain',
+            link: '/front/interview/prototypeand-prototype-chain/',
           },
           {
             text: 'call /apply /bind',
-            link: '/front/interview/call-apply-bind',
+            link: '/front/interview/call-apply-bind/',
           },
           {
             text: 'DOM 事件流和事件委托详解',
-            link: '/front/interview/event-stream',
+            link: '/front/interview/event-stream/',
           },
           {
             text: 'new 操作符内部原理详解',
-            link: '/front/interview/new-operator',
+            link: '/front/interview/new-operator/',
           },
           {
             text: '防抖、节流的应用场景',
-            link: '/front/interview/Anti-vibration-throttling',
+            link: '/front/interview/Anti-vibration-throttling/',
           },
           {
             text: 'this指向',
-            link: '/front/interview/this',
+            link: '/front/interview/this/',
           },
           {
             text: 'let const var 的区别',
-            link: '/front/interview/let-const',
+            link: '/front/interview/let-const/',
           },
           {
             text: 'Promise 的理解',
-            link: '/front/interview/promiss',
+            link: '/front/interview/promiss/',
           },
           {
             text: 'Promise 为什么支持链式调用',
-            link: '/front/interview/promiss-lian',
+            link: '/front/interview/promiss-lian/',
           },
           {
             text: 'Javascript的运行机制',
-            link: '/front/interview/javascript-yunxingjizhi',
+            link: '/front/interview/javascript-yunxingjizhi/',
           },
           {
             text: '实现继承的几种方式',
-            link: '/front/interview/extends',
+            link: '/front/interview/extends/',
           },
           {
             text: '浏览器垃圾回收',
-            link: '/front/interview/lese',
+            link: '/front/interview/lese/',
           },
           {
             text: '多人开发 避免版本冲突',
-            link: '/front/interview/kaifa-chongtu',
+            link: '/front/interview/kaifa-chongtu/',
           },
           {
             text: 'Git 常用命令',
-            link: '/front/interview/git-changyong',
+            link: '/front/interview/git-changyong/',
           },
         ],
       },
       {
         text: 'JavaScript',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: 'javascript',
@@ -319,8 +315,7 @@ const wholeList: MenuItem[] = [
       },
       {
         text: '前端工程化',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: '前端规范搭建',
@@ -351,8 +346,7 @@ const wholeList: MenuItem[] = [
       },
       {
         text: '前端基础',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: '前端最全Debugger技巧',
@@ -390,8 +384,7 @@ const wholeList: MenuItem[] = [
       },
       {
         text: 'Uniapp跨端开发',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: '包体积优化',
@@ -411,7 +404,7 @@ const wholeList: MenuItem[] = [
           },
           {
             text: 'App上架各应用市场攻略',
-            link: '/front/mini/publish',
+            link: '/front/mini/publish/',
           },
           // {
           //   text: "Uniapp踩坑合集",
@@ -421,8 +414,7 @@ const wholeList: MenuItem[] = [
       },
       {
         text: 'Flutter跨端开发',
-        collapsible: true,
-        collapsed: false, // 默认展开
+
         items: [
           {
             text: 'Flutter入门与实践',
@@ -436,6 +428,7 @@ const wholeList: MenuItem[] = [
     text: '后端',
     label: 'back',
     link: '/back/chooseFrameWork',
+    activeMatch: '/back/',
     items: [
       {
         text: '后端基础',
@@ -459,11 +452,11 @@ const wholeList: MenuItem[] = [
           },
           {
             text: '关系型数据与非关系型数据库',
-            link: '/back/database',
+            link: '/back/database/',
           },
           {
             text: 'MySql入门与实践',
-            link: '/back/mysql',
+            link: '/back/mysql/',
           },
         ],
       },
@@ -519,37 +512,38 @@ const wholeList: MenuItem[] = [
     text: 'Markdown',
     label: 'markdown',
     link: '/markdown/table',
+    activeMatch: '/markdown/',
     items: [
       {
         text: 'markdown 语法',
         items: [
           {
             text: '表格',
-            link: '/markdown/table',
+            link: '/markdown/table/',
           },
           {
             text: '目录',
-            link: '/markdown/mulu',
+            link: '/markdown/mulu/',
           },
           {
             text: '容器',
-            link: '/markdown/rongqi',
+            link: '/markdown/rongqi/',
           },
           {
             text: '字体样式',
-            link: '/markdown/ziti',
+            link: '/markdown/ziti/',
           },
           {
             text: '支持的表情',
-            link: '/markdown/emoji',
+            link: '/markdown/emoji/',
           },
           {
             text: '代码块',
-            link: '/markdown/daima',
+            link: '/markdown/daima/',
           },
           {
             text: '组件',
-            link: '/markdown/zujian',
+            link: '/markdown/zujian/',
           },
         ],
       },
@@ -558,26 +552,28 @@ const wholeList: MenuItem[] = [
   {
     text: '组件',
     label: 'SwyUI',
-    link: '/component/swy-ui',
-    collapsible: true, // 允许折叠
-    collapsed: true, // 默认折叠
+    link: '/component/swy-ui/overview',
+    activeMatch: '/component/swy-ui/',
     items: [
       {
         text: '组件总览',
-        link: '/component/swy-ui/overview',
+        items: [
+          {
+            text: 'Overview 概览',
+            link: '/component/swy-ui/overview/',
+          },
+        ],
       },
       {
         text: '基础组件',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
         items: [
           {
             text: 'Button 按钮',
-            link: '/component/swy-ui/jichu/button',
+            link: '/component/swy-ui/jichu/button/',
           },
           {
             text: 'ColorPicker 颜色选择器',
-            link: '/component/swy-ui/form/color-picker',
+            link: '/component/swy-ui/form/color-picker/',
           },
           {
             text: 'Container 容器布局',
@@ -585,203 +581,193 @@ const wholeList: MenuItem[] = [
           },
           {
             text: 'Icon 图标',
-            link: '/component/swy-ui/jichu/icon',
+            link: '/component/swy-ui/jichu/icon/',
           },
           {
             text: 'Row / Col 栅格布局',
-            link: '/component/swy-ui/layout/row-col',
+            link: '/component/swy-ui/layout/row-col/',
           },
           {
             text: 'Space 间距',
-            link: '/component/swy-ui/layout/space',
+            link: '/component/swy-ui/layout/space/',
           },
           {
             text: 'Scrollbar 滚动条',
-            link: '/component/swy-ui/layout/scrollbar',
+            link: '/component/swy-ui/layout/scrollbar/',
           },
           {
             text: 'Splitter 分割面板',
-            link: '/component/swy-ui/layout/splitter',
+            link: '/component/swy-ui/layout/splitter/',
           },
           {
             text: 'Link 链接',
-            link: '/component/swy-ui/jichu/link',
+            link: '/component/swy-ui/jichu/link/',
           },
           {
             text: 'Text 文本',
-            link: '/component/swy-ui/jichu/text',
+            link: '/component/swy-ui/jichu/text/',
           },
 
           {
             text: 'Card 卡片',
-            link: '/component/swy-ui/jichu/card',
+            link: '/component/swy-ui/jichu/card/',
           },
           {
             text: 'Avatar 头像',
-            link: '/component/swy-ui/jichu/avatar',
+            link: '/component/swy-ui/jichu/avatar/',
           },
           {
             text: 'Alert 提示',
-            link: '/component/swy-ui/jichu/alert',
+            link: '/component/swy-ui/jichu/alert/',
           },
           {
             text: 'Tag 标签',
-            link: '/component/swy-ui/jichu/tag',
+            link: '/component/swy-ui/jichu/tag/',
           },
         ],
       },
       {
         text: '导航类组件',
-        collapsible: true,
-        collapsed: true,
         items: [
           {
             text: 'Tabs 标签页',
-            link: '/component/swy-ui/navigation/tabs',
+            link: '/component/swy-ui/navigation/tabs/',
           },
           {
             text: 'Breadcrumb 面包屑',
-            link: '/component/swy-ui/navigation/breadcrumb',
+            link: '/component/swy-ui/navigation/breadcrumb/',
           },
           {
             text: 'Pagination 分页',
-            link: '/component/swy-ui/navigation/pagination',
+            link: '/component/swy-ui/navigation/pagination/',
           },
           {
             text: 'Steps 步骤条',
-            link: '/component/swy-ui/navigation/steps',
+            link: '/component/swy-ui/navigation/steps/',
           },
           {
             text: 'Backtop 回到顶部',
-            link: '/component/swy-ui/navigation/backtop',
+            link: '/component/swy-ui/navigation/backtop/',
           },
           {
             text: 'PageHeader 页头',
-            link: '/component/swy-ui/navigation/page-header',
+            link: '/component/swy-ui/navigation/page-header/',
           },
           {
             text: 'Anchor 锚点',
-            link: '/component/swy-ui/navigation/anchor',
+            link: '/component/swy-ui/navigation/anchor/',
           },
         ],
       },
       {
         text: '数据展示类组件',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
         items: [
           {
             text: 'Image 图片',
-            link: '/component/swy-ui/data/image',
+            link: '/component/swy-ui/data/image/',
           },
           {
             text: 'Descriptions 描述列表',
-            link: '/component/swy-ui/data/descriptions',
+            link: '/component/swy-ui/data/descriptions/',
           },
           {
             text: 'Table 表格',
-            link: '/component/swy-ui/data-display/table',
+            link: '/component/swy-ui/data-display/table/',
           },
           {
             text: 'Tree 树形控件',
-            link: '/component/swy-ui/data-display/tree',
+            link: '/component/swy-ui/data-display/tree/',
           },
           {
             text: 'Collapse 折叠面板',
-            link: '/component/swy-ui/data-display/collapse',
+            link: '/component/swy-ui/data-display/collapse/',
           },
           {
             text: 'Carousel 走马灯',
-            link: '/component/swy-ui/data-display/carousel',
+            link: '/component/swy-ui/data-display/carousel/',
           },
           {
             text: 'Transfer 穿梭框',
-            link: '/component/swy-ui/data/transfer',
+            link: '/component/swy-ui/data/transfer/',
           },
           {
             text: 'Timeline 时间线',
-            link: '/component/swy-ui/data-display/timeline',
+            link: '/component/swy-ui/data-display/timeline/',
           },
           {
             text: 'Calendar 日历',
-            link: '/component/swy-ui/data-display/calendar',
+            link: '/component/swy-ui/data-display/calendar/',
           },
           {
             text: 'Statistic 统计数值',
-            link: '/component/swy-ui/data-display/statistic',
+            link: '/component/swy-ui/data-display/statistic/',
           },
           {
             text: 'Segmented 分段控制器',
-            link: '/component/swy-ui/data/segmented',
+            link: '/component/swy-ui/data/segmented/',
           },
         ],
       },
       {
         text: '反馈类组件',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
         items: [
           {
             text: 'Empty 空状态',
-            link: '/component/swy-ui/feedback/empty',
+            link: '/component/swy-ui/feedback/empty/',
           },
           {
             text: 'Progress 进度条',
-            link: '/component/swy-ui/feedback/progress',
+            link: '/component/swy-ui/feedback/progress/',
           },
           {
             text: 'Result 结果',
-            link: '/component/swy-ui/feedback/result',
+            link: '/component/swy-ui/feedback/result/',
           },
           {
             text: 'Skeleton 骨架屏',
-            link: '/component/swy-ui/feedback/skeleton',
+            link: '/component/swy-ui/feedback/skeleton/',
           },
           {
             text: 'Tooltip 文字提示',
-            link: '/component/swy-ui/feedback/tooltip',
+            link: '/component/swy-ui/feedback/tooltip/',
           },
           {
             text: 'Popover 弹出框',
-            link: '/component/swy-ui/feedback/popover',
+            link: '/component/swy-ui/feedback/popover/',
           },
           {
             text: 'Notification 通知',
-            link: '/component/swy-ui/feedback/notification',
+            link: '/component/swy-ui/feedback/notification/',
           },
           {
             text: 'Loading 加载',
-            link: '/component/swy-ui/feedback/loading',
+            link: '/component/swy-ui/feedback/loading/',
           },
           {
             text: 'Tour 漫游式引导',
-            link: '/component/swy-ui/feedback/tour',
+            link: '/component/swy-ui/feedback/tour/',
           },
           {
             text: 'Popconfirm 气泡确认框',
-            link: '/component/swy-ui/others/popconfirm',
+            link: '/component/swy-ui/others/popconfirm/',
           },
           {
             text: 'MessageBox 弹框',
-            link: '/component/swy-ui/others/message-box',
+            link: '/component/swy-ui/others/message-box/',
           },
         ],
       },
       {
         text: '其他组件',
-        collapsible: true,
-        collapsed: true,
         items: [
           {
             text: 'Affix 固钉',
-            link: '/component/swy-ui/others/affix',
+            link: '/component/swy-ui/others/affix/',
           },
         ],
       },
       {
         text: '工具函数',
-        collapsible: true,
-        collapsed: true,
         items: [
           {
             text: 'Utils 工具函数',
@@ -791,69 +777,67 @@ const wholeList: MenuItem[] = [
       },
       {
         text: '表单组件',
-        collapsible: true, // 允许折叠
-        collapsed: false, // 默认展开
         items: [
           {
             text: 'InputNumber 数字输入框',
-            link: '/component/swy-ui/form/input-number',
+            link: '/component/swy-ui/form/input-number/',
           },
           {
             text: 'Rate 评分',
-            link: '/component/swy-ui/form/rate',
+            link: '/component/swy-ui/form/rate/',
           },
           {
             text: 'Slider 滑块',
-            link: '/component/swy-ui/form/slider',
+            link: '/component/swy-ui/form/slider/',
           },
           {
             text: 'ProField 原子组件',
-            link: '/component/swy-ui/form/profield',
+            link: '/component/swy-ui/form/profield/',
           },
           {
             text: 'Checkbox 复选框',
-            link: '/component/swy-ui/form/checkbox',
+            link: '/component/swy-ui/form/checkbox/',
           },
           {
             text: 'Select 选择器',
-            link: '/component/swy-ui/form/select',
+            link: '/component/swy-ui/form/select/',
           },
           {
             text: 'Switch 开关',
-            link: '/component/swy-ui/form/switch',
+            link: '/component/swy-ui/form/switch/',
           },
           {
             text: 'DatePicker 日期选择器',
-            link: '/component/swy-ui/form/date-picker',
+            link: '/component/swy-ui/form/date-picker/',
           },
           {
             text: 'TimePicker 时间选择器',
-            link: '/component/swy-ui/form/time-picker',
+            link: '/component/swy-ui/form/time-picker/',
           },
           {
             text: 'TimeSelect 时间选择',
-            link: '/component/swy-ui/form/time-select',
+            link: '/component/swy-ui/form/time-select/',
           },
           {
             text: 'Upload 文件上传',
-            link: '/component/swy-ui/form/upload',
+            link: '/component/swy-ui/form/upload/',
           },
           {
             text: 'Cascader 级联选择器',
-            link: '/component/swy-ui/form/cascader',
+            link: '/component/swy-ui/form/cascader/',
           },
           {
             text: 'TreeSelect 树形选择',
-            link: '/component/swy-ui/form/tree-select',
+            link: '/component/swy-ui/form/tree-select/',
           },
           {
             text: 'Autocomplete 自动完成',
-            link: '/component/swy-ui/form/autocomplete',
+            link: '/component/swy-ui/form/autocomplete/',
           },
 
           {
             text: '表单综合示例',
-            link: '/component/swy-ui/form/example',
+            link: '/component/swy-ui/form/example/',
           },
         ],
       },
@@ -862,26 +846,23 @@ const wholeList: MenuItem[] = [
   {
     text: '大模型',
     label: 'largeModel',
-    link: '/largeModel/embedding',
+    link: '/largeModel/basic',
     activeMatch: '/largeModel/',
     items: [
       {
         text: 'AI大模型基本原理及API使用',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/largeModel/basic',
+
+        link: '/largeModel/basic/',
       },
       {
         text: 'RAG 大模型',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/largeModel/rag',
+
+        link: '/largeModel/rag/',
       },
       {
         text: 'Embedding 模型',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/largeModel/embedding',
+
+        link: '/largeModel/embedding/',
       },
     ],
   },
@@ -893,51 +874,43 @@ const wholeList: MenuItem[] = [
     items: [
       {
         text: '基础语法结构',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/basic',
+
+        link: '/python/basic/',
       },
       {
         text: '面向对象编程',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/class',
+
+        link: '/python/class/',
       },
       {
         text: '异常处理',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/error',
+
+        link: '/python/error/',
       },
       {
         text: '函数定义与使用',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/function',
+
+        link: '/python/function/',
       },
       {
         text: '上下文管理（with语句）',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/with',
+
+        link: '/python/with/',
       },
       {
         text: 'Python 核心工具箱',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/toolbox',
+
+        link: '/python/toolbox/',
       },
       {
         text: 'Python 实用工具库',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/toollibrary',
+
+        link: '/python/toollibrary/',
       },
       {
         text: '学习路径建议',
-        collapsible: true, // 允许折叠
-        collapsed: true, // 默认折叠
-        link: '/python/student',
+
+        link: '/python/student/',
       },
     ],
   },
