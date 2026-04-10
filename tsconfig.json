@@ -11,6 +11,8 @@
     "components/**/*.vue", // 如果组件在单独目录
     "components/**/*.ts",
     "components/src/**/**/*.vue", // 如果组件在单独目录
+    "src/low-code/**/*.ts",
+    "src/low-code/**/*.vue"
   ],
   "exclude": [
     "src/**/__tests__/*",
