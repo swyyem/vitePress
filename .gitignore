@@ -14,6 +14,11 @@ dist-ssr
 docs/.vitepress/cache/
 # 添加斜杠明确指定为目录
 
+# Lock files (optional - uncomment if you don't want to commit them)
+# pnpm-lock.yaml
+# yarn.lock
+# package-lock.json
+
 
 # Editor directories and files
 .vscode/*

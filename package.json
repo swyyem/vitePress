@@ -19,6 +19,7 @@
     "lint": "eslint . --fix",
     "format": "prettier --write ./**/*.{vue,js,ts,jsx,tsx,css,scss,md}",
     "lint-staged": "lint-staged",
+    "commit": "git-cz",
     "python:run": "python src/python/onr.py",
     "node:run": "node ./src/python/index.js",
     "test:fun": "node ./index.js"
@@ -57,6 +58,8 @@
     "xlsx": "^0.18.5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.0.2",
+    "@commitlint/config-conventional": "^21.0.2",
     "@eslint/js": "^9.31.0",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^24.0.14",

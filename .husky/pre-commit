@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"  # 移除了--参数
+. "$(dirname "$0")/_/husky.sh"
 
-# Remove the first two lines and keep only the command
 npx lint-staged
-npm run lint-staged
