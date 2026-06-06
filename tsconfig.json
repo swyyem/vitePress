@@ -8,9 +8,9 @@
     "src/**/*.d.ts",
     "vite.config.ts",
     "vitest.config.ts",
-    "components/**/*.vue", // 如果组件在单独目录
+    "components/**/*.vue",
     "components/**/*.ts",
-    "components/src/**/**/*.vue", // 如果组件在单独目录
+    "components/src/**/**/*.vue",
     "src/low-code/**/*.ts",
     "src/low-code/**/*.vue"
   ],
@@ -52,11 +52,6 @@
         "./components/*"
       ],
       "@swy-ui/*": ["src/swy-ui/*"]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable"
-    ]
+    }
   }
 }
