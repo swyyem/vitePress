@@ -1,6 +1,6 @@
 # 导航组件
 
-## Tabs 标签�?
+## Tabs 标签
 
 ### 基础用法
 
@@ -31,7 +31,7 @@ const activeTab = ref('user')
 
 ---
 
-## Breadcrumb 面包�?
+## Breadcrumb 面包
 
 ### 基础用法
 
@@ -91,7 +91,7 @@ const currentPage = ref(1)
 
 const handlePageChange = (page: number) => {
   currentPage.value = page
-  console.log('当前�?', page)
+  console.log('当前', page)
 }
 </script>
 ```
@@ -136,11 +136,11 @@ const currentPage = ref(2)
 
 ## Menu 菜单
 
-为网站提供导航功能的菜单�?
+为网站提供导航功能的菜单
 
 ### 基础用法
 
-垂直菜单，支持子菜单�?
+垂直菜单，支持子菜单
 :::demo
 
 ```vue
@@ -148,7 +148,7 @@ const currentPage = ref(2)
   <SwyMenu default-active="1" @select="handleSelect">
     <SwyMenuItem index="1">处理中心</SwyMenuItem>
     <SwySubMenu index="2">
-      <template #title>我的工作�?/template>
+      <template #title>我的工作/template>
       <SwyMenuItem index="2-1">选项1</SwyMenuItem>
       <SwyMenuItem index="2-2">选项2</SwyMenuItem>
     </SwySubMenu>
@@ -168,14 +168,14 @@ const handleSelect = (index: string, indexPath: string[]) => {
 
 ### 水平菜单
 
-水平的顶栏菜单�?
+水平的顶栏菜单
 :::demo
 
 ```vue
 <template>
   <SwyMenu mode="horizontal" default-active="1">
     <SwyMenuItem index="1">处理中心</SwyMenuItem>
-    <SwyMenuItem index="2">我的工作�?/SwyMenuItem>
+    <SwyMenuItem index="2">我的工作/SwyMenuItem>
     <SwyMenuItem index="3">订单管理</SwyMenuItem>
   </SwyMenu>
 </template>
@@ -187,11 +187,11 @@ const handleSelect = (index: string, indexPath: string[]) => {
 
 ## Dropdown 下拉菜单
 
-将动作或菜单折叠到下拉菜单中�?
+将动作或菜单折叠到下拉菜单中
 
 ### 基础用法
 
-悬停在下拉菜单上展开更多操作�?
+悬停在下拉菜单上展开更多操作
 :::demo
 
 ```vue
@@ -199,11 +199,11 @@ const handleSelect = (index: string, indexPath: string[]) => {
   <SwyDropdown @command="handleCommand">
     <span>下拉菜单</span>
     <template #dropdown>
-      <SwyDropdownItem command="a">黄金�?/SwyDropdownItem>
-      <SwyDropdownItem command="b">狮子�?/SwyDropdownItem>
-      <SwyDropdownItem command="c">螺蛳�?/SwyDropdownItem>
-      <SwyDropdownItem command="d" :disabled="true">双皮�?/SwyDropdownItem>
-      <SwyDropdownItem command="e" :divided="true">蚵仔�?/SwyDropdownItem>
+      <SwyDropdownItem command="a">黄金/SwyDropdownItem>
+      <SwyDropdownItem command="b">狮子/SwyDropdownItem>
+      <SwyDropdownItem command="c">螺蛳/SwyDropdownItem>
+      <SwyDropdownItem command="d" :disabled="true">双皮/SwyDropdownItem>
+      <SwyDropdownItem command="e" :divided="true">蚵仔/SwyDropdownItem>
     </template>
   </SwyDropdown>
 </template>
@@ -219,7 +219,7 @@ const handleCommand = (command: string | number) => {
 
 ### 触发方式
 
-可以配置点击激活或者悬停激活�?
+可以配置点击激活或者悬停激活
 :::demo
 
 ```vue
@@ -227,9 +227,9 @@ const handleCommand = (command: string | number) => {
   <SwyDropdown trigger="click" @command="handleCommand">
     <span>点击下拉菜单</span>
     <template #dropdown>
-      <SwyDropdownItem command="a">黄金�?/SwyDropdownItem>
-      <SwyDropdownItem command="b">狮子�?/SwyDropdownItem>
-      <SwyDropdownItem command="c">螺蛳�?/SwyDropdownItem>
+      <SwyDropdownItem command="a">黄金/SwyDropdownItem>
+      <SwyDropdownItem command="b">狮子/SwyDropdownItem>
+      <SwyDropdownItem command="c">螺蛳/SwyDropdownItem>
     </template>
   </SwyDropdown>
 </template>
