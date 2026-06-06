@@ -908,6 +908,62 @@ const wholeList: MenuItem[] = [
     link: '/conventionalCommits/git',
     activeMatch: '/conventionalCommits/',
   },
+  {
+    text: '面试题',
+    label: 'mianshi',
+    link: '/mianshi/jieshao/',
+    activeMatch: '/mianshi/',
+    items: [
+      {
+        text: '自我介绍',
+        link: '/mianshi/jieshao/',
+      },
+      {
+        text: '高频面试题',
+        link: '/mianshi/gaopin/',
+      },
+      {
+        text: '单点登录与事件控制面试题',
+        link: '/mianshi/danpointlogin/',
+      },
+      {
+        text: '构建工具链与工程化面试题',
+        link: '/mianshi/gongjuchain/',
+      },
+      {
+        text: '全栈开发面试题',
+        link: '/mianshi/quanzhankaifa/',
+      },
+      {
+        text: 'vue3-typescript-react-面试题',
+        link: '/mianshi/vue3-typescript-react/',
+      },
+      {
+        text: 'qiankun-微前端面试题',
+        link: '/mianshi/vue3-typescript-react/',
+      },
+      {
+        text: 'formStore与身份认证权限面试题',
+        link: '/mianshi/formStore/',
+      },
+      {
+        text: 'Vibe Coding面试题',
+        link: '/mianshi/VibeCoding/',
+      },
+      {
+        text: '虚拟滚动面试题',
+        link: '/mianshi/xunigundong/',
+      },
+      {
+        text: '性能优化',
+        link: '/mianshi/xingchao/',
+      },
+      {
+        text: '微前端通信架构设计面试',
+        link: '/mianshi/tongxin/',
+      },
+    ],
+  },
 ]
 
 export default {

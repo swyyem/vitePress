@@ -71,6 +71,8 @@ export default defineConfig({
       '/component': getSideBar('SwyUI'),
       '/largeModel': getSideBar('largeModel'),
       '/python': getSideBar('python'),
+      '/mianshi': getSideBar('mianshi'),
+      // '/algorithm': getSideBar('algorithm'),
     },
     carbonAds: {
       //广告
