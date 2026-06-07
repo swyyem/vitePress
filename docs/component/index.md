@@ -1,4 +1,4 @@
-# ProField 原子组件
+﻿# ProField 原子组件
 
 ## 描述
 
@@ -106,11 +106,10 @@ const state1 = ref('11111')
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, h } from 'vue'
-import { ElButton } from 'element-plus'
 
 const state1 = ref('11111')
 const renderFormItem = (text, props) => {
-  return h(ElButton, {}, () => '按钮')
+  return h('button', { class: 'demo-button' }, '按钮')
 }
 </script>
 ```
@@ -127,11 +126,10 @@ const renderFormItem = (text, props) => {
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, h } from 'vue'
-import { ElButton } from 'element-plus'
 
 const state1 = ref('11111')
 const render = (text, props) => {
-  return h(ElButton, {}, () => '按钮')
+  return h('button', { class: 'demo-button' }, '按钮')
 }
 </script>
 ```
@@ -150,7 +148,6 @@ const render = (text, props) => {
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, h } from 'vue'
-import { ElButton } from 'element-plus'
 
 const state1 = ref('11111')
 const generateData = (n: number, start?: number, str?: string) => {
@@ -193,7 +190,6 @@ const valueEnum = generateData(10)
 </template>
 <script lang="ts" setup>
 import { onMounted, ref, h } from 'vue'
-import { ElButton } from 'element-plus'
 
 const state1 = ref('11111')
 
@@ -428,7 +424,7 @@ const switchValue = ref(false)
     </div>
 
     <div style="padding: 15px; background: #f5f7fa; border-radius: 4px;">
-      <h4 style="margin-top: 0;">表单数据�?/h4>
+      <h4 style="margin-top: 0;">表单数据</h4>
       <pre style="margin: 0;">{{ JSON.stringify(formData, null, 2) }}</pre>
     </div>
   </div>

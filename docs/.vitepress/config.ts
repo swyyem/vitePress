@@ -42,6 +42,13 @@ export default defineConfig({
   },
   vite: {
     plugins: [demoblockVitePlugin() as unknown as Plugin],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler', // 使用新版 Sass API
+        },
+      },
+    },
     resolve: {
       alias: {
         '@swy-ui': path.resolve(__dirname, '../../src/swy-ui'), // 添加 element-plus 相关的路径别名
@@ -58,6 +65,7 @@ export default defineConfig({
       open: true,
     },
   },
+  ignoreDeadLinks: true,
   base: '/vitePress/',
   title: '星辰小站',
   themeConfig: {

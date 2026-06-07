@@ -148,7 +148,7 @@ const currentPage = ref(2)
   <SwyMenu default-active="1" @select="handleSelect">
     <SwyMenuItem index="1">处理中心</SwyMenuItem>
     <SwySubMenu index="2">
-      <template #title>我的工作/template>
+      <template #title>我的工作</template>
       <SwyMenuItem index="2-1">选项1</SwyMenuItem>
       <SwyMenuItem index="2-2">选项2</SwyMenuItem>
     </SwySubMenu>
@@ -175,7 +175,7 @@ const handleSelect = (index: string, indexPath: string[]) => {
 <template>
   <SwyMenu mode="horizontal" default-active="1">
     <SwyMenuItem index="1">处理中心</SwyMenuItem>
-    <SwyMenuItem index="2">我的工作/SwyMenuItem>
+    <SwyMenuItem index="2">我的工作</SwyMenuItem>
     <SwyMenuItem index="3">订单管理</SwyMenuItem>
   </SwyMenu>
 </template>
@@ -199,11 +199,11 @@ const handleSelect = (index: string, indexPath: string[]) => {
   <SwyDropdown @command="handleCommand">
     <span>下拉菜单</span>
     <template #dropdown>
-      <SwyDropdownItem command="a">黄金/SwyDropdownItem>
-      <SwyDropdownItem command="b">狮子/SwyDropdownItem>
-      <SwyDropdownItem command="c">螺蛳/SwyDropdownItem>
-      <SwyDropdownItem command="d" :disabled="true">双皮/SwyDropdownItem>
-      <SwyDropdownItem command="e" :divided="true">蚵仔/SwyDropdownItem>
+      <SwyDropdownItem command="a">黄金</SwyDropdownItem>
+      <SwyDropdownItem command="b">狮子</SwyDropdownItem>
+      <SwyDropdownItem command="c">螺蛳</SwyDropdownItem>
+      <SwyDropdownItem command="d" :disabled="true">双皮</SwyDropdownItem>
+      <SwyDropdownItem command="e" :divided="true">蚵仔</SwyDropdownItem>
     </template>
   </SwyDropdown>
 </template>
@@ -227,9 +227,9 @@ const handleCommand = (command: string | number) => {
   <SwyDropdown trigger="click" @command="handleCommand">
     <span>点击下拉菜单</span>
     <template #dropdown>
-      <SwyDropdownItem command="a">黄金/SwyDropdownItem>
-      <SwyDropdownItem command="b">狮子/SwyDropdownItem>
-      <SwyDropdownItem command="c">螺蛳/SwyDropdownItem>
+      <SwyDropdownItem command="a">黄金</SwyDropdownItem>
+      <SwyDropdownItem command="b">狮子</SwyDropdownItem>
+      <SwyDropdownItem command="c">螺蛳</SwyDropdownItem>
     </template>
   </SwyDropdown>
 </template>

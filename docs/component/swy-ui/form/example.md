@@ -16,8 +16,8 @@
 
       <SwyFormItem label="性别">
         <SwyRadioGroup v-model="formData.gender">
-          <SwyRadio label="male">/SwyRadio>
-          <SwyRadio label="female">/SwyRadio>
+          <SwyRadio label="male"></SwyRadio>
+          <SwyRadio label="female"></SwyRadio>
         </SwyRadioGroup>
       </SwyFormItem>
 
@@ -49,7 +49,7 @@
     </SwyForm>
 
     <div style="margin-top: 20px; padding: 15px; background: #f5f7fa; border-radius: 4px;">
-      <h4 style="margin-top: 0;">表单数据/h4>
+      <h4 style="margin-top: 0;">表单数据</h4>
       <pre style="margin: 0;">{{ JSON.stringify(formData, null, 2) }}</pre>
     </div>
   </div>
@@ -130,7 +130,7 @@ const handleReset = () => {
 
       <SwyFormItem label="同意协议">
         <SwyCheckbox v-model="registerForm.agree">
-          我已阅读并同意《用户协议》和《隐私政策
+          我已阅读并同意《用户协议》和《隐私政策》
         </SwyCheckbox>
       </SwyFormItem>
 
@@ -212,7 +212,7 @@ const register = () => {
       <SwyFormItem label="功能选项">
         <div style="display: flex; flex-direction: column; gap: 5px;">
           <SwyCheckbox v-model="settings.features.autoSave">自动保存</SwyCheckbox>
-          <SwyCheckbox v-model="settings.features.spellCheck">拼写检/SwyCheckbox>
+          <SwyCheckbox v-model="settings.features.spellCheck">拼写检查</SwyCheckbox>
           <SwyCheckbox v-model="settings.features.preview">实时预览</SwyCheckbox>
         </div>
       </SwyFormItem>
